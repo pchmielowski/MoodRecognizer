@@ -9,22 +9,6 @@ enum Mode {
 	TRAIN_SVM
 };
 
-class unknownSwitchException : public std::exception
-{
-	virtual const char* what() const throw()
-	{
-		return "unknownSwitchException";
-	}
-};
-
-class missingArgumentException : public std::exception
-{
-	virtual const char* what() const throw()
-	{
-		return "missingArgumentException";
-	}
-};
-
 class Configuration {
 public:
 	Configuration();

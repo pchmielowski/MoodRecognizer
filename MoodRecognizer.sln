@@ -6,6 +6,9 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MoodRecognizer", "MoodRecognizer.vcxproj", "{13A779F5-A41F-4C11-8088-BB610DB33301}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "UnitTests", "..\UnitTests\UnitTests.vcxproj", "{07B8263B-083F-4A0A-A9BA-5A2B44B1439E}"
+	ProjectSection(ProjectDependencies) = postProject
+		{13A779F5-A41F-4C11-8088-BB610DB33301} = {13A779F5-A41F-4C11-8088-BB610DB33301}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

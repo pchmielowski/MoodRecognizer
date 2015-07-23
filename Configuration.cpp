@@ -1,5 +1,8 @@
 #include "Configuration.h"
 #include "boost\program_options.hpp"
+#include <stdexcept>
+
+using namespace std;
 
 Configuration::Configuration() {}
 Configuration::~Configuration() {}
@@ -46,13 +49,13 @@ void Configuration::parseInputArguments(const int argc, char* const argv[]) {
 			plotFileName_ = variableMap["-p"].as<FileName>();
 		}
 		else
-			throw missingArgumentException();
+			throw runtime_error("Missing argument!");
 	}
-	catch (missingArgumentException) {
-		throw missingArgumentException();
+	catch (runtime_error) {
+		throw runtime_error("Missing argument!");
 	}
 	catch (...) {
-		throw unknownSwitchException();
+		throw runtime_error("Unknown switch!");
 	}
 }
 void Configuration::parseConfigurationFile(const FileName fileName) {}
