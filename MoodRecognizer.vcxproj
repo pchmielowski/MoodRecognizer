@@ -44,9 +44,11 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>C:\Dysk Google\boost\boost_1_55_0</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>C:\Dysk Google\boost\boost_1_55_0\stage\lib</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -64,6 +66,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Configuration.h" />
     <ClInclude Include="FeatureMatrixLoader.h" />
     <ClInclude Include="InputFileNames.h" />
     <ClInclude Include="Moods.h" />
@@ -73,6 +76,7 @@
     <ClInclude Include="Ubm.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Configuration.cpp" />
     <ClCompile Include="FeatureMatrixLoader.cpp" />
     <ClCompile Include="InputFileNames.cpp" />
     <ClCompile Include="Main.cpp" />

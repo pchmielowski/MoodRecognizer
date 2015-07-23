@@ -2,7 +2,7 @@
 #include <string>
 #include <exception>
 #include <iostream>
-typedef std::string FileName;
+#include "Types.h"
 
 enum Mode {
 	MAKE_BASE,
