@@ -1,21 +1,24 @@
 #define BOOST_TEST_MODULE Test
-#define _CRT_SECURE_NO_WARNINGS
 #include "boost\test\included\unit_test.hpp"
-#include <fstream>
+#include <gmock\gmock.h>
+#include <gtest\gtest.h>
 // My classes:
 #include "Configuration.h"
 #include "Types.h"
+#include "ConfigurationFileReader.h"
 #define _CRT_SECURE_NO_WARNINGS
 
 class ConfigurationTest {
 public:
-	std::string configurationFileContent;
-	void saveConfigurationFile(FileName configurationFileName, std::string configurationFileContent) {
-		std::ofstream configurationFile;
-		configurationFile.open(configurationFileName, std::ios::trunc);
-		configurationFile << configurationFileContent;
-		configurationFile.close();
+	Configuration configurationFactory() {
+		//configurationFileReader_ = new FakeConfigurationFileReader();
+		//Configuration cfg(*configurationFileReader_);
+		Configuration cfg;
+		return cfg;
 	}
+	~ConfigurationTest() {}
+private:
+	ConfigurationFileReader* configurationFileReader_;
 };
 
 BOOST_AUTO_TEST_SUITE(ConfigurationTestSuite)
@@ -32,7 +35,7 @@ BOOST_FIXTURE_TEST_CASE(Configuration_parseInputArguments_parseCorrectlyFilename
 		"-c", "configurationFileName"
 	};
 	int argc = sizeof(argv) / sizeof(argv[0]);
-	Configuration cfg;
+	Configuration cfg = configurationFactory();
 
 	cfg.parseInputArguments(argc, argv);
 
@@ -59,7 +62,7 @@ BOOST_FIXTURE_TEST_CASE(Configuration_parseInputArguments_parseCorrectlyMode, Co
 			"-c", "configurationFileName"
 		};
 		int argc = sizeof(argv) / sizeof(argv[0]);
-		Configuration cfg;
+		Configuration cfg = configurationFactory();
 
 		cfg.parseInputArguments(argc, argv);
 
@@ -77,7 +80,7 @@ BOOST_FIXTURE_TEST_CASE(Configuration_parseInputArguments_parseCorrectlyMode, Co
 		"-c", "configurationFileName"
 	};
 	int argc = sizeof(argv) / sizeof(argv[0]);
-	Configuration cfg;
+	Configuration cfg = configurationFactory();
 
 	cfg.parseInputArguments(argc, argv);
 
@@ -91,7 +94,7 @@ BOOST_FIXTURE_TEST_CASE(Configuration_parseInputArguments_xSwitch_throwsRuntimeE
 		"-x", "someText"
 	};
 	int argc = sizeof(argv) / sizeof(argv[0]);
-	Configuration cfg;
+	Configuration cfg = configurationFactory();
 
 	BOOST_REQUIRE_THROW(cfg.parseInputArguments(argc, argv), std::runtime_error);
 }
@@ -107,7 +110,7 @@ BOOST_FIXTURE_TEST_CASE(Configuration_parseInputArguments_noSvmFile_throwsRuntim
 	};
 	int argc = sizeof(argv) / sizeof(argv[0]);
 
-	Configuration cfg;
+	Configuration cfg = configurationFactory();
 
 	BOOST_REQUIRE_THROW(cfg.parseInputArguments(argc, argv), std::runtime_error);
 }

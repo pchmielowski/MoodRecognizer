@@ -1,11 +1,24 @@
 #include "Configuration.h"
 #include "boost\program_options.hpp"
 #include <stdexcept>
+#include "ConfigurationFileReader.h"
 
 using namespace std;
 
 Configuration::Configuration() {}
-Configuration::~Configuration() {}
+
+//Configuration::Configuration(ConfigurationFileReader& fileReader)
+//{
+//	configurationFileReader_ = &fileReader;
+//}
+
+Configuration::Configuration(const Configuration& other)
+{
+}
+
+Configuration::~Configuration() {
+	//delete configurationFileReader_;
+}
 
 void Configuration::parseInputArguments(const int argc, char* const argv[]) {
 	namespace po = boost::program_options;
@@ -47,6 +60,8 @@ void Configuration::parseInputArguments(const int argc, char* const argv[]) {
 			configurationFileName_ = variableMap["-c"].as<FileName>();
 			moodsFileName_ = variableMap["-m"].as<FileName>();
 			plotFileName_ = variableMap["-p"].as<FileName>();
+
+			// configurationFileReader_->open(configurationFileName_);
 		}
 		else
 			throw runtime_error("Missing argument!");

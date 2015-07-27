@@ -3,16 +3,22 @@
 #include <exception>
 #include <iostream>
 #include "Types.h"
+#include <memory>
 
 enum Mode {
 	MAKE_BASE,
 	TRAIN_SVM
 };
 
+class ConfigurationFileReader;
+
 class Configuration {
 public:
+	//Configuration(ConfigurationFileReader& fileReader);
 	Configuration();
 	~Configuration();
+	Configuration(const Configuration& other);
+	Configuration operator=(const Configuration& other);
 
 	void parseConfigurationFile(const FileName fileName);
 	void parseInputArguments(const int argc, char* const argv[]);
@@ -29,6 +35,7 @@ public:
 	Mode getMode() const;
 	bool shouldSavePlotFile() const;
 private:
+	//ConfigurationFileReader* configurationFileReader_;
 	Mode mode_;
 	FileName folderOfFtMatrixesPath_;
 	FileName svmModelFileName_;

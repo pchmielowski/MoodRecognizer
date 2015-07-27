@@ -67,6 +67,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Configuration.h" />
+    <ClInclude Include="ConfigurationFileReader.h" />
     <ClInclude Include="FeatureMatrixLoader.h" />
     <ClInclude Include="InputFileNames.h" />
     <ClInclude Include="Moods.h" />
