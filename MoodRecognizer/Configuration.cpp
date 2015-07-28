@@ -76,6 +76,7 @@ void Configuration::parseInputArguments(const int argc, char* const argv[]) {
 }
 void Configuration::parseConfigurationFile(const FileName fileName) {
 	if (configurationFileReader_) {
+		configurationFileReader_->open(fileName);
 		string content = configurationFileReader_->getContent();
 		int alphaBegin = content.find("<value>") + 7;
 		int alphaEnd = content.find("<", alphaBegin);

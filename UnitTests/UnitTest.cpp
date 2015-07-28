@@ -108,17 +108,32 @@ BOOST_FIXTURE_TEST_CASE(Configuration_parseInputArguments_noSvmFile_throwsRuntim
 
 	BOOST_REQUIRE_THROW(cfg.parseInputArguments(argc, argv), std::runtime_error);
 }
+BOOST_FIXTURE_TEST_CASE(Configuration_parseConfigurationFileRequiredToCallOpen_CallOpen, ConfigurationTest) {
+	std::string configurationFileContent = "<alpha range=false>\n";
+	configurationFileContent += "<value>" + std::to_string(.6) + "</value>\n";
+	configurationFileContent += "</alpha>\n";
 
+	Mock<ConfigurationFileReader> mockConfigurationFileReader;
+	When(Method(mockConfigurationFileReader, open)).AlwaysReturn();
+	When(Method(mockConfigurationFileReader, getContent)).Return(configurationFileContent);
+	ConfigurationFileReader& mockConfigurationFileReaderInstance = mockConfigurationFileReader.get();
+	Configuration cfg(mockConfigurationFileReaderInstance);
+	
+	cfg.parseConfigurationFile("anyfile");
+
+	Verify(Method(mockConfigurationFileReader, open)).AtLeastOnce();
+}
 BOOST_FIXTURE_TEST_CASE(Configuration_parseConfigurationFileWithAlphaEq_6_alphaEq_6, ConfigurationTest) {
 	std::string configurationFileContent = "<alpha range=false>\n";
 	configurationFileContent += "<value>" + std::to_string(.6) + "</value>\n";
 	configurationFileContent += "</alpha>\n";
 
 	Mock<ConfigurationFileReader> mockConfigurationFileReader;
+	When(Method(mockConfigurationFileReader, open)).AlwaysReturn();
 	When(Method(mockConfigurationFileReader, getContent)).Return(configurationFileContent);
 	ConfigurationFileReader& mockConfigurationFileReaderInstance = mockConfigurationFileReader.get();
-	
 	Configuration cfg(mockConfigurationFileReaderInstance);
+
 	cfg.parseConfigurationFile("anyfile");
 
 	BOOST_CHECK_CLOSE(cfg.getAlpha(), .6, 0.1);
@@ -129,10 +144,11 @@ BOOST_FIXTURE_TEST_CASE(Configuration_parseConfigurationFileWithAlphaEq0_alphaEq
 	configurationFileContent += "</alpha>\n";
 
 	Mock<ConfigurationFileReader> mockConfigurationFileReader;
+	When(Method(mockConfigurationFileReader, open)).AlwaysReturn();
 	When(Method(mockConfigurationFileReader, getContent)).Return(configurationFileContent);
 	ConfigurationFileReader& mockConfigurationFileReaderInstance = mockConfigurationFileReader.get();
-
 	Configuration cfg(mockConfigurationFileReaderInstance);
+
 	cfg.parseConfigurationFile("anyfile");
 
 	BOOST_CHECK_CLOSE(cfg.getAlpha(), 0, 0.1);
