@@ -58,7 +58,7 @@
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>C:\Dysk Google\gmock-1.7.0\gtest\msvc\gtest\Debug;C:\Dysk Google\gmock-1.7.0\msvc\2010\Debug-md;C:\OneDrive\C_MoodRecognizer\MoodRecognizer\Debug;C:\Dysk Google\boost\boost_1_55_0\stage\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>Configuration.obj;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>Configuration.obj;Moods.obj;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">

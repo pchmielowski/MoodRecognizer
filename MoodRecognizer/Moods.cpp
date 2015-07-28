@@ -1,18 +1,19 @@
 #include "Moods.h"
+#include "FileReaderInterface.h"
 
 Moods::Moods()
 {
 
 }
 
-Moods::Moods(FileName moodsFileName)
+Moods::Moods(FileReaderInterface& fileReader, const FileName moodsFileName)
 {
-
+	fileReader_ = &fileReader;
 }
 
 void Moods::addMood(Mood mood)
 {
-
+	moodsQueue_.push(mood);
 }
 
 Moods::~Moods()
@@ -22,5 +23,12 @@ Moods::~Moods()
 
 Mood Moods::getNextMood()
 {
-	return -1;
+	try {
+		Mood nextMood = moodsQueue_.front();
+		moodsQueue_.pop();
+		return nextMood;
+	}
+	catch (...) {
+		throw std::runtime_error("Queue is empty");
+	}
 }
