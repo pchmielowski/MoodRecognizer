@@ -5,12 +5,13 @@
 
 using namespace std;
 
-Configuration::Configuration() {}
+Configuration::Configuration() {
+}
 
-//Configuration::Configuration(ConfigurationFileReader& fileReader)
-//{
-//	configurationFileReader_ = &fileReader;
-//}
+Configuration::Configuration(ConfigurationFileReader& fileReader)
+{
+	configurationFileReader_ = &fileReader;
+}
 
 Configuration::Configuration(const Configuration& other)
 {
@@ -61,7 +62,7 @@ void Configuration::parseInputArguments(const int argc, char* const argv[]) {
 			moodsFileName_ = variableMap["-m"].as<FileName>();
 			plotFileName_ = variableMap["-p"].as<FileName>();
 
-			// configurationFileReader_->open(configurationFileName_);
+			parseConfigurationFile(configurationFileName_);
 		}
 		else
 			throw runtime_error("Missing argument!");
@@ -73,7 +74,16 @@ void Configuration::parseInputArguments(const int argc, char* const argv[]) {
 		throw runtime_error("Unknown switch!");
 	}
 }
-void Configuration::parseConfigurationFile(const FileName fileName) {}
+void Configuration::parseConfigurationFile(const FileName fileName) {
+	if (configurationFileReader_) {
+		string content = configurationFileReader_->getContent();
+		int alphaBegin = content.find("<value>") + 7;
+		int alphaEnd = content.find("<", alphaBegin);
+		int alphaLenght = alphaEnd - alphaBegin;
+		string alphaAsString = content.substr(alphaBegin, alphaLenght);
+		alpha_ = atof(alphaAsString.c_str()); 
+	}
+}
 
 FileName Configuration::getPathOfInputFiles() const {
 	return folderOfFtMatrixesPath_;
@@ -104,7 +114,7 @@ int Configuration::getNumComponents() const {
 }
 
 float Configuration::getAlpha() const {
-	return .6;
+	return alpha_;
 }
 
 FileName Configuration::getPlotFileName() const {

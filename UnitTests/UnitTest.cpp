@@ -13,17 +13,6 @@ using namespace fakeit;
 
 class ConfigurationTest {
 public:
-	Configuration configurationFactory() {
-		//configurationFileReader_ = new FakeConfigurationFileReader();
-		//Configuration cfg(*configurationFileReader_);
-		Configuration cfg;
-		return cfg;
-	}
-	Configuration configurationFactory(ConfigurationFileReader& configurationFileReader) {
-		Configuration cfg(*configurationFileReader_);
-		return cfg;
-	}
-	~ConfigurationTest() {}
 };
 
 BOOST_AUTO_TEST_SUITE(ConfigurationTestSuite)
@@ -40,7 +29,7 @@ BOOST_FIXTURE_TEST_CASE(Configuration_parseInputArguments_parseCorrectlyFilename
 		"-c", "configurationFileName"
 	};
 	int argc = sizeof(argv) / sizeof(argv[0]);
-	Configuration cfg = configurationFactory();
+	Configuration cfg;
 
 	cfg.parseInputArguments(argc, argv);
 
@@ -67,7 +56,7 @@ BOOST_FIXTURE_TEST_CASE(Configuration_parseInputArguments_parseCorrectlyMode, Co
 			"-c", "configurationFileName"
 		};
 		int argc = sizeof(argv) / sizeof(argv[0]);
-		Configuration cfg = configurationFactory();
+		Configuration cfg;
 
 		cfg.parseInputArguments(argc, argv);
 
@@ -85,7 +74,7 @@ BOOST_FIXTURE_TEST_CASE(Configuration_parseInputArguments_parseCorrectlyMode, Co
 		"-c", "configurationFileName"
 	};
 	int argc = sizeof(argv) / sizeof(argv[0]);
-	Configuration cfg = configurationFactory();
+	Configuration cfg;
 
 	cfg.parseInputArguments(argc, argv);
 
@@ -99,7 +88,7 @@ BOOST_FIXTURE_TEST_CASE(Configuration_parseInputArguments_xSwitch_throwsRuntimeE
 		"-x", "someText"
 	};
 	int argc = sizeof(argv) / sizeof(argv[0]);
-	Configuration cfg = configurationFactory();
+	Configuration cfg;
 
 	BOOST_REQUIRE_THROW(cfg.parseInputArguments(argc, argv), std::runtime_error);
 }
@@ -115,7 +104,7 @@ BOOST_FIXTURE_TEST_CASE(Configuration_parseInputArguments_noSvmFile_throwsRuntim
 	};
 	int argc = sizeof(argv) / sizeof(argv[0]);
 
-	Configuration cfg = configurationFactory();
+	Configuration cfg;
 
 	BOOST_REQUIRE_THROW(cfg.parseInputArguments(argc, argv), std::runtime_error);
 }
@@ -129,8 +118,9 @@ BOOST_FIXTURE_TEST_CASE(Configuration_parseConfigurationFileWithAlphaEq_6_alphaE
 	When(Method(mockConfigurationFileReader, getContent)).Return(configurationFileContent);
 	ConfigurationFileReader& mockConfigurationFileReaderInstance = mockConfigurationFileReader.get();
 	
-	Configuration cfg = configurationFactory(mockConfigurationFileReaderInstance);
-	
+	Configuration cfg(mockConfigurationFileReaderInstance);
+	cfg.parseConfigurationFile("anyfile");
+
 	BOOST_CHECK_CLOSE(cfg.getAlpha(), .6, 0.1);
 }
 BOOST_FIXTURE_TEST_CASE(Configuration_parseConfigurationFileWithAlphaEq0_alphaEq0, ConfigurationTest) {
@@ -142,7 +132,8 @@ BOOST_FIXTURE_TEST_CASE(Configuration_parseConfigurationFileWithAlphaEq0_alphaEq
 	When(Method(mockConfigurationFileReader, getContent)).Return(configurationFileContent);
 	ConfigurationFileReader& mockConfigurationFileReaderInstance = mockConfigurationFileReader.get();
 
-	Configuration cfg = configurationFactory(mockConfigurationFileReaderInstance);
+	Configuration cfg(mockConfigurationFileReaderInstance);
+	cfg.parseConfigurationFile("anyfile");
 
 	BOOST_CHECK_CLOSE(cfg.getAlpha(), 0, 0.1);
 }

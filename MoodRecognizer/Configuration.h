@@ -14,14 +14,14 @@ class ConfigurationFileReader;
 
 class Configuration {
 public:
-	//Configuration(ConfigurationFileReader& fileReader);
+	Configuration(ConfigurationFileReader& fileReader);
 	Configuration();
 	~Configuration();
 	Configuration(const Configuration& other);
 	Configuration operator=(const Configuration& other);
 
-	void parseConfigurationFile(const FileName fileName);
 	void parseInputArguments(const int argc, char* const argv[]);
+	void parseConfigurationFile(const FileName fileName);
 
 	FileName getPathOfInputFiles() const;
 	FileName getSvmModelFileName() const;
@@ -35,7 +35,7 @@ public:
 	Mode getMode() const;
 	bool shouldSavePlotFile() const;
 private:
-	//ConfigurationFileReader* configurationFileReader_;
+	ConfigurationFileReader* configurationFileReader_ = 0;
 	Mode mode_;
 	FileName folderOfFtMatrixesPath_;
 	FileName svmModelFileName_;
