@@ -86,9 +86,20 @@ void Configuration::parseConfigurationFile(const FileName fileName) {
 		boost::property_tree::ptree xmlTree;
 		try {
 			boost::property_tree::read_xml(fileContent, xmlTree);
+		}
+		catch (boost::property_tree::ptree_error e) {
+			cout << e.what() << endl;
+		}
+		try {
 			string alphaAsString = xmlTree.get<std::string>("alpha.value");
-			cout << alphaAsString << endl;
 			alpha_ = atof(alphaAsString.c_str());
+		}
+		catch (boost::property_tree::ptree_error e) {
+			cout << e.what() << endl;
+		}
+		try {
+			string numComponentsAsString = xmlTree.get<std::string>("numberOfComponents.value");
+			numOfComponents_ = atoi(numComponentsAsString.c_str());
 		}
 		catch (boost::property_tree::ptree_error e) {
 			cout << e.what() << endl;
