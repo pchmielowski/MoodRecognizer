@@ -4,7 +4,7 @@
       <d2p1:Key>C:\OneDrive\C_MoodRecognizer\MoodRecognizer\Debug\UnitTests.exe</d2p1:Key>
       <d2p1:Value>
         <d2p1:KeyValueOfstringArrayOfTestCasexshf6bWf>
-          <d2p1:Key>ConfigurationTestSuite</d2p1:Key>
+          <d2p1:Key>MoodsTest</d2p1:Key>
           <d2p1:Value xmlns:d6p1="http://schemas.datacontract.org/2004/07/Microsoft.VisualStudio.TestPlatform.ObjectModel">
             <d6p1:TestCase>
               <d6p1:store>
@@ -17,7 +17,7 @@
                     <d6p1:_label>FullyQualifiedName</d6p1:_label>
                     <d6p1:_strValueType>System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</d6p1:_strValueType>
                   </d2p1:Key>
-                  <d2p1:Value xmlns:d10p1="http://www.w3.org/2001/XMLSchema" i:type="d10p1:string">ConfigurationTestSuiteConfiguration_parseInputArguments_parseCorrectlyFilenames</d2p1:Value>
+                  <d2p1:Value xmlns:d10p1="http://www.w3.org/2001/XMLSchema" i:type="d10p1:string">MoodsTestgetNextMood_addedMood3_return3</d2p1:Value>
                 </d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
                 <d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
                   <d2p1:Key>
@@ -50,7 +50,7 @@
                     <d6p1:_label>File Path</d6p1:_label>
                     <d6p1:_strValueType>System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</d6p1:_strValueType>
                   </d2p1:Key>
-                  <d2p1:Value xmlns:d10p1="http://www.w3.org/2001/XMLSchema" i:type="d10p1:string">C:\OneDrive\C_MoodRecognizer\UnitTests\UnitTest.cpp</d2p1:Value>
+                  <d2p1:Value xmlns:d10p1="http://www.w3.org/2001/XMLSchema" i:type="d10p1:string">C:\OneDrive\C_MoodRecognizer\UnitTests\MoodsTest.cpp</d2p1:Value>
                 </d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
                 <d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
                   <d2p1:Key>
@@ -61,7 +61,7 @@
                     <d6p1:_label>Line Number</d6p1:_label>
                     <d6p1:_strValueType>System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</d6p1:_strValueType>
                   </d2p1:Key>
-                  <d2p1:Value xmlns:d10p1="http://www.w3.org/2001/XMLSchema" i:type="d10p1:int">26</d2p1:Value>
+                  <d2p1:Value xmlns:d10p1="http://www.w3.org/2001/XMLSchema" i:type="d10p1:int">10</d2p1:Value>
                 </d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
                 <d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
                   <d2p1:Key>
@@ -72,7 +72,7 @@
                     <d6p1:_label>Name</d6p1:_label>
                     <d6p1:_strValueType>System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</d6p1:_strValueType>
                   </d2p1:Key>
-                  <d2p1:Value xmlns:d10p1="http://www.w3.org/2001/XMLSchema" i:type="d10p1:string">Configuration_parseInputArguments_parseCorrectlyFilenames</d2p1:Value>
+                  <d2p1:Value xmlns:d10p1="http://www.w3.org/2001/XMLSchema" i:type="d10p1:string">getNextMood_addedMood3_return3</d2p1:Value>
                 </d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
                 <d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
                   <d2p1:Key>
@@ -86,7 +86,7 @@
                   <d2p1:Value xmlns:d10p1="http://schemas.datacontract.org/2004/07/System.Collections.Generic" i:type="d10p1:ArrayOfKeyValuePairOfstringstring">
                     <d10p1:KeyValuePairOfstringstring>
                       <d10p1:key>TestSuite</d10p1:key>
-                      <d10p1:value>ConfigurationTestSuite</d10p1:value>
+                      <d10p1:value>MoodsTest</d10p1:value>
                     </d10p1:KeyValuePairOfstringstring>
                   </d2p1:Value>
                 </d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
@@ -103,7 +103,7 @@
                     <d6p1:_label>FullyQualifiedName</d6p1:_label>
                     <d6p1:_strValueType>System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</d6p1:_strValueType>
                   </d2p1:Key>
-                  <d2p1:Value xmlns:d10p1="http://www.w3.org/2001/XMLSchema" i:type="d10p1:string">ConfigurationTestSuiteConfiguration_parseInputArguments_parseCorrectlyMode</d2p1:Value>
+                  <d2p1:Value xmlns:d10p1="http://www.w3.org/2001/XMLSchema" i:type="d10p1:string">MoodsTestgetNextMood_added1then2then3_return1then2then3</d2p1:Value>
                 </d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
                 <d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
                   <d2p1:Key>
@@ -136,7 +136,7 @@
                     <d6p1:_label>File Path</d6p1:_label>
                     <d6p1:_strValueType>System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</d6p1:_strValueType>
                   </d2p1:Key>
-                  <d2p1:Value xmlns:d10p1="http://www.w3.org/2001/XMLSchema" i:type="d10p1:string">C:\OneDrive\C_MoodRecognizer\UnitTests\UnitTest.cpp</d2p1:Value>
+                  <d2p1:Value xmlns:d10p1="http://www.w3.org/2001/XMLSchema" i:type="d10p1:string">C:\OneDrive\C_MoodRecognizer\UnitTests\MoodsTest.cpp</d2p1:Value>
                 </d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
                 <d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
                   <d2p1:Key>
@@ -147,7 +147,7 @@
                     <d6p1:_label>Line Number</d6p1:_label>
                     <d6p1:_strValueType>System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</d6p1:_strValueType>
                   </d2p1:Key>
-                  <d2p1:Value xmlns:d10p1="http://www.w3.org/2001/XMLSchema" i:type="d10p1:int">52</d2p1:Value>
+                  <d2p1:Value xmlns:d10p1="http://www.w3.org/2001/XMLSchema" i:type="d10p1:int">17</d2p1:Value>
                 </d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
                 <d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
                   <d2p1:Key>
@@ -158,7 +158,7 @@
                     <d6p1:_label>Name</d6p1:_label>
                     <d6p1:_strValueType>System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</d6p1:_strValueType>
                   </d2p1:Key>
-                  <d2p1:Value xmlns:d10p1="http://www.w3.org/2001/XMLSchema" i:type="d10p1:string">Configuration_parseInputArguments_parseCorrectlyMode</d2p1:Value>
+                  <d2p1:Value xmlns:d10p1="http://www.w3.org/2001/XMLSchema" i:type="d10p1:string">getNextMood_added1then2then3_return1then2then3</d2p1:Value>
                 </d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
                 <d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
                   <d2p1:Key>
@@ -172,7 +172,7 @@
                   <d2p1:Value xmlns:d10p1="http://schemas.datacontract.org/2004/07/System.Collections.Generic" i:type="d10p1:ArrayOfKeyValuePairOfstringstring">
                     <d10p1:KeyValuePairOfstringstring>
                       <d10p1:key>TestSuite</d10p1:key>
-                      <d10p1:value>ConfigurationTestSuite</d10p1:value>
+                      <d10p1:value>MoodsTest</d10p1:value>
                     </d10p1:KeyValuePairOfstringstring>
                   </d2p1:Value>
                 </d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
@@ -189,7 +189,7 @@
                     <d6p1:_label>FullyQualifiedName</d6p1:_label>
                     <d6p1:_strValueType>System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</d6p1:_strValueType>
                   </d2p1:Key>
-                  <d2p1:Value xmlns:d10p1="http://www.w3.org/2001/XMLSchema" i:type="d10p1:string">ConfigurationTestSuiteConfiguration_parseInputArguments_xSwitch_throwsRuntimeErrorException</d2p1:Value>
+                  <d2p1:Value xmlns:d10p1="http://www.w3.org/2001/XMLSchema" i:type="d10p1:string">MoodsTestgetNextMood_nothingAdded_throwException</d2p1:Value>
                 </d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
                 <d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
                   <d2p1:Key>
@@ -222,7 +222,7 @@
                     <d6p1:_label>File Path</d6p1:_label>
                     <d6p1:_strValueType>System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</d6p1:_strValueType>
                   </d2p1:Key>
-                  <d2p1:Value xmlns:d10p1="http://www.w3.org/2001/XMLSchema" i:type="d10p1:string">C:\OneDrive\C_MoodRecognizer\UnitTests\UnitTest.cpp</d2p1:Value>
+                  <d2p1:Value xmlns:d10p1="http://www.w3.org/2001/XMLSchema" i:type="d10p1:string">C:\OneDrive\C_MoodRecognizer\UnitTests\MoodsTest.cpp</d2p1:Value>
                 </d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
                 <d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
                   <d2p1:Key>
@@ -233,7 +233,7 @@
                     <d6p1:_label>Line Number</d6p1:_label>
                     <d6p1:_strValueType>System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</d6p1:_strValueType>
                   </d2p1:Key>
-                  <d2p1:Value xmlns:d10p1="http://www.w3.org/2001/XMLSchema" i:type="d10p1:int">91</d2p1:Value>
+                  <d2p1:Value xmlns:d10p1="http://www.w3.org/2001/XMLSchema" i:type="d10p1:int">28</d2p1:Value>
                 </d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
                 <d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
                   <d2p1:Key>
@@ -244,7 +244,7 @@
                     <d6p1:_label>Name</d6p1:_label>
                     <d6p1:_strValueType>System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</d6p1:_strValueType>
                   </d2p1:Key>
-                  <d2p1:Value xmlns:d10p1="http://www.w3.org/2001/XMLSchema" i:type="d10p1:string">Configuration_parseInputArguments_xSwitch_throwsRuntimeErrorException</d2p1:Value>
+                  <d2p1:Value xmlns:d10p1="http://www.w3.org/2001/XMLSchema" i:type="d10p1:string">getNextMood_nothingAdded_throwException</d2p1:Value>
                 </d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
                 <d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
                   <d2p1:Key>
@@ -258,7 +258,7 @@
                   <d2p1:Value xmlns:d10p1="http://schemas.datacontract.org/2004/07/System.Collections.Generic" i:type="d10p1:ArrayOfKeyValuePairOfstringstring">
                     <d10p1:KeyValuePairOfstringstring>
                       <d10p1:key>TestSuite</d10p1:key>
-                      <d10p1:value>ConfigurationTestSuite</d10p1:value>
+                      <d10p1:value>MoodsTest</d10p1:value>
                     </d10p1:KeyValuePairOfstringstring>
                   </d2p1:Value>
                 </d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
@@ -275,7 +275,7 @@
                     <d6p1:_label>FullyQualifiedName</d6p1:_label>
                     <d6p1:_strValueType>System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</d6p1:_strValueType>
                   </d2p1:Key>
-                  <d2p1:Value xmlns:d10p1="http://www.w3.org/2001/XMLSchema" i:type="d10p1:string">ConfigurationTestSuiteConfiguration_parseInputArguments_noSvmFile_throwsRuntimeErrorException</d2p1:Value>
+                  <d2p1:Value xmlns:d10p1="http://www.w3.org/2001/XMLSchema" i:type="d10p1:string">MoodsTestgetNextMood_loadedFileWith4Moods_gettedInRightOrder</d2p1:Value>
                 </d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
                 <d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
                   <d2p1:Key>
@@ -308,7 +308,7 @@
                     <d6p1:_label>File Path</d6p1:_label>
                     <d6p1:_strValueType>System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</d6p1:_strValueType>
                   </d2p1:Key>
-                  <d2p1:Value xmlns:d10p1="http://www.w3.org/2001/XMLSchema" i:type="d10p1:string">C:\OneDrive\C_MoodRecognizer\UnitTests\UnitTest.cpp</d2p1:Value>
+                  <d2p1:Value xmlns:d10p1="http://www.w3.org/2001/XMLSchema" i:type="d10p1:string">C:\OneDrive\C_MoodRecognizer\UnitTests\MoodsTest.cpp</d2p1:Value>
                 </d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
                 <d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
                   <d2p1:Key>
@@ -319,7 +319,7 @@
                     <d6p1:_label>Line Number</d6p1:_label>
                     <d6p1:_strValueType>System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</d6p1:_strValueType>
                   </d2p1:Key>
-                  <d2p1:Value xmlns:d10p1="http://www.w3.org/2001/XMLSchema" i:type="d10p1:int">102</d2p1:Value>
+                  <d2p1:Value xmlns:d10p1="http://www.w3.org/2001/XMLSchema" i:type="d10p1:int">33</d2p1:Value>
                 </d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
                 <d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
                   <d2p1:Key>
@@ -330,7 +330,7 @@
                     <d6p1:_label>Name</d6p1:_label>
                     <d6p1:_strValueType>System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</d6p1:_strValueType>
                   </d2p1:Key>
-                  <d2p1:Value xmlns:d10p1="http://www.w3.org/2001/XMLSchema" i:type="d10p1:string">Configuration_parseInputArguments_noSvmFile_throwsRuntimeErrorException</d2p1:Value>
+                  <d2p1:Value xmlns:d10p1="http://www.w3.org/2001/XMLSchema" i:type="d10p1:string">getNextMood_loadedFileWith4Moods_gettedInRightOrder</d2p1:Value>
                 </d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
                 <d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
                   <d2p1:Key>
@@ -344,7 +344,7 @@
                   <d2p1:Value xmlns:d10p1="http://schemas.datacontract.org/2004/07/System.Collections.Generic" i:type="d10p1:ArrayOfKeyValuePairOfstringstring">
                     <d10p1:KeyValuePairOfstringstring>
                       <d10p1:key>TestSuite</d10p1:key>
-                      <d10p1:value>ConfigurationTestSuite</d10p1:value>
+                      <d10p1:value>MoodsTest</d10p1:value>
                     </d10p1:KeyValuePairOfstringstring>
                   </d2p1:Value>
                 </d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
@@ -361,7 +361,7 @@
                     <d6p1:_label>FullyQualifiedName</d6p1:_label>
                     <d6p1:_strValueType>System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</d6p1:_strValueType>
                   </d2p1:Key>
-                  <d2p1:Value xmlns:d10p1="http://www.w3.org/2001/XMLSchema" i:type="d10p1:string">ConfigurationTestSuiteConfiguration_parseConfigurationFileRequiredToCallOpen_CallOpen</d2p1:Value>
+                  <d2p1:Value xmlns:d10p1="http://www.w3.org/2001/XMLSchema" i:type="d10p1:string">MoodsTestgetNextMood_loadedFileWith4MoodsInDifferentOrder_gettedInRightOrder</d2p1:Value>
                 </d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
                 <d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
                   <d2p1:Key>
@@ -394,7 +394,7 @@
                     <d6p1:_label>File Path</d6p1:_label>
                     <d6p1:_strValueType>System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</d6p1:_strValueType>
                   </d2p1:Key>
-                  <d2p1:Value xmlns:d10p1="http://www.w3.org/2001/XMLSchema" i:type="d10p1:string">C:\OneDrive\C_MoodRecognizer\UnitTests\UnitTest.cpp</d2p1:Value>
+                  <d2p1:Value xmlns:d10p1="http://www.w3.org/2001/XMLSchema" i:type="d10p1:string">C:\OneDrive\C_MoodRecognizer\UnitTests\MoodsTest.cpp</d2p1:Value>
                 </d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
                 <d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
                   <d2p1:Key>
@@ -405,7 +405,7 @@
                     <d6p1:_label>Line Number</d6p1:_label>
                     <d6p1:_strValueType>System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</d6p1:_strValueType>
                   </d2p1:Key>
-                  <d2p1:Value xmlns:d10p1="http://www.w3.org/2001/XMLSchema" i:type="d10p1:int">118</d2p1:Value>
+                  <d2p1:Value xmlns:d10p1="http://www.w3.org/2001/XMLSchema" i:type="d10p1:int">48</d2p1:Value>
                 </d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
                 <d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
                   <d2p1:Key>
@@ -416,7 +416,7 @@
                     <d6p1:_label>Name</d6p1:_label>
                     <d6p1:_strValueType>System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</d6p1:_strValueType>
                   </d2p1:Key>
-                  <d2p1:Value xmlns:d10p1="http://www.w3.org/2001/XMLSchema" i:type="d10p1:string">Configuration_parseConfigurationFileRequiredToCallOpen_CallOpen</d2p1:Value>
+                  <d2p1:Value xmlns:d10p1="http://www.w3.org/2001/XMLSchema" i:type="d10p1:string">getNextMood_loadedFileWith4MoodsInDifferentOrder_gettedInRightOrder</d2p1:Value>
                 </d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
                 <d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
                   <d2p1:Key>
@@ -430,7 +430,7 @@
                   <d2p1:Value xmlns:d10p1="http://schemas.datacontract.org/2004/07/System.Collections.Generic" i:type="d10p1:ArrayOfKeyValuePairOfstringstring">
                     <d10p1:KeyValuePairOfstringstring>
                       <d10p1:key>TestSuite</d10p1:key>
-                      <d10p1:value>ConfigurationTestSuite</d10p1:value>
+                      <d10p1:value>MoodsTest</d10p1:value>
                     </d10p1:KeyValuePairOfstringstring>
                   </d2p1:Value>
                 </d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
@@ -447,7 +447,7 @@
                     <d6p1:_label>FullyQualifiedName</d6p1:_label>
                     <d6p1:_strValueType>System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</d6p1:_strValueType>
                   </d2p1:Key>
-                  <d2p1:Value xmlns:d10p1="http://www.w3.org/2001/XMLSchema" i:type="d10p1:string">ConfigurationTestSuiteConfiguration_parseConfigurationFileWithAlphaEq_6_alphaEq_6</d2p1:Value>
+                  <d2p1:Value xmlns:d10p1="http://www.w3.org/2001/XMLSchema" i:type="d10p1:string">MoodsTestconstructorWithFileReader_objectCreated_openCalled</d2p1:Value>
                 </d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
                 <d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
                   <d2p1:Key>
@@ -480,7 +480,7 @@
                     <d6p1:_label>File Path</d6p1:_label>
                     <d6p1:_strValueType>System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</d6p1:_strValueType>
                   </d2p1:Key>
-                  <d2p1:Value xmlns:d10p1="http://www.w3.org/2001/XMLSchema" i:type="d10p1:string">C:\OneDrive\C_MoodRecognizer\UnitTests\UnitTest.cpp</d2p1:Value>
+                  <d2p1:Value xmlns:d10p1="http://www.w3.org/2001/XMLSchema" i:type="d10p1:string">C:\OneDrive\C_MoodRecognizer\UnitTests\MoodsTest.cpp</d2p1:Value>
                 </d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
                 <d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
                   <d2p1:Key>
@@ -491,7 +491,7 @@
                     <d6p1:_label>Line Number</d6p1:_label>
                     <d6p1:_strValueType>System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</d6p1:_strValueType>
                   </d2p1:Key>
-                  <d2p1:Value xmlns:d10p1="http://www.w3.org/2001/XMLSchema" i:type="d10p1:int">131</d2p1:Value>
+                  <d2p1:Value xmlns:d10p1="http://www.w3.org/2001/XMLSchema" i:type="d10p1:int">63</d2p1:Value>
                 </d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
                 <d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
                   <d2p1:Key>
@@ -502,7 +502,7 @@
                     <d6p1:_label>Name</d6p1:_label>
                     <d6p1:_strValueType>System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</d6p1:_strValueType>
                   </d2p1:Key>
-                  <d2p1:Value xmlns:d10p1="http://www.w3.org/2001/XMLSchema" i:type="d10p1:string">Configuration_parseConfigurationFileWithAlphaEq_6_alphaEq_6</d2p1:Value>
+                  <d2p1:Value xmlns:d10p1="http://www.w3.org/2001/XMLSchema" i:type="d10p1:string">constructorWithFileReader_objectCreated_openCalled</d2p1:Value>
                 </d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
                 <d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
                   <d2p1:Key>
@@ -516,872 +516,17 @@
                   <d2p1:Value xmlns:d10p1="http://schemas.datacontract.org/2004/07/System.Collections.Generic" i:type="d10p1:ArrayOfKeyValuePairOfstringstring">
                     <d10p1:KeyValuePairOfstringstring>
                       <d10p1:key>TestSuite</d10p1:key>
-                      <d10p1:value>ConfigurationTestSuite</d10p1:value>
+                      <d10p1:value>MoodsTest</d10p1:value>
                     </d10p1:KeyValuePairOfstringstring>
                   </d2p1:Value>
                 </d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
               </d6p1:store>
             </d6p1:TestCase>
-            <d6p1:TestCase>
-              <d6p1:store>
-                <d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
-                  <d2p1:Key>
-                    <d6p1:_attributes>Hidden</d6p1:_attributes>
-                    <d6p1:_category />
-                    <d6p1:_description />
-                    <d6p1:_id>TestCase.FullyQualifiedName</d6p1:_id>
-                    <d6p1:_label>FullyQualifiedName</d6p1:_label>
-                    <d6p1:_strValueType>System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</d6p1:_strValueType>
-                  </d2p1:Key>
-                  <d2p1:Value xmlns:d10p1="http://www.w3.org/2001/XMLSchema" i:type="d10p1:string">ConfigurationTestSuiteConfiguration_parseConfigurationFileWithAlphaEq0_alphaEq0</d2p1:Value>
-                </d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
-                <d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
-                  <d2p1:Key>
-                    <d6p1:_attributes>Hidden</d6p1:_attributes>
-                    <d6p1:_category />
-                    <d6p1:_description />
-                    <d6p1:_id>TestCase.ExecutorUri</d6p1:_id>
-                    <d6p1:_label>Executor Uri</d6p1:_label>
-                    <d6p1:_strValueType>System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</d6p1:_strValueType>
-                  </d2p1:Key>
-                  <d2p1:Value xmlns:d10p1="http://www.w3.org/2001/XMLSchema" i:type="d10p1:anyURI">executor://boosttestexecutor/v1</d2p1:Value>
-                </d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
-                <d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
-                  <d2p1:Key>
-                    <d6p1:_attributes>None</d6p1:_attributes>
-                    <d6p1:_category />
-                    <d6p1:_description />
-                    <d6p1:_id>TestCase.Source</d6p1:_id>
-                    <d6p1:_label>Source</d6p1:_label>
-                    <d6p1:_strValueType>System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</d6p1:_strValueType>
-                  </d2p1:Key>
-                  <d2p1:Value xmlns:d10p1="http://www.w3.org/2001/XMLSchema" i:type="d10p1:string">C:\OneDrive\C_MoodRecognizer\MoodRecognizer\Debug\UnitTests.exe</d2p1:Value>
-                </d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
-                <d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
-                  <d2p1:Key>
-                    <d6p1:_attributes>None</d6p1:_attributes>
-                    <d6p1:_category />
-                    <d6p1:_description />
-                    <d6p1:_id>TestCase.CodeFilePath</d6p1:_id>
-                    <d6p1:_label>File Path</d6p1:_label>
-                    <d6p1:_strValueType>System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</d6p1:_strValueType>
-                  </d2p1:Key>
-                  <d2p1:Value xmlns:d10p1="http://www.w3.org/2001/XMLSchema" i:type="d10p1:string">C:\OneDrive\C_MoodRecognizer\UnitTests\UnitTest.cpp</d2p1:Value>
-                </d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
-                <d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
-                  <d2p1:Key>
-                    <d6p1:_attributes>Hidden</d6p1:_attributes>
-                    <d6p1:_category />
-                    <d6p1:_description />
-                    <d6p1:_id>TestCase.LineNumber</d6p1:_id>
-                    <d6p1:_label>Line Number</d6p1:_label>
-                    <d6p1:_strValueType>System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</d6p1:_strValueType>
-                  </d2p1:Key>
-                  <d2p1:Value xmlns:d10p1="http://www.w3.org/2001/XMLSchema" i:type="d10p1:int">146</d2p1:Value>
-                </d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
-                <d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
-                  <d2p1:Key>
-                    <d6p1:_attributes>None</d6p1:_attributes>
-                    <d6p1:_category />
-                    <d6p1:_description />
-                    <d6p1:_id>TestCase.DisplayName</d6p1:_id>
-                    <d6p1:_label>Name</d6p1:_label>
-                    <d6p1:_strValueType>System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</d6p1:_strValueType>
-                  </d2p1:Key>
-                  <d2p1:Value xmlns:d10p1="http://www.w3.org/2001/XMLSchema" i:type="d10p1:string">Configuration_parseConfigurationFileWithAlphaEq0_alphaEq0</d2p1:Value>
-                </d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
-                <d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
-                  <d2p1:Key>
-                    <d6p1:_attributes>Hidden Trait</d6p1:_attributes>
-                    <d6p1:_category />
-                    <d6p1:_description />
-                    <d6p1:_id>TestObject.Traits</d6p1:_id>
-                    <d6p1:_label>Traits</d6p1:_label>
-                    <d6p1:_strValueType>System.Collections.Generic.KeyValuePair`2[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089],[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]][], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</d6p1:_strValueType>
-                  </d2p1:Key>
-                  <d2p1:Value xmlns:d10p1="http://schemas.datacontract.org/2004/07/System.Collections.Generic" i:type="d10p1:ArrayOfKeyValuePairOfstringstring">
-                    <d10p1:KeyValuePairOfstringstring>
-                      <d10p1:key>TestSuite</d10p1:key>
-                      <d10p1:value>ConfigurationTestSuite</d10p1:value>
-                    </d10p1:KeyValuePairOfstringstring>
-                  </d2p1:Value>
-                </d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
-              </d6p1:store>
-            </d6p1:TestCase>
-            <d6p1:TestCase>
-              <d6p1:store>
-                <d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
-                  <d2p1:Key>
-                    <d6p1:_attributes>Hidden</d6p1:_attributes>
-                    <d6p1:_category />
-                    <d6p1:_description />
-                    <d6p1:_id>TestCase.FullyQualifiedName</d6p1:_id>
-                    <d6p1:_label>FullyQualifiedName</d6p1:_label>
-                    <d6p1:_strValueType>System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</d6p1:_strValueType>
-                  </d2p1:Key>
-                  <d2p1:Value xmlns:d10p1="http://www.w3.org/2001/XMLSchema" i:type="d10p1:string">ConfigurationTestSuiteConfiguration_parseConfigurationFile_getRange</d2p1:Value>
-                </d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
-                <d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
-                  <d2p1:Key>
-                    <d6p1:_attributes>Hidden</d6p1:_attributes>
-                    <d6p1:_category />
-                    <d6p1:_description />
-                    <d6p1:_id>TestCase.ExecutorUri</d6p1:_id>
-                    <d6p1:_label>Executor Uri</d6p1:_label>
-                    <d6p1:_strValueType>System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</d6p1:_strValueType>
-                  </d2p1:Key>
-                  <d2p1:Value xmlns:d10p1="http://www.w3.org/2001/XMLSchema" i:type="d10p1:anyURI">executor://boosttestexecutor/v1</d2p1:Value>
-                </d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
-                <d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
-                  <d2p1:Key>
-                    <d6p1:_attributes>None</d6p1:_attributes>
-                    <d6p1:_category />
-                    <d6p1:_description />
-                    <d6p1:_id>TestCase.Source</d6p1:_id>
-                    <d6p1:_label>Source</d6p1:_label>
-                    <d6p1:_strValueType>System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</d6p1:_strValueType>
-                  </d2p1:Key>
-                  <d2p1:Value xmlns:d10p1="http://www.w3.org/2001/XMLSchema" i:type="d10p1:string">C:\OneDrive\C_MoodRecognizer\MoodRecognizer\Debug\UnitTests.exe</d2p1:Value>
-                </d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
-                <d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
-                  <d2p1:Key>
-                    <d6p1:_attributes>None</d6p1:_attributes>
-                    <d6p1:_category />
-                    <d6p1:_description />
-                    <d6p1:_id>TestCase.CodeFilePath</d6p1:_id>
-                    <d6p1:_label>File Path</d6p1:_label>
-                    <d6p1:_strValueType>System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</d6p1:_strValueType>
-                  </d2p1:Key>
-                  <d2p1:Value xmlns:d10p1="http://www.w3.org/2001/XMLSchema" i:type="d10p1:string">C:\OneDrive\C_MoodRecognizer\UnitTests\UnitTest.cpp</d2p1:Value>
-                </d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
-                <d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
-                  <d2p1:Key>
-                    <d6p1:_attributes>Hidden</d6p1:_attributes>
-                    <d6p1:_category />
-                    <d6p1:_description />
-                    <d6p1:_id>TestCase.LineNumber</d6p1:_id>
-                    <d6p1:_label>Line Number</d6p1:_label>
-                    <d6p1:_strValueType>System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</d6p1:_strValueType>
-                  </d2p1:Key>
-                  <d2p1:Value xmlns:d10p1="http://www.w3.org/2001/XMLSchema" i:type="d10p1:int">161</d2p1:Value>
-                </d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
-                <d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
-                  <d2p1:Key>
-                    <d6p1:_attributes>None</d6p1:_attributes>
-                    <d6p1:_category />
-                    <d6p1:_description />
-                    <d6p1:_id>TestCase.DisplayName</d6p1:_id>
-                    <d6p1:_label>Name</d6p1:_label>
-                    <d6p1:_strValueType>System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</d6p1:_strValueType>
-                  </d2p1:Key>
-                  <d2p1:Value xmlns:d10p1="http://www.w3.org/2001/XMLSchema" i:type="d10p1:string">Configuration_parseConfigurationFile_getRange</d2p1:Value>
-                </d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
-                <d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
-                  <d2p1:Key>
-                    <d6p1:_attributes>Hidden Trait</d6p1:_attributes>
-                    <d6p1:_category />
-                    <d6p1:_description />
-                    <d6p1:_id>TestObject.Traits</d6p1:_id>
-                    <d6p1:_label>Traits</d6p1:_label>
-                    <d6p1:_strValueType>System.Collections.Generic.KeyValuePair`2[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089],[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]][], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</d6p1:_strValueType>
-                  </d2p1:Key>
-                  <d2p1:Value xmlns:d10p1="http://schemas.datacontract.org/2004/07/System.Collections.Generic" i:type="d10p1:ArrayOfKeyValuePairOfstringstring">
-                    <d10p1:KeyValuePairOfstringstring>
-                      <d10p1:key>TestSuite</d10p1:key>
-                      <d10p1:value>ConfigurationTestSuite</d10p1:value>
-                    </d10p1:KeyValuePairOfstringstring>
-                  </d2p1:Value>
-                </d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
-              </d6p1:store>
-            </d6p1:TestCase>
-            <d6p1:TestCase>
-              <d6p1:store>
-                <d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
-                  <d2p1:Key>
-                    <d6p1:_attributes>Hidden</d6p1:_attributes>
-                    <d6p1:_category />
-                    <d6p1:_description />
-                    <d6p1:_id>TestCase.FullyQualifiedName</d6p1:_id>
-                    <d6p1:_label>FullyQualifiedName</d6p1:_label>
-                    <d6p1:_strValueType>System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</d6p1:_strValueType>
-                  </d2p1:Key>
-                  <d2p1:Value xmlns:d10p1="http://www.w3.org/2001/XMLSchema" i:type="d10p1:string">ConfigurationTestSuiteConfiguration_parseConfigurationFile_getValueWhenRangeIsPresent</d2p1:Value>
-                </d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
-                <d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
-                  <d2p1:Key>
-                    <d6p1:_attributes>Hidden</d6p1:_attributes>
-                    <d6p1:_category />
-                    <d6p1:_description />
-                    <d6p1:_id>TestCase.ExecutorUri</d6p1:_id>
-                    <d6p1:_label>Executor Uri</d6p1:_label>
-                    <d6p1:_strValueType>System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</d6p1:_strValueType>
-                  </d2p1:Key>
-                  <d2p1:Value xmlns:d10p1="http://www.w3.org/2001/XMLSchema" i:type="d10p1:anyURI">executor://boosttestexecutor/v1</d2p1:Value>
-                </d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
-                <d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
-                  <d2p1:Key>
-                    <d6p1:_attributes>None</d6p1:_attributes>
-                    <d6p1:_category />
-                    <d6p1:_description />
-                    <d6p1:_id>TestCase.Source</d6p1:_id>
-                    <d6p1:_label>Source</d6p1:_label>
-                    <d6p1:_strValueType>System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</d6p1:_strValueType>
-                  </d2p1:Key>
-                  <d2p1:Value xmlns:d10p1="http://www.w3.org/2001/XMLSchema" i:type="d10p1:string">C:\OneDrive\C_MoodRecognizer\MoodRecognizer\Debug\UnitTests.exe</d2p1:Value>
-                </d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
-                <d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
-                  <d2p1:Key>
-                    <d6p1:_attributes>None</d6p1:_attributes>
-                    <d6p1:_category />
-                    <d6p1:_description />
-                    <d6p1:_id>TestCase.CodeFilePath</d6p1:_id>
-                    <d6p1:_label>File Path</d6p1:_label>
-                    <d6p1:_strValueType>System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</d6p1:_strValueType>
-                  </d2p1:Key>
-                  <d2p1:Value xmlns:d10p1="http://www.w3.org/2001/XMLSchema" i:type="d10p1:string">C:\OneDrive\C_MoodRecognizer\UnitTests\UnitTest.cpp</d2p1:Value>
-                </d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
-                <d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
-                  <d2p1:Key>
-                    <d6p1:_attributes>Hidden</d6p1:_attributes>
-                    <d6p1:_category />
-                    <d6p1:_description />
-                    <d6p1:_id>TestCase.LineNumber</d6p1:_id>
-                    <d6p1:_label>Line Number</d6p1:_label>
-                    <d6p1:_strValueType>System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</d6p1:_strValueType>
-                  </d2p1:Key>
-                  <d2p1:Value xmlns:d10p1="http://www.w3.org/2001/XMLSchema" i:type="d10p1:int">162</d2p1:Value>
-                </d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
-                <d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
-                  <d2p1:Key>
-                    <d6p1:_attributes>None</d6p1:_attributes>
-                    <d6p1:_category />
-                    <d6p1:_description />
-                    <d6p1:_id>TestCase.DisplayName</d6p1:_id>
-                    <d6p1:_label>Name</d6p1:_label>
-                    <d6p1:_strValueType>System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</d6p1:_strValueType>
-                  </d2p1:Key>
-                  <d2p1:Value xmlns:d10p1="http://www.w3.org/2001/XMLSchema" i:type="d10p1:string">Configuration_parseConfigurationFile_getValueWhenRangeIsPresent</d2p1:Value>
-                </d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
-                <d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
-                  <d2p1:Key>
-                    <d6p1:_attributes>Hidden Trait</d6p1:_attributes>
-                    <d6p1:_category />
-                    <d6p1:_description />
-                    <d6p1:_id>TestObject.Traits</d6p1:_id>
-                    <d6p1:_label>Traits</d6p1:_label>
-                    <d6p1:_strValueType>System.Collections.Generic.KeyValuePair`2[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089],[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]][], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</d6p1:_strValueType>
-                  </d2p1:Key>
-                  <d2p1:Value xmlns:d10p1="http://schemas.datacontract.org/2004/07/System.Collections.Generic" i:type="d10p1:ArrayOfKeyValuePairOfstringstring">
-                    <d10p1:KeyValuePairOfstringstring>
-                      <d10p1:key>TestSuite</d10p1:key>
-                      <d10p1:value>ConfigurationTestSuite</d10p1:value>
-                    </d10p1:KeyValuePairOfstringstring>
-                  </d2p1:Value>
-                </d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
-              </d6p1:store>
-            </d6p1:TestCase>
-            <d6p1:TestCase>
-              <d6p1:store>
-                <d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
-                  <d2p1:Key>
-                    <d6p1:_attributes>Hidden</d6p1:_attributes>
-                    <d6p1:_category />
-                    <d6p1:_description />
-                    <d6p1:_id>TestCase.FullyQualifiedName</d6p1:_id>
-                    <d6p1:_label>FullyQualifiedName</d6p1:_label>
-                    <d6p1:_strValueType>System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</d6p1:_strValueType>
-                  </d2p1:Key>
-                  <d2p1:Value xmlns:d10p1="http://www.w3.org/2001/XMLSchema" i:type="d10p1:string">ConfigurationTestSuiteConfiguration_parseConfigurationFile_wrongCfgFileException</d2p1:Value>
-                </d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
-                <d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
-                  <d2p1:Key>
-                    <d6p1:_attributes>Hidden</d6p1:_attributes>
-                    <d6p1:_category />
-                    <d6p1:_description />
-                    <d6p1:_id>TestCase.ExecutorUri</d6p1:_id>
-                    <d6p1:_label>Executor Uri</d6p1:_label>
-                    <d6p1:_strValueType>System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</d6p1:_strValueType>
-                  </d2p1:Key>
-                  <d2p1:Value xmlns:d10p1="http://www.w3.org/2001/XMLSchema" i:type="d10p1:anyURI">executor://boosttestexecutor/v1</d2p1:Value>
-                </d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
-                <d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
-                  <d2p1:Key>
-                    <d6p1:_attributes>None</d6p1:_attributes>
-                    <d6p1:_category />
-                    <d6p1:_description />
-                    <d6p1:_id>TestCase.Source</d6p1:_id>
-                    <d6p1:_label>Source</d6p1:_label>
-                    <d6p1:_strValueType>System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</d6p1:_strValueType>
-                  </d2p1:Key>
-                  <d2p1:Value xmlns:d10p1="http://www.w3.org/2001/XMLSchema" i:type="d10p1:string">C:\OneDrive\C_MoodRecognizer\MoodRecognizer\Debug\UnitTests.exe</d2p1:Value>
-                </d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
-                <d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
-                  <d2p1:Key>
-                    <d6p1:_attributes>None</d6p1:_attributes>
-                    <d6p1:_category />
-                    <d6p1:_description />
-                    <d6p1:_id>TestCase.CodeFilePath</d6p1:_id>
-                    <d6p1:_label>File Path</d6p1:_label>
-                    <d6p1:_strValueType>System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</d6p1:_strValueType>
-                  </d2p1:Key>
-                  <d2p1:Value xmlns:d10p1="http://www.w3.org/2001/XMLSchema" i:type="d10p1:string">C:\OneDrive\C_MoodRecognizer\UnitTests\UnitTest.cpp</d2p1:Value>
-                </d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
-                <d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
-                  <d2p1:Key>
-                    <d6p1:_attributes>Hidden</d6p1:_attributes>
-                    <d6p1:_category />
-                    <d6p1:_description />
-                    <d6p1:_id>TestCase.LineNumber</d6p1:_id>
-                    <d6p1:_label>Line Number</d6p1:_label>
-                    <d6p1:_strValueType>System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</d6p1:_strValueType>
-                  </d2p1:Key>
-                  <d2p1:Value xmlns:d10p1="http://www.w3.org/2001/XMLSchema" i:type="d10p1:int">174</d2p1:Value>
-                </d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
-                <d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
-                  <d2p1:Key>
-                    <d6p1:_attributes>None</d6p1:_attributes>
-                    <d6p1:_category />
-                    <d6p1:_description />
-                    <d6p1:_id>TestCase.DisplayName</d6p1:_id>
-                    <d6p1:_label>Name</d6p1:_label>
-                    <d6p1:_strValueType>System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</d6p1:_strValueType>
-                  </d2p1:Key>
-                  <d2p1:Value xmlns:d10p1="http://www.w3.org/2001/XMLSchema" i:type="d10p1:string">Configuration_parseConfigurationFile_wrongCfgFileException</d2p1:Value>
-                </d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
-                <d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
-                  <d2p1:Key>
-                    <d6p1:_attributes>Hidden Trait</d6p1:_attributes>
-                    <d6p1:_category />
-                    <d6p1:_description />
-                    <d6p1:_id>TestObject.Traits</d6p1:_id>
-                    <d6p1:_label>Traits</d6p1:_label>
-                    <d6p1:_strValueType>System.Collections.Generic.KeyValuePair`2[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089],[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]][], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</d6p1:_strValueType>
-                  </d2p1:Key>
-                  <d2p1:Value xmlns:d10p1="http://schemas.datacontract.org/2004/07/System.Collections.Generic" i:type="d10p1:ArrayOfKeyValuePairOfstringstring">
-                    <d10p1:KeyValuePairOfstringstring>
-                      <d10p1:key>TestSuite</d10p1:key>
-                      <d10p1:value>ConfigurationTestSuite</d10p1:value>
-                    </d10p1:KeyValuePairOfstringstring>
-                  </d2p1:Value>
-                </d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
-              </d6p1:store>
-            </d6p1:TestCase>
-            <d6p1:TestCase>
-              <d6p1:store>
-                <d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
-                  <d2p1:Key>
-                    <d6p1:_attributes>Hidden</d6p1:_attributes>
-                    <d6p1:_category />
-                    <d6p1:_description />
-                    <d6p1:_id>TestCase.FullyQualifiedName</d6p1:_id>
-                    <d6p1:_label>FullyQualifiedName</d6p1:_label>
-                    <d6p1:_strValueType>System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</d6p1:_strValueType>
-                  </d2p1:Key>
-                  <d2p1:Value xmlns:d10p1="http://www.w3.org/2001/XMLSchema" i:type="d10p1:string">ConfigurationTestSuiteparseInputArguments_parseCorrectlyFilenames</d2p1:Value>
-                </d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
-                <d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
-                  <d2p1:Key>
-                    <d6p1:_attributes>Hidden</d6p1:_attributes>
-                    <d6p1:_category />
-                    <d6p1:_description />
-                    <d6p1:_id>TestCase.ExecutorUri</d6p1:_id>
-                    <d6p1:_label>Executor Uri</d6p1:_label>
-                    <d6p1:_strValueType>System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</d6p1:_strValueType>
-                  </d2p1:Key>
-                  <d2p1:Value xmlns:d10p1="http://www.w3.org/2001/XMLSchema" i:type="d10p1:anyURI">executor://boosttestexecutor/v1</d2p1:Value>
-                </d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
-                <d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
-                  <d2p1:Key>
-                    <d6p1:_attributes>None</d6p1:_attributes>
-                    <d6p1:_category />
-                    <d6p1:_description />
-                    <d6p1:_id>TestCase.Source</d6p1:_id>
-                    <d6p1:_label>Source</d6p1:_label>
-                    <d6p1:_strValueType>System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</d6p1:_strValueType>
-                  </d2p1:Key>
-                  <d2p1:Value xmlns:d10p1="http://www.w3.org/2001/XMLSchema" i:type="d10p1:string">C:\OneDrive\C_MoodRecognizer\MoodRecognizer\Debug\UnitTests.exe</d2p1:Value>
-                </d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
-                <d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
-                  <d2p1:Key>
-                    <d6p1:_attributes>None</d6p1:_attributes>
-                    <d6p1:_category />
-                    <d6p1:_description />
-                    <d6p1:_id>TestCase.CodeFilePath</d6p1:_id>
-                    <d6p1:_label>File Path</d6p1:_label>
-                    <d6p1:_strValueType>System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</d6p1:_strValueType>
-                  </d2p1:Key>
-                  <d2p1:Value xmlns:d10p1="http://www.w3.org/2001/XMLSchema" i:type="d10p1:string">C:\OneDrive\C_MoodRecognizer\UnitTests\UnitTest.cpp</d2p1:Value>
-                </d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
-                <d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
-                  <d2p1:Key>
-                    <d6p1:_attributes>Hidden</d6p1:_attributes>
-                    <d6p1:_category />
-                    <d6p1:_description />
-                    <d6p1:_id>TestCase.LineNumber</d6p1:_id>
-                    <d6p1:_label>Line Number</d6p1:_label>
-                    <d6p1:_strValueType>System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</d6p1:_strValueType>
-                  </d2p1:Key>
-                  <d2p1:Value xmlns:d10p1="http://www.w3.org/2001/XMLSchema" i:type="d10p1:int">26</d2p1:Value>
-                </d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
-                <d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
-                  <d2p1:Key>
-                    <d6p1:_attributes>None</d6p1:_attributes>
-                    <d6p1:_category />
-                    <d6p1:_description />
-                    <d6p1:_id>TestCase.DisplayName</d6p1:_id>
-                    <d6p1:_label>Name</d6p1:_label>
-                    <d6p1:_strValueType>System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</d6p1:_strValueType>
-                  </d2p1:Key>
-                  <d2p1:Value xmlns:d10p1="http://www.w3.org/2001/XMLSchema" i:type="d10p1:string">parseInputArguments_parseCorrectlyFilenames</d2p1:Value>
-                </d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
-                <d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
-                  <d2p1:Key>
-                    <d6p1:_attributes>Hidden Trait</d6p1:_attributes>
-                    <d6p1:_category />
-                    <d6p1:_description />
-                    <d6p1:_id>TestObject.Traits</d6p1:_id>
-                    <d6p1:_label>Traits</d6p1:_label>
-                    <d6p1:_strValueType>System.Collections.Generic.KeyValuePair`2[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089],[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]][], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</d6p1:_strValueType>
-                  </d2p1:Key>
-                  <d2p1:Value xmlns:d10p1="http://schemas.datacontract.org/2004/07/System.Collections.Generic" i:type="d10p1:ArrayOfKeyValuePairOfstringstring">
-                    <d10p1:KeyValuePairOfstringstring>
-                      <d10p1:key>TestSuite</d10p1:key>
-                      <d10p1:value>ConfigurationTestSuite</d10p1:value>
-                    </d10p1:KeyValuePairOfstringstring>
-                  </d2p1:Value>
-                </d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
-              </d6p1:store>
-            </d6p1:TestCase>
-            <d6p1:TestCase>
-              <d6p1:store>
-                <d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
-                  <d2p1:Key>
-                    <d6p1:_attributes>Hidden</d6p1:_attributes>
-                    <d6p1:_category />
-                    <d6p1:_description />
-                    <d6p1:_id>TestCase.FullyQualifiedName</d6p1:_id>
-                    <d6p1:_label>FullyQualifiedName</d6p1:_label>
-                    <d6p1:_strValueType>System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</d6p1:_strValueType>
-                  </d2p1:Key>
-                  <d2p1:Value xmlns:d10p1="http://www.w3.org/2001/XMLSchema" i:type="d10p1:string">ConfigurationTestSuiteparseInputArguments_parseCorrectlyMode</d2p1:Value>
-                </d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
-                <d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
-                  <d2p1:Key>
-                    <d6p1:_attributes>Hidden</d6p1:_attributes>
-                    <d6p1:_category />
-                    <d6p1:_description />
-                    <d6p1:_id>TestCase.ExecutorUri</d6p1:_id>
-                    <d6p1:_label>Executor Uri</d6p1:_label>
-                    <d6p1:_strValueType>System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</d6p1:_strValueType>
-                  </d2p1:Key>
-                  <d2p1:Value xmlns:d10p1="http://www.w3.org/2001/XMLSchema" i:type="d10p1:anyURI">executor://boosttestexecutor/v1</d2p1:Value>
-                </d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
-                <d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
-                  <d2p1:Key>
-                    <d6p1:_attributes>None</d6p1:_attributes>
-                    <d6p1:_category />
-                    <d6p1:_description />
-                    <d6p1:_id>TestCase.Source</d6p1:_id>
-                    <d6p1:_label>Source</d6p1:_label>
-                    <d6p1:_strValueType>System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</d6p1:_strValueType>
-                  </d2p1:Key>
-                  <d2p1:Value xmlns:d10p1="http://www.w3.org/2001/XMLSchema" i:type="d10p1:string">C:\OneDrive\C_MoodRecognizer\MoodRecognizer\Debug\UnitTests.exe</d2p1:Value>
-                </d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
-                <d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
-                  <d2p1:Key>
-                    <d6p1:_attributes>None</d6p1:_attributes>
-                    <d6p1:_category />
-                    <d6p1:_description />
-                    <d6p1:_id>TestCase.CodeFilePath</d6p1:_id>
-                    <d6p1:_label>File Path</d6p1:_label>
-                    <d6p1:_strValueType>System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</d6p1:_strValueType>
-                  </d2p1:Key>
-                  <d2p1:Value xmlns:d10p1="http://www.w3.org/2001/XMLSchema" i:type="d10p1:string">C:\OneDrive\C_MoodRecognizer\UnitTests\UnitTest.cpp</d2p1:Value>
-                </d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
-                <d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
-                  <d2p1:Key>
-                    <d6p1:_attributes>Hidden</d6p1:_attributes>
-                    <d6p1:_category />
-                    <d6p1:_description />
-                    <d6p1:_id>TestCase.LineNumber</d6p1:_id>
-                    <d6p1:_label>Line Number</d6p1:_label>
-                    <d6p1:_strValueType>System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</d6p1:_strValueType>
-                  </d2p1:Key>
-                  <d2p1:Value xmlns:d10p1="http://www.w3.org/2001/XMLSchema" i:type="d10p1:int">52</d2p1:Value>
-                </d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
-                <d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
-                  <d2p1:Key>
-                    <d6p1:_attributes>None</d6p1:_attributes>
-                    <d6p1:_category />
-                    <d6p1:_description />
-                    <d6p1:_id>TestCase.DisplayName</d6p1:_id>
-                    <d6p1:_label>Name</d6p1:_label>
-                    <d6p1:_strValueType>System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</d6p1:_strValueType>
-                  </d2p1:Key>
-                  <d2p1:Value xmlns:d10p1="http://www.w3.org/2001/XMLSchema" i:type="d10p1:string">parseInputArguments_parseCorrectlyMode</d2p1:Value>
-                </d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
-                <d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
-                  <d2p1:Key>
-                    <d6p1:_attributes>Hidden Trait</d6p1:_attributes>
-                    <d6p1:_category />
-                    <d6p1:_description />
-                    <d6p1:_id>TestObject.Traits</d6p1:_id>
-                    <d6p1:_label>Traits</d6p1:_label>
-                    <d6p1:_strValueType>System.Collections.Generic.KeyValuePair`2[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089],[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]][], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</d6p1:_strValueType>
-                  </d2p1:Key>
-                  <d2p1:Value xmlns:d10p1="http://schemas.datacontract.org/2004/07/System.Collections.Generic" i:type="d10p1:ArrayOfKeyValuePairOfstringstring">
-                    <d10p1:KeyValuePairOfstringstring>
-                      <d10p1:key>TestSuite</d10p1:key>
-                      <d10p1:value>ConfigurationTestSuite</d10p1:value>
-                    </d10p1:KeyValuePairOfstringstring>
-                  </d2p1:Value>
-                </d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
-              </d6p1:store>
-            </d6p1:TestCase>
-            <d6p1:TestCase>
-              <d6p1:store>
-                <d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
-                  <d2p1:Key>
-                    <d6p1:_attributes>Hidden</d6p1:_attributes>
-                    <d6p1:_category />
-                    <d6p1:_description />
-                    <d6p1:_id>TestCase.FullyQualifiedName</d6p1:_id>
-                    <d6p1:_label>FullyQualifiedName</d6p1:_label>
-                    <d6p1:_strValueType>System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</d6p1:_strValueType>
-                  </d2p1:Key>
-                  <d2p1:Value xmlns:d10p1="http://www.w3.org/2001/XMLSchema" i:type="d10p1:string">ConfigurationTestSuiteparseConfigurationFileRequiredToCallOpen_CallOpen</d2p1:Value>
-                </d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
-                <d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
-                  <d2p1:Key>
-                    <d6p1:_attributes>Hidden</d6p1:_attributes>
-                    <d6p1:_category />
-                    <d6p1:_description />
-                    <d6p1:_id>TestCase.ExecutorUri</d6p1:_id>
-                    <d6p1:_label>Executor Uri</d6p1:_label>
-                    <d6p1:_strValueType>System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</d6p1:_strValueType>
-                  </d2p1:Key>
-                  <d2p1:Value xmlns:d10p1="http://www.w3.org/2001/XMLSchema" i:type="d10p1:anyURI">executor://boosttestexecutor/v1</d2p1:Value>
-                </d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
-                <d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
-                  <d2p1:Key>
-                    <d6p1:_attributes>None</d6p1:_attributes>
-                    <d6p1:_category />
-                    <d6p1:_description />
-                    <d6p1:_id>TestCase.Source</d6p1:_id>
-                    <d6p1:_label>Source</d6p1:_label>
-                    <d6p1:_strValueType>System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</d6p1:_strValueType>
-                  </d2p1:Key>
-                  <d2p1:Value xmlns:d10p1="http://www.w3.org/2001/XMLSchema" i:type="d10p1:string">C:\OneDrive\C_MoodRecognizer\MoodRecognizer\Debug\UnitTests.exe</d2p1:Value>
-                </d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
-                <d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
-                  <d2p1:Key>
-                    <d6p1:_attributes>None</d6p1:_attributes>
-                    <d6p1:_category />
-                    <d6p1:_description />
-                    <d6p1:_id>TestCase.CodeFilePath</d6p1:_id>
-                    <d6p1:_label>File Path</d6p1:_label>
-                    <d6p1:_strValueType>System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</d6p1:_strValueType>
-                  </d2p1:Key>
-                  <d2p1:Value xmlns:d10p1="http://www.w3.org/2001/XMLSchema" i:type="d10p1:string">C:\OneDrive\C_MoodRecognizer\UnitTests\UnitTest.cpp</d2p1:Value>
-                </d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
-                <d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
-                  <d2p1:Key>
-                    <d6p1:_attributes>Hidden</d6p1:_attributes>
-                    <d6p1:_category />
-                    <d6p1:_description />
-                    <d6p1:_id>TestCase.LineNumber</d6p1:_id>
-                    <d6p1:_label>Line Number</d6p1:_label>
-                    <d6p1:_strValueType>System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</d6p1:_strValueType>
-                  </d2p1:Key>
-                  <d2p1:Value xmlns:d10p1="http://www.w3.org/2001/XMLSchema" i:type="d10p1:int">118</d2p1:Value>
-                </d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
-                <d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
-                  <d2p1:Key>
-                    <d6p1:_attributes>None</d6p1:_attributes>
-                    <d6p1:_category />
-                    <d6p1:_description />
-                    <d6p1:_id>TestCase.DisplayName</d6p1:_id>
-                    <d6p1:_label>Name</d6p1:_label>
-                    <d6p1:_strValueType>System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</d6p1:_strValueType>
-                  </d2p1:Key>
-                  <d2p1:Value xmlns:d10p1="http://www.w3.org/2001/XMLSchema" i:type="d10p1:string">parseConfigurationFileRequiredToCallOpen_CallOpen</d2p1:Value>
-                </d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
-                <d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
-                  <d2p1:Key>
-                    <d6p1:_attributes>Hidden Trait</d6p1:_attributes>
-                    <d6p1:_category />
-                    <d6p1:_description />
-                    <d6p1:_id>TestObject.Traits</d6p1:_id>
-                    <d6p1:_label>Traits</d6p1:_label>
-                    <d6p1:_strValueType>System.Collections.Generic.KeyValuePair`2[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089],[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]][], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</d6p1:_strValueType>
-                  </d2p1:Key>
-                  <d2p1:Value xmlns:d10p1="http://schemas.datacontract.org/2004/07/System.Collections.Generic" i:type="d10p1:ArrayOfKeyValuePairOfstringstring">
-                    <d10p1:KeyValuePairOfstringstring>
-                      <d10p1:key>TestSuite</d10p1:key>
-                      <d10p1:value>ConfigurationTestSuite</d10p1:value>
-                    </d10p1:KeyValuePairOfstringstring>
-                  </d2p1:Value>
-                </d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
-              </d6p1:store>
-            </d6p1:TestCase>
-            <d6p1:TestCase>
-              <d6p1:store>
-                <d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
-                  <d2p1:Key>
-                    <d6p1:_attributes>Hidden</d6p1:_attributes>
-                    <d6p1:_category />
-                    <d6p1:_description />
-                    <d6p1:_id>TestCase.FullyQualifiedName</d6p1:_id>
-                    <d6p1:_label>FullyQualifiedName</d6p1:_label>
-                    <d6p1:_strValueType>System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</d6p1:_strValueType>
-                  </d2p1:Key>
-                  <d2p1:Value xmlns:d10p1="http://www.w3.org/2001/XMLSchema" i:type="d10p1:string">ConfigurationTestSuiteparseConfigurationFileWithAlphaEq_6_alphaEq_6</d2p1:Value>
-                </d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
-                <d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
-                  <d2p1:Key>
-                    <d6p1:_attributes>Hidden</d6p1:_attributes>
-                    <d6p1:_category />
-                    <d6p1:_description />
-                    <d6p1:_id>TestCase.ExecutorUri</d6p1:_id>
-                    <d6p1:_label>Executor Uri</d6p1:_label>
-                    <d6p1:_strValueType>System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</d6p1:_strValueType>
-                  </d2p1:Key>
-                  <d2p1:Value xmlns:d10p1="http://www.w3.org/2001/XMLSchema" i:type="d10p1:anyURI">executor://boosttestexecutor/v1</d2p1:Value>
-                </d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
-                <d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
-                  <d2p1:Key>
-                    <d6p1:_attributes>None</d6p1:_attributes>
-                    <d6p1:_category />
-                    <d6p1:_description />
-                    <d6p1:_id>TestCase.Source</d6p1:_id>
-                    <d6p1:_label>Source</d6p1:_label>
-                    <d6p1:_strValueType>System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</d6p1:_strValueType>
-                  </d2p1:Key>
-                  <d2p1:Value xmlns:d10p1="http://www.w3.org/2001/XMLSchema" i:type="d10p1:string">C:\OneDrive\C_MoodRecognizer\MoodRecognizer\Debug\UnitTests.exe</d2p1:Value>
-                </d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
-                <d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
-                  <d2p1:Key>
-                    <d6p1:_attributes>None</d6p1:_attributes>
-                    <d6p1:_category />
-                    <d6p1:_description />
-                    <d6p1:_id>TestCase.CodeFilePath</d6p1:_id>
-                    <d6p1:_label>File Path</d6p1:_label>
-                    <d6p1:_strValueType>System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</d6p1:_strValueType>
-                  </d2p1:Key>
-                  <d2p1:Value xmlns:d10p1="http://www.w3.org/2001/XMLSchema" i:type="d10p1:string">C:\OneDrive\C_MoodRecognizer\UnitTests\UnitTest.cpp</d2p1:Value>
-                </d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
-                <d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
-                  <d2p1:Key>
-                    <d6p1:_attributes>Hidden</d6p1:_attributes>
-                    <d6p1:_category />
-                    <d6p1:_description />
-                    <d6p1:_id>TestCase.LineNumber</d6p1:_id>
-                    <d6p1:_label>Line Number</d6p1:_label>
-                    <d6p1:_strValueType>System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</d6p1:_strValueType>
-                  </d2p1:Key>
-                  <d2p1:Value xmlns:d10p1="http://www.w3.org/2001/XMLSchema" i:type="d10p1:int">131</d2p1:Value>
-                </d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
-                <d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
-                  <d2p1:Key>
-                    <d6p1:_attributes>None</d6p1:_attributes>
-                    <d6p1:_category />
-                    <d6p1:_description />
-                    <d6p1:_id>TestCase.DisplayName</d6p1:_id>
-                    <d6p1:_label>Name</d6p1:_label>
-                    <d6p1:_strValueType>System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</d6p1:_strValueType>
-                  </d2p1:Key>
-                  <d2p1:Value xmlns:d10p1="http://www.w3.org/2001/XMLSchema" i:type="d10p1:string">parseConfigurationFileWithAlphaEq_6_alphaEq_6</d2p1:Value>
-                </d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
-                <d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
-                  <d2p1:Key>
-                    <d6p1:_attributes>Hidden Trait</d6p1:_attributes>
-                    <d6p1:_category />
-                    <d6p1:_description />
-                    <d6p1:_id>TestObject.Traits</d6p1:_id>
-                    <d6p1:_label>Traits</d6p1:_label>
-                    <d6p1:_strValueType>System.Collections.Generic.KeyValuePair`2[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089],[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]][], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</d6p1:_strValueType>
-                  </d2p1:Key>
-                  <d2p1:Value xmlns:d10p1="http://schemas.datacontract.org/2004/07/System.Collections.Generic" i:type="d10p1:ArrayOfKeyValuePairOfstringstring">
-                    <d10p1:KeyValuePairOfstringstring>
-                      <d10p1:key>TestSuite</d10p1:key>
-                      <d10p1:value>ConfigurationTestSuite</d10p1:value>
-                    </d10p1:KeyValuePairOfstringstring>
-                  </d2p1:Value>
-                </d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
-              </d6p1:store>
-            </d6p1:TestCase>
-            <d6p1:TestCase>
-              <d6p1:store>
-                <d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
-                  <d2p1:Key>
-                    <d6p1:_attributes>Hidden</d6p1:_attributes>
-                    <d6p1:_category />
-                    <d6p1:_description />
-                    <d6p1:_id>TestCase.FullyQualifiedName</d6p1:_id>
-                    <d6p1:_label>FullyQualifiedName</d6p1:_label>
-                    <d6p1:_strValueType>System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</d6p1:_strValueType>
-                  </d2p1:Key>
-                  <d2p1:Value xmlns:d10p1="http://www.w3.org/2001/XMLSchema" i:type="d10p1:string">ConfigurationTestSuiteparseConfigurationFileWithAlphaEq0_alphaEq0</d2p1:Value>
-                </d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
-                <d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
-                  <d2p1:Key>
-                    <d6p1:_attributes>Hidden</d6p1:_attributes>
-                    <d6p1:_category />
-                    <d6p1:_description />
-                    <d6p1:_id>TestCase.ExecutorUri</d6p1:_id>
-                    <d6p1:_label>Executor Uri</d6p1:_label>
-                    <d6p1:_strValueType>System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</d6p1:_strValueType>
-                  </d2p1:Key>
-                  <d2p1:Value xmlns:d10p1="http://www.w3.org/2001/XMLSchema" i:type="d10p1:anyURI">executor://boosttestexecutor/v1</d2p1:Value>
-                </d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
-                <d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
-                  <d2p1:Key>
-                    <d6p1:_attributes>None</d6p1:_attributes>
-                    <d6p1:_category />
-                    <d6p1:_description />
-                    <d6p1:_id>TestCase.Source</d6p1:_id>
-                    <d6p1:_label>Source</d6p1:_label>
-                    <d6p1:_strValueType>System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</d6p1:_strValueType>
-                  </d2p1:Key>
-                  <d2p1:Value xmlns:d10p1="http://www.w3.org/2001/XMLSchema" i:type="d10p1:string">C:\OneDrive\C_MoodRecognizer\MoodRecognizer\Debug\UnitTests.exe</d2p1:Value>
-                </d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
-                <d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
-                  <d2p1:Key>
-                    <d6p1:_attributes>None</d6p1:_attributes>
-                    <d6p1:_category />
-                    <d6p1:_description />
-                    <d6p1:_id>TestCase.CodeFilePath</d6p1:_id>
-                    <d6p1:_label>File Path</d6p1:_label>
-                    <d6p1:_strValueType>System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</d6p1:_strValueType>
-                  </d2p1:Key>
-                  <d2p1:Value xmlns:d10p1="http://www.w3.org/2001/XMLSchema" i:type="d10p1:string">C:\OneDrive\C_MoodRecognizer\UnitTests\UnitTest.cpp</d2p1:Value>
-                </d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
-                <d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
-                  <d2p1:Key>
-                    <d6p1:_attributes>Hidden</d6p1:_attributes>
-                    <d6p1:_category />
-                    <d6p1:_description />
-                    <d6p1:_id>TestCase.LineNumber</d6p1:_id>
-                    <d6p1:_label>Line Number</d6p1:_label>
-                    <d6p1:_strValueType>System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</d6p1:_strValueType>
-                  </d2p1:Key>
-                  <d2p1:Value xmlns:d10p1="http://www.w3.org/2001/XMLSchema" i:type="d10p1:int">146</d2p1:Value>
-                </d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
-                <d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
-                  <d2p1:Key>
-                    <d6p1:_attributes>None</d6p1:_attributes>
-                    <d6p1:_category />
-                    <d6p1:_description />
-                    <d6p1:_id>TestCase.DisplayName</d6p1:_id>
-                    <d6p1:_label>Name</d6p1:_label>
-                    <d6p1:_strValueType>System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</d6p1:_strValueType>
-                  </d2p1:Key>
-                  <d2p1:Value xmlns:d10p1="http://www.w3.org/2001/XMLSchema" i:type="d10p1:string">parseConfigurationFileWithAlphaEq0_alphaEq0</d2p1:Value>
-                </d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
-                <d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
-                  <d2p1:Key>
-                    <d6p1:_attributes>Hidden Trait</d6p1:_attributes>
-                    <d6p1:_category />
-                    <d6p1:_description />
-                    <d6p1:_id>TestObject.Traits</d6p1:_id>
-                    <d6p1:_label>Traits</d6p1:_label>
-                    <d6p1:_strValueType>System.Collections.Generic.KeyValuePair`2[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089],[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]][], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</d6p1:_strValueType>
-                  </d2p1:Key>
-                  <d2p1:Value xmlns:d10p1="http://schemas.datacontract.org/2004/07/System.Collections.Generic" i:type="d10p1:ArrayOfKeyValuePairOfstringstring">
-                    <d10p1:KeyValuePairOfstringstring>
-                      <d10p1:key>TestSuite</d10p1:key>
-                      <d10p1:value>ConfigurationTestSuite</d10p1:value>
-                    </d10p1:KeyValuePairOfstringstring>
-                  </d2p1:Value>
-                </d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
-              </d6p1:store>
-            </d6p1:TestCase>
-            <d6p1:TestCase>
-              <d6p1:store>
-                <d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
-                  <d2p1:Key>
-                    <d6p1:_attributes>Hidden</d6p1:_attributes>
-                    <d6p1:_category />
-                    <d6p1:_description />
-                    <d6p1:_id>TestCase.FullyQualifiedName</d6p1:_id>
-                    <d6p1:_label>FullyQualifiedName</d6p1:_label>
-                    <d6p1:_strValueType>System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</d6p1:_strValueType>
-                  </d2p1:Key>
-                  <d2p1:Value xmlns:d10p1="http://www.w3.org/2001/XMLSchema" i:type="d10p1:string">ConfigurationTestSuiteparseConfigurationFile_getRange</d2p1:Value>
-                </d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
-                <d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
-                  <d2p1:Key>
-                    <d6p1:_attributes>Hidden</d6p1:_attributes>
-                    <d6p1:_category />
-                    <d6p1:_description />
-                    <d6p1:_id>TestCase.ExecutorUri</d6p1:_id>
-                    <d6p1:_label>Executor Uri</d6p1:_label>
-                    <d6p1:_strValueType>System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</d6p1:_strValueType>
-                  </d2p1:Key>
-                  <d2p1:Value xmlns:d10p1="http://www.w3.org/2001/XMLSchema" i:type="d10p1:anyURI">executor://boosttestexecutor/v1</d2p1:Value>
-                </d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
-                <d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
-                  <d2p1:Key>
-                    <d6p1:_attributes>None</d6p1:_attributes>
-                    <d6p1:_category />
-                    <d6p1:_description />
-                    <d6p1:_id>TestCase.Source</d6p1:_id>
-                    <d6p1:_label>Source</d6p1:_label>
-                    <d6p1:_strValueType>System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</d6p1:_strValueType>
-                  </d2p1:Key>
-                  <d2p1:Value xmlns:d10p1="http://www.w3.org/2001/XMLSchema" i:type="d10p1:string">C:\OneDrive\C_MoodRecognizer\MoodRecognizer\Debug\UnitTests.exe</d2p1:Value>
-                </d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
-                <d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
-                  <d2p1:Key>
-                    <d6p1:_attributes>None</d6p1:_attributes>
-                    <d6p1:_category />
-                    <d6p1:_description />
-                    <d6p1:_id>TestCase.CodeFilePath</d6p1:_id>
-                    <d6p1:_label>File Path</d6p1:_label>
-                    <d6p1:_strValueType>System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</d6p1:_strValueType>
-                  </d2p1:Key>
-                  <d2p1:Value xmlns:d10p1="http://www.w3.org/2001/XMLSchema" i:type="d10p1:string">C:\OneDrive\C_MoodRecognizer\UnitTests\UnitTest.cpp</d2p1:Value>
-                </d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
-                <d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
-                  <d2p1:Key>
-                    <d6p1:_attributes>Hidden</d6p1:_attributes>
-                    <d6p1:_category />
-                    <d6p1:_description />
-                    <d6p1:_id>TestCase.LineNumber</d6p1:_id>
-                    <d6p1:_label>Line Number</d6p1:_label>
-                    <d6p1:_strValueType>System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</d6p1:_strValueType>
-                  </d2p1:Key>
-                  <d2p1:Value xmlns:d10p1="http://www.w3.org/2001/XMLSchema" i:type="d10p1:int">161</d2p1:Value>
-                </d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
-                <d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
-                  <d2p1:Key>
-                    <d6p1:_attributes>None</d6p1:_attributes>
-                    <d6p1:_category />
-                    <d6p1:_description />
-                    <d6p1:_id>TestCase.DisplayName</d6p1:_id>
-                    <d6p1:_label>Name</d6p1:_label>
-                    <d6p1:_strValueType>System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</d6p1:_strValueType>
-                  </d2p1:Key>
-                  <d2p1:Value xmlns:d10p1="http://www.w3.org/2001/XMLSchema" i:type="d10p1:string">parseConfigurationFile_getRange</d2p1:Value>
-                </d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
-                <d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
-                  <d2p1:Key>
-                    <d6p1:_attributes>Hidden Trait</d6p1:_attributes>
-                    <d6p1:_category />
-                    <d6p1:_description />
-                    <d6p1:_id>TestObject.Traits</d6p1:_id>
-                    <d6p1:_label>Traits</d6p1:_label>
-                    <d6p1:_strValueType>System.Collections.Generic.KeyValuePair`2[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089],[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]][], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</d6p1:_strValueType>
-                  </d2p1:Key>
-                  <d2p1:Value xmlns:d10p1="http://schemas.datacontract.org/2004/07/System.Collections.Generic" i:type="d10p1:ArrayOfKeyValuePairOfstringstring">
-                    <d10p1:KeyValuePairOfstringstring>
-                      <d10p1:key>TestSuite</d10p1:key>
-                      <d10p1:value>ConfigurationTestSuite</d10p1:value>
-                    </d10p1:KeyValuePairOfstringstring>
-                  </d2p1:Value>
-                </d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
-              </d6p1:store>
-            </d6p1:TestCase>
+          </d2p1:Value>
+        </d2p1:KeyValueOfstringArrayOfTestCasexshf6bWf>
+        <d2p1:KeyValueOfstringArrayOfTestCasexshf6bWf>
+          <d2p1:Key>ConfigurationTestSuite</d2p1:Key>
+          <d2p1:Value xmlns:d6p1="http://schemas.datacontract.org/2004/07/Microsoft.VisualStudio.TestPlatform.ObjectModel">
             <d6p1:TestCase>
               <d6p1:store>
                 <d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
@@ -1426,7 +571,7 @@
                     <d6p1:_label>File Path</d6p1:_label>
                     <d6p1:_strValueType>System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</d6p1:_strValueType>
                   </d2p1:Key>
-                  <d2p1:Value xmlns:d10p1="http://www.w3.org/2001/XMLSchema" i:type="d10p1:string">C:\OneDrive\C_MoodRecognizer\UnitTests\UnitTest.cpp</d2p1:Value>
+                  <d2p1:Value xmlns:d10p1="http://www.w3.org/2001/XMLSchema" i:type="d10p1:string">C:\OneDrive\C_MoodRecognizer\UnitTests\ConfigurationTest.cpp</d2p1:Value>
                 </d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
                 <d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
                   <d2p1:Key>
@@ -1512,7 +657,7 @@
                     <d6p1:_label>File Path</d6p1:_label>
                     <d6p1:_strValueType>System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</d6p1:_strValueType>
                   </d2p1:Key>
-                  <d2p1:Value xmlns:d10p1="http://www.w3.org/2001/XMLSchema" i:type="d10p1:string">C:\OneDrive\C_MoodRecognizer\UnitTests\UnitTest.cpp</d2p1:Value>
+                  <d2p1:Value xmlns:d10p1="http://www.w3.org/2001/XMLSchema" i:type="d10p1:string">C:\OneDrive\C_MoodRecognizer\UnitTests\ConfigurationTest.cpp</d2p1:Value>
                 </d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
                 <d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
                   <d2p1:Key>
@@ -1598,7 +743,7 @@
                     <d6p1:_label>File Path</d6p1:_label>
                     <d6p1:_strValueType>System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</d6p1:_strValueType>
                   </d2p1:Key>
-                  <d2p1:Value xmlns:d10p1="http://www.w3.org/2001/XMLSchema" i:type="d10p1:string">C:\OneDrive\C_MoodRecognizer\UnitTests\UnitTest.cpp</d2p1:Value>
+                  <d2p1:Value xmlns:d10p1="http://www.w3.org/2001/XMLSchema" i:type="d10p1:string">C:\OneDrive\C_MoodRecognizer\UnitTests\ConfigurationTest.cpp</d2p1:Value>
                 </d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
                 <d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
                   <d2p1:Key>
@@ -1684,7 +829,7 @@
                     <d6p1:_label>File Path</d6p1:_label>
                     <d6p1:_strValueType>System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</d6p1:_strValueType>
                   </d2p1:Key>
-                  <d2p1:Value xmlns:d10p1="http://www.w3.org/2001/XMLSchema" i:type="d10p1:string">C:\OneDrive\C_MoodRecognizer\UnitTests\UnitTest.cpp</d2p1:Value>
+                  <d2p1:Value xmlns:d10p1="http://www.w3.org/2001/XMLSchema" i:type="d10p1:string">C:\OneDrive\C_MoodRecognizer\UnitTests\ConfigurationTest.cpp</d2p1:Value>
                 </d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
                 <d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
                   <d2p1:Key>
@@ -1770,7 +915,7 @@
                     <d6p1:_label>File Path</d6p1:_label>
                     <d6p1:_strValueType>System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</d6p1:_strValueType>
                   </d2p1:Key>
-                  <d2p1:Value xmlns:d10p1="http://www.w3.org/2001/XMLSchema" i:type="d10p1:string">C:\OneDrive\C_MoodRecognizer\UnitTests\UnitTest.cpp</d2p1:Value>
+                  <d2p1:Value xmlns:d10p1="http://www.w3.org/2001/XMLSchema" i:type="d10p1:string">C:\OneDrive\C_MoodRecognizer\UnitTests\ConfigurationTest.cpp</d2p1:Value>
                 </d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
                 <d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
                   <d2p1:Key>
@@ -1856,7 +1001,7 @@
                     <d6p1:_label>File Path</d6p1:_label>
                     <d6p1:_strValueType>System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</d6p1:_strValueType>
                   </d2p1:Key>
-                  <d2p1:Value xmlns:d10p1="http://www.w3.org/2001/XMLSchema" i:type="d10p1:string">C:\OneDrive\C_MoodRecognizer\UnitTests\UnitTest.cpp</d2p1:Value>
+                  <d2p1:Value xmlns:d10p1="http://www.w3.org/2001/XMLSchema" i:type="d10p1:string">C:\OneDrive\C_MoodRecognizer\UnitTests\ConfigurationTest.cpp</d2p1:Value>
                 </d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
                 <d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
                   <d2p1:Key>
@@ -1942,7 +1087,7 @@
                     <d6p1:_label>File Path</d6p1:_label>
                     <d6p1:_strValueType>System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</d6p1:_strValueType>
                   </d2p1:Key>
-                  <d2p1:Value xmlns:d10p1="http://www.w3.org/2001/XMLSchema" i:type="d10p1:string">C:\OneDrive\C_MoodRecognizer\UnitTests\UnitTest.cpp</d2p1:Value>
+                  <d2p1:Value xmlns:d10p1="http://www.w3.org/2001/XMLSchema" i:type="d10p1:string">C:\OneDrive\C_MoodRecognizer\UnitTests\ConfigurationTest.cpp</d2p1:Value>
                 </d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
                 <d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
                   <d2p1:Key>
@@ -2028,7 +1173,7 @@
                     <d6p1:_label>File Path</d6p1:_label>
                     <d6p1:_strValueType>System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</d6p1:_strValueType>
                   </d2p1:Key>
-                  <d2p1:Value xmlns:d10p1="http://www.w3.org/2001/XMLSchema" i:type="d10p1:string">C:\OneDrive\C_MoodRecognizer\UnitTests\UnitTest.cpp</d2p1:Value>
+                  <d2p1:Value xmlns:d10p1="http://www.w3.org/2001/XMLSchema" i:type="d10p1:string">C:\OneDrive\C_MoodRecognizer\UnitTests\ConfigurationTest.cpp</d2p1:Value>
                 </d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
                 <d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
                   <d2p1:Key>
@@ -2114,7 +1259,7 @@
                     <d6p1:_label>File Path</d6p1:_label>
                     <d6p1:_strValueType>System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</d6p1:_strValueType>
                   </d2p1:Key>
-                  <d2p1:Value xmlns:d10p1="http://www.w3.org/2001/XMLSchema" i:type="d10p1:string">C:\OneDrive\C_MoodRecognizer\UnitTests\UnitTest.cpp</d2p1:Value>
+                  <d2p1:Value xmlns:d10p1="http://www.w3.org/2001/XMLSchema" i:type="d10p1:string">C:\OneDrive\C_MoodRecognizer\UnitTests\ConfigurationTest.cpp</d2p1:Value>
                 </d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
                 <d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
                   <d2p1:Key>
@@ -2200,7 +1345,7 @@
                     <d6p1:_label>File Path</d6p1:_label>
                     <d6p1:_strValueType>System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</d6p1:_strValueType>
                   </d2p1:Key>
-                  <d2p1:Value xmlns:d10p1="http://www.w3.org/2001/XMLSchema" i:type="d10p1:string">C:\OneDrive\C_MoodRecognizer\UnitTests\UnitTest.cpp</d2p1:Value>
+                  <d2p1:Value xmlns:d10p1="http://www.w3.org/2001/XMLSchema" i:type="d10p1:string">C:\OneDrive\C_MoodRecognizer\UnitTests\ConfigurationTest.cpp</d2p1:Value>
                 </d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
                 <d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
                   <d2p1:Key>
@@ -2286,7 +1431,7 @@
                     <d6p1:_label>File Path</d6p1:_label>
                     <d6p1:_strValueType>System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</d6p1:_strValueType>
                   </d2p1:Key>
-                  <d2p1:Value xmlns:d10p1="http://www.w3.org/2001/XMLSchema" i:type="d10p1:string">C:\OneDrive\C_MoodRecognizer\UnitTests\UnitTest.cpp</d2p1:Value>
+                  <d2p1:Value xmlns:d10p1="http://www.w3.org/2001/XMLSchema" i:type="d10p1:string">C:\OneDrive\C_MoodRecognizer\UnitTests\ConfigurationTest.cpp</d2p1:Value>
                 </d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
                 <d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
                   <d2p1:Key>
@@ -2323,451 +1468,6 @@
                     <d10p1:KeyValuePairOfstringstring>
                       <d10p1:key>TestSuite</d10p1:key>
                       <d10p1:value>ConfigurationTestSuite</d10p1:value>
-                    </d10p1:KeyValuePairOfstringstring>
-                  </d2p1:Value>
-                </d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
-              </d6p1:store>
-            </d6p1:TestCase>
-          </d2p1:Value>
-        </d2p1:KeyValueOfstringArrayOfTestCasexshf6bWf>
-        <d2p1:KeyValueOfstringArrayOfTestCasexshf6bWf>
-          <d2p1:Key>AnotherSuite</d2p1:Key>
-          <d2p1:Value xmlns:d6p1="http://schemas.datacontract.org/2004/07/Microsoft.VisualStudio.TestPlatform.ObjectModel">
-            <d6p1:TestCase>
-              <d6p1:store>
-                <d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
-                  <d2p1:Key>
-                    <d6p1:_attributes>Hidden</d6p1:_attributes>
-                    <d6p1:_category />
-                    <d6p1:_description />
-                    <d6p1:_id>TestCase.FullyQualifiedName</d6p1:_id>
-                    <d6p1:_label>FullyQualifiedName</d6p1:_label>
-                    <d6p1:_strValueType>System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</d6p1:_strValueType>
-                  </d2p1:Key>
-                  <d2p1:Value xmlns:d10p1="http://www.w3.org/2001/XMLSchema" i:type="d10p1:string">AnotherSuiteAnyCase</d2p1:Value>
-                </d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
-                <d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
-                  <d2p1:Key>
-                    <d6p1:_attributes>Hidden</d6p1:_attributes>
-                    <d6p1:_category />
-                    <d6p1:_description />
-                    <d6p1:_id>TestCase.ExecutorUri</d6p1:_id>
-                    <d6p1:_label>Executor Uri</d6p1:_label>
-                    <d6p1:_strValueType>System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</d6p1:_strValueType>
-                  </d2p1:Key>
-                  <d2p1:Value xmlns:d10p1="http://www.w3.org/2001/XMLSchema" i:type="d10p1:anyURI">executor://boosttestexecutor/v1</d2p1:Value>
-                </d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
-                <d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
-                  <d2p1:Key>
-                    <d6p1:_attributes>None</d6p1:_attributes>
-                    <d6p1:_category />
-                    <d6p1:_description />
-                    <d6p1:_id>TestCase.Source</d6p1:_id>
-                    <d6p1:_label>Source</d6p1:_label>
-                    <d6p1:_strValueType>System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</d6p1:_strValueType>
-                  </d2p1:Key>
-                  <d2p1:Value xmlns:d10p1="http://www.w3.org/2001/XMLSchema" i:type="d10p1:string">C:\OneDrive\C_MoodRecognizer\MoodRecognizer\Debug\UnitTests.exe</d2p1:Value>
-                </d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
-                <d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
-                  <d2p1:Key>
-                    <d6p1:_attributes>None</d6p1:_attributes>
-                    <d6p1:_category />
-                    <d6p1:_description />
-                    <d6p1:_id>TestCase.CodeFilePath</d6p1:_id>
-                    <d6p1:_label>File Path</d6p1:_label>
-                    <d6p1:_strValueType>System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</d6p1:_strValueType>
-                  </d2p1:Key>
-                  <d2p1:Value xmlns:d10p1="http://www.w3.org/2001/XMLSchema" i:type="d10p1:string">C:\OneDrive\C_MoodRecognizer\UnitTests\AnotherTests.cpp</d2p1:Value>
-                </d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
-                <d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
-                  <d2p1:Key>
-                    <d6p1:_attributes>Hidden</d6p1:_attributes>
-                    <d6p1:_category />
-                    <d6p1:_description />
-                    <d6p1:_id>TestCase.LineNumber</d6p1:_id>
-                    <d6p1:_label>Line Number</d6p1:_label>
-                    <d6p1:_strValueType>System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</d6p1:_strValueType>
-                  </d2p1:Key>
-                  <d2p1:Value xmlns:d10p1="http://www.w3.org/2001/XMLSchema" i:type="d10p1:int">3</d2p1:Value>
-                </d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
-                <d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
-                  <d2p1:Key>
-                    <d6p1:_attributes>None</d6p1:_attributes>
-                    <d6p1:_category />
-                    <d6p1:_description />
-                    <d6p1:_id>TestCase.DisplayName</d6p1:_id>
-                    <d6p1:_label>Name</d6p1:_label>
-                    <d6p1:_strValueType>System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</d6p1:_strValueType>
-                  </d2p1:Key>
-                  <d2p1:Value xmlns:d10p1="http://www.w3.org/2001/XMLSchema" i:type="d10p1:string">AnyCase</d2p1:Value>
-                </d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
-                <d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
-                  <d2p1:Key>
-                    <d6p1:_attributes>Hidden Trait</d6p1:_attributes>
-                    <d6p1:_category />
-                    <d6p1:_description />
-                    <d6p1:_id>TestObject.Traits</d6p1:_id>
-                    <d6p1:_label>Traits</d6p1:_label>
-                    <d6p1:_strValueType>System.Collections.Generic.KeyValuePair`2[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089],[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]][], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</d6p1:_strValueType>
-                  </d2p1:Key>
-                  <d2p1:Value xmlns:d10p1="http://schemas.datacontract.org/2004/07/System.Collections.Generic" i:type="d10p1:ArrayOfKeyValuePairOfstringstring">
-                    <d10p1:KeyValuePairOfstringstring>
-                      <d10p1:key>TestSuite</d10p1:key>
-                      <d10p1:value>AnotherSuite</d10p1:value>
-                    </d10p1:KeyValuePairOfstringstring>
-                  </d2p1:Value>
-                </d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
-              </d6p1:store>
-            </d6p1:TestCase>
-          </d2p1:Value>
-        </d2p1:KeyValueOfstringArrayOfTestCasexshf6bWf>
-        <d2p1:KeyValueOfstringArrayOfTestCasexshf6bWf>
-          <d2p1:Key>AnotherSuiteInAnotherFile</d2p1:Key>
-          <d2p1:Value xmlns:d6p1="http://schemas.datacontract.org/2004/07/Microsoft.VisualStudio.TestPlatform.ObjectModel">
-            <d6p1:TestCase>
-              <d6p1:store>
-                <d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
-                  <d2p1:Key>
-                    <d6p1:_attributes>Hidden</d6p1:_attributes>
-                    <d6p1:_category />
-                    <d6p1:_description />
-                    <d6p1:_id>TestCase.FullyQualifiedName</d6p1:_id>
-                    <d6p1:_label>FullyQualifiedName</d6p1:_label>
-                    <d6p1:_strValueType>System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</d6p1:_strValueType>
-                  </d2p1:Key>
-                  <d2p1:Value xmlns:d10p1="http://www.w3.org/2001/XMLSchema" i:type="d10p1:string">AnotherSuiteInAnotherFileAnyCase</d2p1:Value>
-                </d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
-                <d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
-                  <d2p1:Key>
-                    <d6p1:_attributes>Hidden</d6p1:_attributes>
-                    <d6p1:_category />
-                    <d6p1:_description />
-                    <d6p1:_id>TestCase.ExecutorUri</d6p1:_id>
-                    <d6p1:_label>Executor Uri</d6p1:_label>
-                    <d6p1:_strValueType>System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</d6p1:_strValueType>
-                  </d2p1:Key>
-                  <d2p1:Value xmlns:d10p1="http://www.w3.org/2001/XMLSchema" i:type="d10p1:anyURI">executor://boosttestexecutor/v1</d2p1:Value>
-                </d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
-                <d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
-                  <d2p1:Key>
-                    <d6p1:_attributes>None</d6p1:_attributes>
-                    <d6p1:_category />
-                    <d6p1:_description />
-                    <d6p1:_id>TestCase.Source</d6p1:_id>
-                    <d6p1:_label>Source</d6p1:_label>
-                    <d6p1:_strValueType>System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</d6p1:_strValueType>
-                  </d2p1:Key>
-                  <d2p1:Value xmlns:d10p1="http://www.w3.org/2001/XMLSchema" i:type="d10p1:string">C:\OneDrive\C_MoodRecognizer\MoodRecognizer\Debug\UnitTests.exe</d2p1:Value>
-                </d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
-                <d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
-                  <d2p1:Key>
-                    <d6p1:_attributes>None</d6p1:_attributes>
-                    <d6p1:_category />
-                    <d6p1:_description />
-                    <d6p1:_id>TestCase.CodeFilePath</d6p1:_id>
-                    <d6p1:_label>File Path</d6p1:_label>
-                    <d6p1:_strValueType>System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</d6p1:_strValueType>
-                  </d2p1:Key>
-                  <d2p1:Value xmlns:d10p1="http://www.w3.org/2001/XMLSchema" i:type="d10p1:string">C:\OneDrive\C_MoodRecognizer\UnitTests\AnotherTests.cpp</d2p1:Value>
-                </d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
-                <d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
-                  <d2p1:Key>
-                    <d6p1:_attributes>Hidden</d6p1:_attributes>
-                    <d6p1:_category />
-                    <d6p1:_description />
-                    <d6p1:_id>TestCase.LineNumber</d6p1:_id>
-                    <d6p1:_label>Line Number</d6p1:_label>
-                    <d6p1:_strValueType>System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</d6p1:_strValueType>
-                  </d2p1:Key>
-                  <d2p1:Value xmlns:d10p1="http://www.w3.org/2001/XMLSchema" i:type="d10p1:int">4</d2p1:Value>
-                </d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
-                <d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
-                  <d2p1:Key>
-                    <d6p1:_attributes>None</d6p1:_attributes>
-                    <d6p1:_category />
-                    <d6p1:_description />
-                    <d6p1:_id>TestCase.DisplayName</d6p1:_id>
-                    <d6p1:_label>Name</d6p1:_label>
-                    <d6p1:_strValueType>System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</d6p1:_strValueType>
-                  </d2p1:Key>
-                  <d2p1:Value xmlns:d10p1="http://www.w3.org/2001/XMLSchema" i:type="d10p1:string">AnyCase</d2p1:Value>
-                </d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
-                <d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
-                  <d2p1:Key>
-                    <d6p1:_attributes>Hidden Trait</d6p1:_attributes>
-                    <d6p1:_category />
-                    <d6p1:_description />
-                    <d6p1:_id>TestObject.Traits</d6p1:_id>
-                    <d6p1:_label>Traits</d6p1:_label>
-                    <d6p1:_strValueType>System.Collections.Generic.KeyValuePair`2[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089],[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]][], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</d6p1:_strValueType>
-                  </d2p1:Key>
-                  <d2p1:Value xmlns:d10p1="http://schemas.datacontract.org/2004/07/System.Collections.Generic" i:type="d10p1:ArrayOfKeyValuePairOfstringstring">
-                    <d10p1:KeyValuePairOfstringstring>
-                      <d10p1:key>TestSuite</d10p1:key>
-                      <d10p1:value>AnotherSuiteInAnotherFile</d10p1:value>
-                    </d10p1:KeyValuePairOfstringstring>
-                  </d2p1:Value>
-                </d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
-              </d6p1:store>
-            </d6p1:TestCase>
-          </d2p1:Value>
-        </d2p1:KeyValueOfstringArrayOfTestCasexshf6bWf>
-        <d2p1:KeyValueOfstringArrayOfTestCasexshf6bWf>
-          <d2p1:Key>MoodsTest</d2p1:Key>
-          <d2p1:Value xmlns:d6p1="http://schemas.datacontract.org/2004/07/Microsoft.VisualStudio.TestPlatform.ObjectModel">
-            <d6p1:TestCase>
-              <d6p1:store>
-                <d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
-                  <d2p1:Key>
-                    <d6p1:_attributes>Hidden</d6p1:_attributes>
-                    <d6p1:_category />
-                    <d6p1:_description />
-                    <d6p1:_id>TestCase.FullyQualifiedName</d6p1:_id>
-                    <d6p1:_label>FullyQualifiedName</d6p1:_label>
-                    <d6p1:_strValueType>System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</d6p1:_strValueType>
-                  </d2p1:Key>
-                  <d2p1:Value xmlns:d10p1="http://www.w3.org/2001/XMLSchema" i:type="d10p1:string">MoodsTestgetNextMood_addedMood3_return3</d2p1:Value>
-                </d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
-                <d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
-                  <d2p1:Key>
-                    <d6p1:_attributes>Hidden</d6p1:_attributes>
-                    <d6p1:_category />
-                    <d6p1:_description />
-                    <d6p1:_id>TestCase.ExecutorUri</d6p1:_id>
-                    <d6p1:_label>Executor Uri</d6p1:_label>
-                    <d6p1:_strValueType>System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</d6p1:_strValueType>
-                  </d2p1:Key>
-                  <d2p1:Value xmlns:d10p1="http://www.w3.org/2001/XMLSchema" i:type="d10p1:anyURI">executor://boosttestexecutor/v1</d2p1:Value>
-                </d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
-                <d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
-                  <d2p1:Key>
-                    <d6p1:_attributes>None</d6p1:_attributes>
-                    <d6p1:_category />
-                    <d6p1:_description />
-                    <d6p1:_id>TestCase.Source</d6p1:_id>
-                    <d6p1:_label>Source</d6p1:_label>
-                    <d6p1:_strValueType>System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</d6p1:_strValueType>
-                  </d2p1:Key>
-                  <d2p1:Value xmlns:d10p1="http://www.w3.org/2001/XMLSchema" i:type="d10p1:string">C:\OneDrive\C_MoodRecognizer\MoodRecognizer\Debug\UnitTests.exe</d2p1:Value>
-                </d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
-                <d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
-                  <d2p1:Key>
-                    <d6p1:_attributes>None</d6p1:_attributes>
-                    <d6p1:_category />
-                    <d6p1:_description />
-                    <d6p1:_id>TestCase.CodeFilePath</d6p1:_id>
-                    <d6p1:_label>File Path</d6p1:_label>
-                    <d6p1:_strValueType>System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</d6p1:_strValueType>
-                  </d2p1:Key>
-                  <d2p1:Value xmlns:d10p1="http://www.w3.org/2001/XMLSchema" i:type="d10p1:string">C:\OneDrive\C_MoodRecognizer\UnitTests\AnotherTests.cpp</d2p1:Value>
-                </d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
-                <d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
-                  <d2p1:Key>
-                    <d6p1:_attributes>Hidden</d6p1:_attributes>
-                    <d6p1:_category />
-                    <d6p1:_description />
-                    <d6p1:_id>TestCase.LineNumber</d6p1:_id>
-                    <d6p1:_label>Line Number</d6p1:_label>
-                    <d6p1:_strValueType>System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</d6p1:_strValueType>
-                  </d2p1:Key>
-                  <d2p1:Value xmlns:d10p1="http://www.w3.org/2001/XMLSchema" i:type="d10p1:int">5</d2p1:Value>
-                </d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
-                <d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
-                  <d2p1:Key>
-                    <d6p1:_attributes>None</d6p1:_attributes>
-                    <d6p1:_category />
-                    <d6p1:_description />
-                    <d6p1:_id>TestCase.DisplayName</d6p1:_id>
-                    <d6p1:_label>Name</d6p1:_label>
-                    <d6p1:_strValueType>System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</d6p1:_strValueType>
-                  </d2p1:Key>
-                  <d2p1:Value xmlns:d10p1="http://www.w3.org/2001/XMLSchema" i:type="d10p1:string">getNextMood_addedMood3_return3</d2p1:Value>
-                </d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
-                <d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
-                  <d2p1:Key>
-                    <d6p1:_attributes>Hidden Trait</d6p1:_attributes>
-                    <d6p1:_category />
-                    <d6p1:_description />
-                    <d6p1:_id>TestObject.Traits</d6p1:_id>
-                    <d6p1:_label>Traits</d6p1:_label>
-                    <d6p1:_strValueType>System.Collections.Generic.KeyValuePair`2[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089],[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]][], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</d6p1:_strValueType>
-                  </d2p1:Key>
-                  <d2p1:Value xmlns:d10p1="http://schemas.datacontract.org/2004/07/System.Collections.Generic" i:type="d10p1:ArrayOfKeyValuePairOfstringstring">
-                    <d10p1:KeyValuePairOfstringstring>
-                      <d10p1:key>TestSuite</d10p1:key>
-                      <d10p1:value>MoodsTest</d10p1:value>
-                    </d10p1:KeyValuePairOfstringstring>
-                  </d2p1:Value>
-                </d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
-              </d6p1:store>
-            </d6p1:TestCase>
-            <d6p1:TestCase>
-              <d6p1:store>
-                <d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
-                  <d2p1:Key>
-                    <d6p1:_attributes>Hidden</d6p1:_attributes>
-                    <d6p1:_category />
-                    <d6p1:_description />
-                    <d6p1:_id>TestCase.FullyQualifiedName</d6p1:_id>
-                    <d6p1:_label>FullyQualifiedName</d6p1:_label>
-                    <d6p1:_strValueType>System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</d6p1:_strValueType>
-                  </d2p1:Key>
-                  <d2p1:Value xmlns:d10p1="http://www.w3.org/2001/XMLSchema" i:type="d10p1:string">MoodsTestgetNextMood_added1then2then3_return1then2then3</d2p1:Value>
-                </d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
-                <d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
-                  <d2p1:Key>
-                    <d6p1:_attributes>Hidden</d6p1:_attributes>
-                    <d6p1:_category />
-                    <d6p1:_description />
-                    <d6p1:_id>TestCase.ExecutorUri</d6p1:_id>
-                    <d6p1:_label>Executor Uri</d6p1:_label>
-                    <d6p1:_strValueType>System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</d6p1:_strValueType>
-                  </d2p1:Key>
-                  <d2p1:Value xmlns:d10p1="http://www.w3.org/2001/XMLSchema" i:type="d10p1:anyURI">executor://boosttestexecutor/v1</d2p1:Value>
-                </d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
-                <d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
-                  <d2p1:Key>
-                    <d6p1:_attributes>None</d6p1:_attributes>
-                    <d6p1:_category />
-                    <d6p1:_description />
-                    <d6p1:_id>TestCase.Source</d6p1:_id>
-                    <d6p1:_label>Source</d6p1:_label>
-                    <d6p1:_strValueType>System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</d6p1:_strValueType>
-                  </d2p1:Key>
-                  <d2p1:Value xmlns:d10p1="http://www.w3.org/2001/XMLSchema" i:type="d10p1:string">C:\OneDrive\C_MoodRecognizer\MoodRecognizer\Debug\UnitTests.exe</d2p1:Value>
-                </d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
-                <d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
-                  <d2p1:Key>
-                    <d6p1:_attributes>None</d6p1:_attributes>
-                    <d6p1:_category />
-                    <d6p1:_description />
-                    <d6p1:_id>TestCase.CodeFilePath</d6p1:_id>
-                    <d6p1:_label>File Path</d6p1:_label>
-                    <d6p1:_strValueType>System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</d6p1:_strValueType>
-                  </d2p1:Key>
-                  <d2p1:Value xmlns:d10p1="http://www.w3.org/2001/XMLSchema" i:type="d10p1:string">C:\OneDrive\C_MoodRecognizer\UnitTests\AnotherTests.cpp</d2p1:Value>
-                </d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
-                <d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
-                  <d2p1:Key>
-                    <d6p1:_attributes>Hidden</d6p1:_attributes>
-                    <d6p1:_category />
-                    <d6p1:_description />
-                    <d6p1:_id>TestCase.LineNumber</d6p1:_id>
-                    <d6p1:_label>Line Number</d6p1:_label>
-                    <d6p1:_strValueType>System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</d6p1:_strValueType>
-                  </d2p1:Key>
-                  <d2p1:Value xmlns:d10p1="http://www.w3.org/2001/XMLSchema" i:type="d10p1:int">12</d2p1:Value>
-                </d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
-                <d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
-                  <d2p1:Key>
-                    <d6p1:_attributes>None</d6p1:_attributes>
-                    <d6p1:_category />
-                    <d6p1:_description />
-                    <d6p1:_id>TestCase.DisplayName</d6p1:_id>
-                    <d6p1:_label>Name</d6p1:_label>
-                    <d6p1:_strValueType>System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</d6p1:_strValueType>
-                  </d2p1:Key>
-                  <d2p1:Value xmlns:d10p1="http://www.w3.org/2001/XMLSchema" i:type="d10p1:string">getNextMood_added1then2then3_return1then2then3</d2p1:Value>
-                </d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
-                <d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
-                  <d2p1:Key>
-                    <d6p1:_attributes>Hidden Trait</d6p1:_attributes>
-                    <d6p1:_category />
-                    <d6p1:_description />
-                    <d6p1:_id>TestObject.Traits</d6p1:_id>
-                    <d6p1:_label>Traits</d6p1:_label>
-                    <d6p1:_strValueType>System.Collections.Generic.KeyValuePair`2[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089],[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]][], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</d6p1:_strValueType>
-                  </d2p1:Key>
-                  <d2p1:Value xmlns:d10p1="http://schemas.datacontract.org/2004/07/System.Collections.Generic" i:type="d10p1:ArrayOfKeyValuePairOfstringstring">
-                    <d10p1:KeyValuePairOfstringstring>
-                      <d10p1:key>TestSuite</d10p1:key>
-                      <d10p1:value>MoodsTest</d10p1:value>
-                    </d10p1:KeyValuePairOfstringstring>
-                  </d2p1:Value>
-                </d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
-              </d6p1:store>
-            </d6p1:TestCase>
-            <d6p1:TestCase>
-              <d6p1:store>
-                <d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
-                  <d2p1:Key>
-                    <d6p1:_attributes>Hidden</d6p1:_attributes>
-                    <d6p1:_category />
-                    <d6p1:_description />
-                    <d6p1:_id>TestCase.FullyQualifiedName</d6p1:_id>
-                    <d6p1:_label>FullyQualifiedName</d6p1:_label>
-                    <d6p1:_strValueType>System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</d6p1:_strValueType>
-                  </d2p1:Key>
-                  <d2p1:Value xmlns:d10p1="http://www.w3.org/2001/XMLSchema" i:type="d10p1:string">MoodsTestgetNextMood_nothingAdded_throwException</d2p1:Value>
-                </d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
-                <d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
-                  <d2p1:Key>
-                    <d6p1:_attributes>Hidden</d6p1:_attributes>
-                    <d6p1:_category />
-                    <d6p1:_description />
-                    <d6p1:_id>TestCase.ExecutorUri</d6p1:_id>
-                    <d6p1:_label>Executor Uri</d6p1:_label>
-                    <d6p1:_strValueType>System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</d6p1:_strValueType>
-                  </d2p1:Key>
-                  <d2p1:Value xmlns:d10p1="http://www.w3.org/2001/XMLSchema" i:type="d10p1:anyURI">executor://boosttestexecutor/v1</d2p1:Value>
-                </d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
-                <d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
-                  <d2p1:Key>
-                    <d6p1:_attributes>None</d6p1:_attributes>
-                    <d6p1:_category />
-                    <d6p1:_description />
-                    <d6p1:_id>TestCase.Source</d6p1:_id>
-                    <d6p1:_label>Source</d6p1:_label>
-                    <d6p1:_strValueType>System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</d6p1:_strValueType>
-                  </d2p1:Key>
-                  <d2p1:Value xmlns:d10p1="http://www.w3.org/2001/XMLSchema" i:type="d10p1:string">C:\OneDrive\C_MoodRecognizer\MoodRecognizer\Debug\UnitTests.exe</d2p1:Value>
-                </d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
-                <d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
-                  <d2p1:Key>
-                    <d6p1:_attributes>None</d6p1:_attributes>
-                    <d6p1:_category />
-                    <d6p1:_description />
-                    <d6p1:_id>TestCase.CodeFilePath</d6p1:_id>
-                    <d6p1:_label>File Path</d6p1:_label>
-                    <d6p1:_strValueType>System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</d6p1:_strValueType>
-                  </d2p1:Key>
-                  <d2p1:Value xmlns:d10p1="http://www.w3.org/2001/XMLSchema" i:type="d10p1:string">C:\OneDrive\C_MoodRecognizer\UnitTests\AnotherTests.cpp</d2p1:Value>
-                </d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
-                <d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
-                  <d2p1:Key>
-                    <d6p1:_attributes>Hidden</d6p1:_attributes>
-                    <d6p1:_category />
-                    <d6p1:_description />
-                    <d6p1:_id>TestCase.LineNumber</d6p1:_id>
-                    <d6p1:_label>Line Number</d6p1:_label>
-                    <d6p1:_strValueType>System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</d6p1:_strValueType>
-                  </d2p1:Key>
-                  <d2p1:Value xmlns:d10p1="http://www.w3.org/2001/XMLSchema" i:type="d10p1:int">23</d2p1:Value>
-                </d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
-                <d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
-                  <d2p1:Key>
-                    <d6p1:_attributes>None</d6p1:_attributes>
-                    <d6p1:_category />
-                    <d6p1:_description />
-                    <d6p1:_id>TestCase.DisplayName</d6p1:_id>
-                    <d6p1:_label>Name</d6p1:_label>
-                    <d6p1:_strValueType>System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</d6p1:_strValueType>
-                  </d2p1:Key>
-                  <d2p1:Value xmlns:d10p1="http://www.w3.org/2001/XMLSchema" i:type="d10p1:string">getNextMood_nothingAdded_throwException</d2p1:Value>
-                </d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
-                <d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>
-                  <d2p1:Key>
-                    <d6p1:_attributes>Hidden Trait</d6p1:_attributes>
-                    <d6p1:_category />
-                    <d6p1:_description />
-                    <d6p1:_id>TestObject.Traits</d6p1:_id>
-                    <d6p1:_label>Traits</d6p1:_label>
-                    <d6p1:_strValueType>System.Collections.Generic.KeyValuePair`2[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089],[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]][], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</d6p1:_strValueType>
-                  </d2p1:Key>
-                  <d2p1:Value xmlns:d10p1="http://schemas.datacontract.org/2004/07/System.Collections.Generic" i:type="d10p1:ArrayOfKeyValuePairOfstringstring">
-                    <d10p1:KeyValuePairOfstringstring>
-                      <d10p1:key>TestSuite</d10p1:key>
-                      <d10p1:value>MoodsTest</d10p1:value>
                     </d10p1:KeyValuePairOfstringstring>
                   </d2p1:Value>
                 </d2p1:KeyValueOfTestPropertyanyTypeGfygfmPv>

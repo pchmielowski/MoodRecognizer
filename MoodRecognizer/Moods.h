@@ -15,4 +15,5 @@ public:
 private:
 	FileReaderInterface* fileReader_;
 	std::queue<Mood> moodsQueue_;
+	void parseFile();
 };

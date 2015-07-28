@@ -80,8 +80,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="AnotherTests.cpp" />
-    <ClCompile Include="UnitTest.cpp" />
+    <ClCompile Include="MoodsTest.cpp" />
+    <ClCompile Include="ConfigurationTest.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
