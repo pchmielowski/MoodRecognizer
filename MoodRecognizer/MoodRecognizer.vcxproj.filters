@@ -9,6 +9,12 @@
       <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
       <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
     </Filter>
+    <Filter Include="Moods">
+      <UniqueIdentifier>{bc6d5172-ca55-4634-bbbe-f669b4f4cb94}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Configuration">
+      <UniqueIdentifier>{e9620d46-b30e-4013-b9df-d431aa08438f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="FeatureMatrixLoader.h">
@@ -26,16 +32,19 @@
     <ClInclude Include="SvmClassifier.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Moods.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="InputFileNames.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Configuration.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="Moods.h">
+      <Filter>Moods</Filter>
     </ClInclude>
-    <ClInclude Include="ConfigurationFileReader.h">
+    <ClInclude Include="MoodsInterface.h">
+      <Filter>Moods</Filter>
+    </ClInclude>
+    <ClInclude Include="Configuration.h">
+      <Filter>Configuration</Filter>
+    </ClInclude>
+    <ClInclude Include="FileReaderInterface.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -44,9 +53,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="FeatureMatrixLoader.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Moods.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="InputFileNames.cpp">
@@ -58,8 +64,11 @@
     <ClCompile Include="Main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Moods.cpp">
+      <Filter>Moods</Filter>
+    </ClCompile>
     <ClCompile Include="Configuration.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Configuration</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

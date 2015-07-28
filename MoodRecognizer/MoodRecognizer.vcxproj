@@ -68,10 +68,11 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Configuration.h" />
-    <ClInclude Include="ConfigurationFileReader.h" />
+    <ClInclude Include="FileReaderInterface.h" />
     <ClInclude Include="FeatureMatrixLoader.h" />
     <ClInclude Include="InputFileNames.h" />
     <ClInclude Include="Moods.h" />
+    <ClInclude Include="MoodsInterface.h" />
     <ClInclude Include="SuperVectorCalculator.h" />
     <ClInclude Include="SvmClassifier.h" />
     <ClInclude Include="Types.h" />

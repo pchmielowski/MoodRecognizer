@@ -1,10 +1,12 @@
 #pragma once;
 #include "Types.h"
+#include "MoodsInterface.h"
 
-class Moods {
+class Moods : public MoodsInterface {
 public:
 	Moods();
 	Moods(FileName moodsFileName);
-	Mood getNextMood();
-	void addMood(Mood mood);
+	Mood getNextMood() override;
+	void addMood(Mood mood) override;
+	~Moods();
 };

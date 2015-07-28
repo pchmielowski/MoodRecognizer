@@ -2,10 +2,10 @@
 #include "Types.h"
 #include <string>
 
-class ConfigurationFileReader {
+class FileReaderInterface {
 public:
-	ConfigurationFileReader() {}
-	virtual ~ConfigurationFileReader() {};
+	FileReaderInterface() {}
+	virtual ~FileReaderInterface() {};
 	virtual void open(FileName fileName) = 0;
 	virtual std::string getContent() = 0;
 };

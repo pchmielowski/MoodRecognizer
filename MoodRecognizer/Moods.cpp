@@ -1,7 +1,5 @@
 #include "Moods.h"
 
-
-
 Moods::Moods()
 {
 
@@ -13,6 +11,11 @@ Moods::Moods(FileName moodsFileName)
 }
 
 void Moods::addMood(Mood mood)
+{
+
+}
+
+Moods::~Moods()
 {
 
 }

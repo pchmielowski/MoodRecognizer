@@ -1,7 +1,7 @@
 #include "Configuration.h"
 #include "boost\program_options.hpp"
 #include <stdexcept>
-#include "ConfigurationFileReader.h"
+#include "FileReaderInterface.h"
 // for parsing XML
 #include <boost/property_tree/ptree.hpp>
 #include <boost/property_tree/xml_parser.hpp>
@@ -12,7 +12,7 @@ using namespace std;
 Configuration::Configuration() {
 }
 
-Configuration::Configuration(ConfigurationFileReader& fileReader)
+Configuration::Configuration(FileReaderInterface& fileReader)
 {
 	configurationFileReader_ = &fileReader;
 }

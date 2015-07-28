@@ -10,11 +10,11 @@ enum Mode {
 	TRAIN_SVM
 };
 
-class ConfigurationFileReader;
+class FileReaderInterface;
 
 class Configuration {
 public:
-	Configuration(ConfigurationFileReader& fileReader);
+	Configuration(FileReaderInterface& fileReader);
 	Configuration();
 	~Configuration();
 	Configuration(const Configuration& other);
@@ -35,7 +35,7 @@ public:
 	Mode getMode() const;
 	bool shouldSavePlotFile() const;
 private:
-	ConfigurationFileReader* configurationFileReader_ = 0;
+	FileReaderInterface* configurationFileReader_ = 0;
 	Mode mode_;
 	FileName folderOfFtMatrixesPath_;
 	FileName svmModelFileName_;
