@@ -2,6 +2,10 @@
 #include "boost\program_options.hpp"
 #include <stdexcept>
 #include "ConfigurationFileReader.h"
+// for parsing XML
+#include <boost/property_tree/ptree.hpp>
+#include <boost/property_tree/xml_parser.hpp>
+#include <sstream>
 
 using namespace std;
 
@@ -77,12 +81,18 @@ void Configuration::parseInputArguments(const int argc, char* const argv[]) {
 void Configuration::parseConfigurationFile(const FileName fileName) {
 	if (configurationFileReader_) {
 		configurationFileReader_->open(fileName);
-		string content = configurationFileReader_->getContent();
-		int alphaBegin = content.find("<value>") + 7;
-		int alphaEnd = content.find("<", alphaBegin);
-		int alphaLenght = alphaEnd - alphaBegin;
-		string alphaAsString = content.substr(alphaBegin, alphaLenght);
-		alpha_ = atof(alphaAsString.c_str()); 
+		stringstream fileContent;
+		fileContent << configurationFileReader_->getContent();
+		boost::property_tree::ptree xmlTree;
+		try {
+			boost::property_tree::read_xml(fileContent, xmlTree);
+			string alphaAsString = xmlTree.get<std::string>("alpha.value");
+			cout << alphaAsString << endl;
+			alpha_ = atof(alphaAsString.c_str());
+		}
+		catch (boost::property_tree::ptree_error e) {
+			cout << e.what() << endl;
+		}
 	}
 }
 

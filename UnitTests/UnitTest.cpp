@@ -115,7 +115,7 @@ BOOST_FIXTURE_TEST_CASE(parseInputArguments_noSvmFile_throwsRuntimeErrorExceptio
 	BOOST_REQUIRE_THROW(cfg.parseInputArguments(argc, argv), std::runtime_error);
 }
 BOOST_FIXTURE_TEST_CASE(parseConfigurationFile_RequiredToCallOpen_CallOpen, ConfigurationTest) {
-	std::string configurationFileContent = "<alpha range=false>\n";
+	std::string configurationFileContent = "<alpha range=\"false\">\n";
 	configurationFileContent += "<value>" + std::to_string(.6) + "</value>\n";
 	configurationFileContent += "</alpha>\n";
 
@@ -128,7 +128,7 @@ BOOST_FIXTURE_TEST_CASE(parseConfigurationFile_RequiredToCallOpen_CallOpen, Conf
 	Verify(Method(mockConfigurationFileReader, open)).AtLeastOnce();
 }
 BOOST_FIXTURE_TEST_CASE(parseConfigurationFile_alphaEq_6_alphaEq_6, ConfigurationTest) {
-	std::string configurationFileContent = "<alpha range=false>\n";
+	std::string configurationFileContent = "<alpha range=\"false\">\n";
 	configurationFileContent += "<value>" + std::to_string(.6) + "</value>\n";
 	configurationFileContent += "</alpha>\n";
 
@@ -143,7 +143,7 @@ BOOST_FIXTURE_TEST_CASE(parseConfigurationFile_alphaEq_6_alphaEq_6, Configuratio
 	BOOST_CHECK_CLOSE(cfg.getAlpha(), .6, 0.1);
 }
 BOOST_FIXTURE_TEST_CASE(parseConfigurationFile_alphaEq0_alphaEq0, ConfigurationTest) {
-	std::string configurationFileContent = "<alpha range=false>\n";
+	std::string configurationFileContent = "<alpha range=\"false\">\n";
 	configurationFileContent += "<value>" + std::to_string(0) + "</value>\n";
 	configurationFileContent += "</alpha>\n";
 
