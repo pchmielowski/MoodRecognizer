@@ -1,5 +1,5 @@
 #define BOOST_TEST_MODULE Test
-#include "boost\test\included\unit_test.hpp"
+#include "boost/test/unit_test.hpp"
 #include <fakeit.hpp>
 // My classes:
 #include "Configuration.h"
@@ -13,10 +13,17 @@ using namespace fakeit;
 
 class ConfigurationTest {
 public:
+	Mock<ConfigurationFileReader> mockConfigurationFileReader;
+	ConfigurationFileReader& mockFactory(string configurationFileContent)
+	{
+		When(Method(mockConfigurationFileReader, open)).AlwaysReturn();
+		When(Method(mockConfigurationFileReader, getContent)).Return(configurationFileContent);
+		return mockConfigurationFileReader.get();
+	}
 };
 
 BOOST_AUTO_TEST_SUITE(ConfigurationTestSuite)
-BOOST_FIXTURE_TEST_CASE(Configuration_parseInputArguments_parseCorrectlyFilenames, ConfigurationTest) {
+BOOST_FIXTURE_TEST_CASE(parseInputArguments_fullList_parseCorrectlyFilenames, ConfigurationTest) {
 	char* argv[] = {
 		"Mood.exe",
 		"-t",
@@ -41,8 +48,7 @@ BOOST_FIXTURE_TEST_CASE(Configuration_parseInputArguments_parseCorrectlyFilename
 	BOOST_CHECK(std::string("moodsFileName") == cfg.getMoodsFileName());
 	BOOST_CHECK(std::string("configurationFileName") == cfg.getConfigurationFileName());
 }
-
-BOOST_FIXTURE_TEST_CASE(Configuration_parseInputArguments_parseCorrectlyMode, ConfigurationTest) {
+BOOST_FIXTURE_TEST_CASE(parseInputArguments_fullList_parseCorrectlyMode, ConfigurationTest) {
 	{
 		char* argv[] = {
 			"Mood.exe",
@@ -81,7 +87,7 @@ BOOST_FIXTURE_TEST_CASE(Configuration_parseInputArguments_parseCorrectlyMode, Co
 	BOOST_CHECK(MAKE_BASE == cfg.getMode());
 }
 }
-BOOST_FIXTURE_TEST_CASE(Configuration_parseInputArguments_xSwitch_throwsRuntimeErrorException, ConfigurationTest) {
+BOOST_FIXTURE_TEST_CASE(parseInputArguments_xSwitch_throwsRuntimeErrorException, ConfigurationTest) {
 
 	char* argv[] = {
 		"Mood.exe",
@@ -92,7 +98,7 @@ BOOST_FIXTURE_TEST_CASE(Configuration_parseInputArguments_xSwitch_throwsRuntimeE
 
 	BOOST_REQUIRE_THROW(cfg.parseInputArguments(argc, argv), std::runtime_error);
 }
-BOOST_FIXTURE_TEST_CASE(Configuration_parseInputArguments_noSvmFile_throwsRuntimeErrorException, ConfigurationTest) {
+BOOST_FIXTURE_TEST_CASE(parseInputArguments_noSvmFile_throwsRuntimeErrorException, ConfigurationTest) {
 
 	char* argv[] = {
 		"Mood.exe",
@@ -108,22 +114,20 @@ BOOST_FIXTURE_TEST_CASE(Configuration_parseInputArguments_noSvmFile_throwsRuntim
 
 	BOOST_REQUIRE_THROW(cfg.parseInputArguments(argc, argv), std::runtime_error);
 }
-BOOST_FIXTURE_TEST_CASE(Configuration_parseConfigurationFileRequiredToCallOpen_CallOpen, ConfigurationTest) {
+BOOST_FIXTURE_TEST_CASE(parseConfigurationFile_RequiredToCallOpen_CallOpen, ConfigurationTest) {
 	std::string configurationFileContent = "<alpha range=false>\n";
 	configurationFileContent += "<value>" + std::to_string(.6) + "</value>\n";
 	configurationFileContent += "</alpha>\n";
 
-	Mock<ConfigurationFileReader> mockConfigurationFileReader;
-	When(Method(mockConfigurationFileReader, open)).AlwaysReturn();
-	When(Method(mockConfigurationFileReader, getContent)).Return(configurationFileContent);
-	ConfigurationFileReader& mockConfigurationFileReaderInstance = mockConfigurationFileReader.get();
+	ConfigurationFileReader& mockConfigurationFileReaderInstance = mockFactory(configurationFileContent);
+
 	Configuration cfg(mockConfigurationFileReaderInstance);
 	
 	cfg.parseConfigurationFile("anyfile");
 
 	Verify(Method(mockConfigurationFileReader, open)).AtLeastOnce();
 }
-BOOST_FIXTURE_TEST_CASE(Configuration_parseConfigurationFileWithAlphaEq_6_alphaEq_6, ConfigurationTest) {
+BOOST_FIXTURE_TEST_CASE(parseConfigurationFile_alphaEq_6_alphaEq_6, ConfigurationTest) {
 	std::string configurationFileContent = "<alpha range=false>\n";
 	configurationFileContent += "<value>" + std::to_string(.6) + "</value>\n";
 	configurationFileContent += "</alpha>\n";
@@ -138,7 +142,7 @@ BOOST_FIXTURE_TEST_CASE(Configuration_parseConfigurationFileWithAlphaEq_6_alphaE
 
 	BOOST_CHECK_CLOSE(cfg.getAlpha(), .6, 0.1);
 }
-BOOST_FIXTURE_TEST_CASE(Configuration_parseConfigurationFileWithAlphaEq0_alphaEq0, ConfigurationTest) {
+BOOST_FIXTURE_TEST_CASE(parseConfigurationFile_alphaEq0_alphaEq0, ConfigurationTest) {
 	std::string configurationFileContent = "<alpha range=false>\n";
 	configurationFileContent += "<value>" + std::to_string(0) + "</value>\n";
 	configurationFileContent += "</alpha>\n";
@@ -153,8 +157,8 @@ BOOST_FIXTURE_TEST_CASE(Configuration_parseConfigurationFileWithAlphaEq0_alphaEq
 
 	BOOST_CHECK_CLOSE(cfg.getAlpha(), 0, 0.1);
 }
-BOOST_FIXTURE_TEST_CASE(Configuration_parseConfigurationFile_getRange, ConfigurationTest) {}
-BOOST_FIXTURE_TEST_CASE(Configuration_parseConfigurationFile_getValueWhenRangeIsPresent, ConfigurationTest) {
+BOOST_FIXTURE_TEST_CASE(parseConfigurationFile_alphaAsRange_getRange, ConfigurationTest) {}
+BOOST_FIXTURE_TEST_CASE(parseConfigurationFile_getValueWhenRangeIsPresent, ConfigurationTest) {
 
 	//configurationFileContent = "<alpha range=false>\n";
 	//configurationFileContent += "<min>" + std::to_string(1) + "</min>\n";
@@ -166,11 +170,12 @@ BOOST_FIXTURE_TEST_CASE(Configuration_parseConfigurationFile_getValueWhenRangeIs
 	//configurationFileContent += "<max>" + std::to_string(3) + "</max>\n";
 	//configurationFileContent += "</componentNumber>";
 }
-BOOST_FIXTURE_TEST_CASE(Configuration_parseConfigurationFile_wrongCfgFileException, ConfigurationTest) {  }
+BOOST_FIXTURE_TEST_CASE(parseConfigurationFile_wrongCfgFileException, ConfigurationTest) {  }
 BOOST_AUTO_TEST_SUITE_END()
 
 BOOST_AUTO_TEST_SUITE(AnotherSuite)
 BOOST_AUTO_TEST_CASE(AnyCase) {
 	BOOST_CHECK_EQUAL(1, 1);
 }
+
 BOOST_AUTO_TEST_SUITE_END()
