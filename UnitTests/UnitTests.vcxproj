@@ -52,12 +52,12 @@
       <WarningLevel>Level4</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>C:\Dysk Google\gmock-1.7.0\gtest\include;C:\Dysk Google\gmock-1.7.0\include\;C:\Dysk Google\boost\boost_1_55_0\;$(SolutionDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Dysk Google\FakeIt-2.0.2\include;C:\Dysk Google\FakeIt-2.0.2\config\boost;C:\Dysk Google\boost\boost_1_55_0\;$(SolutionDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>C:\OneDrive\C_MoodRecognizer\MoodRecognizer\Debug;C:\Dysk Google\boost\boost_1_55_0\stage\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>C:\Dysk Google\gmock-1.7.0\gtest\msvc\gtest\Debug;C:\Dysk Google\gmock-1.7.0\msvc\2010\Debug-md;C:\OneDrive\C_MoodRecognizer\MoodRecognizer\Debug;C:\Dysk Google\boost\boost_1_55_0\stage\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>Configuration.obj;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>

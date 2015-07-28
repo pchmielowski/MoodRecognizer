@@ -104,7 +104,7 @@ int Configuration::getNumComponents() const {
 }
 
 float Configuration::getAlpha() const {
-	return alpha_;
+	return .6;
 }
 
 FileName Configuration::getPlotFileName() const {
