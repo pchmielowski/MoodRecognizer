@@ -44,14 +44,14 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>C:\Dysk Google\boost\boost_1_55_0; C:\Dysk Google\lame\</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Dysk Google\opencv249\build\include;C:\Dysk Google\boost\boost_1_55_0;C:\Dysk Google\lame\;C:\Dysk Google\matio-1.5.2\matio-1.5.2\visual_studio;C:\Dysk Google\matio-1.5.2\matio-1.5.2\src</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <PreprocessorDefinitions>_CRT_SECURE_NO_DEPRECATE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>C:\Dysk Google\boost\boost_1_55_0\stage\lib; C:\Dysk Google\lame</AdditionalLibraryDirectories>
-      <AdditionalDependencies>libmp3lame-static.lib;libmpghip-static.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>C:\Dysk Google\boost\boost_1_55_0\stage\lib;C:\Dysk Google\lame;C:\Dysk Google\matio-1.5.2\matio-1.5.2\visual_studio\Release;C:\Dysk Google\opencv249\build\x86\vc12\lib</AdditionalLibraryDirectories>
+      <AdditionalDependencies>libmp3lame-static.lib;libmpghip-static.lib;libmatio.lib;opencv_core249d.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <ProjectReference>
       <UseLibraryDependencyInputs>false</UseLibraryDependencyInputs>
@@ -76,6 +76,7 @@
     <ClInclude Include="FileReaderInterface.h" />
     <ClInclude Include="FeatureMatrixLoader.h" />
     <ClInclude Include="InputFileNames.h" />
+    <ClInclude Include="MatFeatureMatrixLoader.h" />
     <ClInclude Include="MatInputFileNames.h" />
     <ClInclude Include="Moods.h" />
     <ClInclude Include="MoodsInterface.h" />
@@ -90,6 +91,7 @@
     <ClCompile Include="Configuration.cpp" />
     <ClCompile Include="InputFileNames.cpp" />
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="MatFeatureMatrixLoader.cpp" />
     <ClCompile Include="Moods.cpp" />
     <ClCompile Include="Mp3FeatureMatrixLoader.cpp" />
     <ClCompile Include="Mp3InputFileNames.cpp" />

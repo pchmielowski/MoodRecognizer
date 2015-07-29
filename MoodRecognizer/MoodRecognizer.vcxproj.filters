@@ -62,15 +62,15 @@
     <ClInclude Include="Mp3FeatureMatrixLoader.h">
       <Filter>FeatureMatrixLoader</Filter>
     </ClInclude>
+    <ClInclude Include="MatFeatureMatrixLoader.h">
+      <Filter>FeatureMatrixLoader</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="SuperVectorCalculator.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="SvmClassifier.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Moods.cpp">
@@ -87,6 +87,12 @@
     </ClCompile>
     <ClCompile Include="Mp3InputFileNames.cpp">
       <Filter>InputFileNames</Filter>
+    </ClCompile>
+    <ClCompile Include="MatFeatureMatrixLoader.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Main.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

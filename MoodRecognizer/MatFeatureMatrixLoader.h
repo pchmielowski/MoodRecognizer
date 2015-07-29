@@ -5,7 +5,7 @@
 class MatFeatureMatrixLoader : public FeatureMatrixLoader
 {
 public:
-	MatFeatureMatrixLoader(const bool sdcEnabled) {}
+	MatFeatureMatrixLoader(const bool sdcEnabled);
 	FeatureMatrix get(const FileName fileName) override;
 private:
 };

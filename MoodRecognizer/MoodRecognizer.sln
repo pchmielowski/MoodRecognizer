@@ -11,6 +11,9 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "UnitTests", "..\UnitTests\U
 	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "FeatureMatrixLoaderTest", "..\FeatureMatrixLoaderTest\FeatureMatrixLoaderTest.vcxproj", "{4B4E4CA3-0543-4114-BC61-62102ABFF699}"
+	ProjectSection(ProjectDependencies) = postProject
+		{13A779F5-A41F-4C11-8088-BB610DB33301} = {13A779F5-A41F-4C11-8088-BB610DB33301}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
