@@ -4,13 +4,8 @@
 class FeatureMatrixLoader
 {
 public:
-	FeatureMatrixLoader(bool sdcEnabled);
-	FeatureMatrix get(FileName fileName);
+	FeatureMatrixLoader() {};
+	virtual FeatureMatrix get(const FileName fileName) = 0;
 	
 private:
 };
-
-FeatureMatrix FeatureMatrixLoader::get(FileName fileName)
-{
-	return FeatureMatrix();
-}

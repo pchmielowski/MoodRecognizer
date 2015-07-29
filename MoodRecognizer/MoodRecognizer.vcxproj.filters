@@ -18,11 +18,11 @@
     <Filter Include="InputFileNames">
       <UniqueIdentifier>{3e1e42e9-db94-4f30-ae0a-f477871f627c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="FeatureMatrixLoader">
+      <UniqueIdentifier>{37984805-5849-4058-b116-5e51028a8a75}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="FeatureMatrixLoader.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Types.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -53,12 +53,18 @@
     <ClInclude Include="Mp3InputFileNames.h">
       <Filter>InputFileNames</Filter>
     </ClInclude>
+    <ClInclude Include="MatInputFileNames.h">
+      <Filter>InputFileNames</Filter>
+    </ClInclude>
+    <ClInclude Include="FeatureMatrixLoader.h">
+      <Filter>FeatureMatrixLoader</Filter>
+    </ClInclude>
+    <ClInclude Include="Mp3FeatureMatrixLoader.h">
+      <Filter>FeatureMatrixLoader</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="SuperVectorCalculator.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="FeatureMatrixLoader.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="SvmClassifier.cpp">
@@ -76,8 +82,11 @@
     <ClCompile Include="InputFileNames.cpp">
       <Filter>InputFileNames</Filter>
     </ClCompile>
+    <ClCompile Include="Mp3FeatureMatrixLoader.cpp">
+      <Filter>FeatureMatrixLoader</Filter>
+    </ClCompile>
     <ClCompile Include="Mp3InputFileNames.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>InputFileNames</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
