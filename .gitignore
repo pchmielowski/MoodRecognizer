@@ -6,6 +6,7 @@
 *.user
 *.sln.docstates
 *.mp3
+*.wav
 
 # Build results
 
