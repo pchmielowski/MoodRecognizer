@@ -1,8 +1,10 @@
+#pragma warning(push, 0)
 #include <boost/test/unit_test.hpp>
-#include "Moods.h"
-#include "FileReaderInterface.h"
 #include <fakeit.hpp>
 #include <string>
+#pragma warning(pop)
+#include "Moods.h"
+#include "FileReaderInterface.h"
 using namespace fakeit;
 using namespace std;
 
@@ -60,7 +62,7 @@ BOOST_AUTO_TEST_CASE(getNextMood_loadedFileWith4MoodsInDifferentOrder_gettedInRi
 	BOOST_CHECK_EQUAL(moods.getNextMood(), 4);
 	BOOST_CHECK_EQUAL(moods.getNextMood(), 1);
 }
-BOOST_AUTO_TEST_CASE(constructorWithFileReader_objectCreated_openCalled) {
+BOOST_AUTO_TEST_CASE(constructorWithFileReader_objectCreated_openCalledWithRighFileName) {
 	string fileContent = "1\n4\n4\n1\n";
 
 	Mock<FileReaderInterface> mockFileReader;

@@ -15,6 +15,9 @@
     <Filter Include="Configuration">
       <UniqueIdentifier>{e9620d46-b30e-4013-b9df-d431aa08438f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="InputFileNames">
+      <UniqueIdentifier>{3e1e42e9-db94-4f30-ae0a-f477871f627c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="FeatureMatrixLoader.h">
@@ -32,9 +35,6 @@
     <ClInclude Include="SvmClassifier.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="InputFileNames.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Moods.h">
       <Filter>Moods</Filter>
     </ClInclude>
@@ -47,15 +47,18 @@
     <ClInclude Include="FileReaderInterface.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="InputFileNames.h">
+      <Filter>InputFileNames</Filter>
+    </ClInclude>
+    <ClInclude Include="Mp3InputFileNames.h">
+      <Filter>InputFileNames</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="SuperVectorCalculator.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="FeatureMatrixLoader.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="InputFileNames.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="SvmClassifier.cpp">
@@ -69,6 +72,12 @@
     </ClCompile>
     <ClCompile Include="Configuration.cpp">
       <Filter>Configuration</Filter>
+    </ClCompile>
+    <ClCompile Include="InputFileNames.cpp">
+      <Filter>InputFileNames</Filter>
+    </ClCompile>
+    <ClCompile Include="Mp3InputFileNames.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

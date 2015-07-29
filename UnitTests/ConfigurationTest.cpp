@@ -1,6 +1,8 @@
 #define BOOST_TEST_MODULE Test
+#pragma warning(push, 0)
 #include "boost/test/unit_test.hpp"
 #include <fakeit.hpp>
+#pragma warning(pop)
 // My classes:
 #include "Configuration.h"
 #include "Types.h"

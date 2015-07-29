@@ -73,6 +73,7 @@
     <ClInclude Include="InputFileNames.h" />
     <ClInclude Include="Moods.h" />
     <ClInclude Include="MoodsInterface.h" />
+    <ClInclude Include="Mp3InputFileNames.h" />
     <ClInclude Include="SuperVectorCalculator.h" />
     <ClInclude Include="SvmClassifier.h" />
     <ClInclude Include="Types.h" />
@@ -84,6 +85,7 @@
     <ClCompile Include="InputFileNames.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Moods.cpp" />
+    <ClCompile Include="Mp3InputFileNames.cpp" />
     <ClCompile Include="SuperVectorCalculator.cpp" />
     <ClCompile Include="SvmClassifier.cpp" />
   </ItemGroup>

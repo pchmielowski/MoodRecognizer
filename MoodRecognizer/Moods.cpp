@@ -27,7 +27,8 @@ Moods::~Moods()
 
 }
 
-void Moods::parseFile() {
+void Moods::parseFile() 
+{
 	istringstream content;
 	content.str(fileReader_->getContent());
 	string moodAsString;
