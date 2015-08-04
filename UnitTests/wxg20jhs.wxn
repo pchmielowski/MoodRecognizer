@@ -1,0 +1,72 @@
+#pragma warning(push, 0)
+#include <boost/test/unit_test.hpp>
+#include <fakeit.hpp>
+#include <string>
+#include "opencv/cv.h"
+#include "UbmLoader.h"
+#pragma warning(pop)
+#include "FeatureMatrixLoader.h"
+#include "SuperVectorCalculator.h"
+#include "UbmLoader.h"
+using namespace fakeit;
+using namespace std;
+
+BOOST_AUTO_TEST_SUITE(SuperVectorCalculatorTest)
+BOOST_AUTO_TEST_CASE(calculate_1gaussComponentSimpleMatrix)
+{
+	FeatureMatrix simpleFeatureMatrix = (cv::Mat_<double>(1, 1) << 1);
+	Mock<FeatureMatrixLoader> featureMatrixLoader;
+	When(Method(featureMatrixLoader, get)).AlwaysReturn(simpleFeatureMatrix);
+	FeatureMatrixLoader& featureMatrixLoaderInstance = featureMatrixLoader.get();
+
+	int numDimensions = simpleFeatureMatrix.rows;
+	Ubm ubm;
+	ubm.numGaussComponents_ = 1;
+	ubm.means_ = (cv::Mat_<double>(numDimensions, ubm.numGaussComponents_) << 2);
+	ubm.weights_ = (cv::Mat_<double>(numDimensions, ubm.numGaussComponents_) << 1);
+	vector<Mat> covs;
+	covs.push_back(cv::Mat_<double>(numDimensions, numDimensions) << 3);
+	ubm.createNormalDistribution(numDimensions, covs);
+
+	Mock<UbmLoader> ubmLoader;
+	When(Method(ubmLoader, getUbm)).AlwaysReturn(ubm);
+	UbmLoader& ubmLoaderInstance = ubmLoader.get();
+
+	vector<Alpha> alphas;
+	alphas.push_back(1.0);
+	vector<int> numComponents;
+	numComponents.push_back(1);
+
+	SuperVectorCalculator SUT(featureMatrixLoaderInstance, ubmLoaderInstance, alphas, numComponents);
+	SuperVector result = SUT.calculate("any_name");
+}
+BOOST_AUTO_TEST_CASE(calculate_1gaussComponentBiggerMatrix)
+{
+	FeatureMatrix simpleFeatureMatrix = (cv::Mat_<double>(4, 1) << 1, 2, 3, 4);
+	Mock<FeatureMatrixLoader> featureMatrixLoader;
+	When(Method(featureMatrixLoader, get)).AlwaysReturn(simpleFeatureMatrix);
+	FeatureMatrixLoader& featureMatrixLoaderInstance = featureMatrixLoader.get();
+
+	int numDimensions = simpleFeatureMatrix.rows;
+	Ubm ubm;
+	ubm.numGaussComponents_ = 1;
+	ubm.means_ = (cv::Mat_<double>(numDimensions, ubm.numGaussComponents_) << 1, 4, 0, 4);
+	ubm.weights_ = (cv::Mat_<double>(1, ubm.numGaussComponents_) << 1);
+	vector<Mat> covs;
+	Mat myDiagonal = (cv::Mat_<double>(numDimensions, numDimensions) << 3);
+		covs.push_back(cv::diag(myDiagonal));
+	ubm.createNormalDistribution(numDimensions, covs);
+
+	Mock<UbmLoader> ubmLoader;
+	When(Method(ubmLoader, getUbm)).AlwaysReturn(ubm);
+	UbmLoader& ubmLoaderInstance = ubmLoader.get();
+
+	vector<Alpha> alphas;
+	alphas.push_back(1.0);
+	vector<int> numComponents;
+	numComponents.push_back(1);
+
+	SuperVectorCalculator SUT(featureMatrixLoaderInstance, ubmLoaderInstance, alphas, numComponents);
+	SuperVector result = SUT.calculate("any_name");
+}
+BOOST_AUTO_TEST_SUITE_END()

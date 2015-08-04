@@ -14,7 +14,7 @@ void SvmClassifier::trainPca(SuperVectors)
 
 }
 
-void SvmClassifier::train(MoodsInterface& moods, InputFileNames& inputFileNames)
+void SvmClassifier::train(Moods& moods, InputFileNames& inputFileNames)
 {
 	SuperVectors allSuperVectors;
 	inputFileNames_ = &inputFileNames;

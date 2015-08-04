@@ -15,7 +15,7 @@ class SuperVectorCalculator
 public:
 	SuperVectorCalculator(FeatureMatrixLoader& featureMatrixLoader, UbmLoader& ubmLoader, 
 		vector<Alpha> alpha, vector<int> numComponents);
-	SuperVectors calculate(FileName featureMatrixFileName);
+	virtual SuperVectors calculate(FileName featureMatrixFileName);
 private:
 	Ubm ubm_;
 	vector<Alpha> alphas_;
