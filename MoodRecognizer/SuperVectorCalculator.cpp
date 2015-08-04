@@ -1,80 +1,87 @@
 #include "SuperVectorCalculator.h"
 #include "Types.h"
-#include "opencv/cv.h"
 
 using namespace cv;
 
-SuperVector SuperVectorCalculator::calculate(FileName fileName)
+SuperVector SuperVectorCalculator::calculate(FileName featureMatrixFileName)
 {
-	FeatureMatrix featureMatrix = featureMatrixLoader_->get(fileName);
+	//ubmLoader_
+	FeatureMatrix featureMatrix = featureMatrixLoader_->get(featureMatrixFileName);
+	assert(featureMatrix.rows > 0 && featureMatrix.cols > 0);
+	int numTimeWindows = featureMatrix.cols;
+	int numGaussComponents = ubm_.numGaussComponents;
 
-	double* wp_t = NULL;
-	double** Pr = new double*[featureMatrix.rows];
-	double B_i, sum_wp_t;
-	Mat A_i, E_i, mu_i;
-	int numGaussComponents = ubm_->getNumGaussComponents();
-	for (int t = 0; t < featureMatrix.rows; t++) // iteracja po kolejnych ramkach MFCC
+	double** eq3 = new double*[numTimeWindows];
+	for (int t = 0; t < numTimeWindows; t++)
 	{
-		Pr[t] = new double[numGaussComponents];
-		wp_t = new double[numGaussComponents];
-		sum_wp_t = 0;
+		double* eq3Counters = new double[numGaussComponents];
+		double eq3Denominator = 0;
 
-		for (int i = 0; i < numGaussComponents; i++) {
-			wp_t[i] = ubm_->weights.at<double>(i) *					// Eq. 3 - licznik (skalar)
-				probability(featureMatrix.row(t), ubm_->means.row(i), ubm_->covs.at(i), i);
-			sum_wp_t += wp_t[i];										// Eq. 3 - mianownik (skalar)
+		for (int componentIdx = 0; componentIdx < numGaussComponents; ++componentIdx)
+		{
+			double weight = ubm_.weights.at<double>(componentIdx);
+			eq3Counters[componentIdx] = weight * ubm_.logLikelihood(featureMatrix.col(t), componentIdx);
+			eq3Denominator += eq3Counters[componentIdx];
 			// TODO: podczas optymalizacji sprawdziæ
 			// czy da siê omin¹æ =+, 
 			// ¿eby b³êdy numeryczne siê nie akumulowa³y tak bardzo
 		}
-		for (int i = 0; i < numGaussComponents; i++)
-			Pr[t][i] = wp_t[i] / sum_wp_t;								// Eq. 3 - dzielenie (skalar)
-		delete[] wp_t;
+
+		eq3[t] = new double[numGaussComponents];
+		for (int componentIdx = 0; componentIdx < numGaussComponents; ++componentIdx)
+		{
+			eq3[t][componentIdx] = eq3Counters[componentIdx] / eq3Denominator;
+		}
+		delete[] eq3Counters;
 	}
 
 	SuperVector superVector;
+	int alphaIdx = 0;
+	int numCoeff = featureMatrix.rows;
 	for (int componentIdx = 0; componentIdx < numGaussComponents; ++componentIdx)
 	{
-		A_i = Mat::zeros(1, ubm_->n_of_mfcc_coef, CV_64F);			// A_i - 1 x n_of_mfcc_coef wektor
-		B_i = 0;														// B_i - skalar
-
-		for (int t = 0; t < featureMatrix.rows; t++) {								// iteracja po kolejnych ramkach MFCC
-			A_i += Pr[t][componentIdx] * featureMatrix.row(t);									// Eq. 2 - licznik
-			B_i += Pr[t][componentIdx];											// Eq. 2 - mianownik
+		Mat eq2Counter = Mat::zeros(1, numCoeff, CV_64F);
+		double eq2Denominator = 0;
+		for (int t = 0; t < numTimeWindows; t++) {
+			eq2Counter += eq3[t][componentIdx] * featureMatrix.col(t);
+			eq2Denominator += eq3[t][componentIdx];
 		}
-		E_i = A_i / B_i;												// Eq. 2 - dzielenie
 
-		addWeighted(E_i, alpha, ubm_->means.row(componentIdx), 1.0 - alpha, 0.0, mu_i); // Eq. 1
+		Mat eq2 = eq2Counter / eq2Denominator;
+		assert(eq2.rows == numCoeff);
+		assert(eq2.cols == 1);
+		assert(ubm_.means.rows == numCoeff);
+		assert(ubm_.means.cols == numGaussComponents);
 
-		if (superVector.empty())
-			superVector = mu_i.clone();
-		else
-			hconcat(superVector, mu_i, superVector);
+		// Eq. 1
+		Mat mu_i;
+		addWeighted(eq2, alphas_[alphaIdx], ubm_.means.col(componentIdx), 1.0 - alphas_[alphaIdx], 0.0, mu_i);
+		assert(mu_i.rows == numCoeff);
+		assert(mu_i.cols == 1);
+		appendAdaptedMeanToSuperVector(superVector, mu_i);
 	}
 
-	for (int t = 0; t < featureMatrix.rows; t++)
-		delete[] Pr[t];
-	delete[] Pr;
-
+	for (int t = 0; t < numTimeWindows; t++)
+		delete[] eq3[t];
+	delete[] eq3;
 	return superVector;
 }
 
-SuperVectorCalculator::SuperVectorCalculator(FeatureMatrixLoader& featureMatrixLoader, vector<Alpha> alpha, vector<int> numComponents, Ubm& ubm)
+void SuperVectorCalculator::appendAdaptedMeanToSuperVector(SuperVector &superVector, Mat &mu_i)
+{
+	int initialNumRows = superVector.rows;
+	if (initialNumRows == 0) {
+		superVector = mu_i.clone();
+	}
+	else {
+		vconcat(superVector, mu_i, superVector);
+	}
+	assert(superVector.rows == initialNumRows + mu_i.rows);
+	assert(superVector.cols == 1);
+}
+
+SuperVectorCalculator::SuperVectorCalculator(FeatureMatrixLoader& featureMatrixLoader, vector<Alpha> alpha, vector<int> numComponents, UbmLoader& ubm)
 {
 
 }
 
-double probability(const Mat& x, const Mat& mean, const Mat& covariance, int gaus_nmbr) const {
-	// zwraca prawdopodobieñstwo wektora x przy rozk³adzie N(mean, covariance)
-	// normal_distribution<>* norm_distr;
-
-	double prob = 1;
-
-	for (int i = 0; i < pTheUBM->n_of_mfcc_coef; i++) {
-
-		prob *= pdf(pTheUBM->norm_distr[gaus_nmbr][i], x.at<double>(0, i));
-		// prob *= pdf(pTheUBM->norm_distr[gaus_nmbr][i], x.at<double>(0, i));
-		//delete norm_distr;
-	}
-	return prob;
-}

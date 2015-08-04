@@ -1,0 +1,37 @@
+#pragma warning(push, 0)
+#include <boost/test/unit_test.hpp>
+#include <fakeit.hpp>
+#include <string>
+#include "FeatureMatrixLoader.h"
+#include "opencv/cv.h"
+#include "UbmLoader.h"
+#pragma warning(pop)
+using namespace fakeit;
+using namespace std;
+
+BOOST_AUTO_TEST_SUITE(SuperVectorCalculatorTest)
+BOOST_AUTO_TEST_CASE(calculate_1gaussComponentSimpleMatrix) {
+	Mock<FeatureMatrixLoader> mockLoader;
+	cv::Mat simpleFeatureMatrix = (cv::Mat_<double>(3,3) << 0, -1, 0, -1, 5, -1, 0, -1, 0);
+	When(Method(mockLoader, get)).AlwaysReturn(simpleFeatureMatrix);
+	FeatureMatrixLoader& loader = mockLoader.get();
+
+	Mock<UbmLoader> mockUbm;
+	Ubm ubm;
+	ubm.means = 
+
+	BOOST_CHECK_EQUAL(3, 3);
+}
+//BOOST_AUTO_TEST_CASE(constructorWithFileReader_objectCreated_openCalledWithRighFileName) {
+//	string fileContent = "1\n4\n4\n1\n";
+//
+//	Mock<FileReaderInterface> mockFileReader;
+//	When(Method(mockFileReader, open)).Return();
+//	When(Method(mockFileReader, getContent)).Return(fileContent);
+//	FileReaderInterface& fileReader = mockFileReader.get();
+//
+//	Moods moods(fileReader, "fileName");
+//
+//	Verify(Method(mockFileReader, open).Using("fileName")).AtLeastOnce();
+//}
+BOOST_AUTO_TEST_SUITE_END()

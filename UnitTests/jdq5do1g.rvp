@@ -1,0 +1,31 @@
+#pragma warning(push, 0)
+#include <boost/test/unit_test.hpp>
+#include <fakeit.hpp>
+
+#include "opencv/cv.h"
+#include "UbmLoader.h"
+#include <boost/math/distributions/normal.hpp>
+#pragma warning(pop)
+using namespace fakeit;
+using namespace std;
+
+BOOST_AUTO_TEST_SUITE(UbmTest)
+BOOST_AUTO_TEST_CASE(likelihood_1gaussComponent1d) {
+	Ubm ubm;
+	ubm.means = (cv::Mat_<double>(1, 1) << 0);
+	ubm.weights = (cv::Mat_<double>(1, 1) << 0);
+	ubm.numGaussComponents = 1;
+
+	int numDimensions = 1;
+	for (int mfcc_coef = 0; mfcc_coef < numDimensions; mfcc_coef++) {
+		for (int gaus_nmbr = 0; gaus_nmbr < ubm.numGaussComponents; gaus_nmbr++) {
+			//                                                                         lub na odwrót 
+			norm_distr[gaus_nmbr][mfcc_coef] = normal_distribution<>(means.at<double>(gaus_nmbr, mfcc_coef),
+				sqrt(covs[gaus_nmbr].at<double>(mfcc_coef)));
+		}
+	}
+
+
+	BOOST_CHECK_EQUAL(3, 3);
+}
+BOOST_AUTO_TEST_SUITE_END()

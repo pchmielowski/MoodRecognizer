@@ -24,12 +24,12 @@
     <Filter Include="SuperVectorCalculator">
       <UniqueIdentifier>{cfb23d5f-9f82-43e3-9ca6-7f6c88d8c124}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Ubm">
+      <UniqueIdentifier>{1c6d0281-664c-48eb-a1cd-04829da0247e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Types.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Ubm.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="SvmClassifier.h">
@@ -67,6 +67,12 @@
     </ClInclude>
     <ClInclude Include="SuperVectorCalculator.h">
       <Filter>SuperVectorCalculator</Filter>
+    </ClInclude>
+    <ClInclude Include="UbmLoader.h">
+      <Filter>Ubm</Filter>
+    </ClInclude>
+    <ClInclude Include="Ubm.h">
+      <Filter>Ubm</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

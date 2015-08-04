@@ -4,7 +4,7 @@
 #include <vector>
 
 typedef std::string			FileName;
-typedef cv::Mat				FeatureMatrix; // TODO: cv::Mat
+typedef cv::Mat				FeatureMatrix; 
 typedef float				Alpha;
-typedef std::vector<float>	SuperVector; // TODO:: mo¿e te¿ Mat
+typedef cv::Mat				SuperVector;
 typedef int					Mood;

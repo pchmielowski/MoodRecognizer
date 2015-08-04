@@ -5,7 +5,6 @@
 #include "FeatureMatrixLoader.h"
 #include <boost/math/distributions/normal.hpp>
 #include "opencv/cv.h"
-#include "Ubm.h"
 
 using namespace std;
 using namespace cv;
@@ -16,11 +15,21 @@ public:
 	SuperVectorCalculator(FeatureMatrixLoader& featureMatrixLoader, 
 		vector<Alpha> alpha, vector<int> numComponents, UbmLoader& ubm);
 	SuperVector calculate(FileName featureMatrixFileName);
+
+
 private:
 	UbmLoader* ubmLoader_;
-	Ubm ubm_;
+	struct Ubm
+	{
+		int numGaussComponents;
+		cv::Mat weights;
+		cv::Mat means;
+		vector<cv::Mat> covs;
+		vector<vector<boost::math::normal_distribution<>>> norm_distr;
+	} ubm_;
 	vector<Alpha> alphas_;
 	FeatureMatrixLoader* featureMatrixLoader_;
+	double likelihood(const Mat& x, int gaus_nmbr) const;
 	void appendAdaptedMeanToSuperVector(SuperVector &superVector, Mat &mu_i);
 
 };
