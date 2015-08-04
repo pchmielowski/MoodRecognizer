@@ -13,13 +13,13 @@ using namespace cv;
 class SuperVectorCalculator
 {
 public:
-	SuperVectorCalculator(FeatureMatrixLoader& featureMatrixLoader, 
-		vector<Alpha> alpha, vector<int> numComponents, UbmLoader& ubm);
-	SuperVector calculate(FileName featureMatrixFileName);
+	SuperVectorCalculator(FeatureMatrixLoader& featureMatrixLoader, UbmLoader& ubmLoader, 
+		vector<Alpha> alpha, vector<int> numComponents);
+	SuperVectors calculate(FileName featureMatrixFileName);
 private:
-	UbmLoader* ubmLoader_;
 	Ubm ubm_;
 	vector<Alpha> alphas_;
+	vector<int> numComponents_;
 	FeatureMatrixLoader* featureMatrixLoader_;
 	void appendAdaptedMeanToSuperVector(SuperVector &superVector, Mat &mu_i);
 

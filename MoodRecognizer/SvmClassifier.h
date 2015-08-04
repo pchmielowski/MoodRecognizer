@@ -10,4 +10,6 @@ public:
 	SvmClassifier(SuperVectorCalculator& superVectorCalculator, FileName svmModelFileName);
 	void train(Moods& moods, InputFileNames& inputFileNames);
 	Moods predictMoods(InputFileNames& inputFileNames);
+
+	SuperVectors reduce(SuperVectors superVectorsToReduce);
 };

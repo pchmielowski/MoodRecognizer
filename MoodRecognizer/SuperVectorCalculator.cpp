@@ -2,14 +2,23 @@
 #include "Types.h"
 
 using namespace cv;
-
-SuperVector SuperVectorCalculator::calculate(FileName featureMatrixFileName)
+SuperVectorCalculator::SuperVectorCalculator(FeatureMatrixLoader& featureMatrixLoader,
+	UbmLoader& ubmLoader, vector<Alpha> alpha, vector<int> numComponents)
 {
-	//ubmLoader_
+	featureMatrixLoader_ = &featureMatrixLoader;
+	ubm_ = ubmLoader.getUbm();
+	alphas_ = alpha;
+	numComponents_ = numComponents;
+}
+
+SuperVectors SuperVectorCalculator::calculate(FileName featureMatrixFileName)
+{
 	FeatureMatrix featureMatrix = featureMatrixLoader_->get(featureMatrixFileName);
 	assert(featureMatrix.rows > 0 && featureMatrix.cols > 0);
 	int numTimeWindows = featureMatrix.cols;
-	int numGaussComponents = ubm_.numGaussComponents;
+	int numGaussComponents = ubm_.numGaussComponents_;
+	assert(ubm_.weights_.rows == 1);
+	assert(ubm_.weights_.cols == numGaussComponents);
 
 	double** eq3 = new double*[numTimeWindows];
 	for (int t = 0; t < numTimeWindows; t++)
@@ -19,54 +28,64 @@ SuperVector SuperVectorCalculator::calculate(FileName featureMatrixFileName)
 
 		for (int componentIdx = 0; componentIdx < numGaussComponents; ++componentIdx)
 		{
-			double weight = ubm_.weights.at<double>(componentIdx);
+			double weight = ubm_.weights_.at<double>(componentIdx);
 			eq3Counters[componentIdx] = weight * ubm_.logLikelihood(featureMatrix.col(t), componentIdx);
 			eq3Denominator += eq3Counters[componentIdx];
-			// TODO: podczas optymalizacji sprawdziæ
-			// czy da siê omin¹æ =+, 
-			// ¿eby b³êdy numeryczne siê nie akumulowa³y tak bardzo
 		}
 
 		eq3[t] = new double[numGaussComponents];
 		for (int componentIdx = 0; componentIdx < numGaussComponents; ++componentIdx)
 		{
+			assert(abs(eq3Denominator) > 1e-10);
 			eq3[t][componentIdx] = eq3Counters[componentIdx] / eq3Denominator;
 		}
 		delete[] eq3Counters;
 	}
 
-	SuperVector superVector;
-	int alphaIdx = 0;
+	SuperVectors superVectors(alphas_.size());
+	//superVectors.resize(alphas_.size(), NULL);
+	//SuperVector superVector;
 	int numCoeff = featureMatrix.rows;
 	for (int componentIdx = 0; componentIdx < numGaussComponents; ++componentIdx)
 	{
-		Mat eq2Counter = Mat::zeros(1, numCoeff, CV_64F);
+		Mat eq2Counter = Mat::zeros(numCoeff, 1, CV_64F);
 		double eq2Denominator = 0;
 		for (int t = 0; t < numTimeWindows; t++) {
 			eq2Counter += eq3[t][componentIdx] * featureMatrix.col(t);
 			eq2Denominator += eq3[t][componentIdx];
 		}
 
+		assert(abs(eq2Denominator) > 1e-10);
 		Mat eq2 = eq2Counter / eq2Denominator;
 		assert(eq2.rows == numCoeff);
 		assert(eq2.cols == 1);
-		assert(ubm_.means.rows == numCoeff);
-		assert(ubm_.means.cols == numGaussComponents);
+		assert(ubm_.means_.rows == numCoeff);
+		assert(ubm_.means_.cols == numGaussComponents);
 
 		// Eq. 1
-		Mat mu_i;
-		addWeighted(eq2, alphas_[alphaIdx], ubm_.means.col(componentIdx), 1.0 - alphas_[alphaIdx], 0.0, mu_i);
-		assert(mu_i.rows == numCoeff);
-		assert(mu_i.cols == 1);
-		appendAdaptedMeanToSuperVector(superVector, mu_i);
+		int alphaIdx = 0;
+		for (auto alpha : alphas_) {
+			Mat mu_i;
+			addWeighted(eq2, alpha, ubm_.means_.col(componentIdx), 1.0 - alpha, 0.0, mu_i);
+			assert(mu_i.rows == numCoeff);
+			assert(mu_i.cols == 1);
+			appendAdaptedMeanToSuperVector(superVectors[alphaIdx], mu_i);
+			++alphaIdx;
+		}
 	}
 
 	for (int t = 0; t < numTimeWindows; t++)
 		delete[] eq3[t];
 	delete[] eq3;
-	return superVector;
+
+	//superVectors.push_back(superVector);
+
+	assert(superVectors.size() == alphas_.size());
+	return superVectors;
 }
 
+
+// private:
 void SuperVectorCalculator::appendAdaptedMeanToSuperVector(SuperVector &superVector, Mat &mu_i)
 {
 	int initialNumRows = superVector.rows;
@@ -80,8 +99,4 @@ void SuperVectorCalculator::appendAdaptedMeanToSuperVector(SuperVector &superVec
 	assert(superVector.cols == 1);
 }
 
-SuperVectorCalculator::SuperVectorCalculator(FeatureMatrixLoader& featureMatrixLoader, vector<Alpha> alpha, vector<int> numComponents, UbmLoader& ubm)
-{
-
-}
 
