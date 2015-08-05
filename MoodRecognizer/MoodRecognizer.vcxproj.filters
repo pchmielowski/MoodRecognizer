@@ -33,6 +33,9 @@
     <Filter Include="SvmClassifier">
       <UniqueIdentifier>{febccd9b-9ae2-40ec-804b-2cb9524dfd8d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="PcaReductor">
+      <UniqueIdentifier>{67840815-f48c-47b8-894b-db19be18360c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Types.h">
@@ -84,7 +87,7 @@
       <Filter>SvmClassifier</Filter>
     </ClInclude>
     <ClInclude Include="PcaReductor.h">
-      <Filter>Header Files</Filter>
+      <Filter>PcaReductor</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -116,7 +119,10 @@
       <Filter>SuperVectorCollector</Filter>
     </ClCompile>
     <ClCompile Include="PcaReductor.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>PcaReductor</Filter>
+    </ClCompile>
+    <ClCompile Include="SvmClassifier.cpp">
+      <Filter>SvmClassifier</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -1,0 +1,29 @@
+#include "SvmClassifier.h"
+#include "opencv2\ml\ml.hpp"
+#include "opencv/cv.h"
+
+using namespace cv;
+
+void SvmClassifier::trainSvm(MoodsVector moods, SuperVectors superVectors)
+{
+	// Set up SVM's parameters
+	CvSVMParams params;
+	params.svm_type = CvSVM::C_SVC;
+	params.kernel_type = CvSVM::RBF;
+	params.term_crit = cvTermCriteria(CV_TERMCRIT_ITER, 100, 1e-6);
+
+	// Train the SVM
+	CvSVM SVM;
+	SVM.train(trainingDataMat, labelsMat, Mat(), Mat(), params);
+}
+
+Mood SvmClassifier::predict(SuperVector superVector)
+{
+	return 0;
+}
+
+SvmClassifier::SvmClassifier(FileName svmModelFileName)
+{
+
+}
+

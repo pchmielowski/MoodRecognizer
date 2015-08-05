@@ -51,7 +51,7 @@
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>C:\Dysk Google\boost\boost_1_55_0\stage\lib;C:\Dysk Google\lame;C:\Dysk Google\matio-1.5.2\matio-1.5.2\visual_studio\Release;C:\Dysk Google\opencv249\build\x86\vc12\lib</AdditionalLibraryDirectories>
-      <AdditionalDependencies>libmp3lame-static.lib;libmpghip-static.lib;libmatio.lib;opencv_core249d.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>libmp3lame-static.lib;libmpghip-static.lib;libmatio.lib;opencv_core249d.lib;opencv_ml249d.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <ProjectReference>
       <UseLibraryDependencyInputs>false</UseLibraryDependencyInputs>
@@ -101,6 +101,7 @@
     <ClCompile Include="PcaReductor.cpp" />
     <ClCompile Include="SuperVectorCalculator.cpp" />
     <ClCompile Include="SuperVectorCollector.cpp" />
+    <ClCompile Include="SvmClassifier.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
