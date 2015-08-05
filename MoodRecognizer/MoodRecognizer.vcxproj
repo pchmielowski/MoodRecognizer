@@ -82,8 +82,10 @@
     <ClInclude Include="MoodsInterface.h" />
     <ClInclude Include="Mp3FeatureMatrixLoader.h" />
     <ClInclude Include="Mp3InputFileNames.h" />
+    <ClInclude Include="PcaReductor.h" />
     <ClInclude Include="SuperVectorCalculator.h" />
     <ClInclude Include="SuperVectorCollector.h" />
+    <ClInclude Include="SvmClassifier.h" />
     <ClInclude Include="Types.h" />
     <ClInclude Include="Ubm.h" />
     <ClInclude Include="UbmLoader.h" />
@@ -96,6 +98,7 @@
     <ClCompile Include="Moods.cpp" />
     <ClCompile Include="Mp3FeatureMatrixLoader.cpp" />
     <ClCompile Include="Mp3InputFileNames.cpp" />
+    <ClCompile Include="PcaReductor.cpp" />
     <ClCompile Include="SuperVectorCalculator.cpp" />
     <ClCompile Include="SuperVectorCollector.cpp" />
   </ItemGroup>

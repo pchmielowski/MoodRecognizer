@@ -30,6 +30,9 @@
     <Filter Include="SuperVectorCollector">
       <UniqueIdentifier>{f1e9f107-1d7d-40c3-b35a-a2796f6c96a1}</UniqueIdentifier>
     </Filter>
+    <Filter Include="SvmClassifier">
+      <UniqueIdentifier>{febccd9b-9ae2-40ec-804b-2cb9524dfd8d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Types.h">
@@ -77,6 +80,12 @@
     <ClInclude Include="SuperVectorCollector.h">
       <Filter>SuperVectorCollector</Filter>
     </ClInclude>
+    <ClInclude Include="SvmClassifier.h">
+      <Filter>SvmClassifier</Filter>
+    </ClInclude>
+    <ClInclude Include="PcaReductor.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Moods.cpp">
@@ -105,6 +114,9 @@
     </ClCompile>
     <ClCompile Include="SuperVectorCollector.cpp">
       <Filter>SuperVectorCollector</Filter>
+    </ClCompile>
+    <ClCompile Include="PcaReductor.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

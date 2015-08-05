@@ -58,7 +58,7 @@
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>C:\OneDrive\C_MoodRecognizer\MoodRecognizer\Debug;C:\Dysk Google\boost\boost_1_55_0\stage\lib;C:\Dysk Google\opencv249\build\x86\vc12\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>Configuration.obj;Moods.obj;InputFileNames.obj;Mp3InputFileNames.obj;opencv_core249d.lib;SuperVectorCalculator.obj;SuperVectorCollector.obj;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>Configuration.obj;Moods.obj;InputFileNames.obj;Mp3InputFileNames.obj;opencv_core249d.lib;SuperVectorCalculator.obj;SuperVectorCollector.obj;PcaReductor.obj;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -83,6 +83,7 @@
     <ClCompile Include="InputFileNamesTest.cpp" />
     <ClCompile Include="MoodsTest.cpp" />
     <ClCompile Include="ConfigurationTest.cpp" />
+    <ClCompile Include="PcaReductorTest.cpp" />
     <ClCompile Include="SuperVectorCalculatorTest.cpp" />
     <ClCompile Include="SuperVectorCollectorTest.cpp" />
     <ClCompile Include="UbmTest.cpp" />

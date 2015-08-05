@@ -9,11 +9,6 @@ Moods SuperVectorCollector::predictMoods(InputFileNames& inputFileNames)
 	return Moods();
 }
 
-void SuperVectorCollector::trainPca(SuperVectors)
-{
-
-}
-
 void SuperVectorCollector::train(MoodsInterface& moods, InputFileNames& inputFileNames)
 {
 	SuperVectors allSuperVectors;
@@ -31,11 +26,10 @@ void SuperVectorCollector::train(MoodsInterface& moods, InputFileNames& inputFil
 	}
 
 
-	trainPca(allSuperVectors);
-
 }
 
-SuperVectorCollector::SuperVectorCollector(SuperVectorCalculator& superVectorCalculator, FileName svmModelFileName)
+SuperVectorCollector::SuperVectorCollector(SuperVectorCalculator& superVectorCalculator, 
+	SvmClassifier& svmClassifier)
 {
 
 }
