@@ -83,7 +83,7 @@
     <ClInclude Include="Mp3FeatureMatrixLoader.h" />
     <ClInclude Include="Mp3InputFileNames.h" />
     <ClInclude Include="SuperVectorCalculator.h" />
-    <ClInclude Include="SvmClassifier.h" />
+    <ClInclude Include="SuperVectorCollector.h" />
     <ClInclude Include="Types.h" />
     <ClInclude Include="Ubm.h" />
     <ClInclude Include="UbmLoader.h" />
@@ -97,7 +97,7 @@
     <ClCompile Include="Mp3FeatureMatrixLoader.cpp" />
     <ClCompile Include="Mp3InputFileNames.cpp" />
     <ClCompile Include="SuperVectorCalculator.cpp" />
-    <ClCompile Include="SvmClassifier.cpp" />
+    <ClCompile Include="SuperVectorCollector.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

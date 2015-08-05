@@ -8,13 +8,13 @@
 //#include "FeatureMatrixLoader.h"
 //#include "SuperVectorCalculator.h"
 //#include "UbmLoader.h"
-#include "SvmClassifier.h"
+#include "SuperVectorCollector.h"
 #include "MoodsInterface.h"
 #include "InputFileNames.h"
 using namespace fakeit;
 using namespace std;
 
-class SvmClassifierTestFixture
+class SuperVectorCollectorTestFixture
 {
 public:
 	//Mock<FeatureMatrixLoader> featureMatrixLoader;
@@ -26,7 +26,7 @@ private:
 
 };
 
-BOOST_FIXTURE_TEST_SUITE(SvmClassifierCalculatorTest, SvmClassifierTestFixture)
+BOOST_FIXTURE_TEST_SUITE(SuperVectorCollectorTest, SuperVectorCollectorTestFixture)
 BOOST_AUTO_TEST_CASE(SimplePca2Files)
 {
 	SuperVectors superVectors1;
@@ -39,7 +39,7 @@ BOOST_AUTO_TEST_CASE(SimplePca2Files)
 	When(Method(superVectorCalculator, calculate)).Return(superVectors2);
 	SuperVectorCalculator* superVectorCalculatorInstance = &superVectorCalculator.get();
 
-	SvmClassifier svmClassifier(*superVectorCalculatorInstance, "anyFile");
+	SuperVectorCollector superVectorCollector(*superVectorCalculatorInstance, "anyFile");
 
 	Mock<MoodsInterface> moods;
 	MoodsInterface* moodsInstance = &moods.get();
@@ -49,6 +49,6 @@ BOOST_AUTO_TEST_CASE(SimplePca2Files)
 	When(Method(inputFileNames, fileNamesLeft)).Return(false); // two files
 	InputFileNames* inputFileNamesInstance = &inputFileNames.get();
 
-	svmClassifier.train(*moodsInstance, *inputFileNamesInstance);
+	superVectorCollector.train(*moodsInstance, *inputFileNamesInstance);
 }
 BOOST_AUTO_TEST_SUITE_END()

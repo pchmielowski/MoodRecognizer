@@ -1,20 +1,20 @@
-#include "SvmClassifier.h"
+#include "SuperVectorCollector.h"
 #include "Moods.h"
 #include "Mp3InputFileNames.h"
 #include "MatInputFileNames.h"
 
 
-Moods SvmClassifier::predictMoods(InputFileNames& inputFileNames)
+Moods SuperVectorCollector::predictMoods(InputFileNames& inputFileNames)
 {
 	return Moods();
 }
 
-void SvmClassifier::trainPca(SuperVectors)
+void SuperVectorCollector::trainPca(SuperVectors)
 {
 
 }
 
-void SvmClassifier::train(MoodsInterface& moods, InputFileNames& inputFileNames)
+void SuperVectorCollector::train(MoodsInterface& moods, InputFileNames& inputFileNames)
 {
 	SuperVectors allSuperVectors;
 	inputFileNames_ = &inputFileNames;
@@ -35,7 +35,7 @@ void SvmClassifier::train(MoodsInterface& moods, InputFileNames& inputFileNames)
 
 }
 
-SvmClassifier::SvmClassifier(SuperVectorCalculator& superVectorCalculator, FileName svmModelFileName)
+SuperVectorCollector::SuperVectorCollector(SuperVectorCalculator& superVectorCalculator, FileName svmModelFileName)
 {
 
 }

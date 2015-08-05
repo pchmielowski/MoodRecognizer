@@ -27,7 +27,7 @@
     <Filter Include="Ubm">
       <UniqueIdentifier>{1c6d0281-664c-48eb-a1cd-04829da0247e}</UniqueIdentifier>
     </Filter>
-    <Filter Include="SvmClassifier">
+    <Filter Include="SuperVectorCollector">
       <UniqueIdentifier>{f1e9f107-1d7d-40c3-b35a-a2796f6c96a1}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
@@ -74,8 +74,8 @@
     <ClInclude Include="Ubm.h">
       <Filter>Ubm</Filter>
     </ClInclude>
-    <ClInclude Include="SvmClassifier.h">
-      <Filter>SvmClassifier</Filter>
+    <ClInclude Include="SuperVectorCollector.h">
+      <Filter>SuperVectorCollector</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -103,8 +103,8 @@
     <ClCompile Include="SuperVectorCalculator.cpp">
       <Filter>SuperVectorCalculator</Filter>
     </ClCompile>
-    <ClCompile Include="SvmClassifier.cpp">
-      <Filter>SvmClassifier</Filter>
+    <ClCompile Include="SuperVectorCollector.cpp">
+      <Filter>SuperVectorCollector</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
