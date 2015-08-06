@@ -1,0 +1,37 @@
+#pragma warning(push, 0)
+#include <boost/test/unit_test.hpp>
+#include <fakeit.hpp>
+#include <string>
+#include "opencv/cv.h"
+#include "UbmLoader.h"
+#pragma warning(pop)
+
+#include "SuperVectorCollector.h"
+
+using namespace fakeit;
+using namespace std;
+
+class SuperVectorCollectorTestFixture
+{
+public:
+
+private:
+
+};
+
+BOOST_FIXTURE_TEST_SUITE(SuperVectorCollectorTest, SuperVectorCollectorTestFixture)
+BOOST_AUTO_TEST_CASE(train_oneAlphaTwoInputFiles_correctCallsToInputFileNames)
+{
+	const Mood fakeMood = 0;
+	Mock<MoodsInterface> moods;
+	When(Method(moods, getNextMood)).AlwaysReturn(fakeMood);
+	MoodsInterface& moodsInstance = mood.get();
+
+	Mock<InputFileNames> inputFileNames;
+	When(Method(inputFileNames, fileNamesLeft)).Return(true).Return(false);
+	InputFileNames& inputFileNamesInstance = inputFileNames.get();
+
+	SuperVectorCollector SUT(moodsInstance, inputFileNamesInstance);
+}
+// poprawne moody do Svm
+BOOST_AUTO_TEST_SUITE_END()

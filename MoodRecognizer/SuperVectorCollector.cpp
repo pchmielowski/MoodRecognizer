@@ -27,7 +27,6 @@ void SuperVectorCollector::train(MoodsInterface& moods, InputFileNames& inputFil
 		++numFilesRead;
 		int numSuperVectorsForFile = superVectorsForFile.size();
 		assert(allSuperVectors.size() == numFilesRead*numSuperVectorsForFile);
-		
 	}
 
 	for (auto alpha : *alphas_)
