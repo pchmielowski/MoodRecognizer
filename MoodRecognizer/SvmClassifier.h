@@ -10,7 +10,7 @@ class SvmClassifier
 {
 public:
 	SvmClassifier(FileName svmModelFileName);
-	void trainSvm(MoodsVector moods, SuperVectors superVectors);
+	void trainSvm(const MoodsVector& moods, const SuperVectors& superVectors);
 	Mood predict(SuperVector superVector);
 	~SvmClassifier() {
 		svm_.clear();

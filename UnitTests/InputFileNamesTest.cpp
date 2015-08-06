@@ -55,4 +55,43 @@ BOOST_AUTO_TEST_CASE(getNextFileName_wrongPath_throwsException) {
 	BOOST_REQUIRE_THROW(Mp3InputFileNames inputFileNames("some wrong path"); , std::runtime_error);
 
 }
+BOOST_AUTO_TEST_CASE(fileNamesLeft_getAllAndReset_true) {
+	Mp3InputFileNames inputFileNames(TEST_TREE_PATH);
+
+	while (inputFileNames.fileNamesLeft()) {
+		inputFileNames.getNextFileName();
+	}
+	inputFileNames.reset();
+
+	BOOST_CHECK_EQUAL(inputFileNames.fileNamesLeft(), true);
+}
+BOOST_AUTO_TEST_CASE(fileNamesLeft_getAllAndResetTwoTimes_true) {
+	Mp3InputFileNames inputFileNames(TEST_TREE_PATH);
+
+	while (inputFileNames.fileNamesLeft()) {
+		inputFileNames.getNextFileName();
+	}
+	inputFileNames.reset();
+
+	while (inputFileNames.fileNamesLeft()) {
+		inputFileNames.getNextFileName();
+	}
+	inputFileNames.reset();
+
+	BOOST_CHECK_EQUAL(inputFileNames.fileNamesLeft(), true);
+}
+BOOST_AUTO_TEST_CASE(fileNamesLeft_getAllAndResetAndGetAll_false) {
+	Mp3InputFileNames inputFileNames(TEST_TREE_PATH);
+
+	while (inputFileNames.fileNamesLeft()) {
+		inputFileNames.getNextFileName();
+	}
+	inputFileNames.reset();
+
+	while (inputFileNames.fileNamesLeft()) {
+		inputFileNames.getNextFileName();
+	}
+
+	BOOST_CHECK_EQUAL(inputFileNames.fileNamesLeft(), false);
+}
 BOOST_AUTO_TEST_SUITE_END()

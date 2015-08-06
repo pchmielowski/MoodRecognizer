@@ -24,10 +24,10 @@ public:
 			moods.push_back(2);
 			moods.push_back(3);
 	
-			superVectors.push_back((cv::Mat_<double>(2, 1) << 1, 0));
-			superVectors.push_back((cv::Mat_<double>(2, 1) << 1, 1));
-			superVectors.push_back((cv::Mat_<double>(2, 1) << 0, 1));
-			superVectors.push_back((cv::Mat_<double>(2, 1) << 0, 0));
+			superVectors.push_back((cv::Mat_<float>(2, 1) << 1, 0));
+			superVectors.push_back((cv::Mat_<float>(2, 1) << 1, 1));
+			superVectors.push_back((cv::Mat_<float>(2, 1) << 0, 1));
+			superVectors.push_back((cv::Mat_<float>(2, 1) << 0, 0));
 		}
 	}
 };
@@ -43,24 +43,24 @@ BOOST_AUTO_TEST_CASE(SimpleTrainingAndPredicting)
 	Mood mood;
 	SuperVector superVector;
 
-	//superVector = (cv::Mat_<double>(2, 1) << 0, 1);
-	//mood = svmClassifier.predict(superVector);
-	//BOOST_CHECK_EQUAL(mood, 2);
+	superVector = (cv::Mat_<float>(2, 1) << 0, 1);
+	mood = svmClassifier.predict(superVector);
+	BOOST_CHECK_EQUAL(mood, 2);
 
-	//superVector = (cv::Mat_<double>(2, 1) << 1, 1);
-	//mood = svmClassifier.predict(superVector);
-	//BOOST_CHECK_EQUAL(mood, 1);
+	superVector = (cv::Mat_<float>(2, 1) << 1, 1);
+	mood = svmClassifier.predict(superVector);
+	BOOST_CHECK_EQUAL(mood, 1);
 
-	//superVector = (cv::Mat_<double>(2, 1) << .9, .9);
-	//mood = svmClassifier.predict(superVector);
-	//BOOST_CHECK_EQUAL(mood, 1);
+	superVector = (cv::Mat_<float>(2, 1) << .9, .9);
+	mood = svmClassifier.predict(superVector);
+	BOOST_CHECK_EQUAL(mood, 1);
 
-	//superVector = (cv::Mat_<double>(2, 1) << 0, 0);
-	//mood = svmClassifier.predict(superVector);
-	//BOOST_CHECK_EQUAL(mood, 3);
+	superVector = (cv::Mat_<float>(2, 1) << 0, 0);
+	mood = svmClassifier.predict(superVector);
+	BOOST_CHECK_EQUAL(mood, 3);
 
-	//superVector = (cv::Mat_<double>(2, 1) << 0.4, -0.1);
-	//mood = svmClassifier.predict(superVector);
-	//BOOST_CHECK_EQUAL(mood, 3);
+	superVector = (cv::Mat_<float>(2, 1) << 0.4, -0.1);
+	mood = svmClassifier.predict(superVector);
+	BOOST_CHECK_EQUAL(mood, 3);
 }
 BOOST_AUTO_TEST_SUITE_END()

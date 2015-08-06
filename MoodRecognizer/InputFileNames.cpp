@@ -33,11 +33,18 @@ void InputFileNames::makeQueue(const path inputFolderPath)
 			fileNameQueue_.push(itr->path().string());
 		}
 	}
+
+	nonReducingFileNameQueue_ = fileNameQueue_;
 }
 
 
 const bool InputFileNames::fileNamesLeft()
 {
 	return fileNameQueue_.empty() == 0;
+}
+
+void InputFileNames::reset()
+{
+	fileNameQueue_ = nonReducingFileNameQueue_;
 }
 

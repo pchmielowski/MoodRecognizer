@@ -10,10 +10,12 @@ public:
 	InputFileNames() {};
 	virtual FileName getNextFileName();
 	virtual const bool fileNamesLeft();
+	void reset();
 protected:
 	void makeQueue(const path inputFolderPath);
 private:
 	virtual bool hasRightExtension(directory_iterator itr) = 0;
 	queue<FileName> fileNameQueue_;
+	queue<FileName> nonReducingFileNameQueue_;
 
 };
