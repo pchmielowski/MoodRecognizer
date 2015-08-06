@@ -13,7 +13,7 @@ public:
 	virtual void trainPca(SuperVectors superVectors);
 
 
-	SuperVector reduce(SuperVector superVectorToReduce);
+	virtual SuperVector reduce(SuperVector superVectorToReduce);
 private: 
 	std::vector<int> nOfComponents_;
 	int getSuperVectorSize(SuperVectors &superVectors);

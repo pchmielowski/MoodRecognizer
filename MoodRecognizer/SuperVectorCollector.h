@@ -16,8 +16,8 @@ public:
 
 	Moods predictMoods(InputFileNames& inputFileNames);
 private:
-	InputFileNames* inputFileNames_;
-	SuperVectorCalculator* superVectorCalculator_;
-	PcaReductor* pcaReductor_;
-	AlphaVector* alphas_;
+	InputFileNames* inputFileNames_ = nullptr;
+	SuperVectorCalculator* superVectorCalculator_ = nullptr;
+	PcaReductor* pcaReductor_ = nullptr;
+	AlphaVector alphas_;
 };

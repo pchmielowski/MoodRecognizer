@@ -65,17 +65,20 @@ BOOST_AUTO_TEST_CASE(train_oneAlphaTwoInputFiles_correctCalls)
 	SUT.train(moodsInstance, inputFileNamesInstance);
 
 	// ASSERT
-	const int NUM_FILES = 2;
-	Verify(Method(inputFileNames, getNextFileName)).Exactly(NUM_FILES);
+	// verify  (liczba plików) x call do:
+	// inputFileNames_->getNextFileName();
+	Verify(Method(inputFileNames, getNextFileName)).Exactly(2);
+	// superVectorCalculator_->calculate(fileName); <--- fileName otrzymany wy¿ej
 	Verify(Method(superVectorCalculator, calculate).Using("someFileName")).Exactly(1);
 	Verify(Method(superVectorCalculator, calculate).Using("anotherFileName")).Exactly(1);
-	Verify(Method(moods, getNextMood)).Exactly(NUM_FILES);
-	
-	const int NUM_ALPHAS = 1;
-	Verify(Method(pcaReductor, trainPca)).Exactly(NUM_ALPHAS); // .Using(superVectorsForAlpha)
-	Verify(Method(inputFileNames, reset)).Exactly(NUM_ALPHAS);
-	Verify(Method(inputFileNames, fileNamesLeft)).Exactly(NUM_FILES+1+NUM_ALPHAS*(NUM_FILES+1));
-	Verify(Method(pcaReductor, reduce)).Exactly(NUM_ALPHAS*NUM_FILES); // .Using(superVectorForFileAndAlpha)
+	// moods.getNextMood();
+
+	// (liczba alf) call do:
+	// pcaReductor_->trainPca(superVectorsForAlpha);
+	// inputFileNames_->reset();
+	//    (liczba plików)  x
+	//    while (inputFileNames_->fileNamesLeft())
+	//    reducedSuperVectorForFileAndAlpha = pcaReductor_->reduce(superVectorForFileAndAlpha);
 
 }
 // dodaæ poprawne moody do Svm

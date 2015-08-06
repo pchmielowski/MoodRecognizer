@@ -19,19 +19,25 @@ void SuperVectorCollector::train(MoodsInterface& moods, InputFileNames& inputFil
 	{
 		FileName fileName = inputFileNames_->getNextFileName();
 
+		assert(superVectorCalculator_ != nullptr);
 		SuperVectors superVectorsForFile = superVectorCalculator_->calculate(fileName);
 
 		moods.getNextMood();
 
-		allSuperVectors.insert(allSuperVectors.end(), superVectorsForFile.begin(), superVectorsForFile.end());
+		if (allSuperVectors.size() == 0)
+			allSuperVectors = superVectorsForFile;
+		else
+			allSuperVectors.insert(allSuperVectors.end(), superVectorsForFile.begin(), superVectorsForFile.end());
 		++numFilesRead;
 		int numSuperVectorsForFile = superVectorsForFile.size();
 		assert(allSuperVectors.size() == numFilesRead*numSuperVectorsForFile);
 	}
 
-	for (auto alpha : *alphas_)
+	assert(alphas_.size() > 0);
+	for (auto alpha : alphas_)
 	{
-	SuperVectors superVectorsForAlpha;
+		SuperVectors superVectorsForAlpha;
+		assert(pcaReductor_ != nullptr);
 		pcaReductor_->trainPca(superVectorsForAlpha);
 
 		inputFileNames_->reset();
@@ -41,13 +47,15 @@ void SuperVectorCollector::train(MoodsInterface& moods, InputFileNames& inputFil
 			SuperVector reducedSuperVectorForFileAndAlpha;
 			reducedSuperVectorForFileAndAlpha = pcaReductor_->reduce(superVectorForFileAndAlpha);
 		}
-		// trainSvm(moods, superVectors);
+		 //trainSvm(moods, superVectors);
 	}
 
 }
 
-SuperVectorCollector::SuperVectorCollector(SuperVectorCalculator& superVectorCalculator, PcaReductor& pcaReductor, 
-	SvmClassifier& svmClassifier, const AlphaVector alphas)
+SuperVectorCollector::SuperVectorCollector(SuperVectorCalculator& superVectorCalculator, PcaReductor& pcaReductor,
+	SvmClassifier& svmClassifier, AlphaVector alphas)
 {
-
+	superVectorCalculator_ = &superVectorCalculator;
+	pcaReductor_ = &pcaReductor;
+	alphas_ = alphas;
 }
