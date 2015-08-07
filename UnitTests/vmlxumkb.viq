@@ -92,6 +92,7 @@ BOOST_AUTO_TEST_CASE(train_oneAlphaoneInputFile_correctCalls)
 	const int NUM_FILES = 1;
 	Verify(Method(inputFileNames, getNextFileName)).Exactly(NUM_FILES);
 	Verify(Method(superVectorCalculator, calculate).Using("firstFileName.mat")).Exactly(1);
+	//Verify(Method(superVectorCalculator, calculate).Using("anotherFileName.mat")).Exactly(1);
 	Verify(Method(moods, getNextMood)).Exactly(NUM_FILES);
 
 	const int NUM_ALPHAS = 1;
@@ -112,10 +113,7 @@ BOOST_AUTO_TEST_CASE(train_oneAlphaFourInputFiles_correctCalls)
 	const SuperVector for2File_firstAlpha = (cv::Mat_<float>(2, 1) << 1.9, 2.2);
 	const SuperVector for3File_firstAlpha = (cv::Mat_<float>(2, 1) << 4, 2);
 	const SuperVector for4File_firstAlpha = (cv::Mat_<float>(2, 1) << 0.3, 2.7);
-	const SuperVectors for1File = { for1File_firstAlpha };
-	const SuperVectors for2File = { for2File_firstAlpha };
-	const SuperVectors for3File = { for3File_firstAlpha };
-	const SuperVectors for4File = { for4File_firstAlpha };
+	const SuperVectors forFirstFile = { for1File_firstAlpha };
 	const SuperVectors forFirstAlpha = {
 		for1File_firstAlpha, for2File_firstAlpha,
 		for3File_firstAlpha, for4File_firstAlpha };
@@ -129,7 +127,7 @@ BOOST_AUTO_TEST_CASE(train_oneAlphaFourInputFiles_correctCalls)
 
 	// mocks
 	Mock<SuperVectorCalculator> superVectorCalculator;
-	When(Method(superVectorCalculator, calculate)).Return(for1File, for2File, for3File, for4File);
+	When(Method(superVectorCalculator, calculate)).Return(forFirstFile);
 	SuperVectorCalculator& superVectorCalculatorInstance = superVectorCalculator.get();
 
 	Mock<PcaReductor> pcaReductor;
@@ -186,17 +184,8 @@ BOOST_AUTO_TEST_CASE(train_oneAlphaFourInputFiles_correctCalls)
 		Matching([&](SuperVectors a){return isEq(a, forFirstAlpha); })).Exactly(1);
 	Verify(Method(inputFileNames, markAllAsUnread)).Exactly(NUM_ALPHAS);
 	Verify(Method(inputFileNames, fileNamesLeft)).Exactly(NUM_FILES + 1 + NUM_ALPHAS*(NUM_FILES + 1));
-
-	// TODO: sprawdziæ czy on nie oczekuje, ¿e te metody bêd¹ wywo³ywane jedna po drugiej
 	Verify(Method(pcaReductor, reduce).
-		Matching([&](const SuperVector& a){return isEq(a, for1File_firstAlpha); }),
-		Method(pcaReductor, reduce).
-		Matching([&](const SuperVector& a){return isEq(a, for2File_firstAlpha); }),
-		Method(pcaReductor, reduce).
-		Matching([&](const SuperVector& a){return isEq(a, for3File_firstAlpha); }),
-		Method(pcaReductor, reduce).
-		Matching([&](const SuperVector& a){return isEq(a, for4File_firstAlpha); })).Exactly(1);
-
+		Matching([&](const SuperVector& a){return isEq(a, forFirstFile_firstAlpha); })).Exactly(1);
 	Verify(Method(svmClassifier, trainSvm).
 		Matching([&](MoodsVector mv, SuperVectors a){return isEq(a, reduced_forFirstAlpha); }));
 }
