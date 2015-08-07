@@ -23,20 +23,20 @@ private:
 };
 
 BOOST_FIXTURE_TEST_SUITE(SuperVectorCollectorTest, SuperVectorCollectorTestFixture)
-BOOST_AUTO_TEST_CASE(train_oneAlphaTwoInputFiles_correctCalls)
+BOOST_AUTO_TEST_CASE(train_oneAlphaoneInputFile_correctCalls)
 {
 	// ARRANGE
-	SuperVector someSuperVector = (cv::Mat_<float>(2, 1) << 1, 2);
-	SuperVectors fakeSuperVectors;
-	fakeSuperVectors.push_back(someSuperVector);
+	const SuperVector superVectorForFirstFileAndFirstAlpha = (cv::Mat_<float>(2, 1) << 1, 2);
+	SuperVectors superVectorsForFirstFile;
+	superVectorsForFirstFile.push_back(superVectorForFirstFileAndFirstAlpha);
 	Mock<SuperVectorCalculator> superVectorCalculator;
-	When(Method(superVectorCalculator, calculate)).AlwaysReturn(fakeSuperVectors);
+	When(Method(superVectorCalculator, calculate)).Return(superVectorsForFirstFile);
 	SuperVectorCalculator& superVectorCalculatorInstance = superVectorCalculator.get();
 
-	SuperVector fakeReducedSuperVector = (cv::Mat_<float>(1, 1) << 1);
+	const SuperVector reducedSuperVectorForFirstFileAndFirstAlpha = (cv::Mat_<float>(1, 1) << 1);
 	Mock<PcaReductor> pcaReductor;
 	When(Method(pcaReductor, trainPca)).AlwaysReturn();
-	When(Method(pcaReductor, reduce)).AlwaysReturn(fakeReducedSuperVector);
+	When(Method(pcaReductor, reduce)).Return(reducedSuperVectorForFirstFileAndFirstAlpha);
 	PcaReductor& pcaReductorInstance = pcaReductor.get();
 
 	Mock<SvmClassifier> svmClassifier;
@@ -49,16 +49,16 @@ BOOST_AUTO_TEST_CASE(train_oneAlphaTwoInputFiles_correctCalls)
 		svmClassifierInstance, alphas);
 
 
-	const Mood fakeMood = 0;
+	const Mood moodForFirstFile = 0;
 	Mock<MoodsInterface> moods;
-	When(Method(moods, getNextMood)).AlwaysReturn(fakeMood);
+	When(Method(moods, getNextMood)).Return(moodForFirstFile);
 	MoodsInterface& moodsInstance = moods.get();
 
 	Mock<InputFileNames> inputFileNames;
 	When(Method(inputFileNames, fileNamesLeft)).
-		Return(true).Return(true).Return(false).
-		Return(true).Return(true).Return(false);
-	When(Method(inputFileNames, getNextFileName)).Return("someFileName.mat").Return("anotherFileName.mat");
+		Return(true)/*.Return(true)*/.Return(false).
+		Return(true)/*.Return(true)*/.Return(false);
+	When(Method(inputFileNames, getNextFileName)).Return("firstFileName.mat")/*.Return("anotherFileName.mat")*/;
 	When(Method(inputFileNames, markAllAsUnread)).AlwaysReturn();
 	InputFileNames& inputFileNamesInstance = inputFileNames.get();
 
@@ -66,10 +66,10 @@ BOOST_AUTO_TEST_CASE(train_oneAlphaTwoInputFiles_correctCalls)
 	SUT.train(moodsInstance, inputFileNamesInstance);
 
 	// ASSERT
-	const int NUM_FILES = 2;
+	const int NUM_FILES = 1;
 	Verify(Method(inputFileNames, getNextFileName)).Exactly(NUM_FILES);
-	Verify(Method(superVectorCalculator, calculate).Using("someFileName.mat")).Exactly(1);
-	Verify(Method(superVectorCalculator, calculate).Using("anotherFileName.mat")).Exactly(1);
+	Verify(Method(superVectorCalculator, calculate).Using("firstFileName.mat")).Exactly(1);
+	//Verify(Method(superVectorCalculator, calculate).Using("anotherFileName.mat")).Exactly(1);
 	Verify(Method(moods, getNextMood)).Exactly(NUM_FILES);
 	
 	const int NUM_ALPHAS = 1;
