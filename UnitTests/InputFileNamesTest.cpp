@@ -61,7 +61,7 @@ BOOST_AUTO_TEST_CASE(fileNamesLeft_getAllAndReset_true) {
 	while (inputFileNames.fileNamesLeft()) {
 		inputFileNames.getNextFileName();
 	}
-	inputFileNames.reset();
+	inputFileNames.markAllAsUnread();
 
 	BOOST_CHECK_EQUAL(inputFileNames.fileNamesLeft(), true);
 }
@@ -71,12 +71,12 @@ BOOST_AUTO_TEST_CASE(fileNamesLeft_getAllAndResetTwoTimes_true) {
 	while (inputFileNames.fileNamesLeft()) {
 		inputFileNames.getNextFileName();
 	}
-	inputFileNames.reset();
+	inputFileNames.markAllAsUnread();
 
 	while (inputFileNames.fileNamesLeft()) {
 		inputFileNames.getNextFileName();
 	}
-	inputFileNames.reset();
+	inputFileNames.markAllAsUnread();
 
 	BOOST_CHECK_EQUAL(inputFileNames.fileNamesLeft(), true);
 }
@@ -86,7 +86,7 @@ BOOST_AUTO_TEST_CASE(fileNamesLeft_getAllAndResetAndGetAll_false) {
 	while (inputFileNames.fileNamesLeft()) {
 		inputFileNames.getNextFileName();
 	}
-	inputFileNames.reset();
+	inputFileNames.markAllAsUnread();
 
 	while (inputFileNames.fileNamesLeft()) {
 		inputFileNames.getNextFileName();

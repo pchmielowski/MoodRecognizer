@@ -4,6 +4,16 @@
 #include "MatInputFileNames.h"
 #include "PcaReductor.h"
 
+SuperVectorCollector::SuperVectorCollector(SuperVectorCalculator& superVectorCalculator, 
+	PcaReductor& pcaReductor,
+	SvmClassifier& svmClassifier, AlphaVector alphas)
+{
+	superVectorCalculator_ = &superVectorCalculator;
+	svmClassifier_ = &svmClassifier;
+	pcaReductor_ = &pcaReductor;
+	alphas_ = alphas;
+}
+
 Moods SuperVectorCollector::predictMoods(InputFileNames& inputFileNames)
 {
 	return Moods();
@@ -12,23 +22,25 @@ Moods SuperVectorCollector::predictMoods(InputFileNames& inputFileNames)
 void SuperVectorCollector::train(MoodsInterface& moods, InputFileNames& inputFileNames)
 {
 	SuperVectors allSuperVectors;
-	inputFileNames_ = &inputFileNames;
+	MoodsVector moodsVector;
 	int numFilesRead = 0;
 
-	while (inputFileNames_->fileNamesLeft())
+	while (inputFileNames.fileNamesLeft())
 	{
-		FileName fileName = inputFileNames_->getNextFileName();
+		++numFilesRead;
+		FileName fileName = inputFileNames.getNextFileName();
+		bool hasRightExtension = fileName.substr(fileName.find_last_of(".") + 1) == "mat";
+		if (!hasRightExtension)
+			throw std::runtime_error("File " + fileName + " does not have .mat extension!");
 
 		assert(superVectorCalculator_ != nullptr);
 		SuperVectors superVectorsForFile = superVectorCalculator_->calculate(fileName);
 
-		moods.getNextMood();
+		moodsVector.push_back(moods.getNextMood());
+		assert(moodsVector.size() == numFilesRead);
 
-		if (allSuperVectors.size() == 0)
-			allSuperVectors = superVectorsForFile;
-		else
-			allSuperVectors.insert(allSuperVectors.end(), superVectorsForFile.begin(), superVectorsForFile.end());
-		++numFilesRead;
+		appendSuperVectorToAllSuperVectors(allSuperVectors, superVectorsForFile);
+
 		int numSuperVectorsForFile = superVectorsForFile.size();
 		assert(allSuperVectors.size() == numFilesRead*numSuperVectorsForFile);
 	}
@@ -40,22 +52,31 @@ void SuperVectorCollector::train(MoodsInterface& moods, InputFileNames& inputFil
 		assert(pcaReductor_ != nullptr);
 		pcaReductor_->trainPca(superVectorsForAlpha);
 
-		inputFileNames_->reset();
-		while (inputFileNames_->fileNamesLeft())
+		inputFileNames.markAllAsUnread();
+		while (inputFileNames.fileNamesLeft())
 		{
-			SuperVector superVectorForFileAndAlpha;
+			SuperVector superVectorForFileAndAlpha = (cv::Mat_<float>(2, 1) << 21, .2);
+			assert(superVectorForFileAndAlpha.cols == 1);
+
 			SuperVector reducedSuperVectorForFileAndAlpha;
 			reducedSuperVectorForFileAndAlpha = pcaReductor_->reduce(superVectorForFileAndAlpha);
+			assert(reducedSuperVectorForFileAndAlpha.cols == 1);
 		}
-		 //trainSvm(moods, superVectors);
+
+		assert(svmClassifier_ != nullptr);
+		svmClassifier_->trainSvm(moodsVector, superVectorsForAlpha);
 	}
 
 }
 
-SuperVectorCollector::SuperVectorCollector(SuperVectorCalculator& superVectorCalculator, PcaReductor& pcaReductor,
-	SvmClassifier& svmClassifier, AlphaVector alphas)
+void SuperVectorCollector::appendSuperVectorToAllSuperVectors(SuperVectors &allSuperVectors, SuperVectors &superVectorsForFile)
 {
-	superVectorCalculator_ = &superVectorCalculator;
-	pcaReductor_ = &pcaReductor;
-	alphas_ = alphas;
+	int initialSize = allSuperVectors.size();
+	if (initialSize == 0)
+		allSuperVectors = superVectorsForFile;
+	else
+		allSuperVectors.insert(allSuperVectors.end(),
+		superVectorsForFile.begin(), superVectorsForFile.end());
+
+	assert(allSuperVectors.size() == initialSize + superVectorsForFile.size());
 }

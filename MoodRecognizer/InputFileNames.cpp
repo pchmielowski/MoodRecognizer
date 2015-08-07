@@ -43,7 +43,7 @@ const bool InputFileNames::fileNamesLeft()
 	return fileNameQueue_.empty() == 0;
 }
 
-void InputFileNames::reset()
+void InputFileNames::markAllAsUnread()
 {
 	fileNameQueue_ = nonReducingFileNameQueue_;
 }

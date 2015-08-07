@@ -14,10 +14,13 @@ public:
 		SvmClassifier& svmClassifier, const AlphaVector alphas);
 	void train(MoodsInterface& moods, InputFileNames& inputFileNames);
 
+
+
 	Moods predictMoods(InputFileNames& inputFileNames);
 private:
-	InputFileNames* inputFileNames_ = nullptr;
 	SuperVectorCalculator* superVectorCalculator_ = nullptr;
 	PcaReductor* pcaReductor_ = nullptr;
-	AlphaVector alphas_;
+	SvmClassifier* svmClassifier_ = nullptr;
+	AlphaVector alphas_;	
+	void appendSuperVectorToAllSuperVectors(SuperVectors &allSuperVectors, SuperVectors &superVectorsForFile);
 };

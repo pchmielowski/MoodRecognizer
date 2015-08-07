@@ -40,6 +40,7 @@ BOOST_AUTO_TEST_CASE(train_oneAlphaTwoInputFiles_correctCalls)
 	PcaReductor& pcaReductorInstance = pcaReductor.get();
 
 	Mock<SvmClassifier> svmClassifier;
+	When(Method(svmClassifier, trainSvm)).Return();
 	SvmClassifier& svmClassifierInstance = svmClassifier.get();
 
 	AlphaVector alphas = { .3f };
@@ -57,8 +58,8 @@ BOOST_AUTO_TEST_CASE(train_oneAlphaTwoInputFiles_correctCalls)
 	When(Method(inputFileNames, fileNamesLeft)).
 		Return(true).Return(true).Return(false).
 		Return(true).Return(true).Return(false);
-	When(Method(inputFileNames, getNextFileName)).Return("someFileName").Return("anotherFileName");
-	When(Method(inputFileNames, reset)).AlwaysReturn();
+	When(Method(inputFileNames, getNextFileName)).Return("someFileName.mat").Return("anotherFileName.mat");
+	When(Method(inputFileNames, markAllAsUnread)).AlwaysReturn();
 	InputFileNames& inputFileNamesInstance = inputFileNames.get();
 
 	// ACT
@@ -67,13 +68,13 @@ BOOST_AUTO_TEST_CASE(train_oneAlphaTwoInputFiles_correctCalls)
 	// ASSERT
 	const int NUM_FILES = 2;
 	Verify(Method(inputFileNames, getNextFileName)).Exactly(NUM_FILES);
-	Verify(Method(superVectorCalculator, calculate).Using("someFileName")).Exactly(1);
-	Verify(Method(superVectorCalculator, calculate).Using("anotherFileName")).Exactly(1);
+	Verify(Method(superVectorCalculator, calculate).Using("someFileName.mat")).Exactly(1);
+	Verify(Method(superVectorCalculator, calculate).Using("anotherFileName.mat")).Exactly(1);
 	Verify(Method(moods, getNextMood)).Exactly(NUM_FILES);
 	
 	const int NUM_ALPHAS = 1;
 	Verify(Method(pcaReductor, trainPca)).Exactly(NUM_ALPHAS); // .Using(superVectorsForAlpha)
-	Verify(Method(inputFileNames, reset)).Exactly(NUM_ALPHAS);
+	Verify(Method(inputFileNames, markAllAsUnread)).Exactly(NUM_ALPHAS);
 	Verify(Method(inputFileNames, fileNamesLeft)).Exactly(NUM_FILES+1+NUM_ALPHAS*(NUM_FILES+1));
 	Verify(Method(pcaReductor, reduce)).Exactly(NUM_ALPHAS*NUM_FILES); // .Using(superVectorForFileAndAlpha)
 

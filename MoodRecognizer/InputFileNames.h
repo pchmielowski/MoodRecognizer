@@ -10,7 +10,7 @@ public:
 	InputFileNames() {};
 	virtual FileName getNextFileName();
 	virtual const bool fileNamesLeft();
-	virtual void reset();
+	virtual void markAllAsUnread();
 protected:
 	void makeQueue(const path inputFolderPath);
 private:
