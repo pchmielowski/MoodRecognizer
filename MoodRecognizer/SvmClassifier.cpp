@@ -5,7 +5,7 @@
 
 using namespace cv;
 
-void SvmClassifier::trainSvm(const MoodsVector& moods, const SuperVectors& superVectors)
+void SvmClassifier::trainSvm(MoodsVector moods, SuperVectors superVectors)
 {
 	if (moods.size() != superVectors.size())
 		throw std::runtime_error("Number of moods != number of sVectors!");

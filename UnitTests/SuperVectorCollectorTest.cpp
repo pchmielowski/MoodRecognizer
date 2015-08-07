@@ -13,11 +13,30 @@
 
 using namespace fakeit;
 using namespace std;
+using namespace cv;
 
 class SuperVectorCollectorTestFixture
 {
 public:
+protected:
+	bool isEq(const SuperVector& a, const SuperVector& b)
+	{
+		return countNonZero(a != b) == 0;
+	}
+	bool isEq(const SuperVectors& a, const SuperVectors& b)
+	{
+		if (a.size() != b.size())
+			return false;
 
+		for (int superVectorIdx = 0; superVectorIdx < a.size(); ++superVectorIdx)
+		{
+			SuperVector differenceVector = (a[superVectorIdx] != b[superVectorIdx]);
+			bool areDifferent = (countNonZero(differenceVector) != 0);
+			if (areDifferent)
+				return false;
+		}
+		return true;
+	}
 private:
 
 };
@@ -26,21 +45,25 @@ BOOST_FIXTURE_TEST_SUITE(SuperVectorCollectorTest, SuperVectorCollectorTestFixtu
 BOOST_AUTO_TEST_CASE(train_oneAlphaoneInputFile_correctCalls)
 {
 	// ARRANGE
-	const SuperVector superVectorForFirstFileAndFirstAlpha = (cv::Mat_<float>(2, 1) << 1, 2);
-	SuperVectors superVectorsForFirstFile;
-	superVectorsForFirstFile.push_back(superVectorForFirstFileAndFirstAlpha);
+	// superVectors
+	const SuperVector forFirstFile_firstAlpha = (cv::Mat_<float>(2, 1) << 1, 2);
+	const SuperVectors forFirstFile = { forFirstFile_firstAlpha };
+	const SuperVectors forFirstAlpha = { forFirstFile_firstAlpha };
+	const SuperVector reduced_forFirstFile_firstAlpha = (cv::Mat_<float>(1, 1) << 1);
+	const SuperVectors reduced_forFirstAlpha = { reduced_forFirstFile_firstAlpha };
+
+	// mocks
 	Mock<SuperVectorCalculator> superVectorCalculator;
-	When(Method(superVectorCalculator, calculate)).Return(superVectorsForFirstFile);
+	When(Method(superVectorCalculator, calculate)).Return(forFirstFile);
 	SuperVectorCalculator& superVectorCalculatorInstance = superVectorCalculator.get();
 
-	const SuperVector reducedSuperVectorForFirstFileAndFirstAlpha = (cv::Mat_<float>(1, 1) << 1);
 	Mock<PcaReductor> pcaReductor;
 	When(Method(pcaReductor, trainPca)).AlwaysReturn();
-	When(Method(pcaReductor, reduce)).Return(reducedSuperVectorForFirstFileAndFirstAlpha);
+	When(Method(pcaReductor, reduce)).Return(reduced_forFirstFile_firstAlpha);
 	PcaReductor& pcaReductorInstance = pcaReductor.get();
 
 	Mock<SvmClassifier> svmClassifier;
-	When(Method(svmClassifier, trainSvm)).Return();
+	When(Method(svmClassifier, trainSvm)).AlwaysReturn();
 	SvmClassifier& svmClassifierInstance = svmClassifier.get();
 
 	AlphaVector alphas = { .3f };
@@ -71,13 +94,15 @@ BOOST_AUTO_TEST_CASE(train_oneAlphaoneInputFile_correctCalls)
 	Verify(Method(superVectorCalculator, calculate).Using("firstFileName.mat")).Exactly(1);
 	//Verify(Method(superVectorCalculator, calculate).Using("anotherFileName.mat")).Exactly(1);
 	Verify(Method(moods, getNextMood)).Exactly(NUM_FILES);
-	
-	const int NUM_ALPHAS = 1;
-	Verify(Method(pcaReductor, trainPca)).Exactly(NUM_ALPHAS); // .Using(superVectorsForAlpha)
-	Verify(Method(inputFileNames, markAllAsUnread)).Exactly(NUM_ALPHAS);
-	Verify(Method(inputFileNames, fileNamesLeft)).Exactly(NUM_FILES+1+NUM_ALPHAS*(NUM_FILES+1));
-	Verify(Method(pcaReductor, reduce)).Exactly(NUM_ALPHAS*NUM_FILES); // .Using(superVectorForFileAndAlpha)
 
+	const int NUM_ALPHAS = 1;
+	Verify(Method(pcaReductor, trainPca).
+		Matching([&](SuperVectors a){return isEq(a, forFirstAlpha); })).Exactly(1);
+	Verify(Method(inputFileNames, markAllAsUnread)).Exactly(NUM_ALPHAS);
+	Verify(Method(inputFileNames, fileNamesLeft)).Exactly(NUM_FILES + 1 + NUM_ALPHAS*(NUM_FILES + 1));
+	Verify(Method(pcaReductor, reduce).
+		Matching([&](const SuperVector& a){return isEq(a, forFirstFile_firstAlpha); })).Exactly(1);
+	Verify(Method(svmClassifier, trainSvm).
+		Matching([&](MoodsVector mv, SuperVectors a){return isEq(a, reduced_forFirstAlpha); }));
 }
-// dodaæ poprawne moody do Svm
 BOOST_AUTO_TEST_SUITE_END()
