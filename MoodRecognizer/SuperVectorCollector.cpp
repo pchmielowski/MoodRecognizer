@@ -22,7 +22,7 @@ Moods SuperVectorCollector::predictMoods(InputFileNames& inputFileNames)
 void SuperVectorCollector::train(MoodsInterface& moods, InputFileNames& inputFileNames)
 {
 	SuperVectors allSuperVectors;
-	MoodsVector moodsVector;
+	MoodsVector moodsVectorForAlpha;
 	int numFilesRead = 0;
 
 	while (inputFileNames.fileNamesLeft())
@@ -36,8 +36,8 @@ void SuperVectorCollector::train(MoodsInterface& moods, InputFileNames& inputFil
 		assert(superVectorCalculator_ != nullptr);
 		SuperVectors superVectorsForFile = superVectorCalculator_->calculate(fileName);
 
-		moodsVector.push_back(moods.getNextMood());
-		assert(moodsVector.size() == numFilesRead);
+		moodsVectorForAlpha.push_back(moods.getNextMood());
+		assert(moodsVectorForAlpha.size() == numFilesRead);
 
 		appendSuperVectorToAllSuperVectors(allSuperVectors, superVectorsForFile);
 
@@ -69,8 +69,8 @@ void SuperVectorCollector::train(MoodsInterface& moods, InputFileNames& inputFil
 
 		assert(svmClassifier_ != nullptr);
 		assert(reducedSuperVectorsForAlpha.size() != 0);
-		assert(moodsVector.size() != 0);
-		svmClassifier_->trainSvm(moodsVector, reducedSuperVectorsForAlpha);
+		assert(moodsVectorForAlpha.size() != 0);
+		svmClassifier_->trainSvm(moodsVectorForAlpha, reducedSuperVectorsForAlpha);
 	}
 
 }
