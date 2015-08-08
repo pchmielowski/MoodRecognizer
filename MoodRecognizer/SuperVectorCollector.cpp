@@ -53,11 +53,12 @@ void SuperVectorCollector::train(MoodsInterface& moods, InputFileNames& inputFil
 		SuperVectors reducedSuperVectorsForAlpha;
 		assert(pcaReductor_ != nullptr);
 		pcaReductor_->trainPca(superVectorsForAlpha);
-
 		inputFileNames.markAllAsUnread();
+
+		int i = 0;
 		while (inputFileNames.fileNamesLeft())
 		{
-			SuperVector& superVectorForFileAndAlpha = allSuperVectors[0];
+			SuperVector& superVectorForFileAndAlpha = allSuperVectors[i++];
 			assert(superVectorForFileAndAlpha.cols == 1);
 
 			SuperVector reducedSuperVectorForFileAndAlpha;

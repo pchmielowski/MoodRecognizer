@@ -187,7 +187,6 @@ BOOST_AUTO_TEST_CASE(train_oneAlphaFourInputFiles_correctCalls)
 	Verify(Method(inputFileNames, markAllAsUnread)).Exactly(NUM_ALPHAS);
 	Verify(Method(inputFileNames, fileNamesLeft)).Exactly(NUM_FILES + 1 + NUM_ALPHAS*(NUM_FILES + 1));
 
-	// TODO: sprawdziæ czy on nie oczekuje, ¿e te metody bêd¹ wywo³ywane jedna po drugiej
 	Verify(Method(pcaReductor, reduce).
 		Matching([&](const SuperVector& a){return isEq(a, for1File_firstAlpha); }),
 		Method(pcaReductor, reduce).
