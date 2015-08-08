@@ -1,5 +1,5 @@
 #include "Moods.h"
-#include "FileReaderInterface.h"
+#include "FileReader.h"
 #include <string>
 #include <sstream>
 
@@ -10,7 +10,7 @@ Moods::Moods()
 
 }
 
-Moods::Moods(FileReaderInterface& fileReader, const FileName moodsFileName)
+Moods::Moods(FileReader& fileReader, const FileName moodsFileName)
 {
 	fileReader_ = &fileReader;
 	fileReader_->open(moodsFileName);

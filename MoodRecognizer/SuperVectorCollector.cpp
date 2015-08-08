@@ -6,12 +6,11 @@
 
 SuperVectorCollector::SuperVectorCollector(SuperVectorCalculator& superVectorCalculator, 
 	PcaReductor& pcaReductor,
-	SvmClassifier& svmClassifier, AlphaVector alphas)
+	SvmClassifier& svmClassifier)
 {
 	superVectorCalculator_ = &superVectorCalculator;
 	pcaReductor_ = &pcaReductor;
 	svmClassifier_ = &svmClassifier;
-	alphas_ = alphas;
 }
 
 Moods SuperVectorCollector::predictMoods(InputFileNames& inputFileNames)
@@ -24,6 +23,7 @@ void SuperVectorCollector::train(MoodsInterface& moods, InputFileNames& inputFil
 	vector<SuperVectors> allSuperVectors;
 	MoodsVector moodsVector;
 	int numFilesRead = 0;
+	int numSuperVectorsForFile;
 
 	while (inputFileNames.fileNamesLeft())
 	{
@@ -41,19 +41,16 @@ void SuperVectorCollector::train(MoodsInterface& moods, InputFileNames& inputFil
 
 		appendSuperVectorToAllSuperVectors(allSuperVectors, superVectorsForFile);
 
-		int numSuperVectorsForFile = superVectorsForFile.size();
+		numSuperVectorsForFile = superVectorsForFile.size();
 		assert(allSuperVectors.size() == numFilesRead);
-		assert(numSuperVectorsForFile == alphas_.size());
 	}
 
-	assert(alphas_.size() > 0);
-	int alphaIdx= 0;
-	for (auto alpha : alphas_)
+	
+	for (int alphaIdx = 0; alphaIdx < numSuperVectorsForFile; ++alphaIdx)
 	{
 		SuperVectors superVectorsForAlpha;
 		for (auto superVectorsForFile : allSuperVectors)
 			superVectorsForAlpha.push_back(superVectorsForFile[alphaIdx]);
-		alphaIdx++;
 
 		SuperVectors reducedSuperVectorsForAlpha;
 		assert(pcaReductor_ != nullptr);

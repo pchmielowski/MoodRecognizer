@@ -11,7 +11,7 @@ class PcaReductor;
 class SuperVectorCollector {
 public:
 	SuperVectorCollector(SuperVectorCalculator& superVectorCalculator, PcaReductor& pcaReductor,
-		SvmClassifier& svmClassifier, const AlphaVector alphas);
+		SvmClassifier& svmClassifier);
 	void train(MoodsInterface& moods, InputFileNames& inputFileNames);
 
 
@@ -21,6 +21,5 @@ private:
 	SuperVectorCalculator* superVectorCalculator_ = nullptr;
 	PcaReductor* pcaReductor_ = nullptr;
 	SvmClassifier* svmClassifier_ = nullptr;
-	AlphaVector alphas_;	
 	void appendSuperVectorToAllSuperVectors(vector<SuperVectors> &allSuperVectors, SuperVectors &superVectorsForFile);
 };

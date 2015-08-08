@@ -50,9 +50,6 @@
     <ClInclude Include="Configuration.h">
       <Filter>Configuration</Filter>
     </ClInclude>
-    <ClInclude Include="FileReaderInterface.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="InputFileNames.h">
       <Filter>InputFileNames</Filter>
     </ClInclude>
@@ -88,6 +85,9 @@
     </ClInclude>
     <ClInclude Include="PcaReductor.h">
       <Filter>PcaReductor</Filter>
+    </ClInclude>
+    <ClInclude Include="FileReader.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

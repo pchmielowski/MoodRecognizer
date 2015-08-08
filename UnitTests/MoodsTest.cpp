@@ -4,7 +4,7 @@
 #include <string>
 #pragma warning(pop)
 #include "Moods.h"
-#include "FileReaderInterface.h"
+#include "FileReader.h"
 using namespace fakeit;
 using namespace std;
 
@@ -35,10 +35,10 @@ BOOST_AUTO_TEST_CASE(getNextMood_nothingAdded_throwException) {
 BOOST_AUTO_TEST_CASE(getNextMood_loadedFileWith4Moods_gettedInRightOrder) {
 	string fileContent = "1\n2\n3\n4\n";
 
-	Mock<FileReaderInterface> mockFileReader;
+	Mock<FileReader> mockFileReader;
 	When(Method(mockFileReader, open)).Return();
 	When(Method(mockFileReader, getContent)).Return(fileContent);
-	FileReaderInterface& fileReader = mockFileReader.get();
+	FileReader& fileReader = mockFileReader.get();
 
 	Moods moods(fileReader, "anyName");
 
@@ -50,10 +50,10 @@ BOOST_AUTO_TEST_CASE(getNextMood_loadedFileWith4Moods_gettedInRightOrder) {
 BOOST_AUTO_TEST_CASE(getNextMood_loadedFileWith4MoodsInDifferentOrder_gettedInRightOrder) {
 	string fileContent = "1\n4\n4\n1\n";
 
-	Mock<FileReaderInterface> mockFileReader;
+	Mock<FileReader> mockFileReader;
 	When(Method(mockFileReader, open)).Return();
 	When(Method(mockFileReader, getContent)).Return(fileContent);
-	FileReaderInterface& fileReader = mockFileReader.get();
+	FileReader& fileReader = mockFileReader.get();
 
 	Moods moods(fileReader, "anyName");
 
@@ -65,10 +65,10 @@ BOOST_AUTO_TEST_CASE(getNextMood_loadedFileWith4MoodsInDifferentOrder_gettedInRi
 BOOST_AUTO_TEST_CASE(constructorWithFileReader_objectCreated_openCalledWithRighFileName) {
 	string fileContent = "1\n4\n4\n1\n";
 
-	Mock<FileReaderInterface> mockFileReader;
+	Mock<FileReader> mockFileReader;
 	When(Method(mockFileReader, open)).Return();
 	When(Method(mockFileReader, getContent)).Return(fileContent);
-	FileReaderInterface& fileReader = mockFileReader.get();
+	FileReader& fileReader = mockFileReader.get();
 
 	Moods moods(fileReader, "fileName");
 

@@ -105,7 +105,7 @@ BOOST_AUTO_TEST_CASE(train_oneAlphaoneInputFile_correctCalls)
 	AlphaVector alphas = { .3f };
 
 	SuperVectorCollector SUT(superVectorCalculatorInstance, pcaReductorInstance,
-		svmClassifierInstance, alphas);
+		svmClassifierInstance);
 
 	Mock<MoodsInterface> moods;
 	When(Method(moods, getNextMood)).Return(moodFor1File);
@@ -180,7 +180,7 @@ BOOST_AUTO_TEST_CASE(train_oneAlphaFourInputFiles_correctCalls)
 	AlphaVector alphas = { .3f };
 
 	SuperVectorCollector SUT(superVectorCalculatorInstance, pcaReductorInstance,
-		svmClassifierInstance, alphas);
+		svmClassifierInstance);
 
 	Mock<MoodsInterface> moods;
 	When(Method(moods, getNextMood)).Return(moodFor1File, moodFor2File, moodFor3File, moodFor4File);
@@ -268,7 +268,7 @@ BOOST_AUTO_TEST_CASE(train_2Alphas2InputFiles_correctCalls)
 	AlphaVector alphas = { .0f, 1.f };
 
 	SuperVectorCollector SUT(superVectorCalculatorInstance, pcaReductorInstance,
-		svmClassifierInstance, alphas);
+		svmClassifierInstance);
 
 	Mock<MoodsInterface> moods;
 	When(Method(moods, getNextMood)).Return(moodFor1File, moodFor2File);
