@@ -139,7 +139,7 @@ BOOST_FIXTURE_TEST_CASE(parseConfigurationFile_alphaEq_6_alphaEq_6, Configuratio
 
 	cfg.parseConfigurationFile("anyfile");
 
-	BOOST_CHECK_CLOSE(cfg.getAlpha(), .6, 0.1);
+	BOOST_CHECK_CLOSE(cfg.getAlpha()[0], .6, 0.1);
 }
 BOOST_FIXTURE_TEST_CASE(parseConfigurationFile_alphaEq0_alphaEq0, ConfigurationTest) {
 	std::string configurationFileContent = "<alpha range=\"false\">\n";
@@ -154,7 +154,7 @@ BOOST_FIXTURE_TEST_CASE(parseConfigurationFile_alphaEq0_alphaEq0, ConfigurationT
 
 	cfg.parseConfigurationFile("anyfile");
 
-	BOOST_CHECK_CLOSE(cfg.getAlpha(), 0, 0.1);
+	BOOST_CHECK_CLOSE((cfg.getAlpha())[0], 0, 0.1);
 }
 BOOST_FIXTURE_TEST_CASE(parseConfigurationFile_numberOfComponentsEq64_numComponentsEq64, ConfigurationTest) {
 	std::string configurationFileContent = "<numberOfComponents range=\"false\">\n";
@@ -166,7 +166,7 @@ BOOST_FIXTURE_TEST_CASE(parseConfigurationFile_numberOfComponentsEq64_numCompone
 
 	cfg.parseConfigurationFile("anyfile");
 
-	BOOST_CHECK_EQUAL(cfg.getNumComponents(), 64);
+	BOOST_CHECK_EQUAL(cfg.getNumComponents()[0], 64);
 }
 BOOST_FIXTURE_TEST_CASE(parseConfigurationFile_alphaAsRange_getRange, ConfigurationTest) {}
 BOOST_FIXTURE_TEST_CASE(parseConfigurationFile_getValueWhenRangeIsPresent, ConfigurationTest) {
@@ -182,4 +182,39 @@ BOOST_FIXTURE_TEST_CASE(parseConfigurationFile_getValueWhenRangeIsPresent, Confi
 	//configurationFileContent += "</componentNumber>";
 }
 BOOST_FIXTURE_TEST_CASE(parseConfigurationFile_wrongCfgFileException, ConfigurationTest) {  }
+BOOST_FIXTURE_TEST_CASE(parsedOk_rightList_true, ConfigurationTest) {
+	char* argv[] = {
+		"Mood.exe",
+		"-t",
+		"-u", "ubmFileName",
+		"-i", "inputFilesPath",
+		"-s", "svmFileName",
+		"-p", "plotFileName",
+		"-b", "baseFileName",
+		"-m", "moodsFileName",
+		"-c", "configurationFileName"
+	};
+	int argc = sizeof(argv) / sizeof(argv[0]);
+	Configuration cfg;
+
+	cfg.parseInputArguments(argc, argv);
+
+
+	bool result = cfg.parsedOk();
+
+	BOOST_CHECK_EQUAL(result, true);
+}
+BOOST_FIXTURE_TEST_CASE(parsedOk_emptyList_false, ConfigurationTest) {
+	char* argv[] = {
+		"Mood.exe"
+	};
+	int argc = sizeof(argv) / sizeof(argv[0]);
+	Configuration cfg;
+
+	cfg.parseInputArguments(argc, argv);
+
+	bool result = cfg.parsedOk();
+
+	BOOST_CHECK_EQUAL(result, false);
+}
 BOOST_AUTO_TEST_SUITE_END()

@@ -80,6 +80,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="FileReaderTest.cpp" />
     <ClCompile Include="InputFileNamesTest.cpp" />
     <ClCompile Include="MoodsTest.cpp" />
     <ClCompile Include="ConfigurationTest.cpp" />

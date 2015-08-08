@@ -14,12 +14,11 @@ class SuperVectorCalculator
 {
 public:
 	SuperVectorCalculator(FeatureMatrixLoader& featureMatrixLoader, UbmLoader& ubmLoader, 
-		vector<Alpha> alpha, vector<int> numComponents);
+		vector<Alpha> alpha);
 	virtual SuperVectors calculate(FileName featureMatrixFileName);
 private:
 	Ubm ubm_;
 	vector<Alpha> alphas_;
-	vector<int> numComponents_;
 	FeatureMatrixLoader* featureMatrixLoader_;
 	void appendAdaptedMeanToSuperVector(SuperVector &superVector, Mat &mu_i);
 

@@ -10,13 +10,3 @@ public:
 private:
 	bool hasRightExtension(directory_iterator itr) override;
 };
-
-MatInputFileNames::MatInputFileNames(FileName inputDataFolderPath)
-{
-	makeQueue(inputDataFolderPath);
-}
-
-bool MatInputFileNames::hasRightExtension(directory_iterator itr)
-{
-	return extension(itr->path()) == ".mat";
-}

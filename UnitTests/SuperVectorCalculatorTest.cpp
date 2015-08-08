@@ -46,10 +46,8 @@ BOOST_AUTO_TEST_CASE(calculate_1gaussComponentSimpleMatrix)
 
 	vector<Alpha> alphas;
 	alphas.push_back(1.0);
-	vector<int> numComponents;
-	numComponents.push_back(1);
 
-	SuperVectorCalculator SUT(featureMatrixLoaderInstance, ubmLoaderInstance, alphas, numComponents);
+	SuperVectorCalculator SUT(featureMatrixLoaderInstance, ubmLoaderInstance, alphas);
 	SuperVectors result = SUT.calculate("any_name");
 }
 BOOST_AUTO_TEST_CASE(calculate_1gaussComponentBiggerMatrix)
@@ -75,10 +73,8 @@ BOOST_AUTO_TEST_CASE(calculate_1gaussComponentBiggerMatrix)
 
 	vector<Alpha> alphas;
 	alphas.push_back(1.0);
-	vector<int> numComponents;
-	numComponents.push_back(1);
 
-	SuperVectorCalculator SUT(featureMatrixLoaderInstance, ubmLoaderInstance, alphas, numComponents);
+	SuperVectorCalculator SUT(featureMatrixLoaderInstance, ubmLoaderInstance, alphas);
 	SuperVectors result = SUT.calculate("any_name");
 }
 BOOST_AUTO_TEST_CASE(calculate_1gaussComponent2dAlpha0)
@@ -104,10 +100,8 @@ BOOST_AUTO_TEST_CASE(calculate_1gaussComponent2dAlpha0)
 
 	vector<Alpha> alphas;
 	alphas.push_back(0.0);
-	vector<int> numComponents;
-	numComponents.push_back(1);
 
-	SuperVectorCalculator SUT(featureMatrixLoaderInstance, ubmLoaderInstance, alphas, numComponents);
+	SuperVectorCalculator SUT(featureMatrixLoaderInstance, ubmLoaderInstance, alphas);
 	SuperVectors result = SUT.calculate("any_name");
 
 	BOOST_CHECK_CLOSE(result[0].at<double>(0), -1, 0.1);
@@ -134,10 +128,8 @@ BOOST_AUTO_TEST_CASE(calculate_1gaussComponent2dAlpha1)
 
 	vector<Alpha> alphas;
 	alphas.push_back(1.0);
-	vector<int> numComponents;
-	numComponents.push_back(1);
 
-	SuperVectorCalculator SUT(*featureMatrixLoaderInstance, ubmLoaderInstance, alphas, numComponents);
+	SuperVectorCalculator SUT(*featureMatrixLoaderInstance, ubmLoaderInstance, alphas);
 	SuperVectors result = SUT.calculate("any_name");
 
 	BOOST_CHECK_CLOSE(result[0].at<double>(0), 2, 0.1);
@@ -164,10 +156,8 @@ BOOST_AUTO_TEST_CASE(calculate_1gaussComponent2dAlpha1_2timeWindows)
 
 	vector<Alpha> alphas;
 	alphas.push_back(1.0);
-	vector<int> numComponents;
-	numComponents.push_back(1);
 
-	SuperVectorCalculator SUT(*featureMatrixLoaderInstance, ubmLoaderInstance, alphas, numComponents);
+	SuperVectorCalculator SUT(*featureMatrixLoaderInstance, ubmLoaderInstance, alphas);
 	SuperVectors result = SUT.calculate("any_name");
 
 	BOOST_CHECK_CLOSE(result[0].at<double>(0), 1.5, 0.1);
@@ -195,10 +185,8 @@ BOOST_AUTO_TEST_CASE(calculate_2gaussComponents1dAlpha1)
 
 	vector<Alpha> alphas;
 	alphas.push_back(1.0);
-	vector<int> numComponents;
-	numComponents.push_back(1);
 
-	SuperVectorCalculator SUT(*featureMatrixLoaderInstance, ubmLoaderInstance, alphas, numComponents);
+	SuperVectorCalculator SUT(*featureMatrixLoaderInstance, ubmLoaderInstance, alphas);
 	SuperVectors result = SUT.calculate("any_name");
 }
 BOOST_AUTO_TEST_CASE(calculate_1gaussComponent2dAlpha1and0)
@@ -223,10 +211,8 @@ BOOST_AUTO_TEST_CASE(calculate_1gaussComponent2dAlpha1and0)
 	vector<Alpha> alphas;
 	alphas.push_back(1.0);
 	alphas.push_back(0.0);
-	vector<int> numComponents;
-	numComponents.push_back(1);
 
-	SuperVectorCalculator SUT(*featureMatrixLoaderInstance, ubmLoaderInstance, alphas, numComponents);
+	SuperVectorCalculator SUT(*featureMatrixLoaderInstance, ubmLoaderInstance, alphas);
 	SuperVectors result = SUT.calculate("any_name");
 
 	BOOST_CHECK_CLOSE(result[0].at<double>(0), 2, 0.1);

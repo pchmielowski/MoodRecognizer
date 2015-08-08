@@ -3,12 +3,11 @@
 
 using namespace cv;
 SuperVectorCalculator::SuperVectorCalculator(FeatureMatrixLoader& featureMatrixLoader,
-	UbmLoader& ubmLoader, vector<Alpha> alpha, vector<int> numComponents)
+	UbmLoader& ubmLoader, vector<Alpha> alpha)
 {
 	featureMatrixLoader_ = &featureMatrixLoader;
 	ubm_ = ubmLoader.getUbm();
 	alphas_ = alpha;
-	numComponents_ = numComponents;
 }
 
 SuperVectors SuperVectorCalculator::calculate(FileName featureMatrixFileName)

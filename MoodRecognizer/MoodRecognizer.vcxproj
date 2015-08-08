@@ -95,6 +95,7 @@
     <ClCompile Include="InputFileNames.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="MatFeatureMatrixLoader.cpp" />
+    <ClCompile Include="MatInputFileNames.cpp" />
     <ClCompile Include="Moods.cpp" />
     <ClCompile Include="Mp3FeatureMatrixLoader.cpp" />
     <ClCompile Include="Mp3InputFileNames.cpp" />

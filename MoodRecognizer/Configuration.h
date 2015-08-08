@@ -4,6 +4,8 @@
 #include <iostream>
 #include "Types.h"
 #include <memory>
+#include <vector>
+using namespace std;
 
 enum Mode {
 	MAKE_BASE,
@@ -30,10 +32,11 @@ public:
 	FileName getMoodsFileName() const;
 	FileName getPlotFileName() const;
 	FileName getConfigurationFileName() const;
-	int getNumComponents() const;
-	float getAlpha() const;
+	vector<int> getNumComponents() const;
+	AlphaVector getAlpha() const;
 	Mode getMode() const;
 	bool shouldSavePlotFile() const;
+	bool parsedOk();
 private:
 	FileReader* configurationFileReader_ = 0;
 	Mode mode_;
@@ -44,11 +47,11 @@ private:
 	FileName ubmFileName_;
 	FileName moodsFileName_;
 	FileName plotFileName_;
-	int numOfComponents_;
-	float alpha_;
+	vector<int> numOfComponents_;
+	AlphaVector alpha_;
 
 	bool savePlotFile_;
 	bool saveSvmFile_;
-
+	bool parsedOk_ = false;
 };
 

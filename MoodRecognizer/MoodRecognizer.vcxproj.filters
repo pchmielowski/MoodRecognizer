@@ -124,5 +124,8 @@
     <ClCompile Include="SvmClassifier.cpp">
       <Filter>SvmClassifier</Filter>
     </ClCompile>
+    <ClCompile Include="MatInputFileNames.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

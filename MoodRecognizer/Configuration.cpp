@@ -30,20 +30,25 @@ void Configuration::parseInputArguments(const int argc, char* const argv[]) {
 
 	po::options_description description("Allowed options");
 	description.add_options()
-		("-t", "mode")
-		("-u", po::value<FileName>(), "ubmFileName")
-		("-i", po::value<FileName>(), "inputFilesPath")
-		("-s", po::value<FileName>(), "svmFileName")
-		("-p", po::value<FileName>(), "plotFileName")
-		("-b", po::value<FileName>(), "baseFileName")
-		("-m", po::value<FileName>(), "moodsFileName")
-		("-c", po::value<FileName>(), "configuration")
+		("-t", "mode=train")
+		("-u", po::value<FileName>(), "ubm file name")
+		("-i", po::value<FileName>(), "input files path")
+		("-s", po::value<FileName>(), "svm file name")
+		("-p", po::value<FileName>(), "plot file name")
+		("-b", po::value<FileName>(), "base file name")
+		("-m", po::value<FileName>(), "moods file name")
+		("-c", po::value<FileName>(), "configuration file name")
 		;
 
 	po::variables_map variableMap;
 	try {
 		po::store(po::parse_command_line(argc, argv, description), variableMap);
 		po::notify(variableMap);
+
+		if (argc == 1) {
+			cout << description << endl;
+			return;
+		}
 
 		if (variableMap.count("-t") > 0)
 			mode_ = TRAIN_SVM;
@@ -67,6 +72,8 @@ void Configuration::parseInputArguments(const int argc, char* const argv[]) {
 			plotFileName_ = variableMap["-p"].as<FileName>();
 
 			parseConfigurationFile(configurationFileName_);
+
+			parsedOk_ = true;
 		}
 		else
 			throw runtime_error("Missing argument!");
@@ -92,14 +99,14 @@ void Configuration::parseConfigurationFile(const FileName fileName) {
 		}
 		try {
 			string alphaAsString = xmlTree.get<std::string>("alpha.value");
-			alpha_ = atof(alphaAsString.c_str());
+			alpha_.push_back(atof(alphaAsString.c_str())); // ma braæ vector
 		}
 		catch (boost::property_tree::ptree_error e) {
 			cout << e.what() << endl;
 		}
 		try {
 			string numComponentsAsString = xmlTree.get<std::string>("numberOfComponents.value");
-			numOfComponents_ = atoi(numComponentsAsString.c_str());
+			numOfComponents_.push_back(atoi(numComponentsAsString.c_str()));
 		}
 		catch (boost::property_tree::ptree_error e) {
 			cout << e.what() << endl;
@@ -131,11 +138,12 @@ Mode Configuration::getMode() const {
 	return mode_;
 }
 
-int Configuration::getNumComponents() const {
+vector<int> Configuration::getNumComponents() const {
 	return numOfComponents_;
 }
 
-float Configuration::getAlpha() const {
+AlphaVector Configuration::getAlpha() const
+{
 	return alpha_;
 }
 
@@ -149,4 +157,9 @@ FileName Configuration::getConfigurationFileName() const {
 
 bool Configuration::shouldSavePlotFile() const {
 	return savePlotFile_;
+}
+
+bool Configuration::parsedOk()
+{
+	return parsedOk_;
 }
