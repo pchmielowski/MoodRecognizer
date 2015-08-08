@@ -22,5 +22,5 @@ private:
 	PcaReductor* pcaReductor_ = nullptr;
 	SvmClassifier* svmClassifier_ = nullptr;
 	AlphaVector alphas_;	
-	void appendSuperVectorToAllSuperVectors(SuperVectors &allSuperVectors, SuperVectors &superVectorsForFile);
+	void appendSuperVectorToAllSuperVectors(vector<SuperVectors> &allSuperVectors, SuperVectors &superVectorsForFile);
 };

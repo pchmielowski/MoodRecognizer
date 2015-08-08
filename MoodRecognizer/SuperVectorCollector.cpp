@@ -21,8 +21,8 @@ Moods SuperVectorCollector::predictMoods(InputFileNames& inputFileNames)
 
 void SuperVectorCollector::train(MoodsInterface& moods, InputFileNames& inputFileNames)
 {
-	SuperVectors allSuperVectors;
-	MoodsVector moodsVectorForAlpha;
+	vector<SuperVectors> allSuperVectors;
+	MoodsVector moodsVector;
 	int numFilesRead = 0;
 
 	while (inputFileNames.fileNamesLeft())
@@ -36,20 +36,25 @@ void SuperVectorCollector::train(MoodsInterface& moods, InputFileNames& inputFil
 		assert(superVectorCalculator_ != nullptr);
 		SuperVectors superVectorsForFile = superVectorCalculator_->calculate(fileName);
 
-		moodsVectorForAlpha.push_back(moods.getNextMood());
-		assert(moodsVectorForAlpha.size() == numFilesRead);
+		moodsVector.push_back(moods.getNextMood());
+		assert(moodsVector.size() == numFilesRead);
 
 		appendSuperVectorToAllSuperVectors(allSuperVectors, superVectorsForFile);
 
 		int numSuperVectorsForFile = superVectorsForFile.size();
-		assert(allSuperVectors.size() == numFilesRead*numSuperVectorsForFile);
+		assert(allSuperVectors.size() == numFilesRead);
 		assert(numSuperVectorsForFile == alphas_.size());
 	}
 
 	assert(alphas_.size() > 0);
+	int alphaIdx= 0;
 	for (auto alpha : alphas_)
 	{
-		SuperVectors superVectorsForAlpha = allSuperVectors;
+		SuperVectors superVectorsForAlpha;
+		for (auto superVectorsForFile : allSuperVectors)
+			superVectorsForAlpha.push_back(superVectorsForFile[alphaIdx]);
+		alphaIdx++;
+
 		SuperVectors reducedSuperVectorsForAlpha;
 		assert(pcaReductor_ != nullptr);
 		pcaReductor_->trainPca(superVectorsForAlpha);
@@ -58,7 +63,7 @@ void SuperVectorCollector::train(MoodsInterface& moods, InputFileNames& inputFil
 		int i = 0;
 		while (inputFileNames.fileNamesLeft())
 		{
-			SuperVector& superVectorForFileAndAlpha = allSuperVectors[i++];
+			SuperVector& superVectorForFileAndAlpha = superVectorsForAlpha[i++];
 			assert(superVectorForFileAndAlpha.cols == 1);
 
 			SuperVector reducedSuperVectorForFileAndAlpha;
@@ -69,20 +74,16 @@ void SuperVectorCollector::train(MoodsInterface& moods, InputFileNames& inputFil
 
 		assert(svmClassifier_ != nullptr);
 		assert(reducedSuperVectorsForAlpha.size() != 0);
-		assert(moodsVectorForAlpha.size() != 0);
-		svmClassifier_->trainSvm(moodsVectorForAlpha, reducedSuperVectorsForAlpha);
+		assert(moodsVector.size() != 0);
+		svmClassifier_->trainSvm(moodsVector, reducedSuperVectorsForAlpha);
 	}
 
 }
 
-void SuperVectorCollector::appendSuperVectorToAllSuperVectors(SuperVectors &allSuperVectors, SuperVectors &superVectorsForFile)
+void SuperVectorCollector::appendSuperVectorToAllSuperVectors(vector<SuperVectors> &allSuperVectors, 
+	SuperVectors &superVectorsForFile)
 {
 	int initialSize = allSuperVectors.size();
-	if (initialSize == 0)
-		allSuperVectors = superVectorsForFile;
-	else
-		allSuperVectors.insert(allSuperVectors.end(),
-		superVectorsForFile.begin(), superVectorsForFile.end());
-
-	assert(allSuperVectors.size() == initialSize + superVectorsForFile.size());
+	allSuperVectors.push_back(superVectorsForFile);
+	assert(allSuperVectors.size() == initialSize + 1);
 }
