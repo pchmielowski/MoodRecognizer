@@ -88,6 +88,7 @@
     <ClCompile Include="SuperVectorCalculatorTest.cpp" />
     <ClCompile Include="SuperVectorCollectorTest.cpp" />
     <ClCompile Include="SvmClassifierTest.cpp" />
+    <ClCompile Include="UbmLoaderTest.cpp" />
     <ClCompile Include="UbmTest.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

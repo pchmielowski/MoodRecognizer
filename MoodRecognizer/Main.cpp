@@ -16,13 +16,21 @@ int main(int argc, char* argv[]) {
 	
 	FileReader cfgFileReader;
 	Configuration cfg(cfgFileReader);
-	cfg.parseInputArguments(argc, argv);
-	if (!cfg.parsedOk())
+	try
+	{
+		cfg.parseInputArguments(argc, argv);
+		if (!cfg.parsedOk())
+			return -1;
+	}
+	catch (std::exception e)
+	{
+		std::cout << e.what() << endl;
 		return -1;
-	
+	}
+
 	FeatureMatrixLoader*  featureMatrixLoader = new MatFeatureMatrixLoader(false);
 
-	UbmLoader ubm;
+	UbmLoader ubm(cfg.getUbmFileName());
 	SuperVectorCalculator superVectorCalculator(*featureMatrixLoader, ubm, cfg.getAlpha());
 
 	PcaReductor pcaReductor(cfg.getNumComponents());

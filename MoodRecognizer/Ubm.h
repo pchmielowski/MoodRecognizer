@@ -12,6 +12,7 @@ public:
 	int numGaussComponents_;
 	cv::Mat weights_;
 	cv::Mat means_;
+	vector<Mat> covs_;
 	std::vector<std::vector<boost::math::normal_distribution<>>> distribution_;
 	double logLikelihood(const cv::Mat& x, int gaussComponentIdx) const {
 		assert(x.cols == 1);

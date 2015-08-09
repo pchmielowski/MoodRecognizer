@@ -182,7 +182,7 @@ BOOST_FIXTURE_TEST_CASE(parseConfigurationFile_getValueWhenRangeIsPresent, Confi
 	//configurationFileContent += "</componentNumber>";
 }
 BOOST_FIXTURE_TEST_CASE(parseConfigurationFile_wrongCfgFileException, ConfigurationTest) {  }
-BOOST_FIXTURE_TEST_CASE(parsedOk_rightList_true, ConfigurationTest) {
+BOOST_FIXTURE_TEST_CASE(parsedOk_listForTraining_true, ConfigurationTest) {
 	char* argv[] = {
 		"Mood.exe",
 		"-t",
@@ -190,7 +190,6 @@ BOOST_FIXTURE_TEST_CASE(parsedOk_rightList_true, ConfigurationTest) {
 		"-i", "inputFilesPath",
 		"-s", "svmFileName",
 		"-p", "plotFileName",
-		"-b", "baseFileName",
 		"-m", "moodsFileName",
 		"-c", "configurationFileName"
 	};
@@ -198,7 +197,6 @@ BOOST_FIXTURE_TEST_CASE(parsedOk_rightList_true, ConfigurationTest) {
 	Configuration cfg;
 
 	cfg.parseInputArguments(argc, argv);
-
 
 	bool result = cfg.parsedOk();
 

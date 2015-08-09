@@ -50,31 +50,27 @@ void Configuration::parseInputArguments(const int argc, char* const argv[]) {
 			return;
 		}
 
-		if (variableMap.count("-t") > 0)
+		if (variableMap.count("-t") > 0) {
 			mode_ = TRAIN_SVM;
+		}
 		else
 			mode_ = MAKE_BASE;
 
-		if (variableMap.count("-u") &&
-			variableMap.count("-i") &&
-			variableMap.count("-s") &&
-			variableMap.count("-b") &&
-			variableMap.count("-c") &&
-			variableMap.count("-m") &&
-			variableMap.count("-p"))
-		{
-			ubmFileName_ = variableMap["-u"].as<FileName>();
-			folderOfFtMatrixesPath_ = variableMap["-i"].as<FileName>();
-			svmModelFileName_ = variableMap["-s"].as<FileName>();
-			baseFileName_ = variableMap["-b"].as<FileName>();
-			configurationFileName_ = variableMap["-c"].as<FileName>();
-			moodsFileName_ = variableMap["-m"].as<FileName>();
-			plotFileName_ = variableMap["-p"].as<FileName>();
+		if (variableMap.count("-u")) ubmFileName_ = variableMap["-u"].as<FileName>();
+		if (variableMap.count("-i")) folderOfFtMatrixesPath_ = variableMap["-i"].as<FileName>();
+		if (variableMap.count("-s")) svmModelFileName_ = variableMap["-s"].as<FileName>();
+		if (variableMap.count("-b")) baseFileName_ = variableMap["-b"].as<FileName>();
+		if (variableMap.count("-c")) configurationFileName_ = variableMap["-c"].as<FileName>();
+		if (variableMap.count("-m")) moodsFileName_ = variableMap["-m"].as<FileName>();
+		if (variableMap.count("-p")) plotFileName_ = variableMap["-p"].as<FileName>();
 
+		bool parsedOkForTrainSvm = (mode_ == TRAIN_SVM) && variableMap.count("-u") && variableMap.count("-i") &&
+			variableMap.count("-s") && variableMap.count("-c") && variableMap.count("-m") && variableMap.count("-p");
+		bool parsedOkForMakeBase = (mode_ == MAKE_BASE) && variableMap.count("-i") && variableMap.count("-s") &&
+			variableMap.count("-b") && variableMap.count("-c");
+		parsedOk_ = parsedOkForTrainSvm || parsedOkForMakeBase;
+		if (parsedOk_)
 			parseConfigurationFile(configurationFileName_);
-
-			parsedOk_ = true;
-		}
 		else
 			throw runtime_error("Missing argument!");
 	}

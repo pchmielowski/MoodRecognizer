@@ -2,7 +2,6 @@
 #include "Ubm.h"
 #include "Types.h"
 #include <opencv\cv.h>
-#include <string>
 using namespace cv;
 
 class UbmLoader
@@ -12,29 +11,25 @@ public:
 	{
 		FileStorage fUBM;
 		fUBM.open(ubmFileName, FileStorage::READ);
-
 		fUBM["weights"] >> ubm_.weights_;
 		ubm_.weights_.convertTo(ubm_.weights_, CV_32FC1);
-
 		fUBM["means"] >> ubm_.means_;
 		ubm_.means_.convertTo(ubm_.means_, CV_32FC1);
-		ubm_.means_ = ubm_.means_.t();
-
-		fUBM["numOfGaussComponents"] >> ubm_.numGaussComponents_;
-
-		for (int componentIdx = 0; componentIdx < ubm_.numGaussComponents_; componentIdx++) {
-			const int MAX_NUM_DIGITS = 4;
-			char covNumber[MAX_NUM_DIGITS];
-			_itoa(componentIdx, covNumber, 10);
-			Mat cov;
-			fUBM["cov"+string(covNumber)] >> cov;
-
-			cov = cov.diag();
-			cov.convertTo(cov, CV_32FC1);
-			ubm_.covs_.push_back(cov);
-		}
-
+		//ubm_.means_.t();
+		//char buff[4];
+		//std::string cov_nr = "cov";
+		//fUBM["n_of_gaussians"] >> ubm_.numGaussComponents_;
+		//Mat tmp;
+		//for (int i = 0; i < ubm_.numGaussComponents_; i++) {
+		//	_itoa(i, buff, 10);
+		//	cov_nr += buff;
+		//	fUBM[cov_nr] >> tmp;
+		//	tmp = tmp.diag();
+		//	//ubm_.covs_.push_back(tmp);
+		//	cov_nr.resize(3);
+		//}
 		fUBM.release();
+
 	}
 	virtual Ubm getUbm()
 	{
