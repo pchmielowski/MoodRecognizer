@@ -103,6 +103,7 @@
     <ClCompile Include="SuperVectorCalculator.cpp" />
     <ClCompile Include="SuperVectorCollector.cpp" />
     <ClCompile Include="SvmClassifier.cpp" />
+    <ClCompile Include="Ubm.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

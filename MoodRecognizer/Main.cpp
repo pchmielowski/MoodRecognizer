@@ -24,6 +24,8 @@ int main(int argc, char* argv[]) {
 	}
 	catch (std::exception e)
 	{
+		// TODO: sprawdziæ czemu rzuca wyj¹tek "File is not open" mimo, ¿e argumenty OK
+		// Configuration / FileReader::getContent file: is_open() <- zwraca false, a powinno byæ true bo jest otwarty
 		std::cout << e.what() << endl;
 		return -1;
 	}

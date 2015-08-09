@@ -22,7 +22,7 @@ Configuration::Configuration(const Configuration& other)
 }
 
 Configuration::~Configuration() {
-	//delete configurationFileReader_;
+	delete configurationFileReader_;
 }
 
 void Configuration::parseInputArguments(const int argc, char* const argv[]) {
@@ -74,11 +74,11 @@ void Configuration::parseInputArguments(const int argc, char* const argv[]) {
 		else
 			throw runtime_error("Missing argument!");
 	}
-	catch (runtime_error) {
-		throw runtime_error("Missing argument!");
+	catch (runtime_error e) {
+		throw runtime_error(e.what());
 	}
-	catch (...) {
-		throw runtime_error("Unknown switch!");
+	catch (exception e) {
+		throw runtime_error(e.what());
 	}
 }
 void Configuration::parseConfigurationFile(const FileName fileName) {

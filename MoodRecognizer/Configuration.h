@@ -38,7 +38,7 @@ public:
 	bool shouldSavePlotFile() const;
 	bool parsedOk();
 private:
-	FileReader* configurationFileReader_ = 0;
+	FileReader* configurationFileReader_ = nullptr;
 	Mode mode_;
 	FileName folderOfFtMatrixesPath_;
 	FileName svmModelFileName_;

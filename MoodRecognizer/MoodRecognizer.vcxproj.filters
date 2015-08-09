@@ -38,9 +38,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Types.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Moods.h">
       <Filter>Moods</Filter>
     </ClInclude>
@@ -89,6 +86,7 @@
     <ClInclude Include="FileReader.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Types.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Moods.cpp">
@@ -109,9 +107,6 @@
     <ClCompile Include="MatFeatureMatrixLoader.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Main.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="SuperVectorCalculator.cpp">
       <Filter>SuperVectorCalculator</Filter>
     </ClCompile>
@@ -125,6 +120,10 @@
       <Filter>SvmClassifier</Filter>
     </ClCompile>
     <ClCompile Include="MatInputFileNames.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Main.cpp" />
+    <ClCompile Include="Ubm.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

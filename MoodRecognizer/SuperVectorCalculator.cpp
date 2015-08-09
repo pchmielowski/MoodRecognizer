@@ -14,25 +14,27 @@ SuperVectors SuperVectorCalculator::calculate(FileName featureMatrixFileName)
 {
 	FeatureMatrix featureMatrix = featureMatrixLoader_->get(featureMatrixFileName);
 	assert(featureMatrix.rows > 0 && featureMatrix.cols > 0);
+	assert(featureMatrix.type() == CV_32FC1);
+
 	int numTimeWindows = featureMatrix.cols;
 	int numGaussComponents = ubm_.numGaussComponents_;
 	assert(ubm_.weights_.rows == 1);
 	assert(ubm_.weights_.cols == numGaussComponents);
 
-	double** eq3 = new double*[numTimeWindows];
+	float** eq3 = new float*[numTimeWindows];
 	for (int t = 0; t < numTimeWindows; t++)
 	{
-		double* eq3Counters = new double[numGaussComponents];
-		double eq3Denominator = 0;
+		float* eq3Counters = new float[numGaussComponents];
+		float eq3Denominator = 0;
 
 		for (int componentIdx = 0; componentIdx < numGaussComponents; ++componentIdx)
 		{
-			double weight = ubm_.weights_.at<double>(componentIdx);
+			float weight = ubm_.weights_.at<float>(componentIdx);
 			eq3Counters[componentIdx] = weight * ubm_.logLikelihood(featureMatrix.col(t), componentIdx);
 			eq3Denominator += eq3Counters[componentIdx];
 		}
 
-		eq3[t] = new double[numGaussComponents];
+		eq3[t] = new float[numGaussComponents];
 		for (int componentIdx = 0; componentIdx < numGaussComponents; ++componentIdx)
 		{
 			assert(abs(eq3Denominator) > 1e-10);
@@ -47,20 +49,22 @@ SuperVectors SuperVectorCalculator::calculate(FileName featureMatrixFileName)
 	int numCoeff = featureMatrix.rows;
 	for (int componentIdx = 0; componentIdx < numGaussComponents; ++componentIdx)
 	{
-		Mat eq2Counter = Mat::zeros(numCoeff, 1, CV_64F);
-		double eq2Denominator = 0;
+		Mat eq2Counter = Mat::zeros(numCoeff, 1, CV_32FC1);
+		float eq2Denominator = 0;
 		for (int t = 0; t < numTimeWindows; t++) {
 			eq2Counter += eq3[t][componentIdx] * featureMatrix.col(t);
 			eq2Denominator += eq3[t][componentIdx];
 		}
 
-		assert(abs(eq2Denominator) > 1e-10);
+		bool eq2DenominatorGreaterThanZero = abs(eq2Denominator) > 1e-10;
+		assert(eq2DenominatorGreaterThanZero);
 		Mat eq2 = eq2Counter / eq2Denominator;
 		assert(eq2.rows == numCoeff);
 		assert(eq2.cols == 1);
 		assert(ubm_.means_.rows == numCoeff);
 		assert(ubm_.means_.cols == numGaussComponents);
 
+		assert(eq2.type() == CV_32FC1);
 		// Eq. 1
 		int alphaIdx = 0;
 		for (auto alpha : alphas_) {

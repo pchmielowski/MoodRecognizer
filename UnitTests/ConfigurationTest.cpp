@@ -185,6 +185,23 @@ BOOST_FIXTURE_TEST_CASE(parseConfigurationFile_wrongCfgFileException, Configurat
 BOOST_FIXTURE_TEST_CASE(parsedOk_listForTraining_true, ConfigurationTest) {
 	char* argv[] = {
 		"Mood.exe",
+		"-i", "inputFilesPath",
+		"-s", "svmFileName",
+		"-b", "baseFileName",
+		"-c", "configurationFileName"
+	};
+	int argc = sizeof(argv) / sizeof(argv[0]);
+	Configuration cfg;
+
+	cfg.parseInputArguments(argc, argv);
+
+	bool result = cfg.parsedOk();
+
+	BOOST_CHECK_EQUAL(result, true);
+}
+BOOST_FIXTURE_TEST_CASE(parsedOk_listForMakingBase_true, ConfigurationTest) {
+	char* argv[] = {
+		"Mood.exe",
 		"-t",
 		"-u", "ubmFileName",
 		"-i", "inputFilesPath",
