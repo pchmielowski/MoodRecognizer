@@ -22,7 +22,7 @@ Configuration::Configuration(const Configuration& other)
 }
 
 Configuration::~Configuration() {
-	delete configurationFileReader_;
+	//delete configurationFileReader_; // kiedy odkomentowane, nie przechodz¹ testy :O
 }
 
 void Configuration::parseInputArguments(const int argc, char* const argv[]) {

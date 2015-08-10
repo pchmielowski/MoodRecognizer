@@ -5,10 +5,6 @@
       <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
       <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
     </Filter>
-    <Filter Include="Header Files">
-      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
-      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
-    </Filter>
     <Filter Include="Moods">
       <UniqueIdentifier>{bc6d5172-ca55-4634-bbbe-f669b4f4cb94}</UniqueIdentifier>
     </Filter>
@@ -35,6 +31,9 @@
     </Filter>
     <Filter Include="PcaReductor">
       <UniqueIdentifier>{67840815-f48c-47b8-894b-db19be18360c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FileReader">
+      <UniqueIdentifier>{dd1b1e7a-4061-42f7-b794-43d6e582cfd2}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -83,10 +82,10 @@
     <ClInclude Include="PcaReductor.h">
       <Filter>PcaReductor</Filter>
     </ClInclude>
-    <ClInclude Include="FileReader.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Types.h" />
+    <ClInclude Include="FileReader.h">
+      <Filter>FileReader</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Moods.cpp">
@@ -125,6 +124,9 @@
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Ubm.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="FileReader.cpp">
+      <Filter>FileReader</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
