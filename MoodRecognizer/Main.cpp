@@ -12,8 +12,8 @@
 #include "Moods.h"
 
 
-int main(int argc, char* argv[]) { 
-	
+int main(int argc, char* argv[]) {
+
 	FileReader cfgFileReader;
 	Configuration cfg(cfgFileReader);
 	try
@@ -37,19 +37,24 @@ int main(int argc, char* argv[]) {
 	SvmClassifier svmClassifier(cfg.getSvmModelFileName());
 
 	SuperVectorCollector superVectorCollector(superVectorCalculator, pcaReductor, svmClassifier);
-	
+
 	InputFileNames* inputFileNames = new MatInputFileNames(cfg.getPathOfInputFiles());
 
-	if (cfg.getMode() == TRAIN_SVM) 
+	if (cfg.getMode() == TRAIN_SVM)
 	{
 		FileReader moodsFileReader;
 		Moods moods(moodsFileReader, cfg.getMoodsFileName());
-		superVectorCollector.train(moods, *inputFileNames);
+		try {
+			superVectorCollector.train(moods, *inputFileNames);
+		}
+		catch (exception e) {
+			cout << e.what() << endl;
+		}
 	}
-	
+
 	delete featureMatrixLoader;
 	delete inputFileNames;
 
 	cout << "OK!" << endl;
-	return 0;  
+	return 0;
 }

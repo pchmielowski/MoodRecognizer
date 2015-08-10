@@ -60,6 +60,7 @@ void SuperVectorCollector::train(MoodsInterface& moods, InputFileNames& inputFil
 		int i = 0;
 		while (inputFileNames.fileNamesLeft())
 		{
+			inputFileNames.getNextFileName();
 			SuperVector& superVectorForFileAndAlpha = superVectorsForAlpha[i++];
 			assert(superVectorForFileAndAlpha.cols == 1);
 

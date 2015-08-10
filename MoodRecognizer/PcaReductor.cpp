@@ -29,9 +29,9 @@ SuperVector PcaReductor::reduce(SuperVector superVectorToReduce)
 
 	Mat projectedSuperVector = pca_.project(superVectorToReduce);
 
-	double firstElemtentBeforeResizing = projectedSuperVector.at<double>(0);
+	float firstElemtentBeforeResizing = projectedSuperVector.at<float>(0);
 	projectedSuperVector.resize(sizeAfterPca);
-	double firstElemtentAfterResizing = projectedSuperVector.at<double>(0);
+	float firstElemtentAfterResizing = projectedSuperVector.at<float>(0);
 
 	assert(firstElemtentBeforeResizing == firstElemtentAfterResizing);
 	assert(projectedSuperVector.cols == 1);

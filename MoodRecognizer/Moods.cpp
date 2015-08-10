@@ -39,12 +39,12 @@ void Moods::parseFile()
 
 Mood Moods::getNextMood()
 {
-	try {
+	if (!moodsQueue_.empty()) {
 		Mood nextMood = moodsQueue_.front();
 		moodsQueue_.pop();
 		return nextMood;
 	}
-	catch (...) {
-		throw std::runtime_error("Queue is empty");
+	else {
+		throw std::runtime_error("Moods queue is empty");
 	}
 }
