@@ -24,18 +24,19 @@ void Ubm::createNormalDistribution(int numDimensions, vector<Mat> covs)
 	assert(means_.cols == numGaussComponents_);
 	assert(covs.size() == numGaussComponents_);
 	assert(covs[0].rows == numDimensions);
-	assert(covs[0].cols == numDimensions);
-	if (numDimensions > 1) {
-		bool seemsToBeDiagonal = (abs(covs[0].at<float>(0, 1)) <= 1e-5)
-			&& (abs(covs[0].at<float>(1, 0)) <= 1e-5);
-		assert(seemsToBeDiagonal);
-	}
+	assert(covs[0].cols == 1);
+	//if (numDimensions > 1) {
+	//	bool seemsToBeDiagonal = (abs(covs[0].at<float>(0, 1)) <= 1e-5)
+	//		&& (abs(covs[0].at<float>(1, 0)) <= 1e-5);
+	//	assert(seemsToBeDiagonal);
+	//}
 	distribution_.resize(numGaussComponents_,
 		vector<normal_distribution<>>(numDimensions, NULL));
 	for (int dimensionIdx = 0; dimensionIdx < numDimensions; dimensionIdx++) {
 		for (int componentIdx = 0; componentIdx < numGaussComponents_; componentIdx++) {
-			distribution_[componentIdx][dimensionIdx] = normal_distribution<>(means_.at<float>(dimensionIdx, componentIdx),
-				(covs[componentIdx].at<float>(dimensionIdx, dimensionIdx)));
+			distribution_[componentIdx][dimensionIdx] = 
+				normal_distribution<>(means_.at<float>(dimensionIdx, componentIdx),
+				(covs[componentIdx].at<float>(dimensionIdx, 0)));
 		}
 	}
 }

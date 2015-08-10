@@ -51,7 +51,7 @@ BOOST_AUTO_TEST_CASE(likelihood_1gaussComponent2d) {
 	ubm.numGaussComponents_ = 1;
 	int numDimensions = 2;
 	vector<Mat> covs;
-	covs.push_back((cv::Mat_<float>(2, 2) << 2.0, 0.0, 0.0, 100.2));
+	covs.push_back((cv::Mat_<float>(2, 1) << 2.0, 100.2));
 	ubm.createNormalDistribution(
 		numDimensions, covs);
 	Mat x = (cv::Mat_<float>(2, 1) << 2, -23);
@@ -66,8 +66,8 @@ BOOST_AUTO_TEST_CASE(likelihood_2gaussComponents2d) {
 	ubm.numGaussComponents_ = 2;
 	int numDimensions = 2;
 	vector<Mat> covs;
-	covs.push_back((cv::Mat_<float>(2, 2) << 4, 0.0, 0.0, 4));
-	covs.push_back((cv::Mat_<float>(2, 2) << 285.0, 0.0, 0.0, 48));
+	covs.push_back((cv::Mat_<float>(2, 1) << 4, 4));
+	covs.push_back((cv::Mat_<float>(2, 1) << 285.0, 48));
 	ubm.createNormalDistribution(
 		numDimensions, covs);
 	Mat x = (cv::Mat_<float>(2, 1) << 66, -66);

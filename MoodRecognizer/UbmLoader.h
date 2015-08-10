@@ -35,6 +35,8 @@ public:
 		}
 
 		fUBM.release();
+
+		ubm_.createNormalDistribution(ubm_.means_.rows, ubm_.covs_);
 	}
 	virtual Ubm getUbm()
 	{

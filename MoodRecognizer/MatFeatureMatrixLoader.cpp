@@ -43,5 +43,5 @@ FeatureMatrix MatFeatureMatrixLoader::get(const FileName fileName)
 	int dimMatrixTransposed[2] = { dimMatrix[1], dimMatrix[0] };
 	Mat oneMfcc = Mat(2, dimMatrixTransposed, CV_32F, dataAsVectorOfFloat).clone();
 	delete[] dataAsVectorOfFloat;
-	return oneMfcc;
+	return oneMfcc.t();
 }

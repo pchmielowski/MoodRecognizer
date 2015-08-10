@@ -63,8 +63,7 @@ BOOST_AUTO_TEST_CASE(calculate_1gaussComponentBiggerMatrix)
 	ubm.means_ = (cv::Mat_<float>(numDimensions, ubm.numGaussComponents_) << 1, 4, 0, 4);
 	ubm.weights_ = (cv::Mat_<float>(1, ubm.numGaussComponents_) << 1);
 	vector<Mat> covs;
-	cv::Mat myDiagonal = (cv::Mat_<float>(numDimensions, 1) << 1, 1, 1, 1);
-	covs.push_back(cv::Mat::diag(myDiagonal));
+	covs.push_back((cv::Mat_<float>(numDimensions, 1) << 1, 1, 1, 1));
 	ubm.createNormalDistribution(numDimensions, covs);
 
 	Mock<UbmLoader> ubmLoader;
@@ -90,8 +89,7 @@ BOOST_AUTO_TEST_CASE(calculate_1gaussComponent2dAlpha0)
 	ubm.means_ = (cv::Mat_<float>(numDimensions, ubm.numGaussComponents_) << -1, 4);
 	ubm.weights_ = (cv::Mat_<float>(1, ubm.numGaussComponents_) << 1);
 	vector<Mat> covs;
-	cv::Mat myDiagonal = (cv::Mat_<float>(numDimensions, 1) << 13, .25);
-	covs.push_back(cv::Mat::diag(myDiagonal));
+	covs.push_back((cv::Mat_<float>(numDimensions, 1) << 13, .25));
 	ubm.createNormalDistribution(numDimensions, covs);
 
 	Mock<UbmLoader> ubmLoader;
@@ -118,8 +116,7 @@ BOOST_AUTO_TEST_CASE(calculate_1gaussComponent2dAlpha1)
 	ubm.means_ = (cv::Mat_<float>(numDimensions, ubm.numGaussComponents_) << -1, 4);
 	ubm.weights_ = (cv::Mat_<float>(1, ubm.numGaussComponents_) << 1);
 	vector<Mat> covs;
-	cv::Mat myDiagonal = (cv::Mat_<float>(numDimensions, 1) << 13, .25);
-	covs.push_back(cv::Mat::diag(myDiagonal));
+	covs.push_back((cv::Mat_<float>(numDimensions, 1) << 13, .25));
 	ubm.createNormalDistribution(numDimensions, covs);
 
 	Mock<UbmLoader> ubmLoader;
@@ -146,8 +143,7 @@ BOOST_AUTO_TEST_CASE(calculate_1gaussComponent2dAlpha1_2timeWindows)
 	ubm.means_ = (cv::Mat_<float>(numDimensions, ubm.numGaussComponents_) << -1, 4);
 	ubm.weights_ = (cv::Mat_<float>(1, ubm.numGaussComponents_) << 1);
 	vector<Mat> covs;
-	cv::Mat myDiagonal = (cv::Mat_<float>(numDimensions, 1) << 13, .25);
-	covs.push_back(cv::Mat::diag(myDiagonal));
+	covs.push_back((cv::Mat_<float>(numDimensions, 1) << 13, .25));
 	ubm.createNormalDistribution(numDimensions, covs);
 
 	Mock<UbmLoader> ubmLoader;
@@ -200,8 +196,7 @@ BOOST_AUTO_TEST_CASE(calculate_1gaussComponent2dAlpha1and0)
 	ubm.means_ = (cv::Mat_<float>(numDimensions, ubm.numGaussComponents_) << -1, 4);
 	ubm.weights_ = (cv::Mat_<float>(1, ubm.numGaussComponents_) << 1);
 	vector<Mat> covs;
-	cv::Mat myDiagonal = (cv::Mat_<float>(numDimensions, 1) << 13, .25);
-	covs.push_back(cv::Mat::diag(myDiagonal));
+	covs.push_back((cv::Mat_<float>(numDimensions, 1) << 13, .25));
 	ubm.createNormalDistribution(numDimensions, covs);
 
 	Mock<UbmLoader> ubmLoader;
