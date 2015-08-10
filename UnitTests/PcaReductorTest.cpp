@@ -36,37 +36,37 @@ BOOST_FIXTURE_TEST_SUITE(PcaReductorTest, PcaReductorTestFixture)
 BOOST_AUTO_TEST_CASE(reduce_two2dVectorsTo1dVector)
 {
 	PcaReductor& pcaReductor = pcaReductorFactoryWithTwo2dVectors(
-		(Mat_<double>(2, 1) << 1, 0),
-		(Mat_<double>(2, 1) << -1, 0));
+		(Mat_<float>(2, 1) << 1, 0),
+		(Mat_<float>(2, 1) << -1, 0));
 
-	SuperVector reducedSuperVector = pcaReductor.reduce((cv::Mat_<double>(2, 1) << -1, 0));
+	SuperVector reducedSuperVector = pcaReductor.reduce((cv::Mat_<float>(2, 1) << -1, 0));
 
-	BOOST_CHECK_CLOSE(reducedSuperVector.at<double>(0), -1, .01);
+	BOOST_CHECK_CLOSE(reducedSuperVector.at<float>(0), -1, .01);
 	BOOST_CHECK_EQUAL(reducedSuperVector.cols, 1);
 	//BOOST_CHECK_EQUAL(reducedSuperVector.rows, 1);
 }
 BOOST_AUTO_TEST_CASE(reduce_two2dVectorsTo1dVector2)
 {
 	PcaReductor& pcaReductor = pcaReductorFactoryWithTwo2dVectors(
-		(Mat_<double>(2, 1) << 1, 0),
-		(Mat_<double>(2, 1) << -1, 0));
+		(Mat_<float>(2, 1) << 1, 0),
+		(Mat_<float>(2, 1) << -1, 0));
 
-	SuperVector reducedSuperVector = pcaReductor.reduce((cv::Mat_<double>(2, 1) << 1, 0));
+	SuperVector reducedSuperVector = pcaReductor.reduce((cv::Mat_<float>(2, 1) << 1, 0));
 
-	BOOST_CHECK_CLOSE(reducedSuperVector.at<double>(0), 1, .01);
+	BOOST_CHECK_CLOSE(reducedSuperVector.at<float>(0), 1, .01);
 }
 BOOST_AUTO_TEST_CASE(reduce_two2dVectorsTo1dVector3)
 {
 	PcaReductor& pcaReductor = pcaReductorFactoryWithTwo2dVectors(
-		(Mat_<double>(2, 1) << 0, 1),
-		(Mat_<double>(2, 1) << 0, -1));
+		(Mat_<float>(2, 1) << 0, 1),
+		(Mat_<float>(2, 1) << 0, -1));
 
-	SuperVector reducedSuperVector1 = pcaReductor.reduce((cv::Mat_<double>(2, 1) << 5, 0));
-	SuperVector reducedSuperVector2 = pcaReductor.reduce((cv::Mat_<double>(2, 1) << -5, 0));
-	SuperVector reducedSuperVector3 = pcaReductor.reduce((cv::Mat_<double>(2, 1) << 0, 5));
-	SuperVector reducedSuperVector4 = pcaReductor.reduce((cv::Mat_<double>(2, 1) << 0, -5));
+	SuperVector reducedSuperVector1 = pcaReductor.reduce((cv::Mat_<float>(2, 1) << 5, 0));
+	SuperVector reducedSuperVector2 = pcaReductor.reduce((cv::Mat_<float>(2, 1) << -5, 0));
+	SuperVector reducedSuperVector3 = pcaReductor.reduce((cv::Mat_<float>(2, 1) << 0, 5));
+	SuperVector reducedSuperVector4 = pcaReductor.reduce((cv::Mat_<float>(2, 1) << 0, -5));
 
 
-	//BOOST_CHECK_CLOSE(reducedSuperVector.at<double>(0), -0.97014, .01);
+	//BOOST_CHECK_CLOSE(reducedSuperVector.at<float>(0), -0.97014, .01);
 }
 BOOST_AUTO_TEST_SUITE_END()

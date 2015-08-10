@@ -115,7 +115,7 @@ BOOST_AUTO_TEST_CASE(train_oneAlphaoneInputFile_correctCalls)
 	When(Method(inputFileNames, fileNamesLeft)).
 		Return(true)/*.Return(true)*/.Return(false).
 		Return(true)/*.Return(true)*/.Return(false);
-	When(Method(inputFileNames, getNextFileName)).Return("firstFileName.mat")/*.Return("anotherFileName.mat")*/;
+	When(Method(inputFileNames, getNextFileName)).Return("firstFileName.mat").AlwaysReturn();
 	When(Method(inputFileNames, markAllAsUnread)).AlwaysReturn();
 	InputFileNames& inputFileNamesInstance = inputFileNames.get();
 
@@ -124,11 +124,11 @@ BOOST_AUTO_TEST_CASE(train_oneAlphaoneInputFile_correctCalls)
 
 	// ASSERT
 	const int NUM_FILES = 1;
-	Verify(Method(inputFileNames, getNextFileName)).Exactly(NUM_FILES);
+	const int NUM_ALPHAS = 1;
+	Verify(Method(inputFileNames, getNextFileName)).Exactly(NUM_FILES + NUM_FILES*NUM_ALPHAS);
 	Verify(Method(superVectorCalculator, calculate).Using("firstFileName.mat")).Exactly(1);
 	Verify(Method(moods, getNextMood)).Exactly(NUM_FILES);
 
-	const int NUM_ALPHAS = 1;
 	Verify(Method(pcaReductor, trainPca).
 		Matching([&](SuperVectors a){return isEq(a, for1Alpha); })).Exactly(1);
 	Verify(Method(inputFileNames, markAllAsUnread)).Exactly(NUM_ALPHAS);
@@ -192,7 +192,7 @@ BOOST_AUTO_TEST_CASE(train_oneAlphaFourInputFiles_correctCalls)
 		Return(true, true, true, true, false);
 
 	When(Method(inputFileNames, getNextFileName)).Return(fileName1, fileName2,
-		fileName3, fileName4);
+		fileName3, fileName4).AlwaysReturn();
 	When(Method(inputFileNames, markAllAsUnread)).AlwaysReturn();
 	InputFileNames& inputFileNamesInstance = inputFileNames.get();
 
@@ -201,14 +201,14 @@ BOOST_AUTO_TEST_CASE(train_oneAlphaFourInputFiles_correctCalls)
 
 	// ASSERT
 	const int NUM_FILES = 4;
-	Verify(Method(inputFileNames, getNextFileName)).Exactly(NUM_FILES);
+	const int NUM_ALPHAS = 1;
+	Verify(Method(inputFileNames, getNextFileName)).Exactly(NUM_FILES + NUM_FILES*NUM_ALPHAS);
 	Verify(Method(superVectorCalculator, calculate).Using(fileName1)).Exactly(1);
 	Verify(Method(superVectorCalculator, calculate).Using(fileName2)).Exactly(1);
 	Verify(Method(superVectorCalculator, calculate).Using(fileName3)).Exactly(1);
 	Verify(Method(superVectorCalculator, calculate).Using(fileName4)).Exactly(1);
 	Verify(Method(moods, getNextMood)).Exactly(NUM_FILES);
 
-	const int NUM_ALPHAS = 1;
 	Verify(Method(pcaReductor, trainPca).
 		Matching([&](SuperVectors a){return isEq(a, for1Alpha); })).Exactly(1);
 	Verify(Method(inputFileNames, markAllAsUnread)).Exactly(NUM_ALPHAS);
@@ -280,7 +280,7 @@ BOOST_AUTO_TEST_CASE(train_2Alphas2InputFiles_correctCalls)
 		Return(true, true, false). // first alpha
 		Return(true, true, false); // second alpha
 
-	When(Method(inputFileNames, getNextFileName)).Return(fileName1, fileName2);
+	When(Method(inputFileNames, getNextFileName)).Return(fileName1, fileName2).AlwaysReturn();
 	When(Method(inputFileNames, markAllAsUnread)).AlwaysReturn();
 	InputFileNames& inputFileNamesInstance = inputFileNames.get();
 
@@ -289,12 +289,12 @@ BOOST_AUTO_TEST_CASE(train_2Alphas2InputFiles_correctCalls)
 
 	// ASSERT
 	const int NUM_FILES = 2;
-	Verify(Method(inputFileNames, getNextFileName)).Exactly(NUM_FILES);
+	const int NUM_ALPHAS = 2;
+	Verify(Method(inputFileNames, getNextFileName)).Exactly(NUM_FILES + NUM_FILES*NUM_ALPHAS);
 	Verify(Method(superVectorCalculator, calculate).Using(fileName1)).Exactly(1);
 	Verify(Method(superVectorCalculator, calculate).Using(fileName2)).Exactly(1);
 	Verify(Method(moods, getNextMood)).Exactly(NUM_FILES);
 
-	const int NUM_ALPHAS = 2;
 	Verify(Method(pcaReductor, trainPca).
 		Matching([&](SuperVectors a){return isEq(a, for1Alpha); }), 
 		Method(pcaReductor, trainPca).
