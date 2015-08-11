@@ -11,12 +11,15 @@ class SvmClassifier
 public:
 	SvmClassifier(FileName svmModelFileName);
 	virtual void trainSvm(MoodsVector moods, SuperVectors superVectors);
+
+
 	virtual Mood predict(SuperVector superVector);
 	virtual ~SvmClassifier() {
 		svm_.clear();
 	}
 private:
 	CvSVM svm_;
+	float computeAccuracy(Mat& superVectorsAsMat, Mat &moodsAsMat);
 };
 
 

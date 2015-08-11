@@ -45,6 +45,8 @@ void SvmClassifier::trainSvm(MoodsVector moods, SuperVectors superVectors)
 
 	const int numFolds = 5;
 	svm_.train_auto(superVectorsAsMat, moodsAsMat, Mat(), Mat(), params, numFolds);
+
+	float accuracy = computeAccuracy(superVectorsAsMat, moodsAsMat);
 }
 
 Mood SvmClassifier::predict(SuperVector superVector)
@@ -60,6 +62,14 @@ Mood SvmClassifier::predict(SuperVector superVector)
 	int mood = static_cast<int>(svm_.predict(superVector));
 	assert(mood >= 0 && mood <= 3);
 	return mood;
+}
+
+float SvmClassifier::computeAccuracy(Mat& superVectorsAsMat, Mat &moodsAsMat)
+{
+	Mat results;
+	svm_.predict(superVectorsAsMat, results);
+	int numCorrectPredicts = countNonZero(results != moodsAsMat);
+	return (float)numCorrectPredicts / (float)(moodsAsMat.rows);
 }
 
 SvmClassifier::SvmClassifier(FileName svmModelFileName)
