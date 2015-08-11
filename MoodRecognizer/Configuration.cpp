@@ -73,10 +73,10 @@ void Configuration::parseInputArguments(const int argc, char* const argv[]) {
 		else
 			throw runtime_error("Missing argument!");
 	}
-	catch (runtime_error e) { // TODO: usun¹æ
+	catch (runtime_error& e) { // TODO: usun¹æ
 		throw runtime_error(e.what());
 	}
-	catch (exception e) {// TODO: throw e
+	catch (exception& e) {// TODO: throw e
 		throw runtime_error(e.what());
 	}
 }

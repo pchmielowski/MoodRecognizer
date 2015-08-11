@@ -22,7 +22,7 @@ int main(int argc, char* argv[]) {
 		if (!cfg.parsedOk())
 			return -1;
 	}
-	catch (std::exception e)
+	catch (std::exception& e)
 	{
 		std::cout << e.what() << endl;
 		return -1;
@@ -47,7 +47,7 @@ int main(int argc, char* argv[]) {
 		try {
 			superVectorCollector.train(moods, *inputFileNames);
 		}
-		catch (exception e) {
+		catch (exception& e) {
 			cout << e.what() << endl;
 		}
 	}

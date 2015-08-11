@@ -9,5 +9,7 @@ bool MatInputFileNames::hasRightExtension(directory_iterator itr)
 
 MatInputFileNames::MatInputFileNames(FileName inputDataFolderPath)
 {
+
 	makeQueue(inputDataFolderPath);
+
 }
