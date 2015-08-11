@@ -31,6 +31,9 @@ SuperVectors SuperVectorCalculator::calculate(FileName featureMatrixFileName)
 		{
 			float weight = ubm_.weights_.at<float>(componentIdx);
 			eq3Counters[componentIdx] = weight * ubm_.logLikelihood(featureMatrix.col(t), componentIdx);
+			// TODO: temp workaround
+			if (std::isnan(eq3Counters[componentIdx]))
+				eq3Counters[componentIdx] = 0;
 			eq3Denominator += eq3Counters[componentIdx];
 		}
 

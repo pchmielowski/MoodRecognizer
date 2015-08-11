@@ -3,6 +3,7 @@
 #include "Mp3InputFileNames.h"
 #include "MatInputFileNames.h"
 #include "PcaReductor.h"
+#include <iostream>
 
 SuperVectorCollector::SuperVectorCollector(SuperVectorCalculator& superVectorCalculator, 
 	PcaReductor& pcaReductor,
@@ -35,6 +36,7 @@ void SuperVectorCollector::train(MoodsInterface& moods, InputFileNames& inputFil
 
 		assert(superVectorCalculator_ != nullptr);
 		SuperVectors superVectorsForFile = superVectorCalculator_->calculate(fileName);
+		std::cout << "SuperVectorCalculated for file no " << numFilesRead << endl;
 
 		moodsVector.push_back(moods.getNextMood());
 		assert(moodsVector.size() == numFilesRead);
@@ -55,17 +57,19 @@ void SuperVectorCollector::train(MoodsInterface& moods, InputFileNames& inputFil
 		SuperVectors reducedSuperVectorsForAlpha;
 		assert(pcaReductor_ != nullptr);
 		pcaReductor_->trainPca(superVectorsForAlpha);
+		std::cout << "PCA trained" << endl;
 		inputFileNames.markAllAsUnread();
 
-		int i = 0;
+		int fileIdx = 0;
 		while (inputFileNames.fileNamesLeft())
 		{
 			inputFileNames.getNextFileName();
-			SuperVector& superVectorForFileAndAlpha = superVectorsForAlpha[i++];
+			SuperVector& superVectorForFileAndAlpha = superVectorsForAlpha[fileIdx++];
 			assert(superVectorForFileAndAlpha.cols == 1);
 
 			SuperVector reducedSuperVectorForFileAndAlpha;
 			reducedSuperVectorForFileAndAlpha = pcaReductor_->reduce(superVectorForFileAndAlpha);
+			//std::cout << "SuperVector reduced for file no " << i << endl;
 			assert(reducedSuperVectorForFileAndAlpha.cols == 1);
 			reducedSuperVectorsForAlpha.push_back(reducedSuperVectorForFileAndAlpha);
 		}
