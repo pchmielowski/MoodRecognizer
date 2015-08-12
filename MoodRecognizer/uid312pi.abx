@@ -3,7 +3,6 @@
 #include "Types.h"
 #include "SvmClassifier.h"
 #include "PlotFilePreparator.h" // TODO forward it!
-#include <vector>
 
 class MoodsInterface;
 class InputFileNames;
@@ -18,7 +17,7 @@ public:
 
 	void addAccuraciesToWriter(PlotFilePreparator& plotFilePreparator)
 	{
-		plotFilePreparator.addAccuracies(accuracies_);
+		plotFilePreparator.addAccuracies({ .4f });
 	}
 
 	Moods predictMoods(InputFileNames& inputFileNames);

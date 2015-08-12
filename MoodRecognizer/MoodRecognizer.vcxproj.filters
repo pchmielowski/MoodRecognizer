@@ -143,5 +143,11 @@
     <ClCompile Include="FileReader.cpp">
       <Filter>FileIO\FileReader</Filter>
     </ClCompile>
+    <ClCompile Include="PlotFilePreparator.cpp">
+      <Filter>PlotFilePreparator</Filter>
+    </ClCompile>
+    <ClCompile Include="FileWriter.cpp">
+      <Filter>FileIO\FileWriter</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

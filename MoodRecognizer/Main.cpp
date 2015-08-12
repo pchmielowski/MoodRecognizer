@@ -10,6 +10,8 @@
 #include "InputFileNames.h"
 #include "MatInputFileNames.h"
 #include "Moods.h"
+#include "PlotFilePreparator.h"
+#include "FileWriter.h"
 
 
 int main(int argc, char* argv[]) {
@@ -46,6 +48,11 @@ int main(int argc, char* argv[]) {
 		Moods moods(moodsFileReader, cfg.getMoodsFileName());
 		try {
 			superVectorCollector.train(moods, *inputFileNames);
+			FileWriter plotFileWriter;
+			PlotFilePreparator plotFilePreparator(plotFileWriter);
+			superVectorCollector.addAccuraciesToWriter(plotFilePreparator);
+			superVectorCalculator.addAlphasToWriter(plotFilePreparator);
+			plotFilePreparator.write("alpha_and_accuracy_plot.txt");
 		}
 		catch (exception& e) {
 			cout << e.what() << endl;

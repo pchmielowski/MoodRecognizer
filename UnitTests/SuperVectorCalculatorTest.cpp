@@ -8,6 +8,7 @@
 #include "FeatureMatrixLoader.h"
 #include "SuperVectorCalculator.h"
 #include "UbmLoader.h"
+#include "PlotFilePreparator.h"
 using namespace fakeit;
 using namespace std;
 
@@ -215,5 +216,26 @@ BOOST_AUTO_TEST_CASE(calculate_1gaussComponent2dAlpha1and0)
 	BOOST_CHECK_CLOSE(result[1].at<float>(0), -1, 0.1);
 	BOOST_CHECK_CLOSE(result[1].at<float>(1), 4, 0.1);
 }
+BOOST_AUTO_TEST_CASE(addAlphasToWriter_oneAlpha_correctCalls)
+{
+	Mock<FeatureMatrixLoader> privateFeatureMatrixLoader;
+	FeatureMatrixLoader& featureMatrixLoaderInstance = privateFeatureMatrixLoader.get();
 
+	Mock<UbmLoader> ubmLoader;
+	When(Method(ubmLoader, getUbm)).Return();
+	UbmLoader& ubmLoaderInstance = ubmLoader.get();
+
+	AlphaVector alphas = { .3f , .5f, .1f};
+
+	SuperVectorCalculator SUT(featureMatrixLoaderInstance, ubmLoaderInstance, alphas);
+
+	Mock<PlotFilePreparator> plotFilePreparator;
+	When(Method(plotFilePreparator, addAlphas)).Return();
+	PlotFilePreparator& plotFilePreparatorInstance = plotFilePreparator.get();
+
+	SUT.addAlphasToWriter(plotFilePreparatorInstance);
+
+	// ASSERT
+	Verify(Method(plotFilePreparator, addAlphas).Using({  .3f, .5f, .1f }));
+}
 BOOST_AUTO_TEST_SUITE_END()

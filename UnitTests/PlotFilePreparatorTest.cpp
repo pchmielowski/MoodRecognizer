@@ -79,4 +79,15 @@ BOOST_AUTO_TEST_CASE(addAlphasAndAccuracies_add4Alpha4Accuracy_correctContent)
 
 	Verify(Method(fileWriter, appendContent).Using("0.200 0.900;\n0.700 0.300;\n0.100 0.200;\n1.000 0.000;"));
 }
+BOOST_AUTO_TEST_CASE(write_realFile)
+{
+	FileWriter fileWriterInstance;
+	PlotFilePreparator SUT(fileWriterInstance);
+
+	AlphaVector alphas = { .2f, .7f, .1f, 1.f };
+	SUT.addAlphas(alphas);
+	std::vector<float> accuracies = { .9f, .3f, .2f, 0.f };
+	SUT.addAccuracies(accuracies);
+	SUT.write("toDelete.txt");
+}
 BOOST_AUTO_TEST_SUITE_END()

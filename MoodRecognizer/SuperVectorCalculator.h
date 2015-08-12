@@ -6,6 +6,7 @@
 #include <boost/math/distributions/normal.hpp>
 #include "opencv/cv.h"
 #include "Ubm.h"
+#include "PlotFilePreparator.h"
 
 using namespace std;
 using namespace cv;
@@ -16,6 +17,10 @@ public:
 	SuperVectorCalculator(FeatureMatrixLoader& featureMatrixLoader, UbmLoader& ubmLoader, 
 		vector<Alpha> alpha);
 	virtual SuperVectors calculate(FileName featureMatrixFileName);
+	void addAlphasToWriter(PlotFilePreparator& plotFilePreparator)
+	{
+		plotFilePreparator.addAlphas(alphas_);
+	}
 private:
 	Ubm ubm_;
 	vector<Alpha> alphas_;

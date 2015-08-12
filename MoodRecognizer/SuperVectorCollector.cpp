@@ -77,7 +77,8 @@ void SuperVectorCollector::train(MoodsInterface& moods, InputFileNames& inputFil
 		assert(svmClassifier_ != nullptr);
 		assert(reducedSuperVectorsForAlpha.size() != 0);
 		assert(moodsVector.size() != 0);
-		svmClassifier_->trainSvm(moodsVector, reducedSuperVectorsForAlpha);
+		float accuracy = svmClassifier_->trainSvm(moodsVector, reducedSuperVectorsForAlpha);
+		accuracies_.push_back(accuracy);
 	}
 
 }

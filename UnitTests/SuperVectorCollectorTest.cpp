@@ -10,6 +10,7 @@
 #include "PcaReductor.h"
 #include "SuperVectorCalculator.h"
 #include "Types.h"
+#include "PlotFilePreparator.h"
 
 using namespace fakeit;
 using namespace std;
@@ -316,32 +317,49 @@ BOOST_AUTO_TEST_CASE(train_2Alphas2InputFiles_correctCalls)
 		Method(svmClassifier, trainSvm).
 		Matching([&](MoodsVector mv, SuperVectors a){return isEq(a, reduced_for2Alpha) && isEq(mv, moodsVector); }));
 }
-BOOST_AUTO_TEST_CASE(addAlphasAndAccuracyToWriter_oneAccuracy_correctAccuracy)
+BOOST_AUTO_TEST_CASE(addAccuracyToWriter_oneAccuracy_correctAccuracy)
 {
 	// ARRANGE
 	// mocks
 	Mock<SuperVectorCalculator> superVectorCalculator;
-	//When(Method(superVectorCalculator, calculate)).Return(for1File, for2File);
+	When(Method(superVectorCalculator, calculate)).Return({ for1File_1Alpha, for1File_2Alpha });
 	SuperVectorCalculator& superVectorCalculatorInstance = superVectorCalculator.get();
 
-	Mock<PcaReductor> pcaReductor;/*
-	When(Method(pcaReductor, trainPca)).AlwaysReturn();
+	Mock<PcaReductor> pcaReductor;
+	When(Method(pcaReductor, trainPca)).AlwaysReturn();	
 	When(Method(pcaReductor, reduce)).Return(
-		reduced_for1File_1Alpha,
-		reduced_for2File_1Alpha,
-		reduced_for1File_2Alpha,
-		reduced_for2File_2Alpha);*/
+		reduced_for1File_1Alpha).Return(
+		reduced_for1File_2Alpha);
 	PcaReductor& pcaReductorInstance = pcaReductor.get();
 
 	Mock<SvmClassifier> svmClassifier;
-	When(Method(svmClassifier, trainSvm)).Return(.4);
+	When(Method(svmClassifier, trainSvm)).Return(.4).Return(.1);
 	SvmClassifier& svmClassifierInstance = svmClassifier.get();
 
 	SuperVectorCollector SUT(superVectorCalculatorInstance, pcaReductorInstance,
 		svmClassifierInstance);
 
+	// ---------
+	Mock<MoodsInterface> moods;
+	When(Method(moods, getNextMood)).Return(1);
+	MoodsInterface& moodsInstance = moods.get();
+
+	Mock<InputFileNames> inputFileNames;
+	When(Method(inputFileNames, fileNamesLeft)).Return(true).Return(false).Return(true).
+		Return(false).Return(true).Return(false);
+	When(Method(inputFileNames, getNextFileName)).AlwaysReturn("file.mat");
+	When(Method(inputFileNames, markAllAsUnread)).AlwaysReturn();
+	InputFileNames& inputFileNamesInstance = inputFileNames.get();
+	
+	Mock<PlotFilePreparator> plotFilePreparator;
+	When(Method(plotFilePreparator, addAccuracies)).Return();
+	PlotFilePreparator& plotFilePreparatorInstance = plotFilePreparator.get();
+	
 	// ACT
+	SUT.train(moodsInstance, inputFileNamesInstance);
+	SUT.addAccuraciesToWriter(plotFilePreparatorInstance);
 
-
+	// ASSERT
+	Verify(Method(plotFilePreparator, addAccuracies).Using({ .4f, .1f }));
 }
 BOOST_AUTO_TEST_SUITE_END()
