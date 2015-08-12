@@ -32,8 +32,17 @@
     <Filter Include="PcaReductor">
       <UniqueIdentifier>{67840815-f48c-47b8-894b-db19be18360c}</UniqueIdentifier>
     </Filter>
-    <Filter Include="FileReader">
+    <Filter Include="FileIO">
+      <UniqueIdentifier>{beb15986-80fe-4045-beed-f642139a06f4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FileIO\FileReader">
       <UniqueIdentifier>{dd1b1e7a-4061-42f7-b794-43d6e582cfd2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FileIO\FileWriter">
+      <UniqueIdentifier>{89beafa7-8ad5-49f0-9a5d-e07d31ed334c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="PlotFilePreparator">
+      <UniqueIdentifier>{f1b21216-b988-4259-a7ee-d2de603833c3}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -84,7 +93,13 @@
     </ClInclude>
     <ClInclude Include="Types.h" />
     <ClInclude Include="FileReader.h">
-      <Filter>FileReader</Filter>
+      <Filter>FileIO\FileReader</Filter>
+    </ClInclude>
+    <ClInclude Include="FileWriter.h">
+      <Filter>FileIO\FileWriter</Filter>
+    </ClInclude>
+    <ClInclude Include="PlotFilePreparator.h">
+      <Filter>PlotFilePreparator</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -126,7 +141,7 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="FileReader.cpp">
-      <Filter>FileReader</Filter>
+      <Filter>FileIO\FileReader</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

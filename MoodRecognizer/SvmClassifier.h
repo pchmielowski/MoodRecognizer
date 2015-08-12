@@ -10,7 +10,7 @@ class SvmClassifier
 {
 public:
 	SvmClassifier(FileName svmModelFileName);
-	virtual void trainSvm(MoodsVector moods, SuperVectors superVectors);
+	virtual float trainSvm(MoodsVector moods, SuperVectors superVectors);
 
 
 	virtual Mood predict(SuperVector superVector);

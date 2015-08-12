@@ -75,6 +75,7 @@
     <ClInclude Include="Configuration.h" />
     <ClInclude Include="FileReader.h" />
     <ClInclude Include="FeatureMatrixLoader.h" />
+    <ClInclude Include="FileWriter.h" />
     <ClInclude Include="InputFileNames.h" />
     <ClInclude Include="MatFeatureMatrixLoader.h" />
     <ClInclude Include="MatInputFileNames.h" />
@@ -83,6 +84,7 @@
     <ClInclude Include="Mp3FeatureMatrixLoader.h" />
     <ClInclude Include="Mp3InputFileNames.h" />
     <ClInclude Include="PcaReductor.h" />
+    <ClInclude Include="PlotFilePreparator.h" />
     <ClInclude Include="SuperVectorCalculator.h" />
     <ClInclude Include="SuperVectorCollector.h" />
     <ClInclude Include="SvmClassifier.h" />

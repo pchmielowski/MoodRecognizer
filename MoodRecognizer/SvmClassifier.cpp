@@ -5,7 +5,7 @@
 
 using namespace cv;
 
-void SvmClassifier::trainSvm(MoodsVector moods, SuperVectors superVectors)
+float SvmClassifier::trainSvm(MoodsVector moods, SuperVectors superVectors)
 {
 	if (moods.size() != superVectors.size())
 		throw std::runtime_error("Number of moods != number of sVectors!");
@@ -47,6 +47,7 @@ void SvmClassifier::trainSvm(MoodsVector moods, SuperVectors superVectors)
 	svm_.train_auto(superVectorsAsMat, moodsAsMat, Mat(), Mat(), params, numFolds);
 
 	float accuracy = computeAccuracy(superVectorsAsMat, moodsAsMat);
+	return accuracy;
 }
 
 Mood SvmClassifier::predict(SuperVector superVector)

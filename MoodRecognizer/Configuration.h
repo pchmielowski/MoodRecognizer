@@ -5,6 +5,7 @@
 #include "Types.h"
 #include <memory>
 #include <vector>
+#include <boost/property_tree/ptree.hpp>
 using namespace std;
 
 enum Mode {
@@ -24,6 +25,8 @@ public:
 
 	void parseInputArguments(const int argc, char* const argv[]);
 	void parseConfigurationFile(const FileName fileName);
+
+
 
 	FileName getPathOfInputFiles() const;
 	FileName getSvmModelFileName() const;
@@ -53,5 +56,6 @@ private:
 	bool savePlotFile_;
 	bool saveSvmFile_;
 	bool parsedOk_ = false;
+	void parseAlphas(boost::property_tree::ptree &xmlTree);
 };
 

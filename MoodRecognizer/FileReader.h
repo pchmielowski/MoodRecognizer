@@ -4,7 +4,8 @@
 #include <fstream>
 using namespace std;
 
-class FileReader {
+class FileReader 
+{
 public:
 	FileReader();
 	virtual ~FileReader();

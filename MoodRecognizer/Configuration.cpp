@@ -93,8 +93,8 @@ void Configuration::parseConfigurationFile(const FileName fileName) {
 			cout << e.what() << endl;
 		}
 		try {
-			string alphaAsString = xmlTree.get<std::string>("alpha.value");
-			alpha_.push_back(atof(alphaAsString.c_str())); // ma braæ vector
+			parseAlphas(xmlTree);
+
 		}
 		catch (boost::property_tree::ptree_error e) {
 			cout << e.what() << endl;
@@ -157,4 +157,19 @@ bool Configuration::shouldSavePlotFile() const {
 bool Configuration::parsedOk()
 {
 	return parsedOk_;
+}
+
+void Configuration::parseAlphas(boost::property_tree::ptree &xmlTree)
+{
+	string allAlphas = xmlTree.get<std::string>("alpha.value");
+	while (1)
+	{
+		int commaPosition = allAlphas.find(",");
+		string alpha = allAlphas.substr(0, commaPosition);
+		alpha_.push_back(atof(allAlphas.c_str()));
+
+		if (commaPosition == string::npos)
+			break;
+		allAlphas = allAlphas.substr(commaPosition + 1);
+	}
 }

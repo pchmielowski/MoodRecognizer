@@ -11,3 +11,10 @@ typedef int							Mood;
 typedef std::vector<Mood>			MoodsVector;
 typedef cv::Mat						SuperVector;
 typedef std::vector<SuperVector>	SuperVectors;
+
+struct alphaAccuracy
+{
+	Alpha alpha;
+	float accuracy;
+};
+typedef std::vector<alphaAccuracy>	AlphasAccuracies; // TODO: pomyœleæ nad nazw¹
