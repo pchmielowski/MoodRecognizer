@@ -14,6 +14,15 @@
 #include "FileWriter.h"
 
 
+void writeProgressBarCaptions()
+{
+	cout << "0%";
+	for (int i = 0; i < 237; ++i)
+		cout << " ";
+
+	cout << "| 100%" << endl;
+}
+
 int main(int argc, char* argv[]) {
 
 	FileReader cfgFileReader;
@@ -47,6 +56,8 @@ int main(int argc, char* argv[]) {
 		FileReader moodsFileReader;
 		Moods moods(moodsFileReader, cfg.getMoodsFileName());
 		try {
+			writeProgressBarCaptions();
+
 			superVectorCollector.train(moods, *inputFileNames);
 			FileWriter plotFileWriter;
 			PlotFilePreparator plotFilePreparator(plotFileWriter);

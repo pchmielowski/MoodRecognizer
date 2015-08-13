@@ -36,7 +36,8 @@ void SuperVectorCollector::train(MoodsInterface& moods, InputFileNames& inputFil
 
 		assert(superVectorCalculator_ != nullptr);
 		SuperVectors superVectorsForFile = superVectorCalculator_->calculate(fileName);
-		std::cout << "SuperVectorCalculated for file no " << numFilesRead << endl;
+		//std::cout << "SuperVectorCalculated for file no " << numFilesRead << endl;
+		std::cout << "|";
 
 		moodsVector.push_back(moods.getNextMood());
 		assert(moodsVector.size() == numFilesRead);

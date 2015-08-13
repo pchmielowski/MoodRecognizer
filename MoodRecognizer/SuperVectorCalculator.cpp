@@ -21,7 +21,7 @@ SuperVectors SuperVectorCalculator::calculate(FileName featureMatrixFileName)
 	assert(ubm_.weights_.rows == 1);
 	assert(ubm_.weights_.cols == numGaussComponents);
 
-	float** eq3 = Eq3(numTimeWindows, numGaussComponents, featureMatrix);
+	myContainer* eq3 = Eq3(numTimeWindows, numGaussComponents, featureMatrix);
 
 	SuperVectors superVectors(alphas_.size());
 	int numCoeff = featureMatrix.rows;
@@ -35,25 +35,21 @@ SuperVectors SuperVectorCalculator::calculate(FileName featureMatrixFileName)
 			++alphaIdx;
 		}
 	}
-	ReleaseEq3(numTimeWindows, eq3);
+	ReleaseEq3(numGaussComponents, eq3);
 
 	assert(superVectors.size() == alphas_.size());
 	return superVectors;
 }
 
-void SuperVectorCalculator::ReleaseEq3(int numTimeWindows, float** eq3)
+void SuperVectorCalculator::ReleaseEq3(int numGaussComponents, myContainer* eq3)
 {
-	for (int t = 0; t < numTimeWindows; t++)
-	{
-		assert(eq3[t] != nullptr);
-		delete[] eq3[t];
-	}
 	delete[] eq3;
 }
 
-float** SuperVectorCalculator::Eq3(int numTimeWindows, int numGaussComponents, FeatureMatrix &featureMatrix)
+myContainer* SuperVectorCalculator::Eq3(int numTimeWindows, int numGaussComponents, FeatureMatrix &featureMatrix)
 {
-	float** eq3 = new float*[numTimeWindows];
+	myContainer* eq3 = new myContainer[numGaussComponents];
+
 	for (int t = 0; t < numTimeWindows; t++)
 	{
 		float* eq3Counters = new float[numGaussComponents];
@@ -68,11 +64,10 @@ float** SuperVectorCalculator::Eq3(int numTimeWindows, int numGaussComponents, F
 			eq3Denominator += eq3Counters[componentIdx];
 		}
 
-		eq3[t] = new float[numGaussComponents];
 		for (int componentIdx = 0; componentIdx < numGaussComponents; ++componentIdx)
 		{
 			assert(abs(eq3Denominator) > 1e-10);
-			eq3[t][componentIdx] = eq3Counters[componentIdx] / eq3Denominator;
+			eq3[componentIdx].push_back(eq3Counters[componentIdx] / eq3Denominator);
 		}
 		delete[] eq3Counters;
 	}
@@ -88,13 +83,15 @@ cv::Mat SuperVectorCalculator::Eq1(Mat eq2, Alpha alpha, int componentIdx, int n
 	return mu_i;
 }
 
-cv::Mat SuperVectorCalculator::Eq2(int numCoeff, int numTimeWindows, float** eq3, int componentIdx, FeatureMatrix &featureMatrix, int numGaussComponents)
+cv::Mat SuperVectorCalculator::Eq2(int numCoeff, int numTimeWindows, myContainer* eq3, int componentIdx, FeatureMatrix &featureMatrix, int numGaussComponents)
 {
 	Mat eq2Counter = Mat::zeros(numCoeff, 1, CV_32FC1);
 	float eq2Denominator = 0;
-	for (int t = 0; t < numTimeWindows; t++) {
-		eq2Counter += eq3[t][componentIdx] * featureMatrix.col(t);
-		eq2Denominator += eq3[t][componentIdx];
+	int t = 0;
+	for (auto itr : eq3[componentIdx])
+	{
+		eq2Counter += itr * featureMatrix.col(t++);
+		eq2Denominator += itr;
 	}
 
 	bool eq2DenominatorGreaterThanZero = abs(eq2Denominator) > 1e-10;

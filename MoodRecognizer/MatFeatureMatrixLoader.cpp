@@ -13,7 +13,7 @@ MatFeatureMatrixLoader::MatFeatureMatrixLoader(const bool sdcEnabled)
 
 FeatureMatrix MatFeatureMatrixLoader::get(const FileName fileName)
 {
-	cout << fileName << endl;
+	//cout << fileName << endl;
 	cv::FileStorage file;
 	file.open(fileName, cv::FileStorage::READ);
 
