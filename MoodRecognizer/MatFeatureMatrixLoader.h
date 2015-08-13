@@ -16,7 +16,4 @@ public:
 
 
 private:
-	Mat getMatrix(mat_t* inputFile);
-
-	mat_t* openMatFile(const FileName &fileName);
 };
