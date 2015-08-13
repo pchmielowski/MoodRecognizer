@@ -65,6 +65,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>false</SDLCheck>
       <AdditionalIncludeDirectories>C:\Dysk Google\opencv249\build\include;C:\Dysk Google\boost\boost_1_55_0;C:\Dysk Google\lame\;C:\Dysk Google\matio-1.5.2\matio-1.5.2\visual_studio;C:\Dysk Google\matio-1.5.2\matio-1.5.2\src</AdditionalIncludeDirectories>
+      <FloatingPointModel>Fast</FloatingPointModel>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
