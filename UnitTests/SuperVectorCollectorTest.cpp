@@ -70,10 +70,10 @@ protected:
 	const Mood moodFor3File = 3;
 	const Mood moodFor4File = 2;
 
-	const FileName fileName1 = "first.mat";
-	const FileName fileName2 = "second.mat";
-	const FileName fileName3 = "third.mat";
-	const FileName fileName4 = "fourth.mat";
+	const FileName fileName1 = "first.xml";
+	const FileName fileName2 = "second.xml";
+	const FileName fileName3 = "third.xml";
+	const FileName fileName4 = "fourth.xml";
 private:
 
 };
@@ -116,7 +116,7 @@ BOOST_AUTO_TEST_CASE(train_oneAlphaoneInputFile_correctCalls)
 	When(Method(inputFileNames, fileNamesLeft)).
 		Return(true)/*.Return(true)*/.Return(false).
 		Return(true)/*.Return(true)*/.Return(false);
-	When(Method(inputFileNames, getNextFileName)).Return("firstFileName.mat").AlwaysReturn();
+	When(Method(inputFileNames, getNextFileName)).Return("firstFileName.xml").AlwaysReturn();
 	When(Method(inputFileNames, markAllAsUnread)).AlwaysReturn();
 	InputFileNames& inputFileNamesInstance = inputFileNames.get();
 
@@ -127,7 +127,7 @@ BOOST_AUTO_TEST_CASE(train_oneAlphaoneInputFile_correctCalls)
 	const int NUM_FILES = 1;
 	const int NUM_ALPHAS = 1;
 	Verify(Method(inputFileNames, getNextFileName)).Exactly(NUM_FILES + NUM_FILES*NUM_ALPHAS);
-	Verify(Method(superVectorCalculator, calculate).Using("firstFileName.mat")).Exactly(1);
+	Verify(Method(superVectorCalculator, calculate).Using("firstFileName.xml")).Exactly(1);
 	Verify(Method(moods, getNextMood)).Exactly(NUM_FILES);
 
 	Verify(Method(pcaReductor, trainPca).
@@ -347,7 +347,7 @@ BOOST_AUTO_TEST_CASE(addAccuracyToWriter_oneAccuracy_correctAccuracy)
 	Mock<InputFileNames> inputFileNames;
 	When(Method(inputFileNames, fileNamesLeft)).Return(true).Return(false).Return(true).
 		Return(false).Return(true).Return(false);
-	When(Method(inputFileNames, getNextFileName)).AlwaysReturn("file.mat");
+	When(Method(inputFileNames, getNextFileName)).AlwaysReturn("file.xml");
 	When(Method(inputFileNames, markAllAsUnread)).AlwaysReturn();
 	InputFileNames& inputFileNamesInstance = inputFileNames.get();
 	

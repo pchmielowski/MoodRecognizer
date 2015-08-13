@@ -1,7 +1,7 @@
 #pragma once;
 #include "Types.h"
 #include <boost/filesystem.hpp>
-#include <queue>
+#include <deque>
 using namespace boost::filesystem;
 using namespace std;
 
@@ -15,7 +15,16 @@ protected:
 	void makeQueue(const path inputFolderPath);
 private:
 	virtual bool hasRightExtension(directory_iterator itr) = 0;
-	queue<FileName> fileNameQueue_;
-	queue<FileName> nonReducingFileNameQueue_;
+	deque<FileName> fileNameQueue_;
+	deque<FileName> nonReducingFileNameQueue_;
+	static bool comparator(const string& left, const string& right);
+
+	static int extractNumber(const string &fullPath)
+	{
+		int slashPosition = fullPath.find_last_of("\\");
+		int dotPosition = fullPath.find(".");
+		string onlyName = fullPath.substr(slashPosition + 1, dotPosition);
+		return atoi(onlyName.c_str());
+	}
 
 };
