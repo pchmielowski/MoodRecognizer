@@ -12,13 +12,15 @@ MatFeatureMatrixLoader::MatFeatureMatrixLoader(const bool sdcEnabled)
 
 FeatureMatrix MatFeatureMatrixLoader::get(const FileName fileName)
 {
-	// openMatFile
-	mat_t* inputFile = NULL;
-	inputFile = Mat_Open(fileName.c_str(), MAT_ACC_RDONLY);
-	if (!inputFile) {
-		throw(runtime_error("MAT file not valid!"));
-	}
+	mat_t* inputFile = openMatFile(fileName);
 
+	Mat oneMfcc = getMatrix(inputFile);
+	
+	return oneMfcc.t();
+}
+
+cv::Mat MatFeatureMatrixLoader::getMatrix(mat_t* inputFile)
+{
 	// getCeps
 	matvar_t* featuresMatStructure = NULL;
 	featuresMatStructure = Mat_VarRead(inputFile, "features");
@@ -39,11 +41,22 @@ FeatureMatrix MatFeatureMatrixLoader::get(const FileName fileName)
 	for (int i = 0; i < numSamples; i++)
 		dataAsVectorOfFloat[i] = static_cast<float>(dataAsVectorOfDouble[i]);
 	delete[] dataAsVectorOfDouble;
-	
+
 	// castToMat
 	// ta macierz jest transponowana w stosunku do macierzy z Matlaba!!
 	int dimMatrixTransposed[2] = { dimMatrix[1], dimMatrix[0] };
 	Mat oneMfcc = Mat(2, dimMatrixTransposed, CV_32F, dataAsVectorOfFloat).clone();
 	delete[] dataAsVectorOfFloat;
-	return oneMfcc.t();
+
+	return oneMfcc.clone();
+}
+
+mat_t* MatFeatureMatrixLoader::openMatFile(const FileName &fileName)
+{
+	mat_t* inputFile = NULL;
+	inputFile = Mat_Open(fileName.c_str(), MAT_ACC_RDONLY);
+	if (!inputFile) {
+		throw(runtime_error("MAT file not valid!"));
+	}
+	return inputFile;
 }
