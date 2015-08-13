@@ -17,6 +17,15 @@ public:
 	SuperVectorCalculator(FeatureMatrixLoader& featureMatrixLoader, UbmLoader& ubmLoader, 
 		vector<Alpha> alpha);
 	virtual SuperVectors calculate(FileName featureMatrixFileName);
+
+	void ReleaseEq3(int numTimeWindows, float** eq3);
+
+	float** Eq3(int numTimeWindows, int numGaussComponents, FeatureMatrix &featureMatrix);
+
+	Mat Eq1(Mat eq2, Alpha alpha, int componentIdx, int numCoeff);
+
+	Mat Eq2(int numCoeff, int numTimeWindows, float** eq3, int componentIdx, FeatureMatrix &featureMatrix, int numGaussComponents);
+
 	void addAlphasToWriter(PlotFilePreparator& plotFilePreparator)
 	{
 		plotFilePreparator.addAlphas(alphas_);

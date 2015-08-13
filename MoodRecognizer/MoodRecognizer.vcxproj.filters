@@ -118,9 +118,6 @@
     <ClCompile Include="Mp3InputFileNames.cpp">
       <Filter>InputFileNames</Filter>
     </ClCompile>
-    <ClCompile Include="MatFeatureMatrixLoader.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="SuperVectorCalculator.cpp">
       <Filter>SuperVectorCalculator</Filter>
     </ClCompile>
@@ -148,6 +145,9 @@
     </ClCompile>
     <ClCompile Include="FileWriter.cpp">
       <Filter>FileIO\FileWriter</Filter>
+    </ClCompile>
+    <ClCompile Include="MatFeatureMatrixLoader.cpp">
+      <Filter>FeatureMatrixLoader</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -12,14 +12,14 @@ MatFeatureMatrixLoader::MatFeatureMatrixLoader(const bool sdcEnabled)
 
 FeatureMatrix MatFeatureMatrixLoader::get(const FileName fileName)
 {
-	// open MAT file
+	// openMatFile
 	mat_t* inputFile = NULL;
 	inputFile = Mat_Open(fileName.c_str(), MAT_ACC_RDONLY);
 	if (!inputFile) {
 		throw(runtime_error("MAT file not valid!"));
 	}
 
-	// get MFCC features from MAT file
+	// getCeps
 	matvar_t* featuresMatStructure = NULL;
 	featuresMatStructure = Mat_VarRead(inputFile, "features");
 	matvar_t* mfccMatVector = NULL;
@@ -34,11 +34,13 @@ FeatureMatrix MatFeatureMatrixLoader::get(const FileName fileName)
 	Mat_VarFree(featuresMatStructure);
 	Mat_Close(inputFile);
 
+	// castToFloat
 	float* dataAsVectorOfFloat = new float[numSamples];
 	for (int i = 0; i < numSamples; i++)
 		dataAsVectorOfFloat[i] = static_cast<float>(dataAsVectorOfDouble[i]);
 	delete[] dataAsVectorOfDouble;
 	
+	// castToMat
 	// ta macierz jest transponowana w stosunku do macierzy z Matlaba!!
 	int dimMatrixTransposed[2] = { dimMatrix[1], dimMatrix[0] };
 	Mat oneMfcc = Mat(2, dimMatrixTransposed, CV_32F, dataAsVectorOfFloat).clone();
