@@ -30,9 +30,9 @@ void SuperVectorCollector::train(MoodsInterface& moods, InputFileNames& inputFil
 	{
 		++numFilesRead;
 		FileName fileName = inputFileNames.getNextFileName();
-		bool hasRightExtension = fileName.substr(fileName.find_last_of(".") + 1) == "mat";
+		bool hasRightExtension = fileName.substr(fileName.find_last_of(".") + 1) == "xml";
 		if (!hasRightExtension)
-			throw std::runtime_error("File " + fileName + " does not have .mat extension!");
+			throw std::runtime_error("File " + fileName + " does not have .xml extension!");
 
 		assert(superVectorCalculator_ != nullptr);
 		SuperVectors superVectorsForFile = superVectorCalculator_->calculate(fileName);
