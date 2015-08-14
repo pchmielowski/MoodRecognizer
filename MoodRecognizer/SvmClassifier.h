@@ -13,6 +13,8 @@ public:
 	virtual float trainSvm(MoodsVector moods, SuperVectors superVectors);
 
 
+
+
 	virtual Mood predict(SuperVector superVector);
 	virtual ~SvmClassifier() {
 		svm_.clear();
@@ -20,6 +22,9 @@ public:
 private:
 	CvSVM svm_;
 	float computeAccuracy(Mat& superVectorsAsMat, Mat &moodsAsMat);
+	Mat createSuperVectorMatrix(SuperVectors &superVectors);
+
+	Mat createMoodsMatrix(MoodsVector &moods);
 };
 
 

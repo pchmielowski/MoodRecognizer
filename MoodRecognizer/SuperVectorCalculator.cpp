@@ -1,5 +1,6 @@
 #include "SuperVectorCalculator.h"
 #include "Types.h"
+#include <iostream>
 
 using namespace cv;
 SuperVectorCalculator::SuperVectorCalculator(FeatureMatrixLoader& featureMatrixLoader,
@@ -94,6 +95,7 @@ cv::Mat SuperVectorCalculator::Eq2(int numCoeff, int numTimeWindows, myContainer
 		eq2Denominator += itr;
 	}
 
+	std::cout << "Component number: " << componentIdx << std::endl;
 	bool eq2DenominatorGreaterThanZero = abs(eq2Denominator) > 1e-10;
 	assert(eq2DenominatorGreaterThanZero);
 	Mat eq2 = eq2Counter / eq2Denominator;
