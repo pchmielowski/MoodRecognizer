@@ -6,44 +6,72 @@
 #include <ctime>
 using namespace cv;
 
-float SvmClassifier::trainSvm(MoodsVector moods, SuperVectors superVectors)
+float SvmClassifier::trainSvm(const MoodsVector moods, SuperVectors superVectors)
 {
 	if (moods.size() != superVectors.size())
 		throw std::runtime_error("Number of moods != number of sVectors!");
 
-	srand(time(NULL));
-	MoodsVector testMoods;
-	SuperVectors testSuperVectors;
-	int sizeTestSet = int(float(moods.size())*.8f);
-	for (int i = 0; i < sizeTestSet; ++i)
+	// normalize
+	vector<float> absMax;
+	absMax.resize(superVectors[0].rows, 0.f);
+	for (auto superVector : superVectors)
 	{
-		int toMoveIdx = rand() % moods.size();
-		testMoods.push_back(moods[toMoveIdx]);
-		moods.erase(moods.begin() + toMoveIdx);
-		testSuperVectors.push_back(superVectors[toMoveIdx]);
-		superVectors.erase(superVectors.begin() + toMoveIdx);
+		for (int dimIdx = 0; dimIdx < absMax.size(); ++dimIdx)
+		{
+			float currentAbs = abs(superVector.at<float>(dimIdx));
+			if (currentAbs > absMax[dimIdx])
+				absMax[dimIdx] = currentAbs;
+		}
 	}
+	for (auto superVector : superVectors)
+	{
+		for (int dimIdx = 0; dimIdx < absMax.size(); ++dimIdx)
+		{
+			superVector.at<float>(dimIdx) /= absMax[dimIdx];
+		}
+	}
+	// 
 
-	Mat moodsAsMat = createMoodsMatrix(moods);
-	Mat superVectorsAsMat = createSuperVectorMatrix(superVectors);
-	Mat t_moodsAsMat = createMoodsMatrix(testMoods);
-	Mat t_superVectorsAsMat = createSuperVectorMatrix(testSuperVectors);
-
-	assert(superVectorsAsMat.type() == CV_32FC1);
-	assert(superVectorsAsMat.cols == superVectors[0].rows);
-	assert(superVectorsAsMat.rows == moodsAsMat.rows);
-	assert(superVectorsAsMat.rows == superVectors.size());
-
+	srand(time(NULL));
+	const int NUM_FOLDS_OUTER = 50;
+	float sumAccuracy = 0;
 	CvSVMParams params;
-	params.svm_type = CvSVM::C_SVC;
-	params.kernel_type = CvSVM::RBF;
-	params.term_crit = cvTermCriteria(CV_TERMCRIT_ITER, 100, 1e-6);
+	for (int foldIdx = 0; foldIdx < NUM_FOLDS_OUTER; ++foldIdx)
+	{
+		MoodsVector		testMoods;
+		SuperVectors	testSuperVectors;
+		MoodsVector		trainMoods = moods;
+		SuperVectors	trainSuperVectors = superVectors;
+		divideInTestAndTrainSubsets(trainMoods, testMoods, testSuperVectors, trainSuperVectors);
 
-	const int numFolds = 5;
-	svm_.train_auto(superVectorsAsMat, moodsAsMat, Mat(), Mat(), params, numFolds);
+		Mat moodsAsMat			= createMoodsMatrix(trainMoods);
+		Mat superVectorsAsMat	= createSuperVectorMatrix(trainSuperVectors);
+		Mat t_moodsAsMat		= createMoodsMatrix(testMoods);
+		Mat t_superVectorsAsMat = createSuperVectorMatrix(testSuperVectors);
 
-	float accuracy = computeAccuracy(t_superVectorsAsMat, t_moodsAsMat);
-	return accuracy;
+		assert(superVectorsAsMat.type() == CV_32FC1);
+		assert(superVectorsAsMat.cols == trainSuperVectors[0].rows);
+		assert(superVectorsAsMat.rows == moodsAsMat.rows);
+		assert(superVectorsAsMat.rows == trainSuperVectors.size());
+
+		const int NUM_FOLDS_INNER = 10;
+		bool isFirstIteration = foldIdx == 0;
+		if (isFirstIteration)
+		{
+			params.svm_type = CvSVM::C_SVC;
+			params.kernel_type = CvSVM::RBF;
+			params.term_crit = cvTermCriteria(CV_TERMCRIT_EPS+CV_TERMCRIT_ITER, 10000, 1e-6);
+			svm_.train_auto(superVectorsAsMat, moodsAsMat, Mat(), Mat(), params, NUM_FOLDS_INNER);
+			params = svm_.get_params();
+		}
+		else
+		{
+			svm_.train(superVectorsAsMat, moodsAsMat, Mat(), Mat(), params);
+		}
+		//std::cout << "Next SVM trained" << std::endl;
+		sumAccuracy += computeAccuracy(t_superVectorsAsMat, t_moodsAsMat);
+	}
+	return sumAccuracy / static_cast<float>(NUM_FOLDS_OUTER);
 }
 
 
@@ -56,7 +84,7 @@ float SvmClassifier::computeAccuracy(Mat& superVectorsAsMat, Mat &moodsAsMat)
 	for (int i = 0; i < results.rows; ++i)
 		results.at<float>(i) = rand() % 4;
 #endif
-	int numCorrectPredicts = countNonZero(results != moodsAsMat);
+	int numCorrectPredicts = countNonZero(results == moodsAsMat);
 	return (float)numCorrectPredicts / (float)(moodsAsMat.rows);
 }
 
@@ -89,6 +117,21 @@ cv::Mat SvmClassifier::createMoodsMatrix(MoodsVector &moods)
 	assert(moodsAsMat.rows == moods.size());
 
 	return moodsAsMat;
+}
+
+void SvmClassifier::divideInTestAndTrainSubsets(MoodsVector &moods, MoodsVector &testMoods, SuperVectors &testSuperVectors, SuperVectors &superVectors)
+{
+	int sizeTestSet = int(float(moods.size())*.8f);
+	for (int j = 0; j < sizeTestSet; ++j)
+	{
+		int toMoveIdx = rand() % moods.size();
+		//std::cout << toMoveIdx << " ";
+		testMoods.push_back(moods[toMoveIdx]);
+		moods.erase(moods.begin() + toMoveIdx);
+		testSuperVectors.push_back(superVectors[toMoveIdx]);
+		superVectors.erase(superVectors.begin() + toMoveIdx);
+	}
+	//std::cout << std::endl;
 }
 
 SvmClassifier::SvmClassifier(FileName svmModelFileName)

@@ -10,10 +10,7 @@ class SvmClassifier
 {
 public:
 	SvmClassifier(FileName svmModelFileName);
-	virtual float trainSvm(MoodsVector moods, SuperVectors superVectors);
-
-
-
+	virtual float trainSvm(const MoodsVector moods, SuperVectors superVectors);
 
 	virtual Mood predict(SuperVector superVector);
 	virtual ~SvmClassifier() {
@@ -25,6 +22,7 @@ private:
 	Mat createSuperVectorMatrix(SuperVectors &superVectors);
 
 	Mat createMoodsMatrix(MoodsVector &moods);
+	void divideInTestAndTrainSubsets(MoodsVector &moods, MoodsVector &testMoods, SuperVectors &testSuperVectors, SuperVectors &superVectors);
 };
 
 

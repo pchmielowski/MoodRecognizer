@@ -28,7 +28,6 @@ SuperVector PcaReductor::reduce(SuperVector superVectorToReduce)
 	int sizeAfterPca = nOfComponents_[0];
 
 	Mat projectedSuperVector = pca_.project(superVectorToReduce);
-
 	float firstElemtentBeforeResizing = projectedSuperVector.at<float>(0);
 	projectedSuperVector.resize(sizeAfterPca);
 	float firstElemtentAfterResizing = projectedSuperVector.at<float>(0);
