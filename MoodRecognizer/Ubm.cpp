@@ -2,7 +2,7 @@
 
 
 
-float Ubm::logLikelihood(const cv::Mat& x, int gaussComponentIdx) const
+double Ubm::weightedLogLikelihood(const cv::Mat& x, int componentIdx) const
 {
 	assert(x.cols == 1);
 	assert(x.rows > 0);
@@ -12,10 +12,12 @@ float Ubm::logLikelihood(const cv::Mat& x, int gaussComponentIdx) const
 	assert(distribution_[numGaussComponents_ - 1].size() == numCoeff);
 	double likelihood = 1.0;
 	for (int coefIdx = 0; coefIdx < numCoeff; coefIdx++) {
-		likelihood *= pdf(distribution_[gaussComponentIdx][coefIdx],
+		likelihood *= pdf(distribution_[componentIdx][coefIdx],
 			x.at<float>(coefIdx));
 	}
-	return static_cast<float>(log(likelihood));
+	double ll = log(likelihood)*(double)weights_.at<float>(componentIdx);
+
+	return ll;
 }
 
 void Ubm::createNormalDistribution(int numDimensions, vector<Mat> covs)

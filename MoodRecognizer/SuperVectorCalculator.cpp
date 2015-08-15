@@ -53,13 +53,14 @@ myContainer* SuperVectorCalculator::Eq3(int numTimeWindows, int numGaussComponen
 
 	for (int t = 0; t < numTimeWindows; t++)
 	{
-		float* eq3Counters = new float[numGaussComponents];
-		float eq3Denominator = 0;
+		double* eq3Counters = new double[numGaussComponents];
+		double eq3Denominator = 0;
 
 		for (int componentIdx = 0; componentIdx < numGaussComponents; ++componentIdx)
 		{
-			float weight = ubm_.weights_.at<float>(componentIdx);
-			eq3Counters[componentIdx] = weight * ubm_.logLikelihood(featureMatrix.col(t), componentIdx);
+			//std::cout << "Component number: " << componentIdx << std::endl;
+			eq3Counters[componentIdx] = ubm_.weightedLogLikelihood(featureMatrix.col(t), componentIdx);
+			assert(abs(eq3Counters[componentIdx]) > DBL_MIN);
 			if (std::isnan(eq3Counters[componentIdx]))
 				throw runtime_error("One of Eq3 counters is NaN!");
 			eq3Denominator += eq3Counters[componentIdx];
@@ -67,12 +68,41 @@ myContainer* SuperVectorCalculator::Eq3(int numTimeWindows, int numGaussComponen
 
 		for (int componentIdx = 0; componentIdx < numGaussComponents; ++componentIdx)
 		{
-			assert(abs(eq3Denominator) > 1e-10);
-			eq3[componentIdx].push_back(eq3Counters[componentIdx] / eq3Denominator);
+			if (!(abs(eq3Counters[componentIdx]) >= DBL_MIN))
+				throw(runtime_error("Eq 3 counter =/= 0 for component " + to_string(componentIdx)));
+			if (!(abs(eq3Denominator) >= DBL_MIN))
+				throw(runtime_error("Eq 3 denominator =/= 0 for component " + to_string(componentIdx)));
+
+			double eq3forComponent = eq3Counters[componentIdx] / eq3Denominator;
+
+			eq3[componentIdx].push_back(eq3forComponent);
 		}
 		delete[] eq3Counters;
 	}
 	return eq3;
+}
+
+cv::Mat SuperVectorCalculator::Eq2(int numCoeff, int numTimeWindows, myContainer* eq3, int componentIdx, FeatureMatrix &featureMatrix, int numGaussComponents)
+{
+	Mat eq2Counter = Mat::zeros(numCoeff, 1, CV_32FC1);
+	double eq2Denominator = 0;
+	int t = 0;
+	for (auto itr : eq3[componentIdx])
+	{
+		eq2Counter += float(itr) * featureMatrix.col(t++);
+		eq2Denominator += itr;
+	}
+
+	if (!(eq2Denominator > DBL_MIN))
+		throw(runtime_error("Eq 2 denominator NOT greater than 0 for component " + to_string(componentIdx)));
+
+	Mat eq2 = eq2Counter / eq2Denominator;
+	assert(eq2.rows == numCoeff);
+	assert(eq2.cols == 1);
+	assert(ubm_.means_.rows == numCoeff);
+	assert(ubm_.means_.cols == numGaussComponents);
+	assert(eq2.type() == CV_32FC1);
+	return eq2;
 }
 
 cv::Mat SuperVectorCalculator::Eq1(Mat eq2, Alpha alpha, int componentIdx, int numCoeff)
@@ -82,29 +112,6 @@ cv::Mat SuperVectorCalculator::Eq1(Mat eq2, Alpha alpha, int componentIdx, int n
 	assert(mu_i.rows == numCoeff);
 	assert(mu_i.cols == 1);
 	return mu_i;
-}
-
-cv::Mat SuperVectorCalculator::Eq2(int numCoeff, int numTimeWindows, myContainer* eq3, int componentIdx, FeatureMatrix &featureMatrix, int numGaussComponents)
-{
-	Mat eq2Counter = Mat::zeros(numCoeff, 1, CV_32FC1);
-	float eq2Denominator = 0;
-	int t = 0;
-	for (auto itr : eq3[componentIdx])
-	{
-		eq2Counter += itr * featureMatrix.col(t++);
-		eq2Denominator += itr;
-	}
-
-	std::cout << "Component number: " << componentIdx << std::endl;
-	bool eq2DenominatorGreaterThanZero = abs(eq2Denominator) > 1e-10;
-	assert(eq2DenominatorGreaterThanZero);
-	Mat eq2 = eq2Counter / eq2Denominator;
-	assert(eq2.rows == numCoeff);
-	assert(eq2.cols == 1);
-	assert(ubm_.means_.rows == numCoeff);
-	assert(ubm_.means_.cols == numGaussComponents);
-	assert(eq2.type() == CV_32FC1);
-	return eq2;
 }
 
 // private:

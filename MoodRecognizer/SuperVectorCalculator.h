@@ -9,7 +9,7 @@
 #include "PlotFilePreparator.h"
 #define MAX_NUM_TIME_WINDOWS 100000
 
-typedef std::vector<float> myContainer;
+typedef std::vector<double> myContainer;
 
 using namespace std;
 using namespace cv;
