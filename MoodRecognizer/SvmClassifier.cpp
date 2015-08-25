@@ -11,26 +11,7 @@ float SvmClassifier::trainSvm(const MoodsVector moods, SuperVectors superVectors
 	if (moods.size() != superVectors.size())
 		throw std::runtime_error("Number of moods != number of sVectors!");
 
-	// normalize
-	vector<float> absMax;
-	absMax.resize(superVectors[0].rows, 0.f);
-	for (auto superVector : superVectors)
-	{
-		for (int dimIdx = 0; dimIdx < absMax.size(); ++dimIdx)
-		{
-			float currentAbs = abs(superVector.at<float>(dimIdx));
-			if (currentAbs > absMax[dimIdx])
-				absMax[dimIdx] = currentAbs;
-		}
-	}
-	for (auto superVector : superVectors)
-	{
-		for (int dimIdx = 0; dimIdx < absMax.size(); ++dimIdx)
-		{
-			superVector.at<float>(dimIdx) /= absMax[dimIdx];
-		}
-	}
-	// 
+	normalize(superVectors);
 
 	srand(time(NULL));
 	const int NUM_FOLDS_OUTER = 50;
@@ -132,6 +113,48 @@ void SvmClassifier::divideInTestAndTrainSubsets(MoodsVector &moods, MoodsVector 
 		superVectors.erase(superVectors.begin() + toMoveIdx);
 	}
 	//std::cout << std::endl;
+}
+
+void SvmClassifier::normalize(SuperVectors &superVectors) // TODO: refactor
+{
+	int superVectorSize = superVectors[0].rows;
+	// make values fall into <-1, 1>
+	vector<float> absMax;
+	absMax.resize(superVectorSize, 0.f);
+	for (auto superVector : superVectors)
+	{
+		for (int dimIdx = 0; dimIdx < absMax.size(); ++dimIdx)
+		{
+			float currentAbs = abs(superVector.at<float>(dimIdx));
+			if (currentAbs > absMax[dimIdx])
+				absMax[dimIdx] = currentAbs;
+		}
+	}
+	for (auto superVector : superVectors)
+	{
+		for (int dimIdx = 0; dimIdx < absMax.size(); ++dimIdx)
+		{
+			superVector.at<float>(dimIdx) /= absMax[dimIdx];
+		}
+	}
+	// make means = 0
+	vector<float> sums;
+	sums.resize(superVectorSize, 0.f);
+	for (auto superVector : superVectors)
+	{
+		for (int dimIdx = 0; dimIdx < absMax.size(); ++dimIdx)
+		{
+			sums[dimIdx] = superVector.at<float>(dimIdx);
+		}
+	}
+	for (auto superVector : superVectors)
+	{
+		for (int dimIdx = 0; dimIdx < absMax.size(); ++dimIdx)
+		{
+			float mean = sums[dimIdx] / static_cast<float>(superVectorSize);
+			superVector.at<float>(dimIdx) -= mean;
+		}
+	}
 }
 
 SvmClassifier::SvmClassifier(FileName svmModelFileName)
