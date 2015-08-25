@@ -23,7 +23,7 @@ BOOST_AUTO_TEST_CASE(likelihood_1gaussComponent1d) {
 		numDimensions, covs);
 	Mat x = (cv::Mat_<float>(1, 1) << 5);
 
-	float result = ubm.logLikelihood(x, 0);
+	float result = ubm.weightedLogLikelihood(x, 0);
 
 	BOOST_CHECK_CLOSE(result, -2.5176, .01);
 }
@@ -39,8 +39,8 @@ BOOST_AUTO_TEST_CASE(likelihood_2gaussComponents1d) {
 		numDimensions, covs);
 	Mat x = (cv::Mat_<float>(1, 1) << 0);
 
-	float result0 = ubm.logLikelihood(x, 0);
-	float result1 = ubm.logLikelihood(x, 1);
+	float result0 = ubm.weightedLogLikelihood(x, 0);
+	float result1 = ubm.weightedLogLikelihood(x, 1);
 
 	BOOST_CHECK_CLOSE(result0, -0.918938533204673, .01);
 	BOOST_CHECK_CLOSE(result1, -1.4189, .01);
@@ -56,7 +56,7 @@ BOOST_AUTO_TEST_CASE(likelihood_1gaussComponent2d) {
 		numDimensions, covs);
 	Mat x = (cv::Mat_<float>(2, 1) << 2, -23);
 
-	float result = ubm.logLikelihood(x, 0);
+	float result = ubm.weightedLogLikelihood(x, 0);
 
 	BOOST_CHECK_CLOSE(result, -10.946, .01);
 }
@@ -72,8 +72,8 @@ BOOST_AUTO_TEST_CASE(likelihood_2gaussComponents2d) {
 		numDimensions, covs);
 	Mat x = (cv::Mat_<float>(2, 1) << 66, -66);
 
-	float result0 = ubm.logLikelihood(x, 0);
-	float result1 = ubm.logLikelihood(x, 1);
+	float result0 = ubm.weightedLogLikelihood(x, 0);
+	float result1 = ubm.weightedLogLikelihood(x, 1);
 
 	BOOST_CHECK_CLOSE(result0, -276.860465788649, 10);
 	BOOST_CHECK_CLOSE(result1, -12.4550984402575, .1);

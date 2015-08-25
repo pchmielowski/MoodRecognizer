@@ -9,10 +9,8 @@ class PlotFilePreparator
 {
 public:
 	PlotFilePreparator(FileWriter& fileWriter);
-	virtual void addAlphas(AlphaVector alphas);
 	virtual void addAccuracies(vector<float> accuracies);
 	virtual void write(const FileName fileName);
 private:
 	FileWriter* fileWriter_ = nullptr;
-	AlphasAccuracies aa; // TODO RENAME
 };

@@ -42,7 +42,7 @@ int main(int argc, char* argv[]) {
 	FeatureMatrixLoader*  featureMatrixLoader = new MatFeatureMatrixLoader(false);
 
 	UbmLoader ubm(cfg.getUbmFileName());
-	SuperVectorCalculator superVectorCalculator(*featureMatrixLoader, ubm, cfg.getAlpha());
+	SuperVectorCalculator superVectorCalculator(*featureMatrixLoader, ubm);
 
 	PcaReductor pcaReductor(cfg.getNumComponents());
 	SvmClassifier svmClassifier(cfg.getSvmModelFileName());
@@ -62,8 +62,7 @@ int main(int argc, char* argv[]) {
 			FileWriter plotFileWriter;
 			PlotFilePreparator plotFilePreparator(plotFileWriter);
 			superVectorCollector.addAccuraciesToWriter(plotFilePreparator);
-			superVectorCalculator.addAlphasToWriter(plotFilePreparator);
-			plotFilePreparator.write("alpha_and_accuracy_plot.txt");
+			//plotFilePreparator.write("alpha_and_accuracy_plot.txt");
 		}
 		catch (exception& e) {
 			cout << e.what() << endl;

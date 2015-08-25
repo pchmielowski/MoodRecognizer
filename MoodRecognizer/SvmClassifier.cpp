@@ -14,7 +14,7 @@ float SvmClassifier::trainSvm(const MoodsVector moods, SuperVectors superVectors
 	normalize(superVectors);
 
 	srand(time(NULL));
-	const int NUM_FOLDS_OUTER = 50;
+	const int NUM_FOLDS_OUTER = 10;
 	float sumAccuracy = 0;
 	CvSVMParams params;
 	for (int foldIdx = 0; foldIdx < NUM_FOLDS_OUTER; ++foldIdx)
@@ -35,13 +35,13 @@ float SvmClassifier::trainSvm(const MoodsVector moods, SuperVectors superVectors
 		assert(superVectorsAsMat.rows == moodsAsMat.rows);
 		assert(superVectorsAsMat.rows == trainSuperVectors.size());
 
-		const int NUM_FOLDS_INNER = 10;
+		const int NUM_FOLDS_INNER = 4;
 		bool isFirstIteration = foldIdx == 0;
 		if (isFirstIteration)
 		{
 			params.svm_type = CvSVM::C_SVC;
 			params.kernel_type = CvSVM::RBF;
-			params.term_crit = cvTermCriteria(CV_TERMCRIT_EPS+CV_TERMCRIT_ITER, 10000, 1e-6);
+			params.term_crit = cvTermCriteria(CV_TERMCRIT_EPS+CV_TERMCRIT_ITER, 100000, 1e-6);
 			svm_.train_auto(superVectorsAsMat, moodsAsMat, Mat(), Mat(), params, NUM_FOLDS_INNER);
 			params = svm_.get_params();
 		}

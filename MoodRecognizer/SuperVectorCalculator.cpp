@@ -4,14 +4,13 @@
 
 using namespace cv;
 SuperVectorCalculator::SuperVectorCalculator(FeatureMatrixLoader& featureMatrixLoader,
-	UbmLoader& ubmLoader, vector<Alpha> alpha)
+	UbmLoader& ubmLoader)
 {
 	featureMatrixLoader_ = &featureMatrixLoader;
 	ubm_ = ubmLoader.getUbm();
-	alphas_ = alpha;
 }
 
-SuperVectors SuperVectorCalculator::calculate(FileName featureMatrixFileName)
+SuperVector SuperVectorCalculator::calculate(FileName featureMatrixFileName)
 {
 	FeatureMatrix featureMatrix = featureMatrixLoader_->get(featureMatrixFileName);
 	assert(featureMatrix.rows > 0 && featureMatrix.cols > 0);
@@ -24,22 +23,22 @@ SuperVectors SuperVectorCalculator::calculate(FileName featureMatrixFileName)
 
 	myContainer* eq3 = Eq3(numTimeWindows, numGaussComponents, featureMatrix);
 
-	SuperVectors superVectors(alphas_.size());
+	SuperVector superVector;
 	int numCoeff = featureMatrix.rows;
 	for (int componentIdx = 0; componentIdx < numGaussComponents; ++componentIdx)
 	{
-		Mat eq2 = Eq2(numCoeff, numTimeWindows, eq3, componentIdx, featureMatrix, numGaussComponents);
-		int alphaIdx = 0;
-		for (auto alpha : alphas_) {
-			Mat mu_i = Eq1(eq2, alpha, componentIdx, numCoeff);
-			appendAdaptedMeanToSuperVector(superVectors[alphaIdx], mu_i);
-			++alphaIdx;
-		}
+		float probabilisticCount;
+		Mat eq2 = Eq2(numCoeff, numTimeWindows, eq3, componentIdx, featureMatrix, numGaussComponents, probabilisticCount);
+
+		const float RELEVANCE_FACTOR = 14;
+		Alpha alpha = probabilisticCount/(probabilisticCount+RELEVANCE_FACTOR);
+
+		Mat mu_i = Eq1(eq2, alpha, componentIdx, numCoeff);
+		appendAdaptedMeanToSuperVector(superVector, mu_i);
 	}
 	ReleaseEq3(numGaussComponents, eq3);
 
-	assert(superVectors.size() == alphas_.size());
-	return superVectors;
+	return superVector;
 }
 
 void SuperVectorCalculator::ReleaseEq3(int numGaussComponents, myContainer* eq3)
@@ -82,21 +81,21 @@ myContainer* SuperVectorCalculator::Eq3(int numTimeWindows, int numGaussComponen
 	return eq3;
 }
 
-cv::Mat SuperVectorCalculator::Eq2(int numCoeff, int numTimeWindows, myContainer* eq3, int componentIdx, FeatureMatrix &featureMatrix, int numGaussComponents)
+cv::Mat SuperVectorCalculator::Eq2(int numCoeff, int numTimeWindows, myContainer* eq3, int componentIdx, FeatureMatrix &featureMatrix, int numGaussComponents, float& probabilisticCount)
 {
 	Mat eq2Counter = Mat::zeros(numCoeff, 1, CV_32FC1);
-	double eq2Denominator = 0;
+	probabilisticCount = 0;
 	int t = 0;
 	for (auto itr : eq3[componentIdx])
 	{
 		eq2Counter += float(itr) * featureMatrix.col(t++);
-		eq2Denominator += itr;
+		probabilisticCount += itr;
 	}
 
-	if (!(eq2Denominator > DBL_MIN))
+	if (!(probabilisticCount > DBL_MIN))
 		throw(runtime_error("Eq 2 denominator NOT greater than 0 for component " + to_string(componentIdx)));
 
-	Mat eq2 = eq2Counter / eq2Denominator;
+	Mat eq2 = eq2Counter / probabilisticCount;
 	assert(eq2.rows == numCoeff);
 	assert(eq2.cols == 1);
 	assert(ubm_.means_.rows == numCoeff);

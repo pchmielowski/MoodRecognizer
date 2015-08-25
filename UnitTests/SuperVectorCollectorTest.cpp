@@ -55,15 +55,11 @@ protected:
 	const SuperVector for2File_1Alpha = (cv::Mat_<float>(2, 1) << 1.9, 2.2);
 	const SuperVector for3File_1Alpha = (cv::Mat_<float>(2, 1) << 4, 2);
 	const SuperVector for4File_1Alpha = (cv::Mat_<float>(2, 1) << 0.3, 2.7);
-	const SuperVector for1File_2Alpha = (cv::Mat_<float>(2, 1) << 0, 0);
-	const SuperVector for2File_2Alpha = (cv::Mat_<float>(2, 1) << 9, -9);
 
 	const SuperVector reduced_for1File_1Alpha = (cv::Mat_<float>(1, 1) << 2);
 	const SuperVector reduced_for2File_1Alpha = (cv::Mat_<float>(1, 1) << 1);
 	const SuperVector reduced_for3File_1Alpha = (cv::Mat_<float>(1, 1) << 3);
 	const SuperVector reduced_for4File_1Alpha = (cv::Mat_<float>(1, 1) << .8);
-	const SuperVector reduced_for1File_2Alpha = (cv::Mat_<float>(1, 1) << -2);
-	const SuperVector reduced_for2File_2Alpha = (cv::Mat_<float>(1, 1) << 1000);
 
 	const Mood moodFor1File = 0;
 	const Mood moodFor2File = 0;
@@ -102,9 +98,7 @@ BOOST_AUTO_TEST_CASE(train_oneAlphaoneInputFile_correctCalls)
 	Mock<SvmClassifier> svmClassifier;
 	When(Method(svmClassifier, trainSvm)).AlwaysReturn();
 	SvmClassifier& svmClassifierInstance = svmClassifier.get();
-
-	AlphaVector alphas = { .3f };
-
+	
 	SuperVectorCollector SUT(superVectorCalculatorInstance, pcaReductorInstance,
 		svmClassifierInstance);
 
@@ -177,9 +171,7 @@ BOOST_AUTO_TEST_CASE(train_oneAlphaFourInputFiles_correctCalls)
 	Mock<SvmClassifier> svmClassifier;
 	When(Method(svmClassifier, trainSvm)).AlwaysReturn();
 	SvmClassifier& svmClassifierInstance = svmClassifier.get();
-
-	AlphaVector alphas = { .3f };
-
+	
 	SuperVectorCollector SUT(superVectorCalculatorInstance, pcaReductorInstance,
 		svmClassifierInstance);
 
@@ -226,140 +218,5 @@ BOOST_AUTO_TEST_CASE(train_oneAlphaFourInputFiles_correctCalls)
 
 	Verify(Method(svmClassifier, trainSvm).
 		Matching([&](MoodsVector mv, SuperVectors a){return isEq(a, reduced_for1Alpha) && isEq(mv, moodsVector); }));
-}
-BOOST_AUTO_TEST_CASE(train_2Alphas2InputFiles_correctCalls)
-{
-	// ARRANGE
-	// superVectors
-	const SuperVectors for1File = { for1File_1Alpha, for1File_2Alpha };
-	const SuperVectors for2File = { for2File_1Alpha, for2File_2Alpha };
-	const SuperVectors for1Alpha = {
-		for1File_1Alpha,
-		for2File_1Alpha };
-	const SuperVectors for2Alpha = {
-		for1File_2Alpha,
-		for2File_2Alpha };
-	const SuperVectors reduced_for1Alpha = {
-		reduced_for1File_1Alpha,
-		reduced_for2File_1Alpha };
-	const SuperVectors reduced_for2Alpha = {
-		reduced_for1File_2Alpha,
-		reduced_for2File_2Alpha };
-	// moods
-	const MoodsVector moodsVector = { moodFor1File, moodFor2File };
-
-	// mocks
-	Mock<SuperVectorCalculator> superVectorCalculator;
-	When(Method(superVectorCalculator, calculate)).Return(for1File, for2File);
-	SuperVectorCalculator& superVectorCalculatorInstance = superVectorCalculator.get();
-
-	Mock<PcaReductor> pcaReductor;
-	When(Method(pcaReductor, trainPca)).AlwaysReturn();
-	When(Method(pcaReductor, reduce)).Return(
-		reduced_for1File_1Alpha,
-		reduced_for2File_1Alpha,
-		reduced_for1File_2Alpha,
-		reduced_for2File_2Alpha);
-	PcaReductor& pcaReductorInstance = pcaReductor.get();
-
-	Mock<SvmClassifier> svmClassifier;
-	When(Method(svmClassifier, trainSvm)).AlwaysReturn();
-	SvmClassifier& svmClassifierInstance = svmClassifier.get();
-
-	AlphaVector alphas = { .0f, 1.f };
-
-	SuperVectorCollector SUT(superVectorCalculatorInstance, pcaReductorInstance,
-		svmClassifierInstance);
-
-	Mock<MoodsInterface> moods;
-	When(Method(moods, getNextMood)).Return(moodFor1File, moodFor2File);
-	MoodsInterface& moodsInstance = moods.get();
-
-	Mock<InputFileNames> inputFileNames;
-	When(Method(inputFileNames, fileNamesLeft)).
-		Return(true, true, false).
-		Return(true, true, false). // first alpha
-		Return(true, true, false); // second alpha
-
-	When(Method(inputFileNames, getNextFileName)).Return(fileName1, fileName2).AlwaysReturn();
-	When(Method(inputFileNames, markAllAsUnread)).AlwaysReturn();
-	InputFileNames& inputFileNamesInstance = inputFileNames.get();
-
-	// ACT
-	SUT.train(moodsInstance, inputFileNamesInstance);
-
-	// ASSERT
-	const int NUM_FILES = 2;
-	const int NUM_ALPHAS = 2;
-	Verify(Method(inputFileNames, getNextFileName)).Exactly(NUM_FILES + NUM_FILES*NUM_ALPHAS);
-	Verify(Method(superVectorCalculator, calculate).Using(fileName1)).Exactly(1);
-	Verify(Method(superVectorCalculator, calculate).Using(fileName2)).Exactly(1);
-	Verify(Method(moods, getNextMood)).Exactly(NUM_FILES);
-
-	Verify(Method(pcaReductor, trainPca).
-		Matching([&](SuperVectors a){return isEq(a, for1Alpha); }), 
-		Method(pcaReductor, trainPca).
-		Matching([&](SuperVectors a){return isEq(a, for2Alpha); }));
-	Verify(Method(inputFileNames, markAllAsUnread)).Exactly(NUM_ALPHAS);
-	Verify(Method(inputFileNames, fileNamesLeft)).Exactly(NUM_FILES + 1 + NUM_ALPHAS*(NUM_FILES + 1));
-
-	Verify(Method(pcaReductor, reduce).
-		Matching([&](const SuperVector& a){return isEq(a, for1File_1Alpha); }),
-		Method(pcaReductor, reduce).
-		Matching([&](const SuperVector& a){return isEq(a, for2File_1Alpha); }),
-		Method(pcaReductor, reduce).
-		Matching([&](const SuperVector& a){return isEq(a, for1File_2Alpha); }),
-		Method(pcaReductor, reduce).
-		Matching([&](const SuperVector& a){return isEq(a, for2File_2Alpha); }));
-
-	Verify(Method(svmClassifier, trainSvm).
-		Matching([&](MoodsVector mv, SuperVectors a){return isEq(a, reduced_for1Alpha) && isEq(mv, moodsVector); }),
-		Method(svmClassifier, trainSvm).
-		Matching([&](MoodsVector mv, SuperVectors a){return isEq(a, reduced_for2Alpha) && isEq(mv, moodsVector); }));
-}
-BOOST_AUTO_TEST_CASE(addAccuracyToWriter_oneAccuracy_correctAccuracy)
-{
-	// ARRANGE
-	// mocks
-	Mock<SuperVectorCalculator> superVectorCalculator;
-	When(Method(superVectorCalculator, calculate)).Return({ for1File_1Alpha, for1File_2Alpha });
-	SuperVectorCalculator& superVectorCalculatorInstance = superVectorCalculator.get();
-
-	Mock<PcaReductor> pcaReductor;
-	When(Method(pcaReductor, trainPca)).AlwaysReturn();	
-	When(Method(pcaReductor, reduce)).Return(
-		reduced_for1File_1Alpha).Return(
-		reduced_for1File_2Alpha);
-	PcaReductor& pcaReductorInstance = pcaReductor.get();
-
-	Mock<SvmClassifier> svmClassifier;
-	When(Method(svmClassifier, trainSvm)).Return(.4).Return(.1);
-	SvmClassifier& svmClassifierInstance = svmClassifier.get();
-
-	SuperVectorCollector SUT(superVectorCalculatorInstance, pcaReductorInstance,
-		svmClassifierInstance);
-
-	// ---------
-	Mock<MoodsInterface> moods;
-	When(Method(moods, getNextMood)).Return(1);
-	MoodsInterface& moodsInstance = moods.get();
-
-	Mock<InputFileNames> inputFileNames;
-	When(Method(inputFileNames, fileNamesLeft)).Return(true).Return(false).Return(true).
-		Return(false).Return(true).Return(false);
-	When(Method(inputFileNames, getNextFileName)).AlwaysReturn("file.xml");
-	When(Method(inputFileNames, markAllAsUnread)).AlwaysReturn();
-	InputFileNames& inputFileNamesInstance = inputFileNames.get();
-	
-	Mock<PlotFilePreparator> plotFilePreparator;
-	When(Method(plotFilePreparator, addAccuracies)).Return();
-	PlotFilePreparator& plotFilePreparatorInstance = plotFilePreparator.get();
-	
-	// ACT
-	SUT.train(moodsInstance, inputFileNamesInstance);
-	SUT.addAccuraciesToWriter(plotFilePreparatorInstance);
-
-	// ASSERT
-	Verify(Method(plotFilePreparator, addAccuracies).Using({ .4f, .1f }));
 }
 BOOST_AUTO_TEST_SUITE_END()

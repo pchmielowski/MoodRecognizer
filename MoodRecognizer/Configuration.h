@@ -36,7 +36,6 @@ public:
 	FileName getPlotFileName() const;
 	FileName getConfigurationFileName() const;
 	vector<int> getNumComponents() const;
-	AlphaVector getAlpha() const;
 	Mode getMode() const;
 	bool shouldSavePlotFile() const;
 	bool parsedOk();
@@ -51,11 +50,9 @@ private:
 	FileName moodsFileName_;
 	FileName plotFileName_;
 	vector<int> numOfComponents_;
-	AlphaVector alpha_;
 
 	bool savePlotFile_;
 	bool saveSvmFile_;
 	bool parsedOk_ = false;
-	void parseAlphas(boost::property_tree::ptree &xmlTree);
 };
 

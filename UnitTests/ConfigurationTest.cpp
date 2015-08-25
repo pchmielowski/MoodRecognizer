@@ -129,33 +129,6 @@ BOOST_FIXTURE_TEST_CASE(parseConfigurationFile_RequiredToCallOpen_CallOpen, Conf
 
 	Verify(Method(mockConfigurationFileReader, open)).AtLeastOnce();
 }
-BOOST_FIXTURE_TEST_CASE(parseConfigurationFile_alphaEq_6_alphaEq_6, ConfigurationTest) {
-	std::string configurationFileContent = "<alpha range=\"false\">\n";
-	configurationFileContent += "<value>" + std::to_string(.6) + "</value>\n";
-	configurationFileContent += "</alpha>\n";
-
-	FileReader& mockConfigurationFileReaderInstance = mockFactory(configurationFileContent);
-	Configuration cfg(mockConfigurationFileReaderInstance);
-
-	cfg.parseConfigurationFile("anyfile");
-
-	BOOST_CHECK_CLOSE(cfg.getAlpha()[0], .6, 0.1);
-}
-BOOST_FIXTURE_TEST_CASE(parseConfigurationFile_alphaEq0_alphaEq0, ConfigurationTest) {
-	std::string configurationFileContent = "<alpha range=\"false\">\n";
-	configurationFileContent += "<value>" + std::to_string(0) + "</value>\n";
-	configurationFileContent += "</alpha>\n";
-
-	Mock<FileReader> mockConfigurationFileReader;
-	When(Method(mockConfigurationFileReader, open)).AlwaysReturn();
-	When(Method(mockConfigurationFileReader, getContent)).Return(configurationFileContent);
-	FileReader& mockConfigurationFileReaderInstance = mockConfigurationFileReader.get();
-	Configuration cfg(mockConfigurationFileReaderInstance);
-
-	cfg.parseConfigurationFile("anyfile");
-
-	BOOST_CHECK_CLOSE((cfg.getAlpha())[0], 0, 0.1);
-}
 BOOST_FIXTURE_TEST_CASE(parseConfigurationFile_numberOfComponentsEq64_numComponentsEq64, ConfigurationTest) {
 	std::string configurationFileContent = "<numberOfComponents range=\"false\">\n";
 	configurationFileContent += "<value>" + std::to_string(64) + "</value>\n";
@@ -167,29 +140,6 @@ BOOST_FIXTURE_TEST_CASE(parseConfigurationFile_numberOfComponentsEq64_numCompone
 	cfg.parseConfigurationFile("anyfile");
 
 	BOOST_CHECK_EQUAL(cfg.getNumComponents()[0], 64);
-}
-BOOST_FIXTURE_TEST_CASE(parseConfigurationFile_alphaAsRange_getRange, ConfigurationTest)
-{
-	std::string configurationFileContent = "<alpha range=\"false\">\n";
-	configurationFileContent += "<value>" + std::to_string(1) + ", ";
-	configurationFileContent += std::to_string(.3) + ", ";
-	configurationFileContent += std::to_string(.9) + ", ";
-	configurationFileContent += std::to_string(0.1) + "</value>\n";
-	configurationFileContent += "</alpha>\n";
-
-	Mock<FileReader> mockConfigurationFileReader;
-	When(Method(mockConfigurationFileReader, open)).AlwaysReturn();
-	When(Method(mockConfigurationFileReader, getContent)).Return(configurationFileContent);
-	FileReader& mockConfigurationFileReaderInstance = mockConfigurationFileReader.get();
-	Configuration cfg(mockConfigurationFileReaderInstance);
-
-	cfg.parseConfigurationFile("anyfile");
-
-	// TODO: check collections
-	BOOST_CHECK_CLOSE((cfg.getAlpha())[0], 1, 0.1);
-	BOOST_CHECK_CLOSE((cfg.getAlpha())[1], .3, 0.1);
-	BOOST_CHECK_CLOSE((cfg.getAlpha())[2], .9, 0.1);
-	BOOST_CHECK_CLOSE((cfg.getAlpha())[3], 0.1, 0.1);
 }
 BOOST_FIXTURE_TEST_CASE(parseConfigurationFile_getValueWhenRangeIsPresent, ConfigurationTest) {
 

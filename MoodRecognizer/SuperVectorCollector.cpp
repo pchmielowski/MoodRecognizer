@@ -5,7 +5,7 @@
 #include "PcaReductor.h"
 #include <iostream>
 
-SuperVectorCollector::SuperVectorCollector(SuperVectorCalculator& superVectorCalculator, 
+SuperVectorCollector::SuperVectorCollector(SuperVectorCalculator& superVectorCalculator,
 	PcaReductor& pcaReductor,
 	SvmClassifier& svmClassifier)
 {
@@ -21,7 +21,7 @@ Moods SuperVectorCollector::predictMoods(InputFileNames& inputFileNames)
 
 void SuperVectorCollector::train(MoodsInterface& moods, InputFileNames& inputFileNames)
 {
-	vector<SuperVectors> allSuperVectors;
+	SuperVectors allSuperVectors;
 	MoodsVector moodsVector;
 	int numFilesRead = 0;
 	int numSuperVectorsForFile;
@@ -35,57 +35,53 @@ void SuperVectorCollector::train(MoodsInterface& moods, InputFileNames& inputFil
 			throw std::runtime_error("File " + fileName + " does not have .xml extension!");
 
 		assert(superVectorCalculator_ != nullptr);
-		SuperVectors superVectorsForFile = superVectorCalculator_->calculate(fileName);
+		SuperVector superVectorForFile = superVectorCalculator_->calculate(fileName);
 		//std::cout << "SuperVectorCalculated for file no " << numFilesRead << endl;
 		std::cout << "|";
 
 		moodsVector.push_back(moods.getNextMood());
 		assert(moodsVector.size() == numFilesRead);
 
-		appendSuperVectorToAllSuperVectors(allSuperVectors, superVectorsForFile);
+		appendSuperVectorToAllSuperVectors(allSuperVectors, superVectorForFile);
 
-		numSuperVectorsForFile = superVectorsForFile.size();
 		assert(allSuperVectors.size() == numFilesRead);
 	}
 
-	
-	for (int alphaIdx = 0; alphaIdx < numSuperVectorsForFile; ++alphaIdx)
+	SuperVectors allSuperVectorsCopy; // TODO: nie robiæ tej kopii
+	for (auto superVectorsForFile : allSuperVectors)
+		allSuperVectorsCopy.push_back(superVectorsForFile);
+
+	SuperVectors reducedSuperVectors;
+	assert(pcaReductor_ != nullptr);
+	pcaReductor_->trainPca(allSuperVectorsCopy);
+	std::cout << "PCA trained" << endl;
+	inputFileNames.markAllAsUnread();
+
+	int fileIdx = 0;
+	while (inputFileNames.fileNamesLeft())
 	{
-		SuperVectors superVectorsForAlpha;
-		for (auto superVectorsForFile : allSuperVectors)
-			superVectorsForAlpha.push_back(superVectorsForFile[alphaIdx]);
+		inputFileNames.getNextFileName();
+		SuperVector& superVectorForFile = allSuperVectorsCopy[fileIdx++];
+		assert(superVectorForFile.cols == 1);
 
-		SuperVectors reducedSuperVectorsForAlpha;
-		assert(pcaReductor_ != nullptr);
-		pcaReductor_->trainPca(superVectorsForAlpha);
-		std::cout << "PCA trained" << endl;
-		inputFileNames.markAllAsUnread();
-
-		int fileIdx = 0;
-		while (inputFileNames.fileNamesLeft())
-		{
-			inputFileNames.getNextFileName();
-			SuperVector& superVectorForFileAndAlpha = superVectorsForAlpha[fileIdx++];
-			assert(superVectorForFileAndAlpha.cols == 1);
-
-			SuperVector reducedSuperVectorForFileAndAlpha;
-			reducedSuperVectorForFileAndAlpha = pcaReductor_->reduce(superVectorForFileAndAlpha);
-			//std::cout << "SuperVector reduced for file no " << i << endl;
-			assert(reducedSuperVectorForFileAndAlpha.cols == 1);
-			reducedSuperVectorsForAlpha.push_back(reducedSuperVectorForFileAndAlpha);
-		}
-
-		assert(svmClassifier_ != nullptr);
-		assert(reducedSuperVectorsForAlpha.size() != 0);
-		assert(moodsVector.size() != 0);
-		float accuracy = svmClassifier_->trainSvm(moodsVector, reducedSuperVectorsForAlpha);
-		accuracies_.push_back(accuracy);
+		SuperVector reducedSuperVectorForFile;
+		reducedSuperVectorForFile = pcaReductor_->reduce(superVectorForFile);
+		//std::cout << "SuperVector reduced for file no " << i << endl;
+		assert(reducedSuperVectorForFile.cols == 1);
+		reducedSuperVectors.push_back(reducedSuperVectorForFile);
 	}
+
+	assert(svmClassifier_ != nullptr);
+	assert(reducedSuperVectors.size() != 0);
+	assert(moodsVector.size() != 0);
+	float accuracy = svmClassifier_->trainSvm(moodsVector, reducedSuperVectors);
+	cout << "Accuracy: " << accuracy << endl;
+
 
 }
 
-void SuperVectorCollector::appendSuperVectorToAllSuperVectors(vector<SuperVectors> &allSuperVectors, 
-	SuperVectors &superVectorsForFile)
+void SuperVectorCollector::appendSuperVectorToAllSuperVectors(SuperVectors &allSuperVectors,
+	SuperVector &superVectorsForFile)
 {
 	int initialSize = allSuperVectors.size();
 	allSuperVectors.push_back(superVectorsForFile);

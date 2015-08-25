@@ -17,9 +17,8 @@ using namespace cv;
 class SuperVectorCalculator
 {
 public:
-	SuperVectorCalculator(FeatureMatrixLoader& featureMatrixLoader, UbmLoader& ubmLoader,
-		vector<Alpha> alpha);
-	virtual SuperVectors calculate(FileName featureMatrixFileName);
+	SuperVectorCalculator(FeatureMatrixLoader& featureMatrixLoader, UbmLoader& ubmLoader);
+	virtual SuperVector calculate(FileName featureMatrixFileName);
 
 	void ReleaseEq3(int numGaussComponents, myContainer* eq3);
 
@@ -27,15 +26,10 @@ public:
 
 	Mat Eq1(Mat eq2, Alpha alpha, int componentIdx, int numCoeff);
 
-	Mat Eq2(int numCoeff, int numTimeWindows, myContainer* eq3, int componentIdx, FeatureMatrix &featureMatrix, int numGaussComponents);
+	Mat Eq2(int numCoeff, int numTimeWindows, myContainer* eq3, int componentIdx, FeatureMatrix &featureMatrix, int numGaussComponents, float& probabilisticCount);
 
-	void addAlphasToWriter(PlotFilePreparator& plotFilePreparator)
-	{
-		plotFilePreparator.addAlphas(alphas_);
-	}
 private:
 	Ubm ubm_;
-	vector<Alpha> alphas_;
 	FeatureMatrixLoader* featureMatrixLoader_;
 	void appendAdaptedMeanToSuperVector(SuperVector &superVector, Mat &mu_i);
 

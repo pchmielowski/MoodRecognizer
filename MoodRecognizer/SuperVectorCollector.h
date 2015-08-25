@@ -26,6 +26,6 @@ private:
 	SuperVectorCalculator* superVectorCalculator_ = nullptr;
 	PcaReductor* pcaReductor_ = nullptr;
 	SvmClassifier* svmClassifier_ = nullptr;
-	void appendSuperVectorToAllSuperVectors(vector<SuperVectors> &allSuperVectors, SuperVectors &superVectorsForFile);
+	void appendSuperVectorToAllSuperVectors(SuperVectors &allSuperVectors, SuperVector &superVectorsForFile);
 	std::vector<float> accuracies_;
 };
