@@ -10,15 +10,13 @@ double Ubm::weightedLogLikelihood(const cv::Mat& x, int componentIdx) const
 	assert(distribution_.size() == numGaussComponents_);
 	assert(distribution_[0].size() == numCoeff);
 	assert(distribution_[numGaussComponents_ - 1].size() == numCoeff);
-	double likelihood = 1.0;
+	double logLikelihood = 0;
 	for (int coefIdx = 0; coefIdx < numCoeff; coefIdx++) {
 		if (_isnan(x.at<float>(coefIdx)))
 			throw runtime_error("Component: " + to_string(componentIdx) + ", coeff: " + to_string(coefIdx) + ". \nValue " + to_string(x.at<float>(coefIdx)));
-		likelihood *= pdf(distribution_[componentIdx][coefIdx],	x.at<float>(coefIdx));
+		logLikelihood += log(pdf(distribution_[componentIdx][coefIdx], x.at<float>(coefIdx)));
 	}
-	double ll = log(likelihood)*(double)weights_.at<float>(componentIdx);
-
-	return ll;
+	return logLikelihood*(double)weights_.at<float>(componentIdx);
 }
 
 void Ubm::createNormalDistribution(int numDimensions, vector<Mat> covs)
@@ -37,7 +35,7 @@ void Ubm::createNormalDistribution(int numDimensions, vector<Mat> covs)
 		vector<normal_distribution<>>(numDimensions, NULL));
 	for (int dimensionIdx = 0; dimensionIdx < numDimensions; dimensionIdx++) {
 		for (int componentIdx = 0; componentIdx < numGaussComponents_; componentIdx++) {
-			distribution_[componentIdx][dimensionIdx] = 
+			distribution_[componentIdx][dimensionIdx] =
 				normal_distribution<>(means_.at<float>(dimensionIdx, componentIdx),
 				(covs[componentIdx].at<float>(dimensionIdx, 0)));
 		}
