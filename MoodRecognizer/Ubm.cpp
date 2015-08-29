@@ -12,8 +12,9 @@ double Ubm::weightedLogLikelihood(const cv::Mat& x, int componentIdx) const
 	assert(distribution_[numGaussComponents_ - 1].size() == numCoeff);
 	double likelihood = 1.0;
 	for (int coefIdx = 0; coefIdx < numCoeff; coefIdx++) {
-		likelihood *= pdf(distribution_[componentIdx][coefIdx],
-			x.at<float>(coefIdx));
+		if (_isnan(x.at<float>(coefIdx)))
+			throw runtime_error("Component: " + to_string(componentIdx) + ", coeff: " + to_string(coefIdx) + ". \nValue " + to_string(x.at<float>(coefIdx)));
+		likelihood *= pdf(distribution_[componentIdx][coefIdx],	x.at<float>(coefIdx));
 	}
 	double ll = log(likelihood)*(double)weights_.at<float>(componentIdx);
 

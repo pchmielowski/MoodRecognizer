@@ -30,8 +30,14 @@ SuperVector SuperVectorCalculator::calculate(FileName featureMatrixFileName)
 		float probabilisticCount;
 		Mat eq2 = Eq2(numCoeff, numTimeWindows, eq3, componentIdx, featureMatrix, numGaussComponents, probabilisticCount);
 
-		const float RELEVANCE_FACTOR = 14;
-		Alpha alpha = probabilisticCount/(probabilisticCount+RELEVANCE_FACTOR);
+		Alpha alpha;
+		if (probabilisticCount > DBL_MIN) {
+			const float RELEVANCE_FACTOR = 14;
+			alpha = probabilisticCount / (probabilisticCount + RELEVANCE_FACTOR);
+		}
+		else {
+			alpha = 0.0;
+		}
 
 		Mat mu_i = Eq1(eq2, alpha, componentIdx, numCoeff);
 		appendAdaptedMeanToSuperVector(superVector, mu_i);
@@ -91,9 +97,6 @@ cv::Mat SuperVectorCalculator::Eq2(int numCoeff, int numTimeWindows, myContainer
 		eq2Counter += float(itr) * featureMatrix.col(t++);
 		probabilisticCount += itr;
 	}
-
-	if (!(probabilisticCount > DBL_MIN))
-		throw(runtime_error("Eq 2 denominator NOT greater than 0 for component " + to_string(componentIdx)));
 
 	Mat eq2 = eq2Counter / probabilisticCount;
 	assert(eq2.rows == numCoeff);
