@@ -21,7 +21,7 @@ SuperVector SuperVectorCalculator::calculate(FileName featureMatrixFileName)
 	assert(ubm_.weights_.rows == 1);
 	assert(ubm_.weights_.cols == numGaussComponents);
 
-	myContainer* eq3 = Eq3(numTimeWindows, numGaussComponents, featureMatrix);
+	FloatingPointVector* eq3 = Eq3(numTimeWindows, numGaussComponents, featureMatrix);
 
 	SuperVector superVector;
 	int numCoeff = featureMatrix.rows;
@@ -47,23 +47,22 @@ SuperVector SuperVectorCalculator::calculate(FileName featureMatrixFileName)
 	return superVector;
 }
 
-void SuperVectorCalculator::ReleaseEq3(int numGaussComponents, myContainer* eq3)
+void SuperVectorCalculator::ReleaseEq3(int numGaussComponents, FloatingPointVector* eq3)
 {
 	delete[] eq3;
 }
 
-myContainer* SuperVectorCalculator::Eq3(int numTimeWindows, int numGaussComponents, FeatureMatrix &featureMatrix)
+FloatingPointVector* SuperVectorCalculator::Eq3(int numTimeWindows, int numGaussComponents, FeatureMatrix &featureMatrix)
 {
-	myContainer* eq3 = new myContainer[numGaussComponents];
+	FloatingPointVector* eq3 = new FloatingPointVector[numGaussComponents];
 
 	for (int t = 0; t < numTimeWindows; t++)
 	{
-		double* eq3Counters = new double[numGaussComponents];
-		double eq3Denominator = 0;
+		FloatingPoint* eq3Counters = new FloatingPoint[numGaussComponents];
+		FloatingPoint eq3Denominator = 0;
 
 		for (int componentIdx = 0; componentIdx < numGaussComponents; ++componentIdx)
 		{
-			//std::cout << "Component number: " << componentIdx << std::endl;
 			eq3Counters[componentIdx] = ubm_.weightedLogLikelihood(featureMatrix.col(t), componentIdx);
 			assert(abs(eq3Counters[componentIdx]) > DBL_MIN);
 			if (std::isnan(eq3Counters[componentIdx]))
@@ -78,7 +77,7 @@ myContainer* SuperVectorCalculator::Eq3(int numTimeWindows, int numGaussComponen
 			if (!(abs(eq3Denominator) >= DBL_MIN))
 				throw(runtime_error("Eq 3 denominator =/= 0 for component " + to_string(componentIdx)));
 
-			double eq3forComponent = eq3Counters[componentIdx] / eq3Denominator;
+			FloatingPoint eq3forComponent = eq3Counters[componentIdx] / eq3Denominator;
 
 			eq3[componentIdx].push_back(eq3forComponent);
 		}
@@ -87,9 +86,9 @@ myContainer* SuperVectorCalculator::Eq3(int numTimeWindows, int numGaussComponen
 	return eq3;
 }
 
-cv::Mat SuperVectorCalculator::Eq2(int numCoeff, int numTimeWindows, myContainer* eq3, int componentIdx, FeatureMatrix &featureMatrix, int numGaussComponents, float& probabilisticCount)
+cv::Mat SuperVectorCalculator::Eq2(int numCoeff, int numTimeWindows, FloatingPointVector* eq3, int componentIdx, FeatureMatrix &featureMatrix, int numGaussComponents, float& probabilisticCount)
 {
-	Mat eq2Counter = Mat::zeros(numCoeff, 1, CV_32FC1);
+	Mat eq2Counter = Mat::zeros(numCoeff, 1, CV_64FC1);
 	probabilisticCount = 0;
 	int t = 0;
 	for (auto itr : eq3[componentIdx])
@@ -103,7 +102,7 @@ cv::Mat SuperVectorCalculator::Eq2(int numCoeff, int numTimeWindows, myContainer
 	assert(eq2.cols == 1);
 	assert(ubm_.means_.rows == numCoeff);
 	assert(ubm_.means_.cols == numGaussComponents);
-	assert(eq2.type() == CV_32FC1);
+	assert(eq2.type() == CV_64FC1);
 	return eq2;
 }
 

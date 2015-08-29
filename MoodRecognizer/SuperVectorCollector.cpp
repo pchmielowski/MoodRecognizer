@@ -24,7 +24,6 @@ void SuperVectorCollector::train(MoodsInterface& moods, InputFileNames& inputFil
 	SuperVectors allSuperVectors;
 	MoodsVector moodsVector;
 	int numFilesRead = 0;
-	int numSuperVectorsForFile;
 
 	while (inputFileNames.fileNamesLeft())
 	{
@@ -33,34 +32,27 @@ void SuperVectorCollector::train(MoodsInterface& moods, InputFileNames& inputFil
 		bool hasRightExtension = fileName.substr(fileName.find_last_of(".") + 1) == "xml";
 		if (!hasRightExtension)
 			throw std::runtime_error("File " + fileName + " does not have .xml extension!");
+		std::cout << fileName << std::endl;
 
 		assert(superVectorCalculator_ != nullptr);
 		SuperVector superVectorForFile = superVectorCalculator_->calculate(fileName);
-		std::cout << fileName << std::endl;
+		allSuperVectors.push_back(superVectorForFile);
+		assert(allSuperVectors.size() == numFilesRead);
 
 		moodsVector.push_back(moods.getNextMood());
 		assert(moodsVector.size() == numFilesRead);
-
-		appendSuperVectorToAllSuperVectors(allSuperVectors, superVectorForFile);
-
-		assert(allSuperVectors.size() == numFilesRead);
 	}
 
-	SuperVectors allSuperVectorsCopy; // TODO: nie robiæ tej kopii
-	for (auto superVectorsForFile : allSuperVectors)
-		allSuperVectorsCopy.push_back(superVectorsForFile);
+	assert(pcaReductor_ != nullptr);
+	pcaReductor_->trainPca(allSuperVectors);
 
 	SuperVectors reducedSuperVectors;
-	assert(pcaReductor_ != nullptr);
-	pcaReductor_->trainPca(allSuperVectorsCopy);
-	std::cout << "PCA trained" << endl;
-	inputFileNames.markAllAsUnread();
-
 	int fileIdx = 0;
+	inputFileNames.markAllAsUnread();
 	while (inputFileNames.fileNamesLeft())
 	{
 		inputFileNames.getNextFileName();
-		SuperVector& superVectorForFile = allSuperVectorsCopy[fileIdx++];
+		SuperVector& superVectorForFile = allSuperVectors[fileIdx++];
 		assert(superVectorForFile.cols == 1);
 
 		SuperVector reducedSuperVectorForFile;
@@ -75,14 +67,4 @@ void SuperVectorCollector::train(MoodsInterface& moods, InputFileNames& inputFil
 	assert(moodsVector.size() != 0);
 	float accuracy = svmClassifier_->trainSvm(moodsVector, reducedSuperVectors);
 	cout << "Accuracy: " << accuracy << endl;
-
-
-}
-
-void SuperVectorCollector::appendSuperVectorToAllSuperVectors(SuperVectors &allSuperVectors,
-	SuperVector &superVectorsForFile)
-{
-	int initialSize = allSuperVectors.size();
-	allSuperVectors.push_back(superVectorsForFile);
-	assert(allSuperVectors.size() == initialSize + 1);
 }
