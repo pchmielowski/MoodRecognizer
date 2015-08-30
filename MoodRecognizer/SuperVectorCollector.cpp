@@ -4,6 +4,7 @@
 #include "MatInputFileNames.h"
 #include "PcaReductor.h"
 #include <iostream>
+#include <string>
 
 SuperVectorCollector::SuperVectorCollector(SuperVectorCalculator& superVectorCalculator,
 	PcaReductor& pcaReductor,
@@ -14,17 +15,48 @@ SuperVectorCollector::SuperVectorCollector(SuperVectorCalculator& superVectorCal
 	svmClassifier_ = &svmClassifier;
 }
 
-Moods SuperVectorCollector::predictMoods(InputFileNames& inputFileNames)
+void SuperVectorCollector::prepareAndTrain(MoodsInterface& moods, InputFileNames& inputFileNames)
 {
-	return Moods();
+	bool hasToPrepareSuperVectorsAndMoods = true;
+	if (hasToPrepareSuperVectorsAndMoods)
+	{
+		SuperVectors allSuperVectors = prepareSuperVectors(inputFileNames);
+		assert(allSuperVectors.size() > 0);
+
+		cv::FileStorage superVectorsFile;
+		std::string superVectorsFilePath = "";
+		superVectorsFile.open(superVectorsFilePath, cv::FileStorage::WRITE);
+
+		int superVectorIdx = 0;
+		for (auto superVector : allSuperVectors)
+		{
+			superVectorsFile << "superVector"+to_string(superVectorIdx++);
+			superVectorsFile << superVector;
+		}
+
+		superVectorsFile.release();
+	}
+
+	bool hasToTrainSvm = true;
+	if (hasToTrainSvm)
+	{
+		SuperVectors allSuperVectors;
+		// load allSuperVectors
+
+		MoodsVector moodsVector;
+		inputFileNames.markAllAsUnread();
+		while (inputFileNames.fileNamesLeft())
+		{
+			moodsVector.push_back(moods.getNextMood());
+		}
+		trainPcaAndSvm(allSuperVectors, inputFileNames, moodsVector);
+	}
 }
 
-void SuperVectorCollector::train(MoodsInterface& moods, InputFileNames& inputFileNames)
+SuperVectors SuperVectorCollector::prepareSuperVectors(InputFileNames &inputFileNames)
 {
 	SuperVectors allSuperVectors;
-	MoodsVector moodsVector;
 	int numFilesRead = 0;
-
 	while (inputFileNames.fileNamesLeft())
 	{
 		++numFilesRead;
@@ -38,15 +70,19 @@ void SuperVectorCollector::train(MoodsInterface& moods, InputFileNames& inputFil
 		SuperVector superVectorForFile = superVectorCalculator_->calculate(fileName);
 		allSuperVectors.push_back(superVectorForFile);
 		assert(allSuperVectors.size() == numFilesRead);
-
-		moodsVector.push_back(moods.getNextMood());
-		assert(moodsVector.size() == numFilesRead);
 	}
 
+	return allSuperVectors;
+}
+
+void SuperVectorCollector::trainPcaAndSvm(SuperVectors allSuperVectors, InputFileNames &inputFileNames, MoodsVector &moodsVector)
+{
+	// train Pca
 	assert(pcaReductor_ != nullptr);
 	pcaReductor_->trainPca(allSuperVectors);
 
 	SuperVectors reducedSuperVectors;
+	// reduce superVectors
 	int fileIdx = 0;
 	inputFileNames.markAllAsUnread();
 	while (inputFileNames.fileNamesLeft())
@@ -62,9 +98,15 @@ void SuperVectorCollector::train(MoodsInterface& moods, InputFileNames& inputFil
 		reducedSuperVectors.push_back(reducedSuperVectorForFile);
 	}
 
+	// train SVM
 	assert(svmClassifier_ != nullptr);
 	assert(reducedSuperVectors.size() != 0);
 	assert(moodsVector.size() != 0);
 	float accuracy = svmClassifier_->trainSvm(moodsVector, reducedSuperVectors);
 	cout << "Accuracy: " << accuracy << endl;
+}
+
+Moods SuperVectorCollector::predictMoods(InputFileNames& inputFileNames)
+{
+	throw logic_error("Method SuperVectorCollector::predictMoods not implemented.");
 }

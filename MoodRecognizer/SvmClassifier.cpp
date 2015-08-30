@@ -35,7 +35,7 @@ float SvmClassifier::trainSvm(const MoodsVector moods, SuperVectors superVectors
 		assert(superVectorsAsMat.rows == moodsAsMat.rows);
 		assert(superVectorsAsMat.rows == trainSuperVectors.size());
 
-		const int NUM_FOLDS_INNER = 4;
+		const int NUM_FOLDS_INNER = 10;
 		bool isFirstIteration = foldIdx == 0;
 		if (isFirstIteration)
 		{

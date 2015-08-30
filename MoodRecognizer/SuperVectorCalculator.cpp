@@ -86,9 +86,10 @@ FloatingPointVector* SuperVectorCalculator::Eq3(int numTimeWindows, int numGauss
 	return eq3;
 }
 
-cv::Mat SuperVectorCalculator::Eq2(int numCoeff, int numTimeWindows, FloatingPointVector* eq3, int componentIdx, FeatureMatrix &featureMatrix, int numGaussComponents, float& probabilisticCount)
+cv::Mat SuperVectorCalculator::Eq2(int numCoeff, int numTimeWindows, FloatingPointVector* eq3, 
+	int componentIdx, FeatureMatrix &featureMatrix, int numGaussComponents, float& probabilisticCount)
 {
-	Mat eq2Counter = Mat::zeros(numCoeff, 1, CV_64FC1);
+	Mat eq2Counter = Mat::zeros(numCoeff, 1, CV_32FC1);
 	probabilisticCount = 0;
 	int t = 0;
 	for (auto itr : eq3[componentIdx])
@@ -102,7 +103,7 @@ cv::Mat SuperVectorCalculator::Eq2(int numCoeff, int numTimeWindows, FloatingPoi
 	assert(eq2.cols == 1);
 	assert(ubm_.means_.rows == numCoeff);
 	assert(ubm_.means_.cols == numGaussComponents);
-	assert(eq2.type() == CV_64FC1);
+	assert(eq2.type() == CV_32FC1);
 	return eq2;
 }
 
