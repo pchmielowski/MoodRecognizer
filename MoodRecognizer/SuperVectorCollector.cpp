@@ -5,6 +5,9 @@
 #include "PcaReductor.h"
 #include <iostream>
 #include <string>
+#include <algorithm>
+#include <iterator>
+
 
 SuperVectorCollector::SuperVectorCollector(SuperVectorCalculator& superVectorCalculator,
 	PcaReductor& pcaReductor,
@@ -17,35 +20,34 @@ SuperVectorCollector::SuperVectorCollector(SuperVectorCalculator& superVectorCal
 
 void SuperVectorCollector::prepareAndTrain(MoodsInterface& moods, InputFileNames& inputFileNames)
 {
-	bool hasToPrepareSuperVectorsAndMoods = true;
+	bool hasToPrepareSuperVectorsAndMoods = false;
 	if (hasToPrepareSuperVectorsAndMoods)
 	{
 		SuperVectors allSuperVectors = prepareSuperVectors(inputFileNames);
 		assert(allSuperVectors.size() > 0);
 
 		cv::FileStorage superVectorsFile;
-		std::string superVectorsFilePath = "";
+		std::string superVectorsFilePath = "C:\\OneDrive\\mgr\\superVectors.xml";
 		superVectorsFile.open(superVectorsFilePath, cv::FileStorage::WRITE);
-
+		superVectorsFile << "SIZE";
+		superVectorsFile << int(allSuperVectors.size());
 		int superVectorIdx = 0;
 		for (auto superVector : allSuperVectors)
 		{
-			superVectorsFile << "superVector"+to_string(superVectorIdx++);
+			superVectorsFile << "super_vector_" + to_string(superVectorIdx++);
 			superVectorsFile << superVector;
 		}
-
 		superVectorsFile.release();
 	}
 
 	bool hasToTrainSvm = true;
 	if (hasToTrainSvm)
 	{
-		SuperVectors allSuperVectors;
-		// load allSuperVectors
+		SuperVectors allSuperVectors = loadSuperVectors();
+		int numSuperVectors = allSuperVectors.size();
 
 		MoodsVector moodsVector;
-		inputFileNames.markAllAsUnread();
-		while (inputFileNames.fileNamesLeft())
+		for (int moodIdx = 0; moodIdx < numSuperVectors; ++moodIdx)
 		{
 			moodsVector.push_back(moods.getNextMood());
 		}
@@ -64,7 +66,7 @@ SuperVectors SuperVectorCollector::prepareSuperVectors(InputFileNames &inputFile
 		bool hasRightExtension = fileName.substr(fileName.find_last_of(".") + 1) == "xml";
 		if (!hasRightExtension)
 			throw std::runtime_error("File " + fileName + " does not have .xml extension!");
-		std::cout << fileName << std::endl;
+		//std::cout << fileName << std::endl;
 
 		assert(superVectorCalculator_ != nullptr);
 		SuperVector superVectorForFile = superVectorCalculator_->calculate(fileName);
@@ -93,7 +95,6 @@ void SuperVectorCollector::trainPcaAndSvm(SuperVectors allSuperVectors, InputFil
 
 		SuperVector reducedSuperVectorForFile;
 		reducedSuperVectorForFile = pcaReductor_->reduce(superVectorForFile);
-		//std::cout << "SuperVector reduced for file no " << i << endl;
 		assert(reducedSuperVectorForFile.cols == 1);
 		reducedSuperVectors.push_back(reducedSuperVectorForFile);
 	}
@@ -104,6 +105,25 @@ void SuperVectorCollector::trainPcaAndSvm(SuperVectors allSuperVectors, InputFil
 	assert(moodsVector.size() != 0);
 	float accuracy = svmClassifier_->trainSvm(moodsVector, reducedSuperVectors);
 	cout << "Accuracy: " << accuracy << endl;
+}
+
+SuperVectors SuperVectorCollector::loadSuperVectors()
+{
+	SuperVectors allSuperVectors;
+
+	cv::FileStorage superVectorsFile;
+	superVectorsFile.open(superVectorsFilePath, cv::FileStorage::READ);
+	int numSuperVectors;
+	superVectorsFile["SIZE"] >> numSuperVectors;
+	for (int superVectorIdx = 0; superVectorIdx < numSuperVectors; ++superVectorIdx)
+	{
+		SuperVector superVector;
+		superVectorsFile["super_vector_" + to_string(superVectorIdx)] >> superVector;
+		allSuperVectors.push_back(superVector);
+	}
+	superVectorsFile.release();
+
+	return allSuperVectors;
 }
 
 Moods SuperVectorCollector::predictMoods(InputFileNames& inputFileNames)

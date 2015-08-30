@@ -14,7 +14,7 @@ float SvmClassifier::trainSvm(const MoodsVector moods, SuperVectors superVectors
 	normalize(superVectors);
 
 	srand(time(NULL));
-	const int NUM_FOLDS_OUTER = 10;
+	const int NUM_FOLDS_OUTER = 4;
 	float sumAccuracy = 0;
 	CvSVMParams params;
 	for (int foldIdx = 0; foldIdx < NUM_FOLDS_OUTER; ++foldIdx)
@@ -49,7 +49,6 @@ float SvmClassifier::trainSvm(const MoodsVector moods, SuperVectors superVectors
 		{
 			svm_.train(superVectorsAsMat, moodsAsMat, Mat(), Mat(), params);
 		}
-		//std::cout << "Next SVM trained" << std::endl;
 		sumAccuracy += computeAccuracy(t_superVectorsAsMat, t_moodsAsMat);
 	}
 	return sumAccuracy / static_cast<float>(NUM_FOLDS_OUTER);

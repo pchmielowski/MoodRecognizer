@@ -1,4 +1,5 @@
 #include "PcaReductor.h"
+const float REDUCE_SUPER_VECTOR_FACTOR = 1.5;
 
 void PcaReductor::trainPca(SuperVectors superVectors)
 {
@@ -6,16 +7,21 @@ void PcaReductor::trainPca(SuperVectors superVectors)
 
 	int numSuperVectors = superVectors.size();
 	int sizeSuperVector = getSuperVectorSize(superVectors);
+	// REDUCE BEFORE PCA
+	int reducedSize = sizeSuperVector / REDUCE_SUPER_VECTOR_FACTOR;
+	//
 
-	Mat matrixOfSuperVectors(sizeSuperVector, numSuperVectors, superVectors[0].type());
+	Mat matrixOfSuperVectors(reducedSize, numSuperVectors, superVectors[0].type());
 	for (int i = 0; i < numSuperVectors; i++) {
-		// to do : clone
-		superVectors[i].convertTo(matrixOfSuperVectors.col(i), matrixOfSuperVectors.type());
+		// REDUCE BEFORE PCA
+		SuperVector temp = superVectors[i].clone();
+		temp.resize(reducedSize, 1);
+		// 
+
+		temp.convertTo(matrixOfSuperVectors.col(i), matrixOfSuperVectors.type());
 	}
 
-	//int sizeAfterPca = sizeSuperVector;
 	pca_ = PCA(matrixOfSuperVectors, Mat(), CV_PCA_DATA_AS_COL);
-
 }
 
 
@@ -26,6 +32,12 @@ SuperVector PcaReductor::reduce(SuperVector superVectorToReduce)
 
 	assert(nOfComponents_.size() > 0);
 	int sizeAfterPca = nOfComponents_[0];
+
+	// REDUCE BEFORE PCA
+	int sizeSuperVector = superVectorToReduce.rows;
+	int reducedSize = sizeSuperVector / REDUCE_SUPER_VECTOR_FACTOR;
+	superVectorToReduce.resize(reducedSize, 1);
+	// 
 
 	Mat projectedSuperVector = pca_.project(superVectorToReduce);
 	float firstElemtentBeforeResizing = projectedSuperVector.at<float>(0);
